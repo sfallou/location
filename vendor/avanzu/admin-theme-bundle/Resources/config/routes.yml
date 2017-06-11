@@ -29,7 +29,7 @@ avanzu_admin_form_demo:
   defaults: {_controller: AvanzuAdminThemeBundle:Default:add_appart}
 
 avanzu_admin_login_demo:
-  path: /admin/login/
+  path: /
   defaults: {_controller: AvanzuAdminThemeBundle:Default:login}
 
 avanzu_admin_dash_demo:

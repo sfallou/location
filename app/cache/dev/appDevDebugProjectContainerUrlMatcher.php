@@ -111,11 +111,7 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
         }
 
         // homepage
-        if (rtrim($pathinfo, '/') === '') {
-            if (substr($pathinfo, -1) !== '/') {
-                return $this->redirect($pathinfo.'/', 'homepage');
-            }
-
+        if ($pathinfo === '/default') {
             return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::indexAction',  '_route' => 'homepage',);
         }
 
@@ -224,15 +220,18 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                 return array (  '_controller' => 'Avanzu\\AdminThemeBundle\\Controller\\DefaultController::add_appartAction',  '_route' => 'avanzu_admin_form_demo',);
             }
 
-            // avanzu_admin_login_demo
-            if (rtrim($pathinfo, '/') === '/admin/login') {
-                if (substr($pathinfo, -1) !== '/') {
-                    return $this->redirect($pathinfo.'/', 'avanzu_admin_login_demo');
-                }
+        }
 
-                return array (  '_controller' => 'Avanzu\\AdminThemeBundle\\Controller\\DefaultController::loginAction',  '_route' => 'avanzu_admin_login_demo',);
+        // avanzu_admin_login_demo
+        if (rtrim($pathinfo, '/') === '') {
+            if (substr($pathinfo, -1) !== '/') {
+                return $this->redirect($pathinfo.'/', 'avanzu_admin_login_demo');
             }
 
+            return array (  '_controller' => 'Avanzu\\AdminThemeBundle\\Controller\\DefaultController::loginAction',  '_route' => 'avanzu_admin_login_demo',);
+        }
+
+        if (0 === strpos($pathinfo, '/admin')) {
             // avanzu_admin_dash_demo
             if (rtrim($pathinfo, '/') === '/admin/dashboard') {
                 if (substr($pathinfo, -1) !== '/') {

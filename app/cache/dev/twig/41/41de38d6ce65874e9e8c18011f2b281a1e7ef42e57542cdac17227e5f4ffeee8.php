@@ -21,29 +21,29 @@ class __TwigTemplate_8b6e1b2aa65f82ce9754a1608672e4539fead59b6c0b13b5818e2196090
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_718ddcb396f8d631b64815896398569ad2db0c2c2063e0bfa406c888a8e79528 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_718ddcb396f8d631b64815896398569ad2db0c2c2063e0bfa406c888a8e79528->enter($__internal_718ddcb396f8d631b64815896398569ad2db0c2c2063e0bfa406c888a8e79528_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "AvanzuAdminThemeBundle:Default:login.html.twig"));
+        $__internal_e16889231225c7e48fca1099993fb1791d4509d5296a9af1cf9fb1711a56650a = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_e16889231225c7e48fca1099993fb1791d4509d5296a9af1cf9fb1711a56650a->enter($__internal_e16889231225c7e48fca1099993fb1791d4509d5296a9af1cf9fb1711a56650a_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "AvanzuAdminThemeBundle:Default:login.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_718ddcb396f8d631b64815896398569ad2db0c2c2063e0bfa406c888a8e79528->leave($__internal_718ddcb396f8d631b64815896398569ad2db0c2c2063e0bfa406c888a8e79528_prof);
+        $__internal_e16889231225c7e48fca1099993fb1791d4509d5296a9af1cf9fb1711a56650a->leave($__internal_e16889231225c7e48fca1099993fb1791d4509d5296a9af1cf9fb1711a56650a_prof);
 
     }
 
     // line 3
     public function block_page_content($context, array $blocks = array())
     {
-        $__internal_91c8d900c016605839008d1bb4fa8cb1f5603fc7cd011445f54b61861ab456a1 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_91c8d900c016605839008d1bb4fa8cb1f5603fc7cd011445f54b61861ab456a1->enter($__internal_91c8d900c016605839008d1bb4fa8cb1f5603fc7cd011445f54b61861ab456a1_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "page_content"));
+        $__internal_937663cbf5fd5ffdf0508f2fed85c00ed5bfb0f9f38985a421cdec841ec11fc0 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_937663cbf5fd5ffdf0508f2fed85c00ed5bfb0f9f38985a421cdec841ec11fc0->enter($__internal_937663cbf5fd5ffdf0508f2fed85c00ed5bfb0f9f38985a421cdec841ec11fc0_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "page_content"));
 
         // line 4
         echo "    <div class=\"login-box\">
         <div class=\"login-logo\">
-            <a href=\"../../index2.html\"><b>Connexion</b></a>
+            <a href=\"http://localhost:8000/admin/\"><b>Connexion</b></a>
         </div><!-- /.login-logo -->
         <div class=\"login-box-body\">
             <p class=\"login-box-msg\">Sign in to start your session</p>
-            <form action=\"../../index2.html\" method=\"post\">
+            <form action=\"http://localhost:8000/admin/\" method=\"post\">
                 <div class=\"form-group has-feedback\">
                     <input type=\"text\" class=\"form-control\" placeholder=\"Email\"/>
                     <span class=\"glyphicon glyphicon-envelope form-control-feedback\"></span>
@@ -73,13 +73,13 @@ class __TwigTemplate_8b6e1b2aa65f82ce9754a1608672e4539fead59b6c0b13b5818e2196090
             </div--><!-- /.social-auth-links -->
 
             <a href=\"#\">I forgot my password</a><br>
-            <a href=\"register.html\" class=\"text-center\">Register a new membership</a>
+            <a href=\"#\" class=\"text-center\">Register a new membership</a>
 
         </div><!-- /.login-box-body -->
     </div>
 ";
         
-        $__internal_91c8d900c016605839008d1bb4fa8cb1f5603fc7cd011445f54b61861ab456a1->leave($__internal_91c8d900c016605839008d1bb4fa8cb1f5603fc7cd011445f54b61861ab456a1_prof);
+        $__internal_937663cbf5fd5ffdf0508f2fed85c00ed5bfb0f9f38985a421cdec841ec11fc0->leave($__internal_937663cbf5fd5ffdf0508f2fed85c00ed5bfb0f9f38985a421cdec841ec11fc0_prof);
 
     }
 
@@ -113,11 +113,11 @@ class __TwigTemplate_8b6e1b2aa65f82ce9754a1608672e4539fead59b6c0b13b5818e2196090
 {% block page_content %}
     <div class=\"login-box\">
         <div class=\"login-logo\">
-            <a href=\"../../index2.html\"><b>Connexion</b></a>
+            <a href=\"http://localhost:8000/admin/\"><b>Connexion</b></a>
         </div><!-- /.login-logo -->
         <div class=\"login-box-body\">
             <p class=\"login-box-msg\">Sign in to start your session</p>
-            <form action=\"../../index2.html\" method=\"post\">
+            <form action=\"http://localhost:8000/admin/\" method=\"post\">
                 <div class=\"form-group has-feedback\">
                     <input type=\"text\" class=\"form-control\" placeholder=\"Email\"/>
                     <span class=\"glyphicon glyphicon-envelope form-control-feedback\"></span>
@@ -147,7 +147,7 @@ class __TwigTemplate_8b6e1b2aa65f82ce9754a1608672e4539fead59b6c0b13b5818e2196090
             </div--><!-- /.social-auth-links -->
 
             <a href=\"#\">I forgot my password</a><br>
-            <a href=\"register.html\" class=\"text-center\">Register a new membership</a>
+            <a href=\"#\" class=\"text-center\">Register a new membership</a>
 
         </div><!-- /.login-box-body -->
     </div>
