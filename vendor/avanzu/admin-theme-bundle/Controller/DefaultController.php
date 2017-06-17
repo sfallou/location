@@ -37,6 +37,13 @@ class DefaultController extends Controller
         return $this->render('AvanzuAdminThemeBundle:Default:index.html.twig');
     }
 
+    /**
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function listeAction() {
+        return $this->render('AvanzuAdminThemeBundle:Default:liste.html.twig');
+    }
+
     public function uiIconsAction() {
         return $this->render('AvanzuAdminThemeBundle:Default:index.html.twig');
     }

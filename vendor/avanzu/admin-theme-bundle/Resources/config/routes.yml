@@ -40,6 +40,14 @@ avanzu_admin_ui_gen_demo:
   path: /admin/ui-elements/general/
   defaults: {_controller: AvanzuAdminThemeBundle:Default:uiGeneral}
 
+avanzu_admin_liste:
+  path: /admin/liste/
+  defaults: {_controller: AvanzuAdminThemeBundle:Default:liste}
+
+avanzu_admin_form:
+  path: /admin/formulaire/
+  defaults: {_controller: AvanzuAdminThemeBundle:Default:add_appart}
+
 avanzu_admin_ui_icon_demo:
   path: /admin/ui-elements/icons/
   defaults: {_controller: AvanzuAdminThemeBundle:Default:uiIcons}

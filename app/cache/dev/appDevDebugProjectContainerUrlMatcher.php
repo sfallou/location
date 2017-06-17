@@ -241,25 +241,40 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                 return array (  '_controller' => 'Avanzu\\AdminThemeBundle\\Controller\\DefaultController::dashboardAction',  '_route' => 'avanzu_admin_dash_demo',);
             }
 
-            if (0 === strpos($pathinfo, '/admin/ui-elements')) {
-                // avanzu_admin_ui_gen_demo
-                if (rtrim($pathinfo, '/') === '/admin/ui-elements/general') {
-                    if (substr($pathinfo, -1) !== '/') {
-                        return $this->redirect($pathinfo.'/', 'avanzu_admin_ui_gen_demo');
-                    }
-
-                    return array (  '_controller' => 'Avanzu\\AdminThemeBundle\\Controller\\DefaultController::uiGeneralAction',  '_route' => 'avanzu_admin_ui_gen_demo',);
+            // avanzu_admin_ui_gen_demo
+            if (rtrim($pathinfo, '/') === '/admin/ui-elements/general') {
+                if (substr($pathinfo, -1) !== '/') {
+                    return $this->redirect($pathinfo.'/', 'avanzu_admin_ui_gen_demo');
                 }
 
-                // avanzu_admin_ui_icon_demo
-                if (rtrim($pathinfo, '/') === '/admin/ui-elements/icons') {
-                    if (substr($pathinfo, -1) !== '/') {
-                        return $this->redirect($pathinfo.'/', 'avanzu_admin_ui_icon_demo');
-                    }
+                return array (  '_controller' => 'Avanzu\\AdminThemeBundle\\Controller\\DefaultController::uiGeneralAction',  '_route' => 'avanzu_admin_ui_gen_demo',);
+            }
 
-                    return array (  '_controller' => 'Avanzu\\AdminThemeBundle\\Controller\\DefaultController::uiIconsAction',  '_route' => 'avanzu_admin_ui_icon_demo',);
+            // avanzu_admin_liste
+            if (rtrim($pathinfo, '/') === '/admin/liste') {
+                if (substr($pathinfo, -1) !== '/') {
+                    return $this->redirect($pathinfo.'/', 'avanzu_admin_liste');
                 }
 
+                return array (  '_controller' => 'Avanzu\\AdminThemeBundle\\Controller\\DefaultController::listeAction',  '_route' => 'avanzu_admin_liste',);
+            }
+
+            // avanzu_admin_form
+            if (rtrim($pathinfo, '/') === '/admin/formulaire') {
+                if (substr($pathinfo, -1) !== '/') {
+                    return $this->redirect($pathinfo.'/', 'avanzu_admin_form');
+                }
+
+                return array (  '_controller' => 'Avanzu\\AdminThemeBundle\\Controller\\DefaultController::add_appartAction',  '_route' => 'avanzu_admin_form',);
+            }
+
+            // avanzu_admin_ui_icon_demo
+            if (rtrim($pathinfo, '/') === '/admin/ui-elements/icons') {
+                if (substr($pathinfo, -1) !== '/') {
+                    return $this->redirect($pathinfo.'/', 'avanzu_admin_ui_icon_demo');
+                }
+
+                return array (  '_controller' => 'Avanzu\\AdminThemeBundle\\Controller\\DefaultController::uiIconsAction',  '_route' => 'avanzu_admin_ui_icon_demo',);
             }
 
         }
