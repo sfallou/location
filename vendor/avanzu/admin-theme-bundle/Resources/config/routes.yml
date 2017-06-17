@@ -1,3 +1,83 @@
+
+
+login:
+  path: /
+  defaults: {_controller: AvanzuAdminThemeBundle:Default:login}
+
+admin:
+  path: /auth/
+  defaults: {_controller: AvanzuAdminThemeBundle:Default:index}
+
+admin_dash:
+  path: /admin/dashboard/
+  defaults: {_controller: AvanzuAdminThemeBundle:Default:dashboard}
+
+
+admin_form_locataire:
+  path: /admin/add_locataire/
+  defaults: {_controller: AvanzuAdminThemeBundle:Default:addAppart}
+
+
+admin_liste_locataire:
+  path: /admin/liste_locataire/
+  defaults: {_controller: AvanzuAdminThemeBundle:Default:listeLocataire}
+
+
+admin_form_room:
+  path: /admin/add_room/
+  defaults: {_controller: AvanzuAdminThemeBundle:Default:addAppart}
+
+
+admin_liste_room:
+  path: /admin/liste_room/
+  defaults: {_controller: AvanzuAdminThemeBundle:Default:listeLocataire}
+
+admin_form_appart:
+  path: /admin/add_appart/
+  defaults: {_controller: AvanzuAdminThemeBundle:Default:addAppart}
+
+
+admin_liste_appart:
+  path: /admin/liste_appart/
+  defaults: {_controller: AvanzuAdminThemeBundle:Default:listeLocataire}
+
+
+admin_form_residence:
+  path: /admin/add_residence/
+  defaults: {_controller: AvanzuAdminThemeBundle:Default:addAppart}
+
+
+admin_liste_residence:
+  path: /admin/liste_residence/
+  defaults: {_controller: AvanzuAdminThemeBundle:Default:listeLocataire}
+
+admin_form_meuble:
+  path: /admin/add_meuble/
+  defaults: {_controller: AvanzuAdminThemeBundle:Default:addAppart}
+
+
+admin_liste_meuble:
+  path: /admin/liste_meuble/
+  defaults: {_controller: AvanzuAdminThemeBundle:Default:listeLocataire}
+
+admin_document:
+  path: /admin/documents/
+  defaults: {_controller: AvanzuAdminThemeBundle:Default:uiGeneral}
+
+
+admin_divers:
+  path: /admin/divers/
+  defaults: {_controller: AvanzuAdminThemeBundle:Default:uiGeneral}
+
+
+
+
+
+
+
+
+
+
 avanzu_admin_home:
   path: /admin/
   defaults: {_controller: AvanzuAdminThemeBundle:Default:index}
@@ -46,7 +126,7 @@ avanzu_admin_liste:
 
 avanzu_admin_form:
   path: /admin/formulaire/
-  defaults: {_controller: AvanzuAdminThemeBundle:Default:add_appart}
+  defaults: {_controller: AvanzuAdminThemeBundle:Default:addAppart}
 
 avanzu_admin_ui_icon_demo:
   path: /admin/ui-elements/icons/

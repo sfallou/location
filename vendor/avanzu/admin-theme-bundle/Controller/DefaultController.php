@@ -40,15 +40,15 @@ class DefaultController extends Controller
     /**
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function listeAction() {
+    public function listeLocataireAction() {
         return $this->render('AvanzuAdminThemeBundle:Default:liste.html.twig');
     }
 
     public function uiIconsAction() {
         return $this->render('AvanzuAdminThemeBundle:Default:index.html.twig');
     }
-
-    public function add_appartAction() {
+    
+    public function addAppartAction() {
         $form =$this->createForm( FormDemoModelType::class );
         return $this->render('AvanzuAdminThemeBundle:Default:add_appart.html.twig', array(
                 'form' => $form->createView()

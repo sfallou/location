@@ -56,7 +56,7 @@ class SidebarSetupMenuDemoListener
     {
         $earg      = array();
         $rootItems = array(
-            $dash = new MenuItemModel('dashboard', 'Dashboard', 'avanzu_admin_dash_demo', $earg, 'fa fa-dashboard'),
+            $dash = new MenuItemModel('dashboard', 'Dashboard', 'admin_dash', $earg, 'fa fa-dashboard'),
             $locataire = new MenuItemModel('locataire', 'Locataires', '', $earg, 'fa fa-user '),
             $room = new MenuItemModel('room', 'Chambres', '', $earg, 'fa fa-bed'),
             $appart = new MenuItemModel('apparts', 'Appartements', '', $earg, 'fa fa-home'),
@@ -68,26 +68,26 @@ class SidebarSetupMenuDemoListener
 
         );
         
-        $locataire->addChild(new MenuItemModel('liste_locataire', 'Liste des Locataires', 'avanzu_admin_liste', $earg,  'fa fa-navicon'))
-            ->addChild(new MenuItemModel('nouveau_locataire', 'Nouveau Locataire', 'avanzu_admin_form', $earg,  'fa fa-plus'));
+        $locataire->addChild(new MenuItemModel('liste_locataire', 'Liste des Locataires', 'admin_liste_locataire', $earg,  'fa fa-navicon'))
+            ->addChild(new MenuItemModel('nouveau_locataire', 'Nouveau Locataire', 'admin_form_locataire', $earg,  'fa fa-plus'));
 
-        $room->addChild(new MenuItemModel('liste_chambre', 'Liste des Chambres', 'avanzu_admin_ui_gen_demo', $earg,  'fa fa-navicon'))
-            ->addChild(new MenuItemModel('nouvelle_chambre', 'Nouvelle Chambre', 'avanzu_admin_ui_gen_demo', $earg,  'fa fa-plus'));
+        $room->addChild(new MenuItemModel('liste_chambre', 'Liste des Chambres', 'admin_liste_room', $earg,  'fa fa-navicon'))
+            ->addChild(new MenuItemModel('nouvelle_chambre', 'Nouvelle Chambre', 'admin_form_room', $earg,  'fa fa-plus'));
 
-        $appart->addChild(new MenuItemModel('liste_appartement', 'Liste des Appartements', 'avanzu_admin_ui_gen_demo', $earg,  'fa fa-navicon'))
-            ->addChild(new MenuItemModel('nouvel_appartement', 'Nouvel Appartement', 'avanzu_admin_ui_gen_demo', $earg,  'fa fa-plus'));
+        $appart->addChild(new MenuItemModel('liste_appartement', 'Liste des Appartements', 'admin_liste_appart', $earg,  'fa fa-navicon'))
+            ->addChild(new MenuItemModel('nouvel_appartement', 'Nouvel Appartement', 'admin_form_appart', $earg,  'fa fa-plus'));
 
-        $residence->addChild(new MenuItemModel('liste_residence', 'Liste des Résidences', 'avanzu_admin_ui_gen_demo', $earg,  'fa fa-navicon'))
-            ->addChild(new MenuItemModel('nouveau_locataire', 'Nouveau Locataire', 'avanzu_admin_ui_gen_demo', $earg,  'fa fa-plus'));
+        $residence->addChild(new MenuItemModel('liste_residence', 'Liste des Résidences', 'admin_liste_residence', $earg,  'fa fa-navicon'))
+            ->addChild(new MenuItemModel('nouveau_locataire', 'Nouveau Locataire', 'admin_form_residence', $earg,  'fa fa-plus'));
 
-        $meuble->addChild(new MenuItemModel('liste_meuble', 'Liste des Meubles', 'avanzu_admin_ui_gen_demo', $earg,  'fa fa-navicon'))
-            ->addChild(new MenuItemModel('nouveau_meuble', 'Nouveau Meuble', 'avanzu_admin_ui_gen_demo', $earg,  'fa fa-plus'));
+        $meuble->addChild(new MenuItemModel('liste_meuble', 'Liste des Meubles', 'admin_liste_meuble', $earg,  'fa fa-navicon'))
+            ->addChild(new MenuItemModel('nouveau_meuble', 'Nouveau Meuble', 'admin_form_meuble', $earg,  'fa fa-plus'));
 
-        $docs->addChild(new MenuItemModel('bail', 'Contrat Bail', 'avanzu_admin_ui_gen_demo', $earg))
-            ->addChild(new MenuItemModel('facture', 'Facture', 'avanzu_admin_ui_gen_demo', $earg));
+        $docs->addChild(new MenuItemModel('bail', 'Contrat Bail', 'admin_document', $earg))
+            ->addChild(new MenuItemModel('facture', 'Facture', 'admin_document', $earg));
 
-        $divers->addChild(new MenuItemModel('chat', 'Chat', 'avanzu_admin_ui_gen_demo', $earg,  'fa fa-send-o'))
-            ->addChild(new MenuItemModel('message_general', 'Message Broadcast', 'avanzu_admin_ui_gen_demo', $earg,  'fa fa-envelope'));
+        $divers->addChild(new MenuItemModel('chat', 'Chat', 'admin_divers', $earg,  'fa fa-send-o'))
+            ->addChild(new MenuItemModel('message_general', 'Message Broadcast', 'admin_divers', $earg,  'fa fa-envelope'));
 
         return $this->activateByRoute($request->get('_route'), $rootItems);
 

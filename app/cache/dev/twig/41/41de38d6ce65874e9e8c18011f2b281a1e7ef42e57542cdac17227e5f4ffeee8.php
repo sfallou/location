@@ -21,20 +21,20 @@ class __TwigTemplate_8b6e1b2aa65f82ce9754a1608672e4539fead59b6c0b13b5818e2196090
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_e16889231225c7e48fca1099993fb1791d4509d5296a9af1cf9fb1711a56650a = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_e16889231225c7e48fca1099993fb1791d4509d5296a9af1cf9fb1711a56650a->enter($__internal_e16889231225c7e48fca1099993fb1791d4509d5296a9af1cf9fb1711a56650a_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "AvanzuAdminThemeBundle:Default:login.html.twig"));
+        $__internal_193f1d9174712e36c7838d5b58719740c66642db771c3cd2b98dd3e9819e895f = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_193f1d9174712e36c7838d5b58719740c66642db771c3cd2b98dd3e9819e895f->enter($__internal_193f1d9174712e36c7838d5b58719740c66642db771c3cd2b98dd3e9819e895f_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "AvanzuAdminThemeBundle:Default:login.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_e16889231225c7e48fca1099993fb1791d4509d5296a9af1cf9fb1711a56650a->leave($__internal_e16889231225c7e48fca1099993fb1791d4509d5296a9af1cf9fb1711a56650a_prof);
+        $__internal_193f1d9174712e36c7838d5b58719740c66642db771c3cd2b98dd3e9819e895f->leave($__internal_193f1d9174712e36c7838d5b58719740c66642db771c3cd2b98dd3e9819e895f_prof);
 
     }
 
     // line 3
     public function block_page_content($context, array $blocks = array())
     {
-        $__internal_937663cbf5fd5ffdf0508f2fed85c00ed5bfb0f9f38985a421cdec841ec11fc0 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_937663cbf5fd5ffdf0508f2fed85c00ed5bfb0f9f38985a421cdec841ec11fc0->enter($__internal_937663cbf5fd5ffdf0508f2fed85c00ed5bfb0f9f38985a421cdec841ec11fc0_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "page_content"));
+        $__internal_07269a1956aac9e144c4b10254ff0ab17da0301cae572e26c682ab71e57fdd02 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_07269a1956aac9e144c4b10254ff0ab17da0301cae572e26c682ab71e57fdd02->enter($__internal_07269a1956aac9e144c4b10254ff0ab17da0301cae572e26c682ab71e57fdd02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "page_content"));
 
         // line 4
         echo "    <div class=\"login-box\">
@@ -43,7 +43,7 @@ class __TwigTemplate_8b6e1b2aa65f82ce9754a1608672e4539fead59b6c0b13b5818e2196090
         </div><!-- /.login-logo -->
         <div class=\"login-box-body\">
             <p class=\"login-box-msg\">Sign in to start your session</p>
-            <form action=\"http://localhost:8000/admin/\" method=\"post\">
+            <form action=\"http://localhost:8000/admin/dashboard\" method=\"post\">
                 <div class=\"form-group has-feedback\">
                     <input type=\"text\" class=\"form-control\" placeholder=\"Email\"/>
                     <span class=\"glyphicon glyphicon-envelope form-control-feedback\"></span>
@@ -79,7 +79,7 @@ class __TwigTemplate_8b6e1b2aa65f82ce9754a1608672e4539fead59b6c0b13b5818e2196090
     </div>
 ";
         
-        $__internal_937663cbf5fd5ffdf0508f2fed85c00ed5bfb0f9f38985a421cdec841ec11fc0->leave($__internal_937663cbf5fd5ffdf0508f2fed85c00ed5bfb0f9f38985a421cdec841ec11fc0_prof);
+        $__internal_07269a1956aac9e144c4b10254ff0ab17da0301cae572e26c682ab71e57fdd02->leave($__internal_07269a1956aac9e144c4b10254ff0ab17da0301cae572e26c682ab71e57fdd02_prof);
 
     }
 
@@ -117,7 +117,7 @@ class __TwigTemplate_8b6e1b2aa65f82ce9754a1608672e4539fead59b6c0b13b5818e2196090
         </div><!-- /.login-logo -->
         <div class=\"login-box-body\">
             <p class=\"login-box-msg\">Sign in to start your session</p>
-            <form action=\"http://localhost:8000/admin/\" method=\"post\">
+            <form action=\"http://localhost:8000/admin/dashboard\" method=\"post\">
                 <div class=\"form-group has-feedback\">
                     <input type=\"text\" class=\"form-control\" placeholder=\"Email\"/>
                     <span class=\"glyphicon glyphicon-envelope form-control-feedback\"></span>
