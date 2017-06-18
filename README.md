@@ -7,7 +7,7 @@ Procédure avec git pour récupérer le projet en local
 
  -> Pour la première fois :
 
- 	- git clone https://sndiaye@bitbucket.org/sndiaye/location.git
+ 	- git clone https://github.com/sfallou/location.git
 
  	- cd location 
 
