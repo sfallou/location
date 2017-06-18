@@ -47,7 +47,7 @@ class DefaultController extends Controller
     public function uiIconsAction() {
         return $this->render('AvanzuAdminThemeBundle:Default:index.html.twig');
     }
-    
+
     public function addAppartAction() {
         $form =$this->createForm( FormDemoModelType::class );
         return $this->render('AvanzuAdminThemeBundle:Default:add_appart.html.twig', array(
@@ -55,6 +55,48 @@ class DefaultController extends Controller
             ));
     }
 
+    public function addRoomAction() {
+        $form =$this->createForm( FormDemoModelType::class );
+        return $this->render('AvanzuAdminThemeBundle:Default:add_room.html.twig', array(
+                'form' => $form->createView()
+            ));
+    }
+
+    public function addResidenceAction() {
+        $form =$this->createForm( FormDemoModelType::class );
+        return $this->render('AvanzuAdminThemeBundle:Default:add_residence.html.twig', array(
+                'form' => $form->createView()
+            ));
+    }
+
+    public function addLocataireAction() {
+        $form =$this->createForm( FormDemoModelType::class );
+        return $this->render('AvanzuAdminThemeBundle:Default:add_locataire.html.twig', array(
+                'form' => $form->createView()
+            ));
+    }
+
+    public function addMeubleAction() {
+        $form =$this->createForm( FormDemoModelType::class );
+        return $this->render('AvanzuAdminThemeBundle:Default:add_meuble.html.twig', array(
+                'form' => $form->createView()
+            ));
+    }
+
+
+     /**
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function chatAction() {
+        return $this->render('AvanzuAdminThemeBundle:Default:chat.html.twig');
+    }
+
+     /**
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function mailAction() {
+        return $this->render('AvanzuAdminThemeBundle:Default:index.html.twig');
+    }
    /* public function add_appartAction() {
         $form =$this->createForm( FormAddAppart::class );
         return $this->render('AvanzuAdminThemeBundle:Default:add_appart.html.twig', array(

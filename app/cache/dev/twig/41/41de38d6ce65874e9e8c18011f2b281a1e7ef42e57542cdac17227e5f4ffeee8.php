@@ -21,25 +21,28 @@ class __TwigTemplate_8b6e1b2aa65f82ce9754a1608672e4539fead59b6c0b13b5818e2196090
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_193f1d9174712e36c7838d5b58719740c66642db771c3cd2b98dd3e9819e895f = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_193f1d9174712e36c7838d5b58719740c66642db771c3cd2b98dd3e9819e895f->enter($__internal_193f1d9174712e36c7838d5b58719740c66642db771c3cd2b98dd3e9819e895f_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "AvanzuAdminThemeBundle:Default:login.html.twig"));
+        $__internal_a147f81b50783fdeacac4e5c7322e1d6d3de28e52bbb386bfb9fea43a25390db = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_a147f81b50783fdeacac4e5c7322e1d6d3de28e52bbb386bfb9fea43a25390db->enter($__internal_a147f81b50783fdeacac4e5c7322e1d6d3de28e52bbb386bfb9fea43a25390db_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "AvanzuAdminThemeBundle:Default:login.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_193f1d9174712e36c7838d5b58719740c66642db771c3cd2b98dd3e9819e895f->leave($__internal_193f1d9174712e36c7838d5b58719740c66642db771c3cd2b98dd3e9819e895f_prof);
+        $__internal_a147f81b50783fdeacac4e5c7322e1d6d3de28e52bbb386bfb9fea43a25390db->leave($__internal_a147f81b50783fdeacac4e5c7322e1d6d3de28e52bbb386bfb9fea43a25390db_prof);
 
     }
 
     // line 3
     public function block_page_content($context, array $blocks = array())
     {
-        $__internal_07269a1956aac9e144c4b10254ff0ab17da0301cae572e26c682ab71e57fdd02 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_07269a1956aac9e144c4b10254ff0ab17da0301cae572e26c682ab71e57fdd02->enter($__internal_07269a1956aac9e144c4b10254ff0ab17da0301cae572e26c682ab71e57fdd02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "page_content"));
+        $__internal_9b90c03395b040eee2dccb9d07344d5f9e279eb68966db4054d75bdafbb8232a = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_9b90c03395b040eee2dccb9d07344d5f9e279eb68966db4054d75bdafbb8232a->enter($__internal_9b90c03395b040eee2dccb9d07344d5f9e279eb68966db4054d75bdafbb8232a_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "page_content"));
 
         // line 4
         echo "    <div class=\"login-box\">
         <div class=\"login-logo\">
-            <a href=\"http://localhost:8000/admin/\"><b>Connexion</b></a>
+            <a href=\"";
+        // line 6
+        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("admin_dash");
+        echo "\"><b>Connexion</b></a>
         </div><!-- /.login-logo -->
         <div class=\"login-box-body\">
             <p class=\"login-box-msg\">Sign in to start your session</p>
@@ -79,7 +82,7 @@ class __TwigTemplate_8b6e1b2aa65f82ce9754a1608672e4539fead59b6c0b13b5818e2196090
     </div>
 ";
         
-        $__internal_07269a1956aac9e144c4b10254ff0ab17da0301cae572e26c682ab71e57fdd02->leave($__internal_07269a1956aac9e144c4b10254ff0ab17da0301cae572e26c682ab71e57fdd02_prof);
+        $__internal_9b90c03395b040eee2dccb9d07344d5f9e279eb68966db4054d75bdafbb8232a->leave($__internal_9b90c03395b040eee2dccb9d07344d5f9e279eb68966db4054d75bdafbb8232a_prof);
 
     }
 
@@ -95,7 +98,7 @@ class __TwigTemplate_8b6e1b2aa65f82ce9754a1608672e4539fead59b6c0b13b5818e2196090
 
     public function getDebugInfo()
     {
-        return array (  40 => 4,  34 => 3,  11 => 1,);
+        return array (  44 => 6,  40 => 4,  34 => 3,  11 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -113,7 +116,7 @@ class __TwigTemplate_8b6e1b2aa65f82ce9754a1608672e4539fead59b6c0b13b5818e2196090
 {% block page_content %}
     <div class=\"login-box\">
         <div class=\"login-logo\">
-            <a href=\"http://localhost:8000/admin/\"><b>Connexion</b></a>
+            <a href=\"{{ path('admin_dash') }}\"><b>Connexion</b></a>
         </div><!-- /.login-logo -->
         <div class=\"login-box-body\">
             <p class=\"login-box-msg\">Sign in to start your session</p>

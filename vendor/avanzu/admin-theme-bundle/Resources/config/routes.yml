@@ -1,133 +1,74 @@
 
-
+# Pour la page Login
 login:
   path: /
   defaults: {_controller: AvanzuAdminThemeBundle:Default:login}
 
+# Pour la page authentification 
 admin:
   path: /auth/
   defaults: {_controller: AvanzuAdminThemeBundle:Default:index}
 
+# Pour la page d'accueil de l'admin
 admin_dash:
   path: /admin/dashboard/
   defaults: {_controller: AvanzuAdminThemeBundle:Default:dashboard}
 
-
+#liste locataire et ajout locataire par l'admin 
 admin_form_locataire:
   path: /admin/add_locataire/
-  defaults: {_controller: AvanzuAdminThemeBundle:Default:addAppart}
-
+  defaults: {_controller: AvanzuAdminThemeBundle:Default:addLocataire}
 
 admin_liste_locataire:
   path: /admin/liste_locataire/
   defaults: {_controller: AvanzuAdminThemeBundle:Default:listeLocataire}
 
-
+#liste room et ajout room par l'admin 
 admin_form_room:
   path: /admin/add_room/
-  defaults: {_controller: AvanzuAdminThemeBundle:Default:addAppart}
-
+  defaults: {_controller: AvanzuAdminThemeBundle:Default:addRoom}
 
 admin_liste_room:
   path: /admin/liste_room/
   defaults: {_controller: AvanzuAdminThemeBundle:Default:listeLocataire}
 
+#liste appart et ajout appart par l'admin 
 admin_form_appart:
   path: /admin/add_appart/
   defaults: {_controller: AvanzuAdminThemeBundle:Default:addAppart}
-
 
 admin_liste_appart:
   path: /admin/liste_appart/
   defaults: {_controller: AvanzuAdminThemeBundle:Default:listeLocataire}
 
-
+#liste residence et ajout residence par l'admin 
 admin_form_residence:
   path: /admin/add_residence/
-  defaults: {_controller: AvanzuAdminThemeBundle:Default:addAppart}
-
+  defaults: {_controller: AvanzuAdminThemeBundle:Default:addResidence}
 
 admin_liste_residence:
   path: /admin/liste_residence/
   defaults: {_controller: AvanzuAdminThemeBundle:Default:listeLocataire}
 
+#liste meuble et ajout meuble par l'admin 
 admin_form_meuble:
   path: /admin/add_meuble/
-  defaults: {_controller: AvanzuAdminThemeBundle:Default:addAppart}
-
+  defaults: {_controller: AvanzuAdminThemeBundle:Default:addMeuble}
 
 admin_liste_meuble:
   path: /admin/liste_meuble/
   defaults: {_controller: AvanzuAdminThemeBundle:Default:listeLocataire}
 
+#Documents pour admin
 admin_document:
   path: /admin/documents/
-  defaults: {_controller: AvanzuAdminThemeBundle:Default:uiGeneral}
-
-
-admin_divers:
-  path: /admin/divers/
-  defaults: {_controller: AvanzuAdminThemeBundle:Default:uiGeneral}
-
-
-
-
-
-
-
-
-
-
-avanzu_admin_home:
-  path: /admin/
-  defaults: {_controller: AvanzuAdminThemeBundle:Default:index}
-avanzu_admin_profile:
-  path: /profile/{userid}/
-avanzu_admin_logout:
-  path: /logout
-avanzu_admin_all_tasks:
-  path: /tasks/
-avanzu_admin_show_task:
-  path: /tasks/{taskid}/
-avanzu_admin_all_notifications:
-  path: /notifications/
-avanzu_admin_show_notification:
-  path: /notifications/{notifyid}/
-avanzu_admin_all_messages:
-  path: /messages/
-avanzu_admin_show_message:
-  path: /messages/{messageid}/
-
-
-
-avanzu_admin_demo:
-  path: /admin/
   defaults: {_controller: AvanzuAdminThemeBundle:Default:index}
 
-avanzu_admin_form_demo:
-  path: /admin/add_appart/
-  defaults: {_controller: AvanzuAdminThemeBundle:Default:add_appart}
 
-avanzu_admin_login_demo:
-  path: /
-  defaults: {_controller: AvanzuAdminThemeBundle:Default:login}
+admin_chat:
+  path: /admin/divers/chat/
+  defaults: {_controller: AvanzuAdminThemeBundle:Default:chat}
 
-avanzu_admin_dash_demo:
-  path: /admin/dashboard/
-  defaults: {_controller: AvanzuAdminThemeBundle:Default:dashboard}
-
-avanzu_admin_ui_gen_demo:
-  path: /admin/ui-elements/general/
-  defaults: {_controller: AvanzuAdminThemeBundle:Default:uiGeneral}
-
-avanzu_admin_liste:
-  path: /admin/liste/
-  defaults: {_controller: AvanzuAdminThemeBundle:Default:liste}
-
-avanzu_admin_form:
-  path: /admin/formulaire/
-  defaults: {_controller: AvanzuAdminThemeBundle:Default:addAppart}
-
-avanzu_admin_ui_icon_demo:
-  path: /admin/ui-elements/icons/
-  defaults: {_controller: AvanzuAdminThemeBundle:Default:uiIcons}
+admin_mail:
+  path: /admin/divers/mail/
+  defaults: {_controller: AvanzuAdminThemeBundle:Default:mail}

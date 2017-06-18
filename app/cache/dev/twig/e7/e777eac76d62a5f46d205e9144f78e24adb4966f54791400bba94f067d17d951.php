@@ -23,20 +23,20 @@ class __TwigTemplate_d32c0d4bf163a2b0c4a589e167b6c682b68021085030207337199877c78
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_896adceeb14f7da251073d70d7b8b6e10d1de8483e9ef5f52da326a15ff35636 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_896adceeb14f7da251073d70d7b8b6e10d1de8483e9ef5f52da326a15ff35636->enter($__internal_896adceeb14f7da251073d70d7b8b6e10d1de8483e9ef5f52da326a15ff35636_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "AvanzuAdminThemeBundle:Default:add_appart.html.twig"));
+        $__internal_43bd06c66a6fab46831cec9f502a906b0869f0e2c245b6cbde97e0a0422d2814 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_43bd06c66a6fab46831cec9f502a906b0869f0e2c245b6cbde97e0a0422d2814->enter($__internal_43bd06c66a6fab46831cec9f502a906b0869f0e2c245b6cbde97e0a0422d2814_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "AvanzuAdminThemeBundle:Default:add_appart.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_896adceeb14f7da251073d70d7b8b6e10d1de8483e9ef5f52da326a15ff35636->leave($__internal_896adceeb14f7da251073d70d7b8b6e10d1de8483e9ef5f52da326a15ff35636_prof);
+        $__internal_43bd06c66a6fab46831cec9f502a906b0869f0e2c245b6cbde97e0a0422d2814->leave($__internal_43bd06c66a6fab46831cec9f502a906b0869f0e2c245b6cbde97e0a0422d2814_prof);
 
     }
 
     // line 3
     public function block_page_content($context, array $blocks = array())
     {
-        $__internal_1c2c3a9a539863b61294c15188c18f07bae9af8215a4bde9d5896482406ea063 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_1c2c3a9a539863b61294c15188c18f07bae9af8215a4bde9d5896482406ea063->enter($__internal_1c2c3a9a539863b61294c15188c18f07bae9af8215a4bde9d5896482406ea063_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "page_content"));
+        $__internal_a328dd0d42abd142387e1ad9be47bcb1d0878c5f1fdfa36259de4d32089e83bd = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_a328dd0d42abd142387e1ad9be47bcb1d0878c5f1fdfa36259de4d32089e83bd->enter($__internal_a328dd0d42abd142387e1ad9be47bcb1d0878c5f1fdfa36259de4d32089e83bd_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "page_content"));
 
         // line 4
         echo "
@@ -83,8 +83,7 @@ class __TwigTemplate_d32c0d4bf163a2b0c4a589e167b6c682b68021085030207337199877c78
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["macro"]) ? $context["macro"] : $this->getContext($context, "macro")), "box_header", array(0 => "Infos", 1 => true, 2 => false, 3 => "primary"), "method"), "html", null, true);
         echo "
                 <div class=\"box-body\">
-                    some content...
-                    blaballlaaa
+                    <img src=\"../img/img_appart.jpg\">
                 </div>
             </div>
         </div>
@@ -93,31 +92,31 @@ class __TwigTemplate_d32c0d4bf163a2b0c4a589e167b6c682b68021085030207337199877c78
 
 ";
         
-        $__internal_1c2c3a9a539863b61294c15188c18f07bae9af8215a4bde9d5896482406ea063->leave($__internal_1c2c3a9a539863b61294c15188c18f07bae9af8215a4bde9d5896482406ea063_prof);
+        $__internal_a328dd0d42abd142387e1ad9be47bcb1d0878c5f1fdfa36259de4d32089e83bd->leave($__internal_a328dd0d42abd142387e1ad9be47bcb1d0878c5f1fdfa36259de4d32089e83bd_prof);
+
+    }
+
+    // line 51
+    public function block_page_title($context, array $blocks = array())
+    {
+        $__internal_b4cf116700f3f2bac7e7d21a282c4651e1067e437d9ac1fe6c5a91f3f126096f = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_b4cf116700f3f2bac7e7d21a282c4651e1067e437d9ac1fe6c5a91f3f126096f->enter($__internal_b4cf116700f3f2bac7e7d21a282c4651e1067e437d9ac1fe6c5a91f3f126096f_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "page_title"));
+
+        echo " Add Appart ";
+        
+        $__internal_b4cf116700f3f2bac7e7d21a282c4651e1067e437d9ac1fe6c5a91f3f126096f->leave($__internal_b4cf116700f3f2bac7e7d21a282c4651e1067e437d9ac1fe6c5a91f3f126096f_prof);
 
     }
 
     // line 52
-    public function block_page_title($context, array $blocks = array())
-    {
-        $__internal_372bc7f8d66873863d6f0eb89ec42a36098f978ffdf21eb4ca04682d306e620a = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_372bc7f8d66873863d6f0eb89ec42a36098f978ffdf21eb4ca04682d306e620a->enter($__internal_372bc7f8d66873863d6f0eb89ec42a36098f978ffdf21eb4ca04682d306e620a_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "page_title"));
-
-        echo " Add Appart ";
-        
-        $__internal_372bc7f8d66873863d6f0eb89ec42a36098f978ffdf21eb4ca04682d306e620a->leave($__internal_372bc7f8d66873863d6f0eb89ec42a36098f978ffdf21eb4ca04682d306e620a_prof);
-
-    }
-
-    // line 53
     public function block_page_subtitle($context, array $blocks = array())
     {
-        $__internal_62f030c20f8ef0ba6e2b30fcb081fbc868ae87f89380f90105ee12e3a5d41f61 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_62f030c20f8ef0ba6e2b30fcb081fbc868ae87f89380f90105ee12e3a5d41f61->enter($__internal_62f030c20f8ef0ba6e2b30fcb081fbc868ae87f89380f90105ee12e3a5d41f61_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "page_subtitle"));
+        $__internal_c4ff1b228f6fb339f168b1fa8211bc6bd7f92d6f2032476f89a3fdd035c23b48 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_c4ff1b228f6fb339f168b1fa8211bc6bd7f92d6f2032476f89a3fdd035c23b48->enter($__internal_c4ff1b228f6fb339f168b1fa8211bc6bd7f92d6f2032476f89a3fdd035c23b48_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "page_subtitle"));
 
         echo " add new appart form ";
         
-        $__internal_62f030c20f8ef0ba6e2b30fcb081fbc868ae87f89380f90105ee12e3a5d41f61->leave($__internal_62f030c20f8ef0ba6e2b30fcb081fbc868ae87f89380f90105ee12e3a5d41f61_prof);
+        $__internal_c4ff1b228f6fb339f168b1fa8211bc6bd7f92d6f2032476f89a3fdd035c23b48->leave($__internal_c4ff1b228f6fb339f168b1fa8211bc6bd7f92d6f2032476f89a3fdd035c23b48_prof);
 
     }
 
@@ -133,7 +132,7 @@ class __TwigTemplate_d32c0d4bf163a2b0c4a589e167b6c682b68021085030207337199877c78
 
     public function getDebugInfo()
     {
-        return array (  113 => 53,  101 => 52,  83 => 40,  66 => 26,  42 => 4,  36 => 3,  11 => 1,);
+        return array (  112 => 52,  100 => 51,  83 => 40,  66 => 26,  42 => 4,  36 => 3,  11 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -187,8 +186,7 @@ class __TwigTemplate_d32c0d4bf163a2b0c4a589e167b6c682b68021085030207337199877c78
             <div class=\"box box-solid box-primary\">
                 {{ macro.box_header('Infos', true, false, 'primary') }}
                 <div class=\"box-body\">
-                    some content...
-                    blaballlaaa
+                    <img src=\"../img/img_appart.jpg\">
                 </div>
             </div>
         </div>
