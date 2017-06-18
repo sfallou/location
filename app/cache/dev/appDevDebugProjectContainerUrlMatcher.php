@@ -162,6 +162,15 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                     return array (  '_controller' => 'Avanzu\\AdminThemeBundle\\Controller\\DefaultController::listeLocataireAction',  '_route' => 'admin_liste_locataire',);
                 }
 
+                // admin_valider_demande
+                if (rtrim($pathinfo, '/') === '/admin/valider') {
+                    if (substr($pathinfo, -1) !== '/') {
+                        return $this->redirect($pathinfo.'/', 'admin_valider_demande');
+                    }
+
+                    return array (  '_controller' => 'Avanzu\\AdminThemeBundle\\Controller\\DefaultController::indexAction',  '_route' => 'admin_valider_demande',);
+                }
+
                 // admin_form_room
                 if (rtrim($pathinfo, '/') === '/admin/add_room') {
                     if (substr($pathinfo, -1) !== '/') {

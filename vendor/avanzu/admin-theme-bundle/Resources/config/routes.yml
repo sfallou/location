@@ -23,6 +23,10 @@ admin_liste_locataire:
   path: /admin/liste_locataire/
   defaults: {_controller: AvanzuAdminThemeBundle:Default:listeLocataire}
 
+admin_valider_demande:
+  path: /admin/valider/
+  defaults: {_controller: AvanzuAdminThemeBundle:Default:index}
+
 #liste room et ajout room par l'admin 
 admin_form_room:
   path: /admin/add_room/

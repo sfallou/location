@@ -69,7 +69,8 @@ class SidebarSetupMenuDemoListener
         );
         
         $locataire->addChild(new MenuItemModel('liste_locataire', 'Liste des Locataires', 'admin_liste_locataire', $earg,  'fa fa-navicon'))
-            ->addChild(new MenuItemModel('nouveau_locataire', 'Nouveau Locataire', 'admin_form_locataire', $earg,  'fa fa-plus'));
+            ->addChild(new MenuItemModel('nouveau_locataire', 'Nouveau Locataire', 'admin_form_locataire', $earg,  'fa fa-plus'))
+             ->addChild(new MenuItemModel('valider_locataire', 'Valider Demande', 'admin_valider_demande', $earg,  'fa fa-check'));
 
         $room->addChild(new MenuItemModel('liste_chambre', 'Liste des Chambres', 'admin_liste_room', $earg,  'fa fa-navicon'))
             ->addChild(new MenuItemModel('nouvelle_chambre', 'Nouvelle Chambre', 'admin_form_room', $earg,  'fa fa-plus'));
