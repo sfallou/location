@@ -105,11 +105,6 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
 
         }
 
-        // adminepage
-        if ($pathinfo === '/adminSfalou') {
-            return array (  '_controller' => 'AppBundle\\Controller\\AdminController::adminAction',  '_route' => 'adminepage',);
-        }
-
         // homepage
         if ($pathinfo === '/default') {
             return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::indexAction',  '_route' => 'homepage',);
@@ -177,7 +172,7 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                         return $this->redirect($pathinfo.'/', 'admin_form_room');
                     }
 
-                    return array (  '_controller' => 'Avanzu\\AdminThemeBundle\\Controller\\DefaultController::addRoomAction',  '_route' => 'admin_form_room',);
+                    return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::newRoomAction',  '_route' => 'admin_form_room',);
                 }
 
                 // admin_liste_room
@@ -186,7 +181,12 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                         return $this->redirect($pathinfo.'/', 'admin_liste_room');
                     }
 
-                    return array (  '_controller' => 'Avanzu\\AdminThemeBundle\\Controller\\DefaultController::listeLocataireAction',  '_route' => 'admin_liste_room',);
+                    return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::listeRoomAction',  '_route' => 'admin_liste_room',);
+                }
+
+                // admin_show_room
+                if (0 === strpos($pathinfo, '/admin/show_room') && preg_match('#^/admin/show_room/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_show_room')), array (  '_controller' => 'AppBundle\\Controller\\DefaultController::showRoomAction',));
                 }
 
                 // admin_form_appart
@@ -195,7 +195,7 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                         return $this->redirect($pathinfo.'/', 'admin_form_appart');
                     }
 
-                    return array (  '_controller' => 'Avanzu\\AdminThemeBundle\\Controller\\DefaultController::addAppartAction',  '_route' => 'admin_form_appart',);
+                    return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::newAppartAction',  '_route' => 'admin_form_appart',);
                 }
 
                 // admin_liste_appart
@@ -204,7 +204,12 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                         return $this->redirect($pathinfo.'/', 'admin_liste_appart');
                     }
 
-                    return array (  '_controller' => 'Avanzu\\AdminThemeBundle\\Controller\\DefaultController::listeLocataireAction',  '_route' => 'admin_liste_appart',);
+                    return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::listeAppartAction',  '_route' => 'admin_liste_appart',);
+                }
+
+                // admin_show_appart
+                if (0 === strpos($pathinfo, '/admin/show_appart') && preg_match('#^/admin/show_appart/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_show_appart')), array (  '_controller' => 'AppBundle\\Controller\\DefaultController::showAppartAction',));
                 }
 
                 // admin_form_residence
@@ -213,7 +218,7 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                         return $this->redirect($pathinfo.'/', 'admin_form_residence');
                     }
 
-                    return array (  '_controller' => 'Avanzu\\AdminThemeBundle\\Controller\\DefaultController::addResidenceAction',  '_route' => 'admin_form_residence',);
+                    return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::newResidenceAction',  '_route' => 'admin_form_residence',);
                 }
 
                 // admin_liste_residence
@@ -222,7 +227,30 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                         return $this->redirect($pathinfo.'/', 'admin_liste_residence');
                     }
 
-                    return array (  '_controller' => 'Avanzu\\AdminThemeBundle\\Controller\\DefaultController::listeLocataireAction',  '_route' => 'admin_liste_residence',);
+                    return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::listeResidenceAction',  '_route' => 'admin_liste_residence',);
+                }
+
+                // admin_show_residence
+                if (0 === strpos($pathinfo, '/admin/show_residence') && preg_match('#^/admin/show_residence/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_show_residence')), array (  '_controller' => 'AppBundle\\Controller\\DefaultController::showResidenceAction',));
+                }
+
+                // admin_form_type_meuble
+                if (rtrim($pathinfo, '/') === '/admin/add_type_meuble') {
+                    if (substr($pathinfo, -1) !== '/') {
+                        return $this->redirect($pathinfo.'/', 'admin_form_type_meuble');
+                    }
+
+                    return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::newTypeMeubleAction',  '_route' => 'admin_form_type_meuble',);
+                }
+
+                // admin_liste_type_meuble
+                if (rtrim($pathinfo, '/') === '/admin/liste_type_meuble') {
+                    if (substr($pathinfo, -1) !== '/') {
+                        return $this->redirect($pathinfo.'/', 'admin_liste_type_meuble');
+                    }
+
+                    return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::listeTypeMeubleAction',  '_route' => 'admin_liste_type_meuble',);
                 }
 
                 // admin_form_meuble
@@ -231,7 +259,7 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                         return $this->redirect($pathinfo.'/', 'admin_form_meuble');
                     }
 
-                    return array (  '_controller' => 'Avanzu\\AdminThemeBundle\\Controller\\DefaultController::addMeubleAction',  '_route' => 'admin_form_meuble',);
+                    return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::newMeubleAction',  '_route' => 'admin_form_meuble',);
                 }
 
                 // admin_liste_meuble
@@ -240,7 +268,12 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                         return $this->redirect($pathinfo.'/', 'admin_liste_meuble');
                     }
 
-                    return array (  '_controller' => 'Avanzu\\AdminThemeBundle\\Controller\\DefaultController::listeLocataireAction',  '_route' => 'admin_liste_meuble',);
+                    return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::listeMeubleAction',  '_route' => 'admin_liste_meuble',);
+                }
+
+                // admin_new_meuble_appart
+                if (0 === strpos($pathinfo, '/admin/add_meuble_appart') && preg_match('#^/admin/add_meuble_appart/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_new_meuble_appart')), array (  '_controller' => 'AppBundle\\Controller\\DefaultController::newMeubleAppartAction',));
                 }
 
                 if (0 === strpos($pathinfo, '/admin/d')) {

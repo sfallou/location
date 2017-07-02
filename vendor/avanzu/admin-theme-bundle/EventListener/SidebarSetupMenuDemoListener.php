@@ -25,33 +25,6 @@ class SidebarSetupMenuDemoListener
 
     }
 
-
-    /*protected function getMenu(Request $request)
-    {
-        $earg      = array();
-        $rootItems = array(
-            $dash = new MenuItemModel('dashboard', 'Dashboard', 'avanzu_admin_dash_demo', $earg, 'fa fa-dashboard'),
-            $add_user = new MenuItemModel('user', 'Add User', 'avanzu_admin_form_demo', $earg, 'fa fa-edit'),
-            $add_appartment = new MenuItemModel('appart', 'Add Appart', 'avanzu_admin_form_demo', $earg, 'fa fa-edit'),
-            $show_appart = new MenuItemModel('widgets', 'Show Apparts', 'avanzu_admin_demo', $earg, 'fa fa-th', 'new'),
-            $locataire = new MenuItemModel('locataire', 'Locataires', '', $earg, 'fa fa-th'),
-            $room = new MenuItemModel('room', 'Chambre', '', $earg, 'fa fa-th')
-            $appart = new MenuItemModel('apparts', 'Appartements', '', $earg, 'fa fa-th'),
-            $residenc = new MenuItemModel('residence', 'Résidences', '', $earg, 'fa fa-th'),
-            $docs = new MenuItemModel('documents', 'Documents', '', $earg, 'fa fa-th')
-
-        );
-        $locataire->addChild(new MenuItemModel('liste_locataire', 'Liste des Locataires', 'avanzu_admin_ui_gen_demo', $earg))
-            ->addChild(new MenuItemModel('nouveau_locataire', 'Nouveau Locataire', 'avanzu_admin_ui_gen_demo', $earg));
-
-        $docs->addChild(new MenuItemModel('bail', 'Contrat Bail', 'avanzu_admin_ui_gen_demo', $earg))
-            ->addChild(new MenuItemModel('facture', 'Facture', 'avanzu_admin_ui_gen_demo', $earg));
-
-        return $this->activateByRoute($request->get('_route'), $rootItems);
-
-    }
-    */
-
     protected function getMenu(Request $request)
     {
         $earg      = array();
@@ -79,10 +52,12 @@ class SidebarSetupMenuDemoListener
             ->addChild(new MenuItemModel('nouvel_appartement', 'Nouvel Appartement', 'admin_form_appart', $earg,  'fa fa-plus'));
 
         $residence->addChild(new MenuItemModel('liste_residence', 'Liste des Résidences', 'admin_liste_residence', $earg,  'fa fa-navicon'))
-            ->addChild(new MenuItemModel('nouveau_locataire', 'Nouveau Locataire', 'admin_form_residence', $earg,  'fa fa-plus'));
+            ->addChild(new MenuItemModel('nouvelle_residence', 'Nouvelle Résidence', 'admin_form_residence', $earg,  'fa fa-plus'));
 
         $meuble->addChild(new MenuItemModel('liste_meuble', 'Liste des Meubles', 'admin_liste_meuble', $earg,  'fa fa-navicon'))
-            ->addChild(new MenuItemModel('nouveau_meuble', 'Nouveau Meuble', 'admin_form_meuble', $earg,  'fa fa-plus'));
+            ->addChild(new MenuItemModel('nouveau_meuble', 'Nouveau Meuble', 'admin_form_meuble', $earg,  'fa fa-plus'))
+            ->addChild(new MenuItemModel('liste_type_meuble', 'Types Meubles', 'admin_liste_type_meuble', $earg,  'fa fa-navicon'))
+            ->addChild(new MenuItemModel('nouveau_type_meuble', 'Nouveau Type Meuble', 'admin_form_type_meuble', $earg,  'fa fa-plus'));
 
         $docs->addChild(new MenuItemModel('bail', 'Contrat Bail', 'admin_document', $earg))
             ->addChild(new MenuItemModel('facture', 'Facture', 'admin_document', $earg));

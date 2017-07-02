@@ -1,0 +1,46 @@
+{% extends 'AvanzuAdminThemeBundle:layout:base-layout.html.twig' %}
+
+{% block page_content %}
+
+    <div class="box">
+            
+            <!-- /.box-header -->
+            <div class="box-body">
+              <table  class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                  <th>id</th>
+                  <th>id Appart</th>
+                  <th>Surface</th>
+                  <th>Rent</th>
+                  <th>Guarantee</th>
+                  <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for el in rooms %}
+                  <tr>
+                  <td> Room {{el.id}}</td>
+                  <td>{{el.idAppart}}</td>
+                  <td>{{el.surface}}</td>
+                  <td>{{el.rent}}</td>
+                  <td>{{el.guarantee}}</td>
+                  <td>
+                    <a class="btn btn-primary" href="#"><i class="fa fa-pencil fa-lg"></i> Edit</a>
+                    <a class="btn btn-success" href="{{ path('admin_show_room', {'id': el.id}) }}"><i class="fa fa-eye fa-lg"></i> Show</a>
+                    <a class="btn btn-danger" href="#"><i class="fa fa-trash-o fa-lg"></i> Delete</a> 
+                  </td>
+                </tr>
+                {% endfor %}
+                </tbody>
+              </table>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+
+
+{% endblock %}
+
+{% block page_title %} Chambres {% endblock %}
+{% block page_subtitle %} Liste des chambres {% endblock %}

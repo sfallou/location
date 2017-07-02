@@ -7,6 +7,7 @@ use Avanzu\AdminThemeBundle\Model\FormDemoModel;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use AppBundle\Entity\Residence;
 
 /**
  * Class DefaultController
@@ -21,6 +22,44 @@ class DefaultController extends Controller
     public function indexAction()
     {
         return array();
+    }
+
+    /**
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function listeResidenceAction() {
+        return $this->render('AvanzuAdminThemeBundle:Default:liste_residence.html.twig');
+    }
+    /**
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function newResidenceAction() {
+        
+        $residence = new Residence();
+        $residence->setName('Les Bruyère');
+        $residence->setContactGardien("0618765442");
+        $residence->setHoraireGardien('Lundi - Mardi - Mercredi - Jeudi');
+        $residence->setContactSyndic('0755567788');
+
+        $em = $this->getDoctrine()->getManager();
+
+        // tells Doctrine you want to (eventually) save the Product (no queries yet)
+        $em->persist($residence);
+
+        // actually executes the queries (i.e. the INSERT query)
+        $em->flush();
+
+        return $this->render('AppBundle:Default:new_residence.html.twig', array(
+                'id' => $residence->getId()
+            ));
+
+        //return new Response('Saved new residences with id '.$residence->getId());
+        /*
+        $form =$this->createForm( FormDemoModelType::class );
+        return $this->render('AvanzuAdminThemeBundle:Default:add_residence.html.twig', array(
+                'form' => $form->createView()
+            ));
+        */
     }
 
     /**
@@ -62,12 +101,7 @@ class DefaultController extends Controller
             ));
     }
 
-    public function addResidenceAction() {
-        $form =$this->createForm( FormDemoModelType::class );
-        return $this->render('AvanzuAdminThemeBundle:Default:add_residence.html.twig', array(
-                'form' => $form->createView()
-            ));
-    }
+    
 
     public function addLocataireAction() {
         $form =$this->createForm( FormDemoModelType::class );

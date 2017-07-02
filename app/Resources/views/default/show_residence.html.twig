@@ -1,0 +1,40 @@
+{% extends 'AvanzuAdminThemeBundle:layout:base-layout.html.twig' %}
+
+{% block page_content %}
+
+    <div class="box">
+            
+            <!-- /.box-header -->
+            <div class="box-body">
+              <div>
+                <a class="btn btn-app bg-navy margin"><i class="fa fa-circle"></i>Nom résidence </a> : 
+                <a class="btn btn-app  margin">{{residence.name}}</a>
+              </div>
+              <div>
+                <a class="btn btn-app bg-navy margin"><i class="fa fa-mobile"></i>Contact Gardien </a> :<a class="btn btn-app  margin">{{residence.contactGardien}}</a>  
+              </div>
+              <div>
+                <a class="btn btn-app bg-navy margin"><i class="fa fa-calendar"></i>Horaire Gardien </a> :
+                <a class="btn btn-app  margin">{{residence.horaireGardien}}</a>
+              </div>
+              <div>
+                <a class="btn btn-app bg-navy margin"><i class="fa fa-phone"></i>Contact Syndic </a> : 
+                <a class="btn btn-app  margin">{{residence.contactSyndic}}</a> 
+              </div>
+              <div>
+                <a class="btn btn-app bg-navy margin"><i class="fa fa-home"></i>Appartements </a> :
+                {% for appart in apparts%}
+                  <a href="{{ path('admin_show_appart', {'id': appart.id}) }}" class="btn btn-app  margin">{{appart.adresse}}</a> 
+                {%endfor%}
+              </div>
+
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+
+
+{% endblock %}
+
+{% block page_title %} Résidence {% endblock %}
+{% block page_subtitle %} infos résidence {% endblock %}

@@ -1,0 +1,243 @@
+{% extends 'AvanzuAdminThemeBundle:layout:base-layout.html.twig' %}
+
+{% block page_content %}
+
+    <div class="box">
+            <div class="box-header">
+             <a class="btn btn-success" href="{{ path('admin_new_meuble_appart', {'id': appart.id}) }}"><i class="fa fa-plus fa-lg"></i> New Furniture</a>
+            </div>
+
+
+            <!-- /.box-header -->
+            <div class="box-body">
+              <div style="text-align: center">
+               <a class="btn  bg-navy margin"><i class="fa fa-map"></i> Adresse </a> 
+               <a class="btn  bg-navy margin"><i class="fa fa-user"></i> Référent </a>
+               <a class="btn  bg-navy margin"><i class="fa fa-wifi"></i> Wifi </a>
+               <a class="btn  bg-navy margin"><i class="fa fa-phone"> </i> Phone </a>
+               <a class="btn  bg-navy margin"><i class="fa fa-home"> </i> Surface </a> 
+                <a class="btn  bg-navy margin"><i class="fa fa-money"> </i> RIB </a>
+                <table  class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                  <th>
+                     Adresse 
+                  </th>
+                  <th>
+                    Référent
+                  </th>
+                  <th>
+                    Wifi
+                  </th>
+                  <th>
+                    Phone
+                  </th>
+                  <th>
+                    Surface
+                  </th>
+                  <th>
+                   RIB
+                  </th>
+                </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td> {{appart.adresse}} </td>
+                    <td>{{appart.contactAppart}}</td>
+                    <td>{{appart.wifiCode}}</td>
+                    <td>{{appart.phone}}</td>
+                    <td>{{appart.surface}}</td>
+                    <td>{{appart.rib}}</td>
+                  </tr>
+                </tbody>
+              </table>
+              </div>
+              <div style="text-align: center">
+                <a class="btn btn-app bg-navy margin"><i class="fa fa-bed"></i>Chambres </a> 
+                <table  class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                  <th>id</th>
+                  <th>surface</th>
+                  <th>rent</th>
+                  <th>guarantee</th>
+                  <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for room in rooms%}
+                  <tr>
+                  <td> Room {{room.id}}</td>
+                  <td>{{room.surface}}</td>
+                  <td>{{room.rent}}</td>
+                  <td>{{room.guarantee}}</td>
+                  <td>
+                    <a class="btn btn-danger" href="#"><i class="fa fa-trash-o fa-lg"></i> Delete</a> 
+                  </td>
+                </tr>
+                {% endfor %}
+                </tbody>
+              </table>
+              </div>
+              <div style="text-align: center">
+                <a class="btn btn-app bg-navy margin"><i class="fa fa-users"></i>Colocataires </a> 
+                <table  class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                  <th>id</th>
+                  <th>surface</th>
+                  <th>rent</th>
+                  <th>guarantee</th>
+                  <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for room in rooms%}
+                  <tr>
+                  <td> Room {{room.id}}</td>
+                  <td>{{room.surface}}</td>
+                  <td>{{room.rent}}</td>
+                  <td>{{room.guarantee}}</td>
+                  <td>
+                    <a class="btn btn-danger" href="#"><i class="fa fa-trash-o fa-lg"></i> Delete</a> 
+                  </td>
+                </tr>
+                {% endfor %}
+                </tbody>
+              </table>
+              </div>
+
+              <div style="text-align: center">
+                <a class="btn btn-app bg-navy margin"><i class="fa fa-tv"></i>Meubles </a> 
+                <table  class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                  <th>id</th>
+                  <th>Wording</th>
+                  <th>id Type Meuble</th>
+                  <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for i in 1..3 %}
+                  <tr>
+                  <td> {{i}}</td>
+                  <td>Lit double</td>
+                  <td>Lit</td>
+                  <td>
+                    <a class="btn btn-danger" href="#"><i class="fa fa-trash-o fa-lg"></i> Delete</a> 
+                  </td>
+                </tr>
+                {% endfor %}
+                </tbody>
+              </table>
+              </div>
+              <div style="text-align: center">
+                <a class="btn btn-app bg-navy margin"><i class="fa fa-building"></i>Charges </a> 
+                <table  class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                  <th>id</th>
+                  <th>Wording</th>
+                  <th>Type Charges</th>
+                  <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for i in 1..3 %}
+                  <tr>
+                  <td> {{i}}</td>
+                  <td>eau</td>
+                  <td>annuelle</td>
+                  <td>
+                    <a class="btn btn-danger" href="#"><i class="fa fa-trash-o fa-lg"></i> Delete</a> 
+                  </td>
+                </tr>
+                {% endfor %}
+                </tbody>
+              </table>
+              </div>
+              <div style="text-align: center">
+                <a class="btn btn-app bg-navy margin"><i class="fa fa-wrench"></i>Réparations </a> 
+                <table  class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                  <th>id</th>
+                  <th>Wording</th>
+                  <th>Type Réparation</th>
+                  <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for i in 1..3 %}
+                  <tr>
+                  <td> {{i}}</td>
+                  <td>salle de bain</td>
+                  <td>plomberie</td>
+                  <td>
+                    <a class="btn btn-danger" href="#"><i class="fa fa-trash-o fa-lg"></i> Delete</a> 
+                  </td>
+                </tr>
+                {% endfor %}
+                </tbody>
+              </table>
+              </div>
+             
+             <div style="text-align: center">
+                <a class="btn btn-app bg-navy margin"><i class="fa fa-money"></i>Mensualités </a> 
+                <table  class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                  <th>id</th>
+                  <th>Mois</th>
+                  <th>Année</th>
+                  <th>Statut</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for i in 1..3 %}
+                  <tr>
+                  <td> {{i}}</td>
+                  <td>Janvier</td>
+                  <td>2017</td>
+                  <td>
+                    Payé
+                  </td>
+                </tr>
+                {% endfor %}
+                </tbody>
+              </table>
+              </div>
+
+              <div style="text-align: center">
+                <a class="btn btn-app bg-navy margin"><i class="fa fa-file"></i>Documents </a> 
+                <table  class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                  <th>id</th>
+                  <th>Wording</th>
+                  <th>Type de document</th>
+                 
+                </tr>
+                </thead>
+                <tbody>
+                {% for i in 1..3 %}
+                  <tr>
+                  <td> {{i}}</td>
+                  <td>Bail individuel</td>
+                  <td>Bail</td>
+                </tr>
+                {% endfor %}
+                </tbody>
+              </table>
+              </div>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+
+
+{% endblock %}
+
+{% block page_title %} Appartement {% endblock %}
+{% block page_subtitle %} infos appart {% endblock %}

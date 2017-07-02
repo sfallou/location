@@ -30,38 +30,63 @@ admin_valider_demande:
 #liste room et ajout room par l'admin 
 admin_form_room:
   path: /admin/add_room/
-  defaults: {_controller: AvanzuAdminThemeBundle:Default:addRoom}
+  defaults: {_controller: AppBundle:Default:newRoom}
 
 admin_liste_room:
   path: /admin/liste_room/
-  defaults: {_controller: AvanzuAdminThemeBundle:Default:listeLocataire}
+  defaults: {_controller: AppBundle:Default:listeRoom}
+
+admin_show_room:
+  path: /admin/show_room/{id}
+  defaults: {_controller: AppBundle:Default:showRoom}
+
 
 #liste appart et ajout appart par l'admin 
 admin_form_appart:
   path: /admin/add_appart/
-  defaults: {_controller: AvanzuAdminThemeBundle:Default:addAppart}
+  defaults: {_controller: AppBundle:Default:newAppart}
 
 admin_liste_appart:
   path: /admin/liste_appart/
-  defaults: {_controller: AvanzuAdminThemeBundle:Default:listeLocataire}
+  defaults: {_controller: AppBundle:Default:listeAppart}
+
+admin_show_appart:
+  path: /admin/show_appart/{id}
+  defaults: {_controller: AppBundle:Default:showAppart}
 
 #liste residence et ajout residence par l'admin 
 admin_form_residence:
   path: /admin/add_residence/
-  defaults: {_controller: AvanzuAdminThemeBundle:Default:addResidence}
+  defaults: {_controller: AppBundle:Default:newResidence}
 
 admin_liste_residence:
   path: /admin/liste_residence/
-  defaults: {_controller: AvanzuAdminThemeBundle:Default:listeLocataire}
+  defaults: {_controller: AppBundle:Default:listeResidence}
+
+admin_show_residence:
+  path: /admin/show_residence/{id}
+  defaults: {_controller: AppBundle:Default:showResidence}
 
 #liste meuble et ajout meuble par l'admin 
+admin_form_type_meuble:
+  path: /admin/add_type_meuble/
+  defaults: {_controller: AppBundle:Default:newTypeMeuble}
+
+admin_liste_type_meuble:
+  path: /admin/liste_type_meuble/
+  defaults: {_controller: AppBundle:Default:listeTypeMeuble}
+
 admin_form_meuble:
   path: /admin/add_meuble/
-  defaults: {_controller: AvanzuAdminThemeBundle:Default:addMeuble}
+  defaults: {_controller: AppBundle:Default:newMeuble}
 
 admin_liste_meuble:
   path: /admin/liste_meuble/
-  defaults: {_controller: AvanzuAdminThemeBundle:Default:listeLocataire}
+  defaults: {_controller: AppBundle:Default:listeMeuble}
+
+admin_new_meuble_appart:
+  path: /admin/add_meuble_appart/{id}
+  defaults: {_controller: AppBundle:Default:newMeubleAppart}
 
 #Documents pour admin
 admin_document:
