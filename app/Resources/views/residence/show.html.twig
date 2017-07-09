@@ -1,0 +1,50 @@
+{% extends 'AvanzuAdminThemeBundle:layout:base-layout.html.twig' %}
+
+{% block page_content %}
+
+    <div class="box">
+            <!-- /.box-header -->
+            <div class="box-body">
+              <div style="text-align: center">
+              <a class="btn  bg-navy margin" href="{{ path('residence_index') }}"><i class="fa fa-undo"></i> Back to the list </a> 
+               <a class="btn  bg-navy margin" href="{{ path('residence_edit', { 'id': residence.id }) }}"><i class="fa fa-edit"></i> Edit </a>
+               <a class="btn  bg-navy margin" ><i class="fa fa-trash"></i> Delete </a>
+               
+                <table  class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                  <th>
+                     ID 
+                  </th>
+                  <th>
+                    Name
+                  </th>
+                  <th>
+                    Contact Gardien
+                  </th>
+                  <th>
+                    Horaire Gardien
+                  </th>
+                  <th>
+                    Contact Syndic
+                  </th>
+                </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td> {{residence.id}} </td>
+                    <td>{{residence.name}}</td>
+                    <td>{{residence.contactgardien}}</td>
+                    <td>{{residence.horairegardien}}</td>
+                    <td>{{residence.contactsyndic}}</td>
+                  </tr>
+                </tbody>
+              </table>
+              
+            </div>
+        </div>
+            
+{% endblock %}
+
+
+

@@ -1,0 +1,42 @@
+{% extends 'AvanzuAdminThemeBundle:layout:base-layout.html.twig' %}
+
+{% block page_content %}
+
+    <div class="box">
+            
+        <!-- /.box-header -->
+        <div class="box-body">
+        <table  class="table table-bordered table-striped">        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Adresse</th>
+                <th>Surface</th>
+                <th>Wifi</th>
+                <th>Référent</th>  
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for appartement in appartements %}
+            <tr>
+                <td><a href="{{ path('appartement_show', { 'id': appartement.id }) }}">{{ appartement.id }}</a></td>
+                <td>{{ appartement.adresse }}</td>
+                <td>{{ appartement.surface }}</td>
+                <td>{{ appartement.wificode }}</td>
+                <td>{{ appartement.contactappart }}</td>
+                <td>
+                    <a class="btn btn-primary" href="{{ path('appartement_show', { 'id': appartement.id }) }}"><i class="fa fa-pencil fa-lg"></i> Show</a>
+                    <a class="btn btn-success" href="{{ path('appartement_edit', { 'id': appartement.id }) }}"><i class="fa fa-eye fa-lg"></i> Edit</a>
+                    <a class="btn btn-danger" href="#"><i class="fa fa-trash-o fa-lg"></i> Delete</a> 
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('appartement_new') }}">Create a new appartement</a>
+        </li>
+    </ul>
+{% endblock %}

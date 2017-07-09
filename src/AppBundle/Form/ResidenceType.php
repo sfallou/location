@@ -13,7 +13,11 @@ class ResidenceType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('name')->add('contact_gardien')->add('horaire_gardien')->add('contact_syndic');
+        $builder
+            ->add('name','text',array('label' => 'Wording'))
+            ->add('contact_gardien','text',array('label' => 'Contact Gardien','required'=>false))
+            ->add('horaire_gardien','textarea',array('label' => 'Horaire Gardien','required'=>false))
+            ->add('contact_syndic','text',array('label' => 'Contact Syndic','required'=>false));
     }
     
     /**

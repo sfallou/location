@@ -29,8 +29,8 @@ class SidebarSetupMenuDemoListener
     {
         $earg      = array();
         $rootItems = array(
-            $dash = new MenuItemModel('dashboard', 'Dashboard', 'admin_dash', $earg, 'fa fa-dashboard'),
-            $locataire = new MenuItemModel('locataire', 'Locataires', '', $earg, 'fa fa-user '),
+            $dash = new MenuItemModel('dashboard', 'Mon Compte', 'admin_dash', $earg, 'fa fa-dashboard'),
+            $user = new MenuItemModel('user', 'Users', '', $earg, 'fa fa-user '),
             $room = new MenuItemModel('room', 'Chambres', '', $earg, 'fa fa-bed'),
             $appart = new MenuItemModel('apparts', 'Appartements', '', $earg, 'fa fa-home'),
             $residence = new MenuItemModel('residence', 'Résidences', '', $earg, 'fa fa-map'),
@@ -41,23 +41,23 @@ class SidebarSetupMenuDemoListener
 
         );
         
-        $locataire->addChild(new MenuItemModel('liste_locataire', 'Liste des Locataires', 'admin_liste_locataire', $earg,  'fa fa-navicon'))
-            ->addChild(new MenuItemModel('nouveau_locataire', 'Nouveau Locataire', 'admin_form_locataire', $earg,  'fa fa-plus'))
-             ->addChild(new MenuItemModel('valider_locataire', 'Valider Demande', 'admin_valider_demande', $earg,  'fa fa-check'));
+        $user->addChild(new MenuItemModel('list_users', 'Liste Utilisateurs', 'user_index', $earg,  'fa fa-navicon'))
+            ->addChild(new MenuItemModel('new_user', 'New Utilisateur', 'user_new', $earg,  'fa fa-plus'))
+             ->addChild(new MenuItemModel('valider_user', 'Valider Demande', 'user_new', $earg,  'fa fa-check'));
 
-        $room->addChild(new MenuItemModel('liste_chambre', 'Liste des Chambres', 'admin_liste_room', $earg,  'fa fa-navicon'))
-            ->addChild(new MenuItemModel('nouvelle_chambre', 'Nouvelle Chambre', 'admin_form_room', $earg,  'fa fa-plus'));
+        $room->addChild(new MenuItemModel('liste_chambre', 'Liste des Chambres', 'room_index', $earg,  'fa fa-navicon'))
+            ->addChild(new MenuItemModel('nouvelle_chambre', 'Nouvelle Chambre', 'room_new', $earg,  'fa fa-plus'));
 
-        $appart->addChild(new MenuItemModel('liste_appartement', 'Liste des Appartements', 'admin_liste_appart', $earg,  'fa fa-navicon'))
-            ->addChild(new MenuItemModel('nouvel_appartement', 'Nouvel Appartement', 'admin_form_appart', $earg,  'fa fa-plus'));
+        $appart->addChild(new MenuItemModel('liste_appartement', 'Liste des Appartements', 'appartement_index', $earg,  'fa fa-navicon'))
+            ->addChild(new MenuItemModel('nouvel_appartement', 'Nouvel Appartement', 'appartement_new', $earg,  'fa fa-plus'));
 
-        $residence->addChild(new MenuItemModel('liste_residence', 'Liste des Résidences', 'admin_liste_residence', $earg,  'fa fa-navicon'))
-            ->addChild(new MenuItemModel('nouvelle_residence', 'Nouvelle Résidence', 'admin_form_residence', $earg,  'fa fa-plus'));
+        $residence->addChild(new MenuItemModel('liste_residence', 'Liste des Résidences', 'residence_index', $earg,  'fa fa-navicon'))
+            ->addChild(new MenuItemModel('nouvelle_residence', 'Nouvelle Résidence', 'residence_new', $earg,  'fa fa-plus'));
 
-        $meuble->addChild(new MenuItemModel('liste_meuble', 'Liste des Meubles', 'admin_liste_meuble', $earg,  'fa fa-navicon'))
-            ->addChild(new MenuItemModel('nouveau_meuble', 'Nouveau Meuble', 'admin_form_meuble', $earg,  'fa fa-plus'))
-            ->addChild(new MenuItemModel('liste_type_meuble', 'Types Meubles', 'admin_liste_type_meuble', $earg,  'fa fa-navicon'))
-            ->addChild(new MenuItemModel('nouveau_type_meuble', 'Nouveau Type Meuble', 'admin_form_type_meuble', $earg,  'fa fa-plus'));
+        $meuble->addChild(new MenuItemModel('liste_meuble', 'Liste des Meubles', 'meuble_index', $earg,  'fa fa-navicon'))
+            ->addChild(new MenuItemModel('nouveau_meuble', 'Nouveau Meuble', 'meuble_new', $earg,  'fa fa-plus'))
+            ->addChild(new MenuItemModel('liste_type_meuble', 'Types Meubles', 'typemeuble_index', $earg,  'fa fa-navicon'))
+            ->addChild(new MenuItemModel('nouveau_type_meuble', 'Nouveau Type Meuble', 'typemeuble_new', $earg,  'fa fa-plus'));
 
         $docs->addChild(new MenuItemModel('bail', 'Contrat Bail', 'admin_document', $earg))
             ->addChild(new MenuItemModel('facture', 'Facture', 'admin_document', $earg));

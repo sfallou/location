@@ -13,7 +13,9 @@ class MeubleType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('name')->add('id_type');
+        $builder
+            ->add('name','text',array('label' => 'Wording'))
+            ->add('id_type','integer',array('label' => 'ID type Meuble'));
     }
     
     /**

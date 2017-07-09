@@ -13,7 +13,11 @@ class RoomType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('surface')->add('rent')->add('guarantee')->add('id_appart');
+        $builder
+            ->add('surface','text',array('label' => 'Surface'))
+            ->add('rent','integer',array('label' => 'Rent'))
+            ->add('guarantee','integer',array('label' => 'Guarantee'))
+            ->add('id_appart','integer',array('label' => 'ID Appart'));
     }
     
     /**

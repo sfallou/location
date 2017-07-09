@@ -204,6 +204,13 @@ class ComposerStaticInit4b4069725468f446626c8e5953f9724a
                 0 => __DIR__ . '/..' . '/sensiolabs/security-checker',
             ),
         ),
+        'F' => 
+        array (
+            'FOS\\UserBundle' => 
+            array (
+                0 => __DIR__ . '/..' . '/friendsofsymfony/user-bundle',
+            ),
+        ),
         'D' => 
         array (
             'Doctrine\\ORM\\' => 

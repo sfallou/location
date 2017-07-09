@@ -1,0 +1,36 @@
+{% extends 'AvanzuAdminThemeBundle:layout:base-layout.html.twig' %}
+
+{% block page_content %}
+
+    <div class="box">
+            
+        <!-- /.box-header -->
+        <div class="box-body">
+        <table  class="table table-bordered table-striped">        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for typeMeuble in typeMeubles %}
+            <tr>
+                <td><a href="{{ path('typemeuble_show', { 'id': typeMeuble.id }) }}">{{ typeMeuble.id }}</a></td>
+                <td>{{ typeMeuble.name }}</td>
+                <td>
+                    <a class="btn btn-primary" href="{{ path('typemeuble_show', { 'id': typeMeuble.id }) }}"><i class="fa fa-pencil fa-lg"></i> Show</a>
+                    <a class="btn btn-success" href="{{ path('typemeuble_edit', { 'id': typeMeuble.id }) }}"><i class="fa fa-eye fa-lg"></i> Edit</a>
+                    <a class="btn btn-danger" href="#"><i class="fa fa-trash-o fa-lg"></i> Delete</a> 
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('typemeuble_new') }}">Create a new "type meuble"</a>
+        </li>
+    </ul>
+{% endblock %}

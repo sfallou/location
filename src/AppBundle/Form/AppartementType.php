@@ -13,7 +13,14 @@ class AppartementType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('adresse')->add('surface')->add('wifi_code')->add('contact_appart')->add('id_residence')->add('phone')->add('rib');
+        $builder
+            ->add('adresse','text',array('label' => 'Adresse'))
+            ->add('surface','text',array('label' => 'Surface'))
+            ->add('wifi_code','text',array('label' => 'Code Wifi','required'=>false))
+            ->add('contact_appart','text',array('label' => 'Contact appartement','required'=>false))
+            ->add('id_residence','integer',array('label' => 'ID Résidence'))
+            ->add('phone','text',array('label' => 'Phone','required'=>false))
+            ->add('rib','text',array('label' => 'RIB'));
     }
     
     /**

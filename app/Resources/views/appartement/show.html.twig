@@ -1,0 +1,51 @@
+{% extends 'AvanzuAdminThemeBundle:layout:base-layout.html.twig' %}
+
+{% block page_content %}
+
+    <div class="box">
+            <!-- /.box-header -->
+            <div class="box-body">
+              <div style="text-align: center">
+              <a class="btn  bg-navy margin" href="{{ path('appartement_index') }}"><i class="fa fa-undo"></i> Back to the list </a> 
+               <a class="btn  bg-navy margin" href="{{ path('appartement_edit', { 'id': appartement.id }) }}"><i class="fa fa-edit"></i> Edit </a>
+               <a class="btn  bg-navy margin" ><i class="fa fa-trash"></i> Delete </a>
+               
+                <table  class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                  <th>
+                     Adresse 
+                  </th>
+                  <th>
+                    Référent
+                  </th>
+                  <th>
+                    Wifi
+                  </th>
+                  <th>
+                    Phone
+                  </th>
+                  <th>
+                    Surface
+                  </th>
+                  <th>
+                   RIB
+                  </th>
+                </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td> {{appartement.adresse}} </td>
+                    <td>{{appartement.contactappart}}</td>
+                    <td>{{appartement.wificode}}</td>
+                    <td>{{appartement.phone}}</td>
+                    <td>{{appartement.surface}}</td>
+                    <td>{{appartement.rib}}</td>
+                  </tr>
+                </tbody>
+              </table>
+              
+            </div>
+        </div>
+            
+{% endblock %}

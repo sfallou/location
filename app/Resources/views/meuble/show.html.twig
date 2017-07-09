@@ -1,0 +1,39 @@
+{% extends 'AvanzuAdminThemeBundle:layout:base-layout.html.twig' %}
+
+{% block page_content %}
+
+    <div class="box">
+            <!-- /.box-header -->
+            <div class="box-body">
+              <div style="text-align: center">
+              <a class="btn  bg-navy margin" href="{{ path('meuble_index') }}"><i class="fa fa-undo"></i> Back to the list </a> 
+               <a class="btn  bg-navy margin" href="{{ path('meuble_edit', { 'id': meuble.id }) }}"><i class="fa fa-edit"></i> Edit </a>
+               <a class="btn  bg-navy margin" ><i class="fa fa-trash"></i> Delete </a>
+               
+                <table  class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                  <th>
+                     ID 
+                  </th>
+                  <th>
+                    Wording
+                  </th>
+                  <th>
+                    Id Type Meuble
+                  </th>
+                </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td> {{meuble.id}} </td>
+                    <td>{{meuble.name}}</td>
+                    <td>{{meuble.idtype}}</td>
+                  </tr>
+                </tbody>
+              </table>
+              
+            </div>
+        </div>
+            
+{% endblock %}
