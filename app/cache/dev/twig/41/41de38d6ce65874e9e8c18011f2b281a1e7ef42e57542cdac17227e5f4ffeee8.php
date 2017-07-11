@@ -21,20 +21,20 @@ class __TwigTemplate_8b6e1b2aa65f82ce9754a1608672e4539fead59b6c0b13b5818e2196090
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_a242f4fad9e564f07488dfa8ce103adf67b8585308f4a8c81abd88f661a082df = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_a242f4fad9e564f07488dfa8ce103adf67b8585308f4a8c81abd88f661a082df->enter($__internal_a242f4fad9e564f07488dfa8ce103adf67b8585308f4a8c81abd88f661a082df_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "AvanzuAdminThemeBundle:Default:login.html.twig"));
+        $__internal_1773e62cee2765f192430b07cdb6a0238e4cdd825d8c6b4fdb343fc4afc9fcf0 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_1773e62cee2765f192430b07cdb6a0238e4cdd825d8c6b4fdb343fc4afc9fcf0->enter($__internal_1773e62cee2765f192430b07cdb6a0238e4cdd825d8c6b4fdb343fc4afc9fcf0_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "AvanzuAdminThemeBundle:Default:login.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_a242f4fad9e564f07488dfa8ce103adf67b8585308f4a8c81abd88f661a082df->leave($__internal_a242f4fad9e564f07488dfa8ce103adf67b8585308f4a8c81abd88f661a082df_prof);
+        $__internal_1773e62cee2765f192430b07cdb6a0238e4cdd825d8c6b4fdb343fc4afc9fcf0->leave($__internal_1773e62cee2765f192430b07cdb6a0238e4cdd825d8c6b4fdb343fc4afc9fcf0_prof);
 
     }
 
     // line 3
     public function block_page_content($context, array $blocks = array())
     {
-        $__internal_e6b0d3c30e1db5b41fe38f6365b2ebae6d543f9264b0d16e3fa7073cd22f62dc = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_e6b0d3c30e1db5b41fe38f6365b2ebae6d543f9264b0d16e3fa7073cd22f62dc->enter($__internal_e6b0d3c30e1db5b41fe38f6365b2ebae6d543f9264b0d16e3fa7073cd22f62dc_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "page_content"));
+        $__internal_8a6b86b8e9ec60dc9161f5534381816e1d6608e08bf14a0236fa089a22b2f787 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_8a6b86b8e9ec60dc9161f5534381816e1d6608e08bf14a0236fa089a22b2f787->enter($__internal_8a6b86b8e9ec60dc9161f5534381816e1d6608e08bf14a0236fa089a22b2f787_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "page_content"));
 
         // line 4
         echo "    <div class=\"login-box\">
@@ -46,7 +46,10 @@ class __TwigTemplate_8b6e1b2aa65f82ce9754a1608672e4539fead59b6c0b13b5818e2196090
         </div><!-- /.login-logo -->
         <div class=\"login-box-body\">
             <p class=\"login-box-msg\">Sign in to start your session</p>
-            <form action=\"http://localhost:8000/admin/dashboard\" method=\"post\">
+            <form action=\"";
+        // line 10
+        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("admin_dash");
+        echo "\" method=\"post\">
                 <div class=\"form-group has-feedback\">
                     <input type=\"text\" class=\"form-control\" placeholder=\"Email\"/>
                     <span class=\"glyphicon glyphicon-envelope form-control-feedback\"></span>
@@ -82,7 +85,7 @@ class __TwigTemplate_8b6e1b2aa65f82ce9754a1608672e4539fead59b6c0b13b5818e2196090
     </div>
 ";
         
-        $__internal_e6b0d3c30e1db5b41fe38f6365b2ebae6d543f9264b0d16e3fa7073cd22f62dc->leave($__internal_e6b0d3c30e1db5b41fe38f6365b2ebae6d543f9264b0d16e3fa7073cd22f62dc_prof);
+        $__internal_8a6b86b8e9ec60dc9161f5534381816e1d6608e08bf14a0236fa089a22b2f787->leave($__internal_8a6b86b8e9ec60dc9161f5534381816e1d6608e08bf14a0236fa089a22b2f787_prof);
 
     }
 
@@ -98,7 +101,7 @@ class __TwigTemplate_8b6e1b2aa65f82ce9754a1608672e4539fead59b6c0b13b5818e2196090
 
     public function getDebugInfo()
     {
-        return array (  44 => 6,  40 => 4,  34 => 3,  11 => 1,);
+        return array (  51 => 10,  44 => 6,  40 => 4,  34 => 3,  11 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -120,7 +123,7 @@ class __TwigTemplate_8b6e1b2aa65f82ce9754a1608672e4539fead59b6c0b13b5818e2196090
         </div><!-- /.login-logo -->
         <div class=\"login-box-body\">
             <p class=\"login-box-msg\">Sign in to start your session</p>
-            <form action=\"http://localhost:8000/admin/dashboard\" method=\"post\">
+            <form action=\"{{ path('admin_dash') }}\" method=\"post\">
                 <div class=\"form-group has-feedback\">
                     <input type=\"text\" class=\"form-control\" placeholder=\"Email\"/>
                     <span class=\"glyphicon glyphicon-envelope form-control-feedback\"></span>

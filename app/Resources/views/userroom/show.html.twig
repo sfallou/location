@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Userroom</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Userid</th>
+                <td>{{ userRoom.userId }}</td>
+            </tr>
+            <tr>
+                <th>Roomid</th>
+                <td>{{ userRoom.roomId }}</td>
+            </tr>
+            <tr>
+                <th>Userroomdatein</th>
+                <td>{% if userRoom.userRoomDateIn %}{{ userRoom.userRoomDateIn|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Userroomdateout</th>
+                <td>{% if userRoom.userRoomDateOut %}{{ userRoom.userRoomDateOut|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Userroomrent</th>
+                <td>{{ userRoom.userRoomRent }}</td>
+            </tr>
+            <tr>
+                <th>Userroomguarantee</th>
+                <td>{{ userRoom.userRoomGuarantee }}</td>
+            </tr>
+            <tr>
+                <th>Id</th>
+                <td>{{ userRoom.id }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('userroom_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('userroom_edit', { 'id': userRoom.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

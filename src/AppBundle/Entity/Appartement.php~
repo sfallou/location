@@ -225,4 +225,20 @@ class Appartement
     {
         return $this->rib;
     }
+    /**
+     * @var string
+     */
+    private $wifiCode;
+
+    /**
+     * @var string
+     */
+    private $contactAppart;
+
+    /**
+     * @var integer
+     */
+    private $idResidence;
+
+
 }

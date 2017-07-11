@@ -83,4 +83,10 @@ class Meuble
     {
         return $this->id_type;
     }
+    /**
+     * @var integer
+     */
+    private $idType;
+
+
 }

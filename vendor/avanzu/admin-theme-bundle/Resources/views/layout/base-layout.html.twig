@@ -42,24 +42,7 @@
                 </a>
             {% endblock %}
             <!-- Header Navbar: style can be found in header.less -->
-            <nav class="navbar navbar-static-top" role="navigation">
-                <!-- Sidebar toggle button-->
-                <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-                    <span class="sr-only">Toggle navigation</span>
-                </a>
-                {% if app.user is not null and is_granted('IS_AUTHENTICATED_FULLY') %}
-                    <div class="navbar-custom-menu">
-                        <ul class="nav navbar-nav">
-                            {% block avanzu_navbar %}
-                                {{ render(controller('AvanzuAdminThemeBundle:Navbar:messages')) }}
-                                {{ render(controller('AvanzuAdminThemeBundle:Navbar:notifications')) }}
-                                {{ render(controller('AvanzuAdminThemeBundle:Navbar:tasks')) }}
-                                {{ render(controller('AvanzuAdminThemeBundle:Navbar:user')) }}
-                            {% endblock %}
-                        </ul>
-                    </div>
-                {% endif %}
-            </nav>
+            
         </header>
     {% endblock %}
 
@@ -70,7 +53,7 @@
                 {% block avanzu_sidebar %}
                     {% if app.user is not null and is_granted('IS_AUTHENTICATED_FULLY') %}
                         {{ render(controller('AvanzuAdminThemeBundle:Sidebar:userPanel')) }}
-                        {{ render(controller('AvanzuAdminThemeBundle:Sidebar:searchForm')) }}
+                        
                     {% endif %}
                     {{ render(controller('AvanzuAdminThemeBundle:Sidebar:menu', {'request':app.request})) }}
                 {% endblock %}

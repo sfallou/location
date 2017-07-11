@@ -1,28 +1,82 @@
-{% extends 'base.html.twig' %}
+{% extends 'AvanzuAdminThemeBundle:layout:base-layout.html.twig' %}
 
-{% block body %}
-    <h1>User</h1>
+{% block page_content %}
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ user.id }}</td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="box">
+            <!-- /.box-header -->
+            <div class="box-body">
+                <div >
+                    <div class="page-header"><h4 style="background-color:#f7f7f7; font-size: 18px; text-align: center; padding: 7px 10px; margin-top: 0;">
+                            Informations générales
+                        </h4></div>
+                        <div class="col-md-7">
+                            <ul class="list-unstyled">
+                                <li><strong>ID :</strong> {{user.id}}</li>
+                                <li><strong>Profil :</strong> {{user.id}}</li>
+                                <li><strong>Username :</strong> {{user.username}}</li>
+                                <li><strong>Prénom :</strong> </li>
+                                <li><strong>Nom :</strong> </li>               
+                                <li><strong>Email :</strong> {{user.email}}</li>
+                                <li><strong>Téléphone :</strong> {{user.email}}</li>
+                                <li><strong>Contact Garant :</strong> {{user.email}}</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-5 ">
+                            <div class="pull-left image">
+                                <img src="/bundles/avanzuadmintheme/img/avatar.png" class="img-circle" alt="Demo User" width=150/>
+                                <br><br>
+                            </div>           
+                        </div>
+                        
+                        <div class="page-header"><h4 style="background-color:#f7f7f7; font-size: 18px; text-align: center; padding: 7px 10px; margin-top: 0;">
+                            Informations sur la colocation
+                        </h4>
+                        </div>
+                        <div class="col-md-7">
+                            <ul class="list-unstyled">
+                                <li><strong>Adresse Appartement :</strong> {{user.id}}</li>
+                                <li><strong>Surface Appartement :</strong> {{user.id}}</li>
+                                <li><strong>Responsable Coloc :</strong> {{user.email}}</li>
+                                <li><strong>Contact Gardien :</strong> {{user.email}}</li>
+                                <li><strong>Horaire Gardien :</strong> {{user.email}}</li>
+                                <li><strong>Contact Syndic :</strong> {{user.email}}</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-5 ">
+                            <ul class="list-unstyled">
+                                <li><strong>N° Chambre :</strong> {{user.username}}</li>
+                                <li><strong>Surface Chambre :</strong> {{user.username}}</li>
+                                <li><strong>Date d'entrée :</strong> {{user.id}}</li>
+                                <li><strong>Date de sortie :</strong> {{user.username}}</li>
+                                <li><strong>Prix Loyer :</strong> </li>
+                                <li><strong>Caution :</strong> </li>               
+                            </ul>
+                             <br><br>
+                        </div>
 
-    <ul>
-        <li>
-            <a href="{{ path('user_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('user_edit', { 'id': user.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+                        <div class="page-header"><h4 style="background-color:#f7f7f7; font-size: 18px; text-align: center; padding: 7px 10px; margin-top: 0;">
+                            Informations sur les colocs et charges collectives
+                        </h4>
+                        </div>
+                        <div class="col-md-7">
+                            <ul class="list-unstyled">
+                                <li><strong>Colocataires :</strong> {{user.id}}</li>
+                                <li><strong>Charge EDF :</strong> {{user.id}}</li>
+                                <li><strong>Charge Eau :</strong> {{user.email}}</li>
+                                <li><strong>Charge X :</strong> {{user.email}}</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-5 ">
+                            <ul class="list-unstyled">
+                                <li><strong>Bail :</strong> {{user.username}}</li>
+                                <li><strong>Facture Téléphone :</strong> {{user.username}}</li>
+                                <li><strong>Facture d'éléctricité :</strong> {{user.id}}</li>
+                                <li><strong>Quittances de loyers :</strong> {{user.username}}</li>           
+                            </ul>
+                        </div>
+                </div>
+              
+            </div>
+        </div>
+            
 {% endblock %}

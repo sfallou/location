@@ -43,7 +43,7 @@ class SidebarSetupMenuDemoListener
         
         $user->addChild(new MenuItemModel('list_users', 'Liste Utilisateurs', 'user_index', $earg,  'fa fa-navicon'))
             ->addChild(new MenuItemModel('new_user', 'New Utilisateur', 'user_new', $earg,  'fa fa-plus'))
-             ->addChild(new MenuItemModel('valider_user', 'Valider Demande', 'user_new', $earg,  'fa fa-check'));
+             ->addChild(new MenuItemModel('valider_user', 'Valider Demande', 'validation_user', $earg,  'fa fa-check'));
 
         $room->addChild(new MenuItemModel('liste_chambre', 'Liste des Chambres', 'room_index', $earg,  'fa fa-navicon'))
             ->addChild(new MenuItemModel('nouvelle_chambre', 'Nouvelle Chambre', 'room_new', $earg,  'fa fa-plus'));

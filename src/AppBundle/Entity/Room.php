@@ -139,4 +139,10 @@ class Room
     {
         return $this->id_appart;
     }
+    /**
+     * @var integer
+     */
+    private $idAppart;
+
+
 }

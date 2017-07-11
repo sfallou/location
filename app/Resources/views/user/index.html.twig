@@ -1,12 +1,16 @@
-{% extends 'base.html.twig' %}
+{% extends 'AvanzuAdminThemeBundle:layout:base-layout.html.twig' %}
 
-{% block body %}
-    <h1>Users list</h1>
+{% block page_content %}
 
-    <table>
-        <thead>
+    <div class="box">
+            
+        <!-- /.box-header -->
+        <div class="box-body">
+        <table  class="table table-bordered table-striped">        <thead>
             <tr>
                 <th>Id</th>
+                <th>Username</th>
+                <th>Email</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -14,15 +18,12 @@
         {% for user in users %}
             <tr>
                 <td><a href="{{ path('user_show', { 'id': user.id }) }}">{{ user.id }}</a></td>
+                <td>{{ user.username }}</td>
+                <td>{{ user.email }}</td>
                 <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('user_show', { 'id': user.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('user_edit', { 'id': user.id }) }}">edit</a>
-                        </li>
-                    </ul>
+                    <a class="btn btn-primary" href="{{ path('user_show', { 'id': user.id }) }}"><i class="fa fa-pencil fa-lg"></i> Show</a>
+                    <a class="btn btn-success" href="{{ path('user_edit', { 'id': user.id }) }}"><i class="fa fa-eye fa-lg"></i> Edit</a>
+                    <a class="btn btn-danger" href="#"><i class="fa fa-trash-o fa-lg"></i> Delete</a> 
                 </td>
             </tr>
         {% endfor %}
@@ -35,3 +36,4 @@
         </li>
     </ul>
 {% endblock %}
+

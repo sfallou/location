@@ -24,7 +24,7 @@ class UserController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $users = $em->getRepository('AppBundle:User')->findAll();
+        $users = $em->getRepository('AppBundle:User')->findByEnabled(1);
 
         return $this->render('user/index.html.twig', array(
             'users' => $users,
@@ -39,7 +39,7 @@ class UserController extends Controller
      */
     public function newAction(Request $request)
     {
-        $user = new User();
+        /*$user = new User();
         $form = $this->createForm('AppBundle\Form\UserType', $user);
         $form->handleRequest($request);
 
@@ -55,6 +55,8 @@ class UserController extends Controller
             'user' => $user,
             'form' => $form->createView(),
         ));
+        */
+        return $this->redirectToRoute('fos_user_registration_register');
     }
 
     /**
@@ -81,9 +83,8 @@ class UserController extends Controller
      */
     public function editAction(Request $request, User $user)
     {
-        $deleteForm = $this->createDeleteForm($user);
-        $editForm = $this->createForm('AppBundle\Form\UserType', $user);
-        $editForm->handleRequest($request);
+        $valideForm = $this->createForm('AppBundle\Form\UserValidateType', $user);
+        $valideForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();

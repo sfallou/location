@@ -1,0 +1,79 @@
+{% extends 'AvanzuAdminThemeBundle:layout:base-layout.html.twig' %}
+
+{% block page_content %}
+
+    <div class="row">
+        <div class="col-md-4">
+
+
+        </div>
+        <div class="col-md-4">
+
+        </div>
+        <div class="col-md-4">
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+
+            <div class="box box-primary">
+                <div class="box-body">
+                {{ form_start(form) }}
+                        {{ form_widget(form) }}
+                    
+                </div>
+                <div class="box-footer clearfix">
+
+                        <button type="reset" class="btn btn-warning pull-left"><i class="fa fa-times"></i> Cancel</button>
+                        <button type="submit" class="btn btn-primary pull-right"><i class="fa fa-check-square"></i> Submit</button>
+
+                        {{ form_end(form) }}
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-6">
+            <div class="box box-solid box-primary">
+                {{ macro.box_header('Choix chambre', true, false, 'primary') }}
+                <br>
+                
+                {%for appart,rooms in apparts_rooms%}
+                    <div>
+                        <h4 style="background-color:#f7f7f7; font-size: 18px; text-align: center; padding: 7px 10px; margin-top: 0;">
+                            {{appart}}
+                        </h4>
+                        
+                        <table  class="table table-bordered table-striped">        
+                                <thead>
+                                <tr>
+                                    <th>Id Room</th>
+                                    <th>Surface</th>
+                                    <th>Rent</th>
+                                    <th>Guarantee</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                        {%for room in rooms%}
+
+                                    <tr>
+                                        <td><a href="{{ path('room_show', { 'id': room.id }) }}">{{ room.id }}</a></td>
+                                        <td>{{ room.surface }}</td>
+                                        <td>{{ room.rent }}</td>
+                                        <td>{{ room.guarantee }}</td>
+                                    </tr>
+                            {%endfor%}
+                                </tbody>
+                            </table>
+                    </div>           
+                {%endfor%}
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
+
+{% block page_title %} Validate Registration  {% endblock %}
+{% block page_subtitle %} associate new user to room {% endblock %}

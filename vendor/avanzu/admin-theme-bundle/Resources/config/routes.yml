@@ -2,7 +2,7 @@
 # Pour la page Login
 login:
   path: /
-  defaults: {_controller: AvanzuAdminThemeBundle:Default:login}
+  defaults: {_controller: AvanzuAdminThemeBundle:Default:dashboard}
 
 # Pour la page authentification 
 admin:
@@ -11,20 +11,20 @@ admin:
 
 # Pour la page d'accueil de l'admin
 admin_dash:
-  path: /admin/dashboard/
+  path: /dashboard/
   defaults: {_controller: AvanzuAdminThemeBundle:Default:dashboard}
 
 #liste locataire et ajout locataire par l'admin 
 admin_form_locataire:
-  path: /admin/add_locataire/
+  path: /add_locataire/
   defaults: {_controller: AvanzuAdminThemeBundle:Default:addLocataire}
 
 admin_liste_locataire:
-  path: /admin/liste_locataire/
+  path: /liste_locataire/
   defaults: {_controller: AvanzuAdminThemeBundle:Default:listeLocataire}
 
 admin_valider_demande:
-  path: /admin/valider/
+  path: /valider/
   defaults: {_controller: AvanzuAdminThemeBundle:Default:index}
 
 
@@ -33,14 +33,14 @@ admin_valider_demande:
 
 #Documents pour admin
 admin_document:
-  path: /admin/documents/
+  path: /documents/
   defaults: {_controller: AvanzuAdminThemeBundle:Default:index}
 
 
 admin_chat:
-  path: /admin/divers/chat/
+  path: /divers/chat/
   defaults: {_controller: AvanzuAdminThemeBundle:Default:chat}
 
 admin_mail:
-  path: /admin/divers/mail/
+  path: /divers/mail/
   defaults: {_controller: AvanzuAdminThemeBundle:Default:mail}

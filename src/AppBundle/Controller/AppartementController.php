@@ -48,6 +48,10 @@ class AppartementController extends Controller
             $em->persist($appartement);
             $em->flush();
 
+             $request->getSession()
+                ->getFlashBag()
+                ->add('success', 'appartement a été bien ajoutée!');
+
             return $this->redirectToRoute('appartement_show', array('id' => $appartement->getId()));
         }
 

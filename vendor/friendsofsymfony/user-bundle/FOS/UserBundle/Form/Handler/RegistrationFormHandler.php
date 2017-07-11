@@ -68,9 +68,9 @@ class RegistrationFormHandler
             }
 
             $this->mailer->sendConfirmationEmailMessage($user);
-        } else {
+        } /*else {
             $user->setEnabled(true);
-        }
+        }*/
 
         $this->userManager->updateUser($user);
     }

@@ -167,6 +167,28 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
 
         }
 
+        // validation_user
+        if ($pathinfo === '/validation') {
+            if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                $allow = array_merge($allow, array('GET', 'HEAD'));
+                goto not_validation_user;
+            }
+
+            return array (  '_controller' => 'AppBundle\\Controller\\AssociationController::validationAction',  '_route' => 'validation_user',);
+        }
+        not_validation_user:
+
+        // user_validated
+        if (preg_match('#^/(?P<id>[^/]++)/validated$#s', $pathinfo, $matches)) {
+            if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                goto not_user_validated;
+            }
+
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'user_validated')), array (  '_controller' => 'AppBundle\\Controller\\AssociationController::validatedAction',));
+        }
+        not_user_validated:
+
         // homepage
         if ($pathinfo === '/default') {
             return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::indexAction',  '_route' => 'homepage',);
@@ -483,6 +505,68 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
             }
             not_user_delete:
 
+            if (0 === strpos($pathinfo, '/userroom')) {
+                // userroom_index
+                if (rtrim($pathinfo, '/') === '/userroom') {
+                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'HEAD'));
+                        goto not_userroom_index;
+                    }
+
+                    if (substr($pathinfo, -1) !== '/') {
+                        return $this->redirect($pathinfo.'/', 'userroom_index');
+                    }
+
+                    return array (  '_controller' => 'AppBundle\\Controller\\UserRoomController::indexAction',  '_route' => 'userroom_index',);
+                }
+                not_userroom_index:
+
+                // userroom_new
+                if ($pathinfo === '/userroom/new') {
+                    if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                        goto not_userroom_new;
+                    }
+
+                    return array (  '_controller' => 'AppBundle\\Controller\\UserRoomController::newAction',  '_route' => 'userroom_new',);
+                }
+                not_userroom_new:
+
+                // userroom_show
+                if (preg_match('#^/userroom/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'HEAD'));
+                        goto not_userroom_show;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'userroom_show')), array (  '_controller' => 'AppBundle\\Controller\\UserRoomController::showAction',));
+                }
+                not_userroom_show:
+
+                // userroom_edit
+                if (preg_match('#^/userroom/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                    if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                        goto not_userroom_edit;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'userroom_edit')), array (  '_controller' => 'AppBundle\\Controller\\UserRoomController::editAction',));
+                }
+                not_userroom_edit:
+
+                // userroom_delete
+                if (preg_match('#^/userroom/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    if ($this->context->getMethod() != 'DELETE') {
+                        $allow[] = 'DELETE';
+                        goto not_userroom_delete;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'userroom_delete')), array (  '_controller' => 'AppBundle\\Controller\\UserRoomController::deleteAction',));
+                }
+                not_userroom_delete:
+
+            }
+
         }
 
         // login
@@ -494,84 +578,78 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
             return array (  '_controller' => 'Avanzu\\AdminThemeBundle\\Controller\\DefaultController::loginAction',  '_route' => 'login',);
         }
 
-        if (0 === strpos($pathinfo, '/a')) {
-            // admin
-            if (rtrim($pathinfo, '/') === '/auth') {
-                if (substr($pathinfo, -1) !== '/') {
-                    return $this->redirect($pathinfo.'/', 'admin');
-                }
-
-                return array (  '_controller' => 'Avanzu\\AdminThemeBundle\\Controller\\DefaultController::indexAction',  '_route' => 'admin',);
+        // admin
+        if (rtrim($pathinfo, '/') === '/auth') {
+            if (substr($pathinfo, -1) !== '/') {
+                return $this->redirect($pathinfo.'/', 'admin');
             }
 
-            if (0 === strpos($pathinfo, '/admin')) {
-                // admin_dash
-                if (rtrim($pathinfo, '/') === '/admin/dashboard') {
-                    if (substr($pathinfo, -1) !== '/') {
-                        return $this->redirect($pathinfo.'/', 'admin_dash');
-                    }
+            return array (  '_controller' => 'Avanzu\\AdminThemeBundle\\Controller\\DefaultController::indexAction',  '_route' => 'admin',);
+        }
 
-                    return array (  '_controller' => 'Avanzu\\AdminThemeBundle\\Controller\\DefaultController::dashboardAction',  '_route' => 'admin_dash',);
+        // admin_dash
+        if (rtrim($pathinfo, '/') === '/dashboard') {
+            if (substr($pathinfo, -1) !== '/') {
+                return $this->redirect($pathinfo.'/', 'admin_dash');
+            }
+
+            return array (  '_controller' => 'Avanzu\\AdminThemeBundle\\Controller\\DefaultController::dashboardAction',  '_route' => 'admin_dash',);
+        }
+
+        // admin_form_locataire
+        if (rtrim($pathinfo, '/') === '/add_locataire') {
+            if (substr($pathinfo, -1) !== '/') {
+                return $this->redirect($pathinfo.'/', 'admin_form_locataire');
+            }
+
+            return array (  '_controller' => 'Avanzu\\AdminThemeBundle\\Controller\\DefaultController::addLocataireAction',  '_route' => 'admin_form_locataire',);
+        }
+
+        // admin_liste_locataire
+        if (rtrim($pathinfo, '/') === '/liste_locataire') {
+            if (substr($pathinfo, -1) !== '/') {
+                return $this->redirect($pathinfo.'/', 'admin_liste_locataire');
+            }
+
+            return array (  '_controller' => 'Avanzu\\AdminThemeBundle\\Controller\\DefaultController::listeLocataireAction',  '_route' => 'admin_liste_locataire',);
+        }
+
+        // admin_valider_demande
+        if (rtrim($pathinfo, '/') === '/valider') {
+            if (substr($pathinfo, -1) !== '/') {
+                return $this->redirect($pathinfo.'/', 'admin_valider_demande');
+            }
+
+            return array (  '_controller' => 'Avanzu\\AdminThemeBundle\\Controller\\DefaultController::indexAction',  '_route' => 'admin_valider_demande',);
+        }
+
+        if (0 === strpos($pathinfo, '/d')) {
+            // admin_document
+            if (rtrim($pathinfo, '/') === '/documents') {
+                if (substr($pathinfo, -1) !== '/') {
+                    return $this->redirect($pathinfo.'/', 'admin_document');
                 }
 
-                // admin_form_locataire
-                if (rtrim($pathinfo, '/') === '/admin/add_locataire') {
+                return array (  '_controller' => 'Avanzu\\AdminThemeBundle\\Controller\\DefaultController::indexAction',  '_route' => 'admin_document',);
+            }
+
+            if (0 === strpos($pathinfo, '/divers')) {
+                // admin_chat
+                if (rtrim($pathinfo, '/') === '/divers/chat') {
                     if (substr($pathinfo, -1) !== '/') {
-                        return $this->redirect($pathinfo.'/', 'admin_form_locataire');
+                        return $this->redirect($pathinfo.'/', 'admin_chat');
                     }
 
-                    return array (  '_controller' => 'Avanzu\\AdminThemeBundle\\Controller\\DefaultController::addLocataireAction',  '_route' => 'admin_form_locataire',);
+                    return array (  '_controller' => 'Avanzu\\AdminThemeBundle\\Controller\\DefaultController::chatAction',  '_route' => 'admin_chat',);
                 }
 
-                // admin_liste_locataire
-                if (rtrim($pathinfo, '/') === '/admin/liste_locataire') {
+                // admin_mail
+                if (rtrim($pathinfo, '/') === '/divers/mail') {
                     if (substr($pathinfo, -1) !== '/') {
-                        return $this->redirect($pathinfo.'/', 'admin_liste_locataire');
+                        return $this->redirect($pathinfo.'/', 'admin_mail');
                     }
 
-                    return array (  '_controller' => 'Avanzu\\AdminThemeBundle\\Controller\\DefaultController::listeLocataireAction',  '_route' => 'admin_liste_locataire',);
-                }
-
-                // admin_valider_demande
-                if (rtrim($pathinfo, '/') === '/admin/valider') {
-                    if (substr($pathinfo, -1) !== '/') {
-                        return $this->redirect($pathinfo.'/', 'admin_valider_demande');
-                    }
-
-                    return array (  '_controller' => 'Avanzu\\AdminThemeBundle\\Controller\\DefaultController::indexAction',  '_route' => 'admin_valider_demande',);
-                }
-
-                if (0 === strpos($pathinfo, '/admin/d')) {
-                    // admin_document
-                    if (rtrim($pathinfo, '/') === '/admin/documents') {
-                        if (substr($pathinfo, -1) !== '/') {
-                            return $this->redirect($pathinfo.'/', 'admin_document');
-                        }
-
-                        return array (  '_controller' => 'Avanzu\\AdminThemeBundle\\Controller\\DefaultController::indexAction',  '_route' => 'admin_document',);
-                    }
-
-                    if (0 === strpos($pathinfo, '/admin/divers')) {
-                        // admin_chat
-                        if (rtrim($pathinfo, '/') === '/admin/divers/chat') {
-                            if (substr($pathinfo, -1) !== '/') {
-                                return $this->redirect($pathinfo.'/', 'admin_chat');
-                            }
-
-                            return array (  '_controller' => 'Avanzu\\AdminThemeBundle\\Controller\\DefaultController::chatAction',  '_route' => 'admin_chat',);
-                        }
-
-                        // admin_mail
-                        if (rtrim($pathinfo, '/') === '/admin/divers/mail') {
-                            if (substr($pathinfo, -1) !== '/') {
-                                return $this->redirect($pathinfo.'/', 'admin_mail');
-                            }
-
-                            return array (  '_controller' => 'Avanzu\\AdminThemeBundle\\Controller\\DefaultController::mailAction',  '_route' => 'admin_mail',);
-                        }
-
-                    }
-
+                    return array (  '_controller' => 'Avanzu\\AdminThemeBundle\\Controller\\DefaultController::mailAction',  '_route' => 'admin_mail',);
                 }
 
             }

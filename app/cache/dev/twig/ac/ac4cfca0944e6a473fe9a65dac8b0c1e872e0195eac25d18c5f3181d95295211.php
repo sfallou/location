@@ -16,11 +16,12 @@ class __TwigTemplate_a3484e79e85bcf9816ac5f355f53defc3a5db976eda0a8fddb65912989a
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_424c5b8573a123d8d28e77ede4adb483af766302cec2d1c4edabdb8e45af2ef5 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_424c5b8573a123d8d28e77ede4adb483af766302cec2d1c4edabdb8e45af2ef5->enter($__internal_424c5b8573a123d8d28e77ede4adb483af766302cec2d1c4edabdb8e45af2ef5_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "FOSUserBundle::layout.html.twig"));
+        $__internal_7877d2e03c69fa87ba89842707616b65e02bec03b2bb875dc8513dfd90131df6 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_7877d2e03c69fa87ba89842707616b65e02bec03b2bb875dc8513dfd90131df6->enter($__internal_7877d2e03c69fa87ba89842707616b65e02bec03b2bb875dc8513dfd90131df6_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "FOSUserBundle::layout.html.twig"));
 
         // line 1
-        echo "<!DOCTYPE html>
+        echo "
+<!DOCTYPE html>
 <html>
     <head>
         <meta charset=\"UTF-8\" />
@@ -28,24 +29,24 @@ class __TwigTemplate_a3484e79e85bcf9816ac5f355f53defc3a5db976eda0a8fddb65912989a
     <body>
         <div>
             ";
-        // line 8
+        // line 9
         if ($this->env->getExtension('Symfony\Bridge\Twig\Extension\SecurityExtension')->isGranted("IS_AUTHENTICATED_REMEMBERED")) {
-            // line 9
+            // line 10
             echo "                ";
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("layout.logged_in_as", array("%username%" => $this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "user", array()), "username", array())), "FOSUserBundle"), "html", null, true);
             echo " |
                 <a href=\"";
-            // line 10
+            // line 11
             echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("fos_user_security_logout");
             echo "\">
                     ";
-            // line 11
+            // line 12
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("layout.logout", array(), "FOSUserBundle"), "html", null, true);
             echo "
                 </a>
             ";
         } else {
-            // line 14
+            // line 15
             echo "                <a href=\"";
             echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("fos_user_security_login");
             echo "\">";
@@ -53,25 +54,25 @@ class __TwigTemplate_a3484e79e85bcf9816ac5f355f53defc3a5db976eda0a8fddb65912989a
             echo "</a>
             ";
         }
-        // line 16
+        // line 17
         echo "        </div>
 
         ";
-        // line 18
+        // line 19
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable($this->getAttribute($this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "session", array()), "flashBag", array()), "all", array()));
         foreach ($context['_seq'] as $context["type"] => $context["messages"]) {
-            // line 19
+            // line 20
             echo "            ";
             $context['_parent'] = $context;
             $context['_seq'] = twig_ensure_traversable($context["messages"]);
             foreach ($context['_seq'] as $context["_key"] => $context["message"]) {
-                // line 20
+                // line 21
                 echo "                <div class=\"";
                 echo twig_escape_filter($this->env, $context["type"], "html", null, true);
                 echo "\">
                     ";
-                // line 21
+                // line 22
                 echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans($context["message"], array(), "FOSUserBundle"), "html", null, true);
                 echo "
                 </div>
@@ -80,38 +81,38 @@ class __TwigTemplate_a3484e79e85bcf9816ac5f355f53defc3a5db976eda0a8fddb65912989a
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['message'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 24
+            // line 25
             echo "        ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['type'], $context['messages'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 25
+        // line 26
         echo "
         <div>
             ";
-        // line 27
+        // line 28
         $this->displayBlock('fos_user_content', $context, $blocks);
-        // line 29
+        // line 30
         echo "        </div>
     </body>
 </html>
 ";
         
-        $__internal_424c5b8573a123d8d28e77ede4adb483af766302cec2d1c4edabdb8e45af2ef5->leave($__internal_424c5b8573a123d8d28e77ede4adb483af766302cec2d1c4edabdb8e45af2ef5_prof);
+        $__internal_7877d2e03c69fa87ba89842707616b65e02bec03b2bb875dc8513dfd90131df6->leave($__internal_7877d2e03c69fa87ba89842707616b65e02bec03b2bb875dc8513dfd90131df6_prof);
 
     }
 
-    // line 27
+    // line 28
     public function block_fos_user_content($context, array $blocks = array())
     {
-        $__internal_853751623b875c84e3a5863a02eb536ade018752ee46f73153d5e0d8f82e4239 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_853751623b875c84e3a5863a02eb536ade018752ee46f73153d5e0d8f82e4239->enter($__internal_853751623b875c84e3a5863a02eb536ade018752ee46f73153d5e0d8f82e4239_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "fos_user_content"));
+        $__internal_544c8ece8973831e567272693ee72f4bbf0f54bd833f2bff518dd99a16ab28c4 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_544c8ece8973831e567272693ee72f4bbf0f54bd833f2bff518dd99a16ab28c4->enter($__internal_544c8ece8973831e567272693ee72f4bbf0f54bd833f2bff518dd99a16ab28c4_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "fos_user_content"));
 
-        // line 28
+        // line 29
         echo "            ";
         
-        $__internal_853751623b875c84e3a5863a02eb536ade018752ee46f73153d5e0d8f82e4239->leave($__internal_853751623b875c84e3a5863a02eb536ade018752ee46f73153d5e0d8f82e4239_prof);
+        $__internal_544c8ece8973831e567272693ee72f4bbf0f54bd833f2bff518dd99a16ab28c4->leave($__internal_544c8ece8973831e567272693ee72f4bbf0f54bd833f2bff518dd99a16ab28c4_prof);
 
     }
 
@@ -127,7 +128,7 @@ class __TwigTemplate_a3484e79e85bcf9816ac5f355f53defc3a5db976eda0a8fddb65912989a
 
     public function getDebugInfo()
     {
-        return array (  112 => 28,  106 => 27,  96 => 29,  94 => 27,  90 => 25,  84 => 24,  75 => 21,  70 => 20,  65 => 19,  61 => 18,  57 => 16,  49 => 14,  43 => 11,  39 => 10,  34 => 9,  32 => 8,  23 => 1,);
+        return array (  113 => 29,  107 => 28,  97 => 30,  95 => 28,  91 => 26,  85 => 25,  76 => 22,  71 => 21,  66 => 20,  62 => 19,  58 => 17,  50 => 15,  44 => 12,  40 => 11,  35 => 10,  33 => 9,  23 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -140,7 +141,8 @@ class __TwigTemplate_a3484e79e85bcf9816ac5f355f53defc3a5db976eda0a8fddb65912989a
 
     public function getSourceContext()
     {
-        return new Twig_Source("<!DOCTYPE html>
+        return new Twig_Source("
+<!DOCTYPE html>
 <html>
     <head>
         <meta charset=\"UTF-8\" />

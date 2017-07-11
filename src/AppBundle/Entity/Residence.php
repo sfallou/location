@@ -138,4 +138,20 @@ class Residence
     {
         return $this->contact_syndic;
     }
+    /**
+     * @var string
+     */
+    private $contactGardien;
+
+    /**
+     * @var string
+     */
+    private $horaireGardien;
+
+    /**
+     * @var string
+     */
+    private $contactSyndic;
+
+
 }
