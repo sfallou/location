@@ -2,6 +2,10 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\User;
+use AppBundle\Entity\Room;
+use AppBundle\Entity\UserRoom;
+use AppBundle\Entity\Appartement;
 use AppBundle\Entity\Residence;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -66,9 +70,13 @@ class ResidenceController extends Controller
     public function showAction(Residence $residence)
     {
         $deleteForm = $this->createDeleteForm($residence);
+        $em = $this->getDoctrine()->getManager();
+        
+        $apparts = $em->getRepository('AppBundle:Appartement')->findBy(array('id_residence'=>$residence->getId()));
 
         return $this->render('residence/show.html.twig', array(
             'residence' => $residence,
+            'apparts' => $apparts,
             'delete_form' => $deleteForm->createView(),
         ));
     }

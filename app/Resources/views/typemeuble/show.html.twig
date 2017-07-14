@@ -5,27 +5,23 @@
     <div class="box">
             <!-- /.box-header -->
             <div class="box-body">
-              <div style="text-align: center">
-              <a class="btn  bg-navy margin" href="{{ path('typemeuble_index') }}"><i class="fa fa-undo"></i> Back to the list </a> 
-               <a class="btn  bg-navy margin" href="{{ path('typemeuble_edit', { 'id': typemeuble.id }) }}"><i class="fa fa-edit"></i> Edit </a>
-               <a class="btn  bg-navy margin" ><i class="fa fa-trash"></i> Delete </a>
-               
-                <table  class="table table-bordered table-striped">
-                <thead>
-                <tr>
-                  <th>ID </th>
-                  <th>Wording</th>
-                </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td> {{typemeuble.id}} </td>
-                    <td>{{ typeMeuble.name }}</td>
-                  </tr>
-                </tbody>
-              </table>
-              
-            </div>
+                <div >
+                    <div class="page-header"><h4 style="background-color:#f7f7f7; font-size: 18px; text-align: center; padding: 7px 10px; margin-top: 0;">
+                            Informations générales
+                        </h4>
+                    </div>
+                    <div class="col-md-7">
+                            <ul class="list-unstyled">
+                                <li><strong>ID :</strong> {{typemeuble.id}}</li>
+                                <li><strong>Nom :</strong> {{typemeuble.name}}</li>
+                            </ul>
+                    </div>
+                </div>              
         </div>
+    </div>
             
 {% endblock %}
+
+
+{% block page_title %} Type Meuble {% endblock %}
+{% block page_subtitle %} show {% endblock %}

@@ -5,47 +5,271 @@
     <div class="box">
             <!-- /.box-header -->
             <div class="box-body">
-              <div style="text-align: center">
-              <a class="btn  bg-navy margin" href="{{ path('appartement_index') }}"><i class="fa fa-undo"></i> Back to the list </a> 
-               <a class="btn  bg-navy margin" href="{{ path('appartement_edit', { 'id': appartement.id }) }}"><i class="fa fa-edit"></i> Edit </a>
-               <a class="btn  bg-navy margin" ><i class="fa fa-trash"></i> Delete </a>
-               
-                <table  class="table table-bordered table-striped">
-                <thead>
-                <tr>
-                  <th>
-                     Adresse 
-                  </th>
-                  <th>
-                    Référent
-                  </th>
-                  <th>
-                    Wifi
-                  </th>
-                  <th>
-                    Phone
-                  </th>
-                  <th>
-                    Surface
-                  </th>
-                  <th>
-                   RIB
-                  </th>
-                </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td> {{appartement.adresse}} </td>
-                    <td>{{appartement.contactappart}}</td>
-                    <td>{{appartement.wificode}}</td>
-                    <td>{{appartement.phone}}</td>
-                    <td>{{appartement.surface}}</td>
-                    <td>{{appartement.rib}}</td>
-                  </tr>
-                </tbody>
-              </table>
-              
-            </div>
+
+                <div >
+                     <div class="col-md-3">
+                            <a class="btn btn-success" href="{{ path('add_furniture_appart', { 'id': appartement.id }) }}"><i class="fa fa-tv fa-lg"></i> Ajouter Meuble</a>
+                            <br><br>
+                    </div>
+                    <div class="col-md-3">
+                            <a class="btn btn-success" href="{{ path('add_fix_appart', { 'id': appartement.id }) }}"><i class="fa fa-wrench fa-lg"></i> Signaler Réparation</a>
+                            <br><br>
+                    </div>
+                    <div class="col-md-3">
+                            <a class="btn btn-success" href="{{ path('add_furniture_appart', { 'id': appartement.id }) }}"><i class="fa fa-money fa-lg"></i> Ajouter Charge</a>
+                            
+                    </div>
+                    <div class="col-md-3">
+                            <a class="btn btn-success" href="{{ path('add_furniture_appart', { 'id': appartement.id }) }}"><i class="fa fa-info fa-lg"></i> Envoyer une info</a>
+                            
+                    </div>
+                    <br><br>
+                    <div class="page-header"><h4 style="background-color:#f7f7f7; font-size: 18px; text-align: center; padding: 7px 10px; margin-top: 0;">
+                            Informations générales
+                        </h4>
+                    </div>
+                    <div class="col-md-7">
+                            <ul class="list-unstyled">
+                                <li><strong>Adresse :</strong> {{appartement.adresse}}</li>
+                                <li><strong>Surface :</strong> {{appartement.surface}} </li>
+                                <li><strong>Référent :</strong> {{appartement.contactappart}}</li>
+                                <li><strong>Résidence  :</strong> <a href="{{ path('residence_show', { 'id': residence.id }) }}">{{ residence.name }}</a> </li>
+                                 <li><strong>Colocataires :</strong>
+                                 {% for user in users%}
+                                  {% if user.username is defined %}
+                                     <a href="{{ path('user_show', { 'id': user.id }) }}">{{ user.username }}</a> <br>
+                                     {% endif%}
+                                  {% endfor %}
+                                 </li>                            
+                            </ul>
+                    </div>
+                    <div class="col-md-5">
+                            <ul class="list-unstyled">
+                                <li><strong>Code Wifi :</strong> {{appartement.wificode}}</li>
+                                <li><strong>Phone :</strong> {{appartement.phone}}</li>
+                                <li><strong>RIB :</strong> {{appartement.rib}}</li>
+                                <li><strong>Chambres :</strong>
+                                 {% for room in rooms%}
+                                  {% if room.id is defined %}
+                                     <a href="{{ path('room_show', { 'id': room.id }) }}">Room {{ room.id}}</a> <br>
+                                     {% endif%}
+                                  {% endfor %}
+                                </li>
+                            </ul>
+                            <br><br>
+                    </div>
+                    
+                </div>
+                </div>
+                
+                 <div class="page-header">-*-</div>
+                <div >
+                    <div class="page-header"><h4 style="background-color:#f7f7f7; font-size: 18px; text-align: center; padding: 7px 10px; margin-top: 0;">
+                            États des paiements du loyer de l'appartement de l'année 
+                        </h4>
+                    </div>
+                    <div >
+                          <table  class="table table-bordered table-striped">
+                            <thead>
+                              <tr>
+                                <th>User/Mois</th>
+                                <th>Jan</th>
+                                <th>Fév</th>
+                                <th>Mars</th>
+                                <th>Avril</th>
+                                <th>Mai</th>
+                                <th>Juin</th>
+                                <th>Juil</th>
+                                <th>Août</th>
+                                <th>Sept</th>
+                                <th>Oct</th>
+                                <th>Nov</th>
+                                <th>Dec</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                          {% for user in users %}
+                            <tr>
+                                <td>
+                                  {% if user.username is defined %}
+                                     <a href="{{ path('user_show', { 'id': user.id }) }}">{{ user.username }}</a>
+                                  {% endif%}
+                                </td>
+                                <td>X</td>
+                                <td>X</td>
+                                <td>X</td>
+                                <td>X</td>
+                                <td>X</td>
+                                <td>X</td>
+                                <td>X</td>
+                                <td>X</td>
+                                <td>X</td>
+                                <td>X</td>
+                                <td>X</td>
+                                <td>x</td>
+                              </tr>
+                          {% endfor %}
+                          </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="page-header">-*-</div>
+                <div >
+                    <div class="page-header"><h4 style="background-color:#f7f7f7; font-size: 18px; text-align: center; padding: 7px 10px; margin-top: 0;">
+                            Liste des charges de l'année
+                        </h4>
+                    </div>
+                    <div >
+                          <table  class="table table-bordered table-striped">
+                            <thead>
+                              <tr>
+                                <th></th>
+                                <th>Jan</th>
+                                <th>Fév</th>
+                                <th>Mars</th>
+                                <th>Avril</th>
+                                <th>Mai</th>
+                                <th>Juin</th>
+                                <th>Juil</th>
+                                <th>Août</th>
+                                <th>Sept</th>
+                                <th>Oct</th>
+                                <th>Nov</th>
+                                <th>Dec</th>
+                              </tr>
+                          </thead>
+                          <tbody>  
+                           
+                              <tr>
+                                <td>Charges Electricités</td>
+                                <td>X</td>
+                                <td>X</td>
+                                <td>X</td>
+                                <td>X</td>
+                                <td>X</td>
+                                <td>X</td>
+                                <td>X</td>
+                                <td>X</td>
+                                <td>X</td>
+                                <td>X</td>
+                                <td>X</td>
+                                <td>x</td>
+                              </tr>
+                              <tr>
+                                <td>Charges Gaz</td>
+                                <td>X</td>
+                                <td>X</td>
+                                <td>X</td>
+                                <td>X</td>
+                                <td>X</td>
+                                <td>X</td>
+                                <td>X</td>
+                                <td>X</td>
+                                <td>X</td>
+                                <td>X</td>
+                                <td>X</td>
+                                <td>x</td>
+                              </tr>
+                              <tr>
+                                <td>Autres charges</td>
+                                <td>X</td>
+                                <td>X</td>
+                                <td>X</td>
+                                <td>X</td>
+                                <td>X</td>
+                                <td>X</td>
+                                <td>X</td>
+                                <td>X</td>
+                                <td>X</td>
+                                <td>X</td>
+                                <td>X</td>
+                                <td>x</td>
+                              </tr>
+                          </tbody>
+                        </table>
+                    </div>
+                </div>
+                 <div class="page-header">-*-</div>
+                <div >
+                    <div class="page-header"><h4 style="background-color:#f7f7f7; font-size: 18px; text-align: center; padding: 7px 10px; margin-top: 0;">
+                            États des réparations
+                        </h4>
+                    </div>
+                    <div >
+                          <table  class="table table-bordered table-striped">
+                            <thead>
+                              <tr>
+                                <th>Type réparations</th>
+                                <th>Date signalée</th>
+                                <th>Priorité</th>
+                                <th>État</th>
+                                <th>Commentaires</th>
+                                 <th>Actions</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                          {%for typeFix,fix in fixs%}                   
+                            <tr>
+                                <td>{{typeFix}}</td>
+                                <td>{{fix.FixDate|date("m/d/Y")}}</td>
+                                <td>{{fix.FixPriority}}</td>
+                                <td>
+                                  {% if fix.FixState == false %}
+                                  Not done
+                                  {% endif %}
+                                  {% if fix.FixState == true %}
+                                  Done
+                                  {% endif %}
+                                </td>
+                                <td>{{fix.FixComment}}</td>
+                                <td>
+                                  {% if fix.FixState == false %}
+                                  <a class="btn btn-success" href="{{ path('fix_appart_done', { 'id': fix.id }) }}"><i class="fa fa-check fa-lg"></i> Done</a>
+                                  {% endif %}
+                                  {% if fix.FixState == true %}
+                                  <a class="btn btn-success" href="{{ path('fix_appart_undone', { 'id': fix.id }) }}"><i class="fa fa-times fa-lg"></i> Undone</a>
+                                  {% endif %}
+                                  <a class="btn btn-danger" href="#"><i class="fa fa-trash-o fa-lg"></i> Delete</a> 
+                             </td>
+                            </tr>
+                          {%endfor%}                   
+                          </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="page-header">-*-</div>
+                <div >
+                    <div class="page-header"><h4 style="background-color:#f7f7f7; font-size: 18px; text-align: center; padding: 7px 10px; margin-top: 0;">
+                            Liste des meubles
+                        </h4>
+                    </div>
+                    <div >
+                          <table  class="table table-bordered table-striped">
+                            <thead>
+                              <tr>
+                                <th>Id Meuble</th>
+                                <th>Nom</th>
+                                <th>Actions</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                          {% for meuble in meubles%}                   
+                            <tr>
+                                <td>{{meuble.id}}</td>
+                                <td>{{meuble.name}}</td>
+                                <td>  <a class="btn btn-danger" href="#"><i class="fa fa-trash-o fa-lg"></i> Delete</a> 
+                                </td>
+                            </tr> 
+                            {% endfor %}                    
+                          </tbody>
+                        </table>
+                    </div>
+                </div>
         </div>
-            
+    </div>
+    
 {% endblock %}
+
+{% block page_title %} Appartement {% endblock %}
+{% block page_subtitle %} show {% endblock %}
+

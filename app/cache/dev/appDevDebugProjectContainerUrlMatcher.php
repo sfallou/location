@@ -189,12 +189,289 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
         }
         not_user_validated:
 
+        // add_furniture_appart
+        if (preg_match('#^/(?P<id>[^/]++)/add_furniture_appart$#s', $pathinfo, $matches)) {
+            if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                goto not_add_furniture_appart;
+            }
+
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'add_furniture_appart')), array (  '_controller' => 'AppBundle\\Controller\\AssociationController::addFurnitureAppartAction',));
+        }
+        not_add_furniture_appart:
+
+        // add_fix_appart
+        if (preg_match('#^/(?P<id>[^/]++)/add_fix_appart$#s', $pathinfo, $matches)) {
+            if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                goto not_add_fix_appart;
+            }
+
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'add_fix_appart')), array (  '_controller' => 'AppBundle\\Controller\\AssociationController::addFixAppartAction',));
+        }
+        not_add_fix_appart:
+
+        // fix_appart_done
+        if (preg_match('#^/(?P<id>[^/]++)/fix_appart_done$#s', $pathinfo, $matches)) {
+            if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                goto not_fix_appart_done;
+            }
+
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'fix_appart_done')), array (  '_controller' => 'AppBundle\\Controller\\AssociationController::fixAppartDoneAction',));
+        }
+        not_fix_appart_done:
+
+        // fix_appart_undone
+        if (preg_match('#^/(?P<id>[^/]++)/fix_appart_undone$#s', $pathinfo, $matches)) {
+            if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                goto not_fix_appart_undone;
+            }
+
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'fix_appart_undone')), array (  '_controller' => 'AppBundle\\Controller\\AssociationController::fixAppartUndoneAction',));
+        }
+        not_fix_appart_undone:
+
+        // add_furniture_room
+        if (preg_match('#^/(?P<id>[^/]++)/add_furniture_room$#s', $pathinfo, $matches)) {
+            if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                goto not_add_furniture_room;
+            }
+
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'add_furniture_room')), array (  '_controller' => 'AppBundle\\Controller\\AssociationController::addFurnitureRoomAction',));
+        }
+        not_add_furniture_room:
+
+        // add_fix_room
+        if (preg_match('#^/(?P<id>[^/]++)/add_fix_room$#s', $pathinfo, $matches)) {
+            if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                goto not_add_fix_room;
+            }
+
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'add_fix_room')), array (  '_controller' => 'AppBundle\\Controller\\AssociationController::addFixRoomAction',));
+        }
+        not_add_fix_room:
+
+        // fix_room_done
+        if (preg_match('#^/(?P<id>[^/]++)/fix_room_done$#s', $pathinfo, $matches)) {
+            if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                goto not_fix_room_done;
+            }
+
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'fix_room_done')), array (  '_controller' => 'AppBundle\\Controller\\AssociationController::fixRoomDoneAction',));
+        }
+        not_fix_room_done:
+
+        // fix_room_undone
+        if (preg_match('#^/(?P<id>[^/]++)/fix_room_undone$#s', $pathinfo, $matches)) {
+            if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                goto not_fix_room_undone;
+            }
+
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'fix_room_undone')), array (  '_controller' => 'AppBundle\\Controller\\AssociationController::fixRoomUndoneAction',));
+        }
+        not_fix_room_undone:
+
         // homepage
         if ($pathinfo === '/default') {
             return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::indexAction',  '_route' => 'homepage',);
         }
 
+        if (0 === strpos($pathinfo, '/fix')) {
+            if (0 === strpos($pathinfo, '/fixappartement')) {
+                // fixappartement_index
+                if (rtrim($pathinfo, '/') === '/fixappartement') {
+                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'HEAD'));
+                        goto not_fixappartement_index;
+                    }
+
+                    if (substr($pathinfo, -1) !== '/') {
+                        return $this->redirect($pathinfo.'/', 'fixappartement_index');
+                    }
+
+                    return array (  '_controller' => 'AppBundle\\Controller\\FixAppartementController::indexAction',  '_route' => 'fixappartement_index',);
+                }
+                not_fixappartement_index:
+
+                // fixappartement_new
+                if ($pathinfo === '/fixappartement/new') {
+                    if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                        goto not_fixappartement_new;
+                    }
+
+                    return array (  '_controller' => 'AppBundle\\Controller\\FixAppartementController::newAction',  '_route' => 'fixappartement_new',);
+                }
+                not_fixappartement_new:
+
+                // fixappartement_show
+                if (preg_match('#^/fixappartement/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'HEAD'));
+                        goto not_fixappartement_show;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'fixappartement_show')), array (  '_controller' => 'AppBundle\\Controller\\FixAppartementController::showAction',));
+                }
+                not_fixappartement_show:
+
+                // fixappartement_edit
+                if (preg_match('#^/fixappartement/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                    if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                        goto not_fixappartement_edit;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'fixappartement_edit')), array (  '_controller' => 'AppBundle\\Controller\\FixAppartementController::editAction',));
+                }
+                not_fixappartement_edit:
+
+                // fixappartement_delete
+                if (preg_match('#^/fixappartement/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    if ($this->context->getMethod() != 'DELETE') {
+                        $allow[] = 'DELETE';
+                        goto not_fixappartement_delete;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'fixappartement_delete')), array (  '_controller' => 'AppBundle\\Controller\\FixAppartementController::deleteAction',));
+                }
+                not_fixappartement_delete:
+
+            }
+
+            if (0 === strpos($pathinfo, '/fixroom')) {
+                // fixroom_index
+                if (rtrim($pathinfo, '/') === '/fixroom') {
+                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'HEAD'));
+                        goto not_fixroom_index;
+                    }
+
+                    if (substr($pathinfo, -1) !== '/') {
+                        return $this->redirect($pathinfo.'/', 'fixroom_index');
+                    }
+
+                    return array (  '_controller' => 'AppBundle\\Controller\\FixRoomController::indexAction',  '_route' => 'fixroom_index',);
+                }
+                not_fixroom_index:
+
+                // fixroom_new
+                if ($pathinfo === '/fixroom/new') {
+                    if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                        goto not_fixroom_new;
+                    }
+
+                    return array (  '_controller' => 'AppBundle\\Controller\\FixRoomController::newAction',  '_route' => 'fixroom_new',);
+                }
+                not_fixroom_new:
+
+                // fixroom_show
+                if (preg_match('#^/fixroom/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'HEAD'));
+                        goto not_fixroom_show;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'fixroom_show')), array (  '_controller' => 'AppBundle\\Controller\\FixRoomController::showAction',));
+                }
+                not_fixroom_show:
+
+                // fixroom_edit
+                if (preg_match('#^/fixroom/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                    if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                        goto not_fixroom_edit;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'fixroom_edit')), array (  '_controller' => 'AppBundle\\Controller\\FixRoomController::editAction',));
+                }
+                not_fixroom_edit:
+
+                // fixroom_delete
+                if (preg_match('#^/fixroom/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    if ($this->context->getMethod() != 'DELETE') {
+                        $allow[] = 'DELETE';
+                        goto not_fixroom_delete;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'fixroom_delete')), array (  '_controller' => 'AppBundle\\Controller\\FixRoomController::deleteAction',));
+                }
+                not_fixroom_delete:
+
+            }
+
+        }
+
         if (0 === strpos($pathinfo, '/meuble')) {
+            if (0 === strpos($pathinfo, '/meubleappartement')) {
+                // meubleappartement_index
+                if (rtrim($pathinfo, '/') === '/meubleappartement') {
+                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'HEAD'));
+                        goto not_meubleappartement_index;
+                    }
+
+                    if (substr($pathinfo, -1) !== '/') {
+                        return $this->redirect($pathinfo.'/', 'meubleappartement_index');
+                    }
+
+                    return array (  '_controller' => 'AppBundle\\Controller\\MeubleAppartementController::indexAction',  '_route' => 'meubleappartement_index',);
+                }
+                not_meubleappartement_index:
+
+                // meubleappartement_new
+                if ($pathinfo === '/meubleappartement/new') {
+                    if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                        goto not_meubleappartement_new;
+                    }
+
+                    return array (  '_controller' => 'AppBundle\\Controller\\MeubleAppartementController::newAction',  '_route' => 'meubleappartement_new',);
+                }
+                not_meubleappartement_new:
+
+                // meubleappartement_show
+                if (preg_match('#^/meubleappartement/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'HEAD'));
+                        goto not_meubleappartement_show;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'meubleappartement_show')), array (  '_controller' => 'AppBundle\\Controller\\MeubleAppartementController::showAction',));
+                }
+                not_meubleappartement_show:
+
+                // meubleappartement_edit
+                if (preg_match('#^/meubleappartement/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                    if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                        goto not_meubleappartement_edit;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'meubleappartement_edit')), array (  '_controller' => 'AppBundle\\Controller\\MeubleAppartementController::editAction',));
+                }
+                not_meubleappartement_edit:
+
+                // meubleappartement_delete
+                if (preg_match('#^/meubleappartement/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    if ($this->context->getMethod() != 'DELETE') {
+                        $allow[] = 'DELETE';
+                        goto not_meubleappartement_delete;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'meubleappartement_delete')), array (  '_controller' => 'AppBundle\\Controller\\MeubleAppartementController::deleteAction',));
+                }
+                not_meubleappartement_delete:
+
+            }
+
             // meuble_index
             if (rtrim($pathinfo, '/') === '/meuble') {
                 if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
@@ -253,6 +530,68 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'meuble_delete')), array (  '_controller' => 'AppBundle\\Controller\\MeubleController::deleteAction',));
             }
             not_meuble_delete:
+
+            if (0 === strpos($pathinfo, '/meubleroom')) {
+                // meubleroom_index
+                if (rtrim($pathinfo, '/') === '/meubleroom') {
+                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'HEAD'));
+                        goto not_meubleroom_index;
+                    }
+
+                    if (substr($pathinfo, -1) !== '/') {
+                        return $this->redirect($pathinfo.'/', 'meubleroom_index');
+                    }
+
+                    return array (  '_controller' => 'AppBundle\\Controller\\MeubleRoomController::indexAction',  '_route' => 'meubleroom_index',);
+                }
+                not_meubleroom_index:
+
+                // meubleroom_new
+                if ($pathinfo === '/meubleroom/new') {
+                    if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                        goto not_meubleroom_new;
+                    }
+
+                    return array (  '_controller' => 'AppBundle\\Controller\\MeubleRoomController::newAction',  '_route' => 'meubleroom_new',);
+                }
+                not_meubleroom_new:
+
+                // meubleroom_show
+                if (preg_match('#^/meubleroom/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'HEAD'));
+                        goto not_meubleroom_show;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'meubleroom_show')), array (  '_controller' => 'AppBundle\\Controller\\MeubleRoomController::showAction',));
+                }
+                not_meubleroom_show:
+
+                // meubleroom_edit
+                if (preg_match('#^/meubleroom/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                    if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                        goto not_meubleroom_edit;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'meubleroom_edit')), array (  '_controller' => 'AppBundle\\Controller\\MeubleRoomController::editAction',));
+                }
+                not_meubleroom_edit:
+
+                // meubleroom_delete
+                if (preg_match('#^/meubleroom/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    if ($this->context->getMethod() != 'DELETE') {
+                        $allow[] = 'DELETE';
+                        goto not_meubleroom_delete;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'meubleroom_delete')), array (  '_controller' => 'AppBundle\\Controller\\MeubleRoomController::deleteAction',));
+                }
+                not_meubleroom_delete:
+
+            }
 
         }
 
@@ -383,65 +722,130 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
 
         }
 
-        if (0 === strpos($pathinfo, '/typemeuble')) {
-            // typemeuble_index
-            if (rtrim($pathinfo, '/') === '/typemeuble') {
-                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
-                    $allow = array_merge($allow, array('GET', 'HEAD'));
-                    goto not_typemeuble_index;
-                }
+        if (0 === strpos($pathinfo, '/type')) {
+            if (0 === strpos($pathinfo, '/typefix')) {
+                // typefix_index
+                if (rtrim($pathinfo, '/') === '/typefix') {
+                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'HEAD'));
+                        goto not_typefix_index;
+                    }
 
-                if (substr($pathinfo, -1) !== '/') {
-                    return $this->redirect($pathinfo.'/', 'typemeuble_index');
-                }
+                    if (substr($pathinfo, -1) !== '/') {
+                        return $this->redirect($pathinfo.'/', 'typefix_index');
+                    }
 
-                return array (  '_controller' => 'AppBundle\\Controller\\TypeMeubleController::indexAction',  '_route' => 'typemeuble_index',);
+                    return array (  '_controller' => 'AppBundle\\Controller\\TypeFixController::indexAction',  '_route' => 'typefix_index',);
+                }
+                not_typefix_index:
+
+                // typefix_new
+                if ($pathinfo === '/typefix/new') {
+                    if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                        goto not_typefix_new;
+                    }
+
+                    return array (  '_controller' => 'AppBundle\\Controller\\TypeFixController::newAction',  '_route' => 'typefix_new',);
+                }
+                not_typefix_new:
+
+                // typefix_show
+                if (preg_match('#^/typefix/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'HEAD'));
+                        goto not_typefix_show;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'typefix_show')), array (  '_controller' => 'AppBundle\\Controller\\TypeFixController::showAction',));
+                }
+                not_typefix_show:
+
+                // typefix_edit
+                if (preg_match('#^/typefix/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                    if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                        goto not_typefix_edit;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'typefix_edit')), array (  '_controller' => 'AppBundle\\Controller\\TypeFixController::editAction',));
+                }
+                not_typefix_edit:
+
+                // typefix_delete
+                if (preg_match('#^/typefix/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    if ($this->context->getMethod() != 'DELETE') {
+                        $allow[] = 'DELETE';
+                        goto not_typefix_delete;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'typefix_delete')), array (  '_controller' => 'AppBundle\\Controller\\TypeFixController::deleteAction',));
+                }
+                not_typefix_delete:
+
             }
-            not_typemeuble_index:
 
-            // typemeuble_new
-            if ($pathinfo === '/typemeuble/new') {
-                if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
-                    $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
-                    goto not_typemeuble_new;
+            if (0 === strpos($pathinfo, '/typemeuble')) {
+                // typemeuble_index
+                if (rtrim($pathinfo, '/') === '/typemeuble') {
+                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'HEAD'));
+                        goto not_typemeuble_index;
+                    }
+
+                    if (substr($pathinfo, -1) !== '/') {
+                        return $this->redirect($pathinfo.'/', 'typemeuble_index');
+                    }
+
+                    return array (  '_controller' => 'AppBundle\\Controller\\TypeMeubleController::indexAction',  '_route' => 'typemeuble_index',);
                 }
+                not_typemeuble_index:
 
-                return array (  '_controller' => 'AppBundle\\Controller\\TypeMeubleController::newAction',  '_route' => 'typemeuble_new',);
-            }
-            not_typemeuble_new:
+                // typemeuble_new
+                if ($pathinfo === '/typemeuble/new') {
+                    if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                        goto not_typemeuble_new;
+                    }
 
-            // typemeuble_show
-            if (preg_match('#^/typemeuble/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
-                    $allow = array_merge($allow, array('GET', 'HEAD'));
-                    goto not_typemeuble_show;
+                    return array (  '_controller' => 'AppBundle\\Controller\\TypeMeubleController::newAction',  '_route' => 'typemeuble_new',);
                 }
+                not_typemeuble_new:
 
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'typemeuble_show')), array (  '_controller' => 'AppBundle\\Controller\\TypeMeubleController::showAction',));
-            }
-            not_typemeuble_show:
+                // typemeuble_show
+                if (preg_match('#^/typemeuble/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'HEAD'));
+                        goto not_typemeuble_show;
+                    }
 
-            // typemeuble_edit
-            if (preg_match('#^/typemeuble/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
-                if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
-                    $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
-                    goto not_typemeuble_edit;
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'typemeuble_show')), array (  '_controller' => 'AppBundle\\Controller\\TypeMeubleController::showAction',));
                 }
+                not_typemeuble_show:
 
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'typemeuble_edit')), array (  '_controller' => 'AppBundle\\Controller\\TypeMeubleController::editAction',));
-            }
-            not_typemeuble_edit:
+                // typemeuble_edit
+                if (preg_match('#^/typemeuble/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                    if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                        goto not_typemeuble_edit;
+                    }
 
-            // typemeuble_delete
-            if (preg_match('#^/typemeuble/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                if ($this->context->getMethod() != 'DELETE') {
-                    $allow[] = 'DELETE';
-                    goto not_typemeuble_delete;
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'typemeuble_edit')), array (  '_controller' => 'AppBundle\\Controller\\TypeMeubleController::editAction',));
                 }
+                not_typemeuble_edit:
 
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'typemeuble_delete')), array (  '_controller' => 'AppBundle\\Controller\\TypeMeubleController::deleteAction',));
+                // typemeuble_delete
+                if (preg_match('#^/typemeuble/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    if ($this->context->getMethod() != 'DELETE') {
+                        $allow[] = 'DELETE';
+                        goto not_typemeuble_delete;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'typemeuble_delete')), array (  '_controller' => 'AppBundle\\Controller\\TypeMeubleController::deleteAction',));
+                }
+                not_typemeuble_delete:
+
             }
-            not_typemeuble_delete:
 
         }
 
@@ -575,7 +979,7 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                 return $this->redirect($pathinfo.'/', 'login');
             }
 
-            return array (  '_controller' => 'Avanzu\\AdminThemeBundle\\Controller\\DefaultController::loginAction',  '_route' => 'login',);
+            return array (  '_controller' => 'Avanzu\\AdminThemeBundle\\Controller\\DefaultController::dashboardAction',  '_route' => 'login',);
         }
 
         // admin

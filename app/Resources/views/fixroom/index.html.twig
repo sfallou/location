@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Fixrooms list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Roomid</th>
+                <th>Fixid</th>
+                <th>Fixdate</th>
+                <th>Fixstate</th>
+                <th>Fixpriority</th>
+                <th>Fixcomment</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for fixRoom in fixRooms %}
+            <tr>
+                <td><a href="{{ path('fixroom_show', { 'id': fixRoom.id }) }}">{{ fixRoom.id }}</a></td>
+                <td>{{ fixRoom.roomId }}</td>
+                <td>{{ fixRoom.fixId }}</td>
+                <td>{% if fixRoom.fixDate %}{{ fixRoom.fixDate|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if fixRoom.fixState %}Yes{% else %}No{% endif %}</td>
+                <td>{% if fixRoom.fixPriority %}Yes{% else %}No{% endif %}</td>
+                <td>{{ fixRoom.fixComment }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('fixroom_show', { 'id': fixRoom.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('fixroom_edit', { 'id': fixRoom.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('fixroom_new') }}">Create a new fixRoom</a>
+        </li>
+    </ul>
+{% endblock %}

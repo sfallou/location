@@ -45,12 +45,35 @@
             </div>
 
         </div>
-        <div class="col-md-6">
+         <div class="col-md-6">
             <div class="box box-solid box-primary">
-                {{ macro.box_header('Infos', true, false, 'primary') }}
-                <div class="box-body">
-                    <img src="{{ asset('bundles/app/images/appartement.jpg') }}" width="100%" height="100%">
-                </div>
+                {{ macro.box_header('Choix Résidence', true, false, 'primary') }}
+                <br>
+                
+               
+                    <div>
+                        <h4 style="background-color:#f7f7f7; font-size: 18px; text-align: center; padding: 7px 10px; margin-top: 0;">
+                            
+                        </h4>
+                        
+                        <table  class="table table-bordered table-striped">        
+                                <thead>
+                                <tr>
+                                    <th>Id Résidence</th>
+                                    <th>Nom</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                        {%for residence in residences%}
+
+                                    <tr>
+                                        <td><a href="{{ path('residence_show', { 'id': residence.id }) }}">{{ residence.id }}</a></td>
+                                        <td>{{ residence.name }}</td>
+                                    </tr>
+                            {%endfor%}
+                                </tbody>
+                            </table>
+                    </div>           
             </div>
         </div>
     </div>

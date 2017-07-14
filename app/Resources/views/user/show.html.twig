@@ -11,14 +11,14 @@
                         </h4></div>
                         <div class="col-md-7">
                             <ul class="list-unstyled">
-                                <li><strong>ID :</strong> {{user.id}}</li>
-                                <li><strong>Profil :</strong> {{user.id}}</li>
+                                <li><strong>ID User:</strong> {{user.id}}</li>
+                                <li><strong>Profil :</strong> </li>
                                 <li><strong>Username :</strong> {{user.username}}</li>
                                 <li><strong>Prénom :</strong> </li>
                                 <li><strong>Nom :</strong> </li>               
                                 <li><strong>Email :</strong> {{user.email}}</li>
-                                <li><strong>Téléphone :</strong> {{user.email}}</li>
-                                <li><strong>Contact Garant :</strong> {{user.email}}</li>
+                                <li><strong>Téléphone :</strong> </li>
+                                <li><strong>Contact Garant :</strong> </li>
                             </ul>
                         </div>
                         <div class="col-md-5 ">
@@ -27,56 +27,141 @@
                                 <br><br>
                             </div>           
                         </div>
-                        
+                        <div class="page-header">-*-</div>
                         <div class="page-header"><h4 style="background-color:#f7f7f7; font-size: 18px; text-align: center; padding: 7px 10px; margin-top: 0;">
                             Informations sur la colocation
                         </h4>
                         </div>
                         <div class="col-md-7">
                             <ul class="list-unstyled">
-                                <li><strong>Adresse Appartement :</strong> {{user.id}}</li>
-                                <li><strong>Surface Appartement :</strong> {{user.id}}</li>
-                                <li><strong>Responsable Coloc :</strong> {{user.email}}</li>
-                                <li><strong>Contact Gardien :</strong> {{user.email}}</li>
-                                <li><strong>Horaire Gardien :</strong> {{user.email}}</li>
-                                <li><strong>Contact Syndic :</strong> {{user.email}}</li>
+                                <li><strong>Adresse Appartement :</strong> <a href="{{ path('appartement_show', { 'id': appart.id }) }}">{{ appart.adresse }}</a></li>
+                                <li><strong>Surface Appartement :</strong> {{appart.surface}}</li>
+                                <li><strong>Responsable Coloc :</strong> {{appart.contactAppart}}</li>
+                                <li><strong>Contact Gardien :</strong> {{residence.contactGardien}}</li>
+                                <li><strong>Horaire Gardien :</strong> {{residence.horaireGardien}} </li>
+                                <li><strong>Contact Syndic :</strong> {{residence.contactSyndic}} </li>
                             </ul>
                         </div>
                         <div class="col-md-5 ">
                             <ul class="list-unstyled">
-                                <li><strong>N° Chambre :</strong> {{user.username}}</li>
-                                <li><strong>Surface Chambre :</strong> {{user.username}}</li>
-                                <li><strong>Date d'entrée :</strong> {{user.id}}</li>
-                                <li><strong>Date de sortie :</strong> {{user.username}}</li>
-                                <li><strong>Prix Loyer :</strong> </li>
-                                <li><strong>Caution :</strong> </li>               
+                                <li><strong>N° Chambre :</strong> <a href="{{ path('room_show', { 'id': room.id }) }}">{{ room.id }}</a></li>
+                                <li><strong>Surface Chambre :</strong> {{room.surface}} </li>
+                                <li><strong>Date d'entrée :</strong> {{user_room.userRoomDateIn|date('d-m-Y')}}</li>
+                                <li><strong>Date de sortie :</strong> {{user_room.userRoomDateOut|date('d-m-Y')}}</li>
+                                <li><strong>Prix Loyer :</strong> {{room.rent}} euros </li>
+                                <li><strong>Caution :</strong> {{room.guarantee}} euros</li>               
                             </ul>
                              <br><br>
                         </div>
-
+                </div>
+                <div class="page-header">-*-</div>
+                <div >
+                    <div class="page-header"><h4 style="background-color:#f7f7f7; font-size: 18px; text-align: center; padding: 7px 10px; margin-top: 0;">
+                            États des paiements du loyer de l'année 2017
+                        </h4>
+                    </div>
+                    <div >
+                          <table  class="table table-bordered table-striped">
+                            <thead>
+                              <tr>
+                                <th></th>
+                                <th>Jan</th>
+                                <th>Fév</th>
+                                <th>Mars</th>
+                                <th>Avril</th>
+                                <th>Mai</th>
+                                <th>Juin</th>
+                                <th>Juil</th>
+                                <th>Août</th>
+                                <th>Sept</th>
+                                <th>Oct</th>
+                                <th>Nov</th>
+                                <th>Dec</th>
+                              </tr>
+                          </thead>
+                          <tbody>  
+                            <tr>
+                                <td>Loyer</td>
+                                <td>X</td>
+                                <td>X</td>
+                                <td>X</td>
+                                <td>X</td>
+                                <td>X</td>
+                                <td>X</td>
+                                <td>X</td>
+                                <td>X</td>
+                                <td>X</td>
+                                <td>X</td>
+                                <td>X</td>
+                                <td>x</td>
+                              </tr>
+                              <tr>
+                                <td>Charges EDF</td>
+                                <td>X</td>
+                                <td>X</td>
+                                <td>X</td>
+                                <td>X</td>
+                                <td>X</td>
+                                <td>X</td>
+                                <td>X</td>
+                                <td>X</td>
+                                <td>X</td>
+                                <td>X</td>
+                                <td>X</td>
+                                <td>x</td>
+                              </tr>
+                              <tr>
+                                <td>Charge Eau</td>
+                                <td>X</td>
+                                <td>X</td>
+                                <td>X</td>
+                                <td>X</td>
+                                <td>X</td>
+                                <td>X</td>
+                                <td>X</td>
+                                <td>X</td>
+                                <td>X</td>
+                                <td>X</td>
+                                <td>X</td>
+                                <td>x</td>
+                              </tr>
+                              <tr>
+                                <td>Autres charge</td>
+                                <td>X</td>
+                                <td>X</td>
+                                <td>X</td>
+                                <td>X</td>
+                                <td>X</td>
+                                <td>X</td>
+                                <td>X</td>
+                                <td>X</td>
+                                <td>X</td>
+                                <td>X</td>
+                                <td>X</td>
+                                <td>x</td>
+                              </tr>
+                          </tbody>
+                        </table>
+                    </div>
+                </div>
+                 <div class="page-header">-*-</div>
                         <div class="page-header"><h4 style="background-color:#f7f7f7; font-size: 18px; text-align: center; padding: 7px 10px; margin-top: 0;">
-                            Informations sur les colocs et charges collectives
+                            Documents à télécharger
                         </h4>
                         </div>
-                        <div class="col-md-7">
+                        <div class="col-md-7 ">
                             <ul class="list-unstyled">
-                                <li><strong>Colocataires :</strong> {{user.id}}</li>
-                                <li><strong>Charge EDF :</strong> {{user.id}}</li>
-                                <li><strong>Charge Eau :</strong> {{user.email}}</li>
-                                <li><strong>Charge X :</strong> {{user.email}}</li>
+                                <a><li><strong>Bail :</strong> </li></a>
+                                <a><li><strong>Quittances de loyers :</strong> </li></a>   
+                                <a><li><strong>Facture Téléphone :</strong> </li></a>
+                                <a><li><strong>Facture d'éléctricité :</strong> </li></a>
+                                        
                             </ul>
                         </div>
-                        <div class="col-md-5 ">
-                            <ul class="list-unstyled">
-                                <li><strong>Bail :</strong> {{user.username}}</li>
-                                <li><strong>Facture Téléphone :</strong> {{user.username}}</li>
-                                <li><strong>Facture d'éléctricité :</strong> {{user.id}}</li>
-                                <li><strong>Quittances de loyers :</strong> {{user.username}}</li>           
-                            </ul>
-                        </div>
-                </div>
-              
             </div>
         </div>
             
 {% endblock %}
+
+{% block page_title %} Users {% endblock %}
+{% block page_subtitle %} show {% endblock %}

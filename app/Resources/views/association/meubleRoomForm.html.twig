@@ -1,0 +1,74 @@
+{% extends 'AvanzuAdminThemeBundle:layout:base-layout.html.twig' %}
+
+{% block page_content %}
+
+    <div class="row">
+        <div class="col-md-4">
+
+
+        </div>
+        <div class="col-md-4">
+
+        </div>
+        <div class="col-md-4">
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+
+            <div class="box box-primary">
+                <div class="box-body">
+                {{ form_start(form) }}
+                        {{ form_widget(form) }}
+                    
+                </div>
+                <div class="box-footer clearfix">
+
+                        <button type="reset" class="btn btn-warning pull-left"><i class="fa fa-times"></i> Cancel</button>
+                        <button type="submit" class="btn btn-primary pull-right"><i class="fa fa-check-square"></i> Submit</button>
+
+                        {{ form_end(form) }}
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-6">
+            <div class="box box-solid box-primary">
+                {{ macro.box_header('Choix Meuble', true, false, 'primary') }}
+                <br>
+                
+                    <div>
+                        <h4 style="background-color:#f7f7f7; font-size: 18px; text-align: center; padding: 7px 10px; margin-top: 0;">
+                            
+                        </h4>
+                        
+                        <table  class="table table-bordered table-striped">        
+                                <thead>
+                                <tr>
+                                    <th>Id Meuble</th>
+                                    <th>Name</th>
+                                    
+                                </tr>
+                                </thead>
+                                <tbody>
+                        {%for meuble in meubles%}
+
+                                    <tr>
+                                        <td><a href="{{ path('meuble_show', { 'id': meuble.id }) }}">{{ meuble.id }}</a></td>
+                                        <td>{{ meuble.name }}</td>
+                                    </tr>
+                            {%endfor%}
+                                </tbody>
+                            </table>
+                    </div>           
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
+
+{% block page_title %} Add Furniture in Room  {% endblock %}
+{% block page_subtitle %} form {% endblock %}

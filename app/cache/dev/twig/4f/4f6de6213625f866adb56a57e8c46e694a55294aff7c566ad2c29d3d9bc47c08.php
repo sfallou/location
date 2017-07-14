@@ -23,20 +23,20 @@ class __TwigTemplate_21c8eabb9cc518733410dff7cdf0a39db62a61576f710852c471ae97268
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_5f06fbea1452bb84c93730fded3dbf9068419a19958beaf7758b0d3d753ffa1f = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_5f06fbea1452bb84c93730fded3dbf9068419a19958beaf7758b0d3d753ffa1f->enter($__internal_5f06fbea1452bb84c93730fded3dbf9068419a19958beaf7758b0d3d753ffa1f_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "appartement/new.html.twig"));
+        $__internal_a57775513312357bedcbcd6a690a01aed8b3be72f33923b4e3c356cea2caf6f1 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_a57775513312357bedcbcd6a690a01aed8b3be72f33923b4e3c356cea2caf6f1->enter($__internal_a57775513312357bedcbcd6a690a01aed8b3be72f33923b4e3c356cea2caf6f1_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "appartement/new.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_5f06fbea1452bb84c93730fded3dbf9068419a19958beaf7758b0d3d753ffa1f->leave($__internal_5f06fbea1452bb84c93730fded3dbf9068419a19958beaf7758b0d3d753ffa1f_prof);
+        $__internal_a57775513312357bedcbcd6a690a01aed8b3be72f33923b4e3c356cea2caf6f1->leave($__internal_a57775513312357bedcbcd6a690a01aed8b3be72f33923b4e3c356cea2caf6f1_prof);
 
     }
 
     // line 3
     public function block_page_content($context, array $blocks = array())
     {
-        $__internal_87a9806acc02b4735619505dfb35a09a075152f444980032e078b0bcabeaee23 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_87a9806acc02b4735619505dfb35a09a075152f444980032e078b0bcabeaee23->enter($__internal_87a9806acc02b4735619505dfb35a09a075152f444980032e078b0bcabeaee23_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "page_content"));
+        $__internal_aaaa5bf008b9cd287fffdf364de491cd22356d17ca365aef1e21b7d0da8ed56c = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_aaaa5bf008b9cd287fffdf364de491cd22356d17ca365aef1e21b7d0da8ed56c->enter($__internal_aaaa5bf008b9cd287fffdf364de491cd22356d17ca365aef1e21b7d0da8ed56c_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "page_content"));
 
         // line 4
         echo "
@@ -109,18 +109,56 @@ class __TwigTemplate_21c8eabb9cc518733410dff7cdf0a39db62a61576f710852c471ae97268
             </div>
 
         </div>
-        <div class=\"col-md-6\">
+         <div class=\"col-md-6\">
             <div class=\"box box-solid box-primary\">
                 ";
         // line 50
-        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["macro"]) ? $context["macro"] : $this->getContext($context, "macro")), "box_header", array(0 => "Infos", 1 => true, 2 => false, 3 => "primary"), "method"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["macro"]) ? $context["macro"] : $this->getContext($context, "macro")), "box_header", array(0 => "Choix Résidence", 1 => true, 2 => false, 3 => "primary"), "method"), "html", null, true);
         echo "
-                <div class=\"box-body\">
-                    <img src=\"";
-        // line 52
-        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("bundles/app/images/appartement.jpg"), "html", null, true);
-        echo "\" width=\"100%\" height=\"100%\">
-                </div>
+                <br>
+                
+               
+                    <div>
+                        <h4 style=\"background-color:#f7f7f7; font-size: 18px; text-align: center; padding: 7px 10px; margin-top: 0;\">
+                            
+                        </h4>
+                        
+                        <table  class=\"table table-bordered table-striped\">        
+                                <thead>
+                                <tr>
+                                    <th>Id Résidence</th>
+                                    <th>Nom</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                        ";
+        // line 67
+        $context['_parent'] = $context;
+        $context['_seq'] = twig_ensure_traversable((isset($context["residences"]) ? $context["residences"] : $this->getContext($context, "residences")));
+        foreach ($context['_seq'] as $context["_key"] => $context["residence"]) {
+            // line 68
+            echo "
+                                    <tr>
+                                        <td><a href=\"";
+            // line 70
+            echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("residence_show", array("id" => $this->getAttribute($context["residence"], "id", array()))), "html", null, true);
+            echo "\">";
+            echo twig_escape_filter($this->env, $this->getAttribute($context["residence"], "id", array()), "html", null, true);
+            echo "</a></td>
+                                        <td>";
+            // line 71
+            echo twig_escape_filter($this->env, $this->getAttribute($context["residence"], "name", array()), "html", null, true);
+            echo "</td>
+                                    </tr>
+                            ";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['residence'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 74
+        echo "                                </tbody>
+                            </table>
+                    </div>           
             </div>
         </div>
     </div>
@@ -128,31 +166,31 @@ class __TwigTemplate_21c8eabb9cc518733410dff7cdf0a39db62a61576f710852c471ae97268
 
 ";
         
-        $__internal_87a9806acc02b4735619505dfb35a09a075152f444980032e078b0bcabeaee23->leave($__internal_87a9806acc02b4735619505dfb35a09a075152f444980032e078b0bcabeaee23_prof);
+        $__internal_aaaa5bf008b9cd287fffdf364de491cd22356d17ca365aef1e21b7d0da8ed56c->leave($__internal_aaaa5bf008b9cd287fffdf364de491cd22356d17ca365aef1e21b7d0da8ed56c_prof);
 
     }
 
-    // line 61
+    // line 84
     public function block_page_title($context, array $blocks = array())
     {
-        $__internal_77ad9463d8fbb1c8d3b13400768590d0be9b415f1a59b46226608f1d1cbb3b38 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_77ad9463d8fbb1c8d3b13400768590d0be9b415f1a59b46226608f1d1cbb3b38->enter($__internal_77ad9463d8fbb1c8d3b13400768590d0be9b415f1a59b46226608f1d1cbb3b38_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "page_title"));
+        $__internal_b28ec6431ab0984ec708cd97fc19c81d171d512aa31f4ee061d8f9894a4bc6bf = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_b28ec6431ab0984ec708cd97fc19c81d171d512aa31f4ee061d8f9894a4bc6bf->enter($__internal_b28ec6431ab0984ec708cd97fc19c81d171d512aa31f4ee061d8f9894a4bc6bf_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "page_title"));
 
         echo " Appartment ";
         
-        $__internal_77ad9463d8fbb1c8d3b13400768590d0be9b415f1a59b46226608f1d1cbb3b38->leave($__internal_77ad9463d8fbb1c8d3b13400768590d0be9b415f1a59b46226608f1d1cbb3b38_prof);
+        $__internal_b28ec6431ab0984ec708cd97fc19c81d171d512aa31f4ee061d8f9894a4bc6bf->leave($__internal_b28ec6431ab0984ec708cd97fc19c81d171d512aa31f4ee061d8f9894a4bc6bf_prof);
 
     }
 
-    // line 62
+    // line 85
     public function block_page_subtitle($context, array $blocks = array())
     {
-        $__internal_b65c8b788c6594fab5462c3b1914627ccf1dd04141154fddd0d7ca3978421812 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_b65c8b788c6594fab5462c3b1914627ccf1dd04141154fddd0d7ca3978421812->enter($__internal_b65c8b788c6594fab5462c3b1914627ccf1dd04141154fddd0d7ca3978421812_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "page_subtitle"));
+        $__internal_710976e176926216cbe1e5835603e9af168a2b74ca524cdb5ae224222cced9c5 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_710976e176926216cbe1e5835603e9af168a2b74ca524cdb5ae224222cced9c5->enter($__internal_710976e176926216cbe1e5835603e9af168a2b74ca524cdb5ae224222cced9c5_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "page_subtitle"));
 
         echo " add new appartement ";
         
-        $__internal_b65c8b788c6594fab5462c3b1914627ccf1dd04141154fddd0d7ca3978421812->leave($__internal_b65c8b788c6594fab5462c3b1914627ccf1dd04141154fddd0d7ca3978421812_prof);
+        $__internal_710976e176926216cbe1e5835603e9af168a2b74ca524cdb5ae224222cced9c5->leave($__internal_710976e176926216cbe1e5835603e9af168a2b74ca524cdb5ae224222cced9c5_prof);
 
     }
 
@@ -168,7 +206,7 @@ class __TwigTemplate_21c8eabb9cc518733410dff7cdf0a39db62a61576f710852c471ae97268
 
     public function getDebugInfo()
     {
-        return array (  148 => 62,  136 => 61,  121 => 52,  116 => 50,  104 => 41,  93 => 33,  89 => 32,  67 => 12,  63 => 10,  54 => 8,  50 => 7,  47 => 6,  45 => 5,  42 => 4,  36 => 3,  11 => 1,);
+        return array (  186 => 85,  174 => 84,  159 => 74,  150 => 71,  144 => 70,  140 => 68,  136 => 67,  116 => 50,  104 => 41,  93 => 33,  89 => 32,  67 => 12,  63 => 10,  54 => 8,  50 => 7,  47 => 6,  45 => 5,  42 => 4,  36 => 3,  11 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -228,12 +266,35 @@ class __TwigTemplate_21c8eabb9cc518733410dff7cdf0a39db62a61576f710852c471ae97268
             </div>
 
         </div>
-        <div class=\"col-md-6\">
+         <div class=\"col-md-6\">
             <div class=\"box box-solid box-primary\">
-                {{ macro.box_header('Infos', true, false, 'primary') }}
-                <div class=\"box-body\">
-                    <img src=\"{{ asset('bundles/app/images/appartement.jpg') }}\" width=\"100%\" height=\"100%\">
-                </div>
+                {{ macro.box_header('Choix Résidence', true, false, 'primary') }}
+                <br>
+                
+               
+                    <div>
+                        <h4 style=\"background-color:#f7f7f7; font-size: 18px; text-align: center; padding: 7px 10px; margin-top: 0;\">
+                            
+                        </h4>
+                        
+                        <table  class=\"table table-bordered table-striped\">        
+                                <thead>
+                                <tr>
+                                    <th>Id Résidence</th>
+                                    <th>Nom</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                        {%for residence in residences%}
+
+                                    <tr>
+                                        <td><a href=\"{{ path('residence_show', { 'id': residence.id }) }}\">{{ residence.id }}</a></td>
+                                        <td>{{ residence.name }}</td>
+                                    </tr>
+                            {%endfor%}
+                                </tbody>
+                            </table>
+                    </div>           
             </div>
         </div>
     </div>

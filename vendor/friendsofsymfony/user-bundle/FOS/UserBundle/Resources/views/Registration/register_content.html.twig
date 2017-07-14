@@ -1,51 +1,8 @@
-{% extends 'AvanzuAdminThemeBundle:layout:base-layout.html.twig' %}
+{% trans_default_domain 'FOSUserBundle' %}
 
-{% block page_content %}
-
-    {% if app.session.flashBag.has('success') %}
-        <div class="alert alert-success">
-            {% for msg in app.session.flashBag.get('success') %}
-                {{ msg }}
-            {% endfor %}
-        </div>
-    {% endif %}
-
-    <div class="row">
-        <div class="col-md-4">
-
-
-        </div>
-        <div class="col-md-4">
-
-        </div>
-        <div class="col-md-4">
-
-        </div>
+{{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+    {{ form_widget(form) }}
+    <div>
+        <input type="submit" value="{{ 'registration.submit'|trans }}" />
     </div>
-
-    <div class="row">
-        <div class="col-md-6">
-
-            <div class="box box-primary"> 
-                <div class="box-body">
-                    <form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register">
-    				{{ form_widget(form) }}
-   				 	<div>
-       				 	<input type="submit" value="{{ 'registration.submit'|trans({}, 'FOSUserBundle') }}" />
-    				</div>
-					</form>
-                </div>
-               
-            </div>
-
-        </div>
-       
-    </div>
-
-
-{% endblock %}
-
-{% block page_title %} Registration {% endblock %}
-{% block page_subtitle %} add new user {% endblock %}
-
-
+{{ form_end(form) }}

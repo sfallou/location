@@ -62,8 +62,8 @@ class SidebarSetupMenuDemoListener
         $docs->addChild(new MenuItemModel('bail', 'Contrat Bail', 'admin_document', $earg))
             ->addChild(new MenuItemModel('facture', 'Facture', 'admin_document', $earg));
 
-        $divers->addChild(new MenuItemModel('chat', 'Chat', 'admin_chat', $earg,  'fa fa-send-o'))
-            ->addChild(new MenuItemModel('message_general', 'Message Broadcast', 'admin_mail', $earg,  'fa fa-envelope'));
+        $divers->addChild(new MenuItemModel('liste_type_fix', 'Fix Types', 'typefix_index', $earg,  'fa fa-navicon'))
+            ->addChild(new MenuItemModel('new_type_fix', 'New Fix Types', 'typefix_new', $earg,  'fa fa-plus'));
 
         return $this->activateByRoute($request->get('_route'), $rootItems);
 

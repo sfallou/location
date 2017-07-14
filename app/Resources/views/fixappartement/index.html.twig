@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Fixappartements list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Appartid</th>
+                <th>Fixid</th>
+                <th>Fixdate</th>
+                <th>Fixstate</th>
+                <th>Fixpriority</th>
+                <th>Fixcomment</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for fixAppartement in fixAppartements %}
+            <tr>
+                <td><a href="{{ path('fixappartement_show', { 'id': fixAppartement.id }) }}">{{ fixAppartement.id }}</a></td>
+                <td>{{ fixAppartement.appartId }}</td>
+                <td>{{ fixAppartement.fixId }}</td>
+                <td>{% if fixAppartement.fixDate %}{{ fixAppartement.fixDate|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if fixAppartement.fixState %}Yes{% else %}No{% endif %}</td>
+                <td>{% if fixAppartement.fixPriority %}Yes{% else %}No{% endif %}</td>
+                <td>{{ fixAppartement.fixComment }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('fixappartement_show', { 'id': fixAppartement.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('fixappartement_edit', { 'id': fixAppartement.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('fixappartement_new') }}">Create a new fixAppartement</a>
+        </li>
+    </ul>
+{% endblock %}

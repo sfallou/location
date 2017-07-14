@@ -2,7 +2,15 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\User;
+use AppBundle\Entity\Room;
+use AppBundle\Entity\UserRoom;
 use AppBundle\Entity\Appartement;
+use AppBundle\Entity\Residence;
+use AppBundle\Entity\MeubleAppartement;
+use AppBundle\Entity\Meuble;
+use AppBundle\Entity\FixAppartement;
+use AppBundle\Entity\Fix;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
@@ -39,6 +47,10 @@ class AppartementController extends Controller
      */
     public function newAction(Request $request)
     {
+        $em = $this->getDoctrine()->getManager();
+        
+        $residences = $em->getRepository('AppBundle:Residence')->findAll();
+
         $appartement = new Appartement();
         $form = $this->createForm('AppBundle\Form\AppartementType', $appartement);
         $form->handleRequest($request);
@@ -57,6 +69,7 @@ class AppartementController extends Controller
 
         return $this->render('appartement/new.html.twig', array(
             'appartement' => $appartement,
+            'residences' =>$residences,
             'form' => $form->createView(),
         ));
     }
@@ -71,8 +84,55 @@ class AppartementController extends Controller
     {
         $deleteForm = $this->createDeleteForm($appartement);
 
+        $users = array();
+        $rooms = null;
+        $meubles = null;
+        $meubles_apparts = array();
+        $fixs = null;
+        $fix_apparts = array();
+        $em = $this->getDoctrine()->getManager();
+        
+        $rooms = $em->getRepository('AppBundle:Room')->findBy(array('id'=>$appartement->getId()));
+        if ($rooms){
+            foreach ($rooms as $room ) {
+                $user_room = $em->getRepository('AppBundle:UserRoom')->findOneBy(array('roomId'=>$room->getId()));
+                if ($user_room){
+                    $user = $em->getRepository('AppBundle:User')->findOneBy(array('id'=>$user_room->getUserId()));
+                    $users[] = $user;
+                }
+            }
+        }
+        $residence = $em->getRepository('AppBundle:Residence')->findOneBy(array('id'=>$appartement->getIdResidence()));
+       
+        $meubles = $em->getRepository('AppBundle:MeubleAppartement')->findBy(array('appartId'=>$appartement->getId()));
+       
+        if ($meubles){
+            foreach ($meubles as $meuble ) {
+                $meubles_apparts[] = $em->getRepository('AppBundle:Meuble')->findOneBy(array('id'=>$meuble->getMeubleId()));
+            }
+        }
+
+        $fixs = $em->getRepository('AppBundle:FixAppartement')->findBy(array('appartId'=>$appartement->getId()));
+        
+        if ($fixs){
+            foreach ($fixs as $fix ) {
+                $type =  $em->getRepository('AppBundle:TypeFix')->findOneBy(array('id'=>$fix->getFixId()));
+                $fix_apparts[$type->getName()] = $fix;
+            }
+        }
+       /*foreach ($apparts as $appart){
+            $rooms = $em->getRepository('AppBundle:Room')->findBy(array('id_appart'=>$appart->getId()));
+            $resultats[$appart->getAdresse()] = $rooms;
+        }
+        */
+
         return $this->render('appartement/show.html.twig', array(
             'appartement' => $appartement,
+            'residence' => $residence,
+            'rooms' => $rooms,
+            'users' => $users,
+            'meubles' => $meubles_apparts,
+            'fixs' => $fix_apparts,
             'delete_form' => $deleteForm->createView(),
         ));
     }

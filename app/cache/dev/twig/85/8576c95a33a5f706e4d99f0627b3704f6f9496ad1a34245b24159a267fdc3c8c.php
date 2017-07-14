@@ -23,20 +23,20 @@ class __TwigTemplate_20c48d12b9e8acb9fe76450a590d41ca35cbf595ca74a6d50970c1c2e8e
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_4fb9d29df371eeb1c63ccccdc8483c0e123f74231cf6a66a2d1cce51baf9f023 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_4fb9d29df371eeb1c63ccccdc8483c0e123f74231cf6a66a2d1cce51baf9f023->enter($__internal_4fb9d29df371eeb1c63ccccdc8483c0e123f74231cf6a66a2d1cce51baf9f023_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "room/new.html.twig"));
+        $__internal_3fdb4d048a30b1091b4fe710290c825fe29ff474211b191927cac9daa87cdee7 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_3fdb4d048a30b1091b4fe710290c825fe29ff474211b191927cac9daa87cdee7->enter($__internal_3fdb4d048a30b1091b4fe710290c825fe29ff474211b191927cac9daa87cdee7_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "room/new.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_4fb9d29df371eeb1c63ccccdc8483c0e123f74231cf6a66a2d1cce51baf9f023->leave($__internal_4fb9d29df371eeb1c63ccccdc8483c0e123f74231cf6a66a2d1cce51baf9f023_prof);
+        $__internal_3fdb4d048a30b1091b4fe710290c825fe29ff474211b191927cac9daa87cdee7->leave($__internal_3fdb4d048a30b1091b4fe710290c825fe29ff474211b191927cac9daa87cdee7_prof);
 
     }
 
     // line 3
     public function block_page_content($context, array $blocks = array())
     {
-        $__internal_fc2c2161a438b86549c9bc90ce3521ae2a6dff31fc4ea25b36757cc04543c072 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_fc2c2161a438b86549c9bc90ce3521ae2a6dff31fc4ea25b36757cc04543c072->enter($__internal_fc2c2161a438b86549c9bc90ce3521ae2a6dff31fc4ea25b36757cc04543c072_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "page_content"));
+        $__internal_00ce04ec40dd40ece20177702244ff34f44169495dc31426d012fa511ffb42ba = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_00ce04ec40dd40ece20177702244ff34f44169495dc31426d012fa511ffb42ba->enter($__internal_00ce04ec40dd40ece20177702244ff34f44169495dc31426d012fa511ffb42ba_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "page_content"));
 
         // line 4
         echo "
@@ -113,14 +113,52 @@ class __TwigTemplate_20c48d12b9e8acb9fe76450a590d41ca35cbf595ca74a6d50970c1c2e8e
             <div class=\"box box-solid box-primary\">
                 ";
         // line 50
-        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["macro"]) ? $context["macro"] : $this->getContext($context, "macro")), "box_header", array(0 => "Infos", 1 => true, 2 => false, 3 => "primary"), "method"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["macro"]) ? $context["macro"] : $this->getContext($context, "macro")), "box_header", array(0 => "Choix Appartement", 1 => true, 2 => false, 3 => "primary"), "method"), "html", null, true);
         echo "
-                <div class=\"box-body\">
-                    <img src=\"";
-        // line 52
-        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("bundles/app/images/room.jpg"), "html", null, true);
-        echo "\" width=\"100%\" height=\"100%\">
-                </div>
+                <br>
+                
+               
+                    <div>
+                        <h4 style=\"background-color:#f7f7f7; font-size: 18px; text-align: center; padding: 7px 10px; margin-top: 0;\">
+                            
+                        </h4>
+                        
+                        <table  class=\"table table-bordered table-striped\">        
+                                <thead>
+                                <tr>
+                                    <th>Id Appartement</th>
+                                    <th>Adresse</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                        ";
+        // line 67
+        $context['_parent'] = $context;
+        $context['_seq'] = twig_ensure_traversable((isset($context["apparts"]) ? $context["apparts"] : $this->getContext($context, "apparts")));
+        foreach ($context['_seq'] as $context["_key"] => $context["appart"]) {
+            // line 68
+            echo "
+                                    <tr>
+                                        <td><a href=\"";
+            // line 70
+            echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("appartement_show", array("id" => $this->getAttribute($context["appart"], "id", array()))), "html", null, true);
+            echo "\">";
+            echo twig_escape_filter($this->env, $this->getAttribute($context["appart"], "id", array()), "html", null, true);
+            echo "</a></td>
+                                        <td>";
+            // line 71
+            echo twig_escape_filter($this->env, $this->getAttribute($context["appart"], "adresse", array()), "html", null, true);
+            echo "</td>
+                                    </tr>
+                            ";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['appart'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 74
+        echo "                                </tbody>
+                            </table>
+                    </div>           
             </div>
         </div>
     </div>
@@ -128,31 +166,31 @@ class __TwigTemplate_20c48d12b9e8acb9fe76450a590d41ca35cbf595ca74a6d50970c1c2e8e
 
 ";
         
-        $__internal_fc2c2161a438b86549c9bc90ce3521ae2a6dff31fc4ea25b36757cc04543c072->leave($__internal_fc2c2161a438b86549c9bc90ce3521ae2a6dff31fc4ea25b36757cc04543c072_prof);
+        $__internal_00ce04ec40dd40ece20177702244ff34f44169495dc31426d012fa511ffb42ba->leave($__internal_00ce04ec40dd40ece20177702244ff34f44169495dc31426d012fa511ffb42ba_prof);
 
     }
 
-    // line 61
+    // line 84
     public function block_page_title($context, array $blocks = array())
     {
-        $__internal_dcebe8c481956d2ac3d66b01677b0fafccc3b1a86c40b10bc9de84a99010280a = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_dcebe8c481956d2ac3d66b01677b0fafccc3b1a86c40b10bc9de84a99010280a->enter($__internal_dcebe8c481956d2ac3d66b01677b0fafccc3b1a86c40b10bc9de84a99010280a_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "page_title"));
+        $__internal_40829c2b3fc20b6ed503377a11d9025d733fc465e8613f0cce65705016ffafb3 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_40829c2b3fc20b6ed503377a11d9025d733fc465e8613f0cce65705016ffafb3->enter($__internal_40829c2b3fc20b6ed503377a11d9025d733fc465e8613f0cce65705016ffafb3_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "page_title"));
 
-        echo " Appartment ";
+        echo " Room ";
         
-        $__internal_dcebe8c481956d2ac3d66b01677b0fafccc3b1a86c40b10bc9de84a99010280a->leave($__internal_dcebe8c481956d2ac3d66b01677b0fafccc3b1a86c40b10bc9de84a99010280a_prof);
+        $__internal_40829c2b3fc20b6ed503377a11d9025d733fc465e8613f0cce65705016ffafb3->leave($__internal_40829c2b3fc20b6ed503377a11d9025d733fc465e8613f0cce65705016ffafb3_prof);
 
     }
 
-    // line 62
+    // line 85
     public function block_page_subtitle($context, array $blocks = array())
     {
-        $__internal_2f49f74af5b32294368f38fe8d7f405abb446222eae5c2d538334ac32c01145e = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_2f49f74af5b32294368f38fe8d7f405abb446222eae5c2d538334ac32c01145e->enter($__internal_2f49f74af5b32294368f38fe8d7f405abb446222eae5c2d538334ac32c01145e_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "page_subtitle"));
+        $__internal_d84ce9273f75c37e5ff7c8152d6fc6d32fb78f54cec4a4bc3e45fab4dd721125 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_d84ce9273f75c37e5ff7c8152d6fc6d32fb78f54cec4a4bc3e45fab4dd721125->enter($__internal_d84ce9273f75c37e5ff7c8152d6fc6d32fb78f54cec4a4bc3e45fab4dd721125_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "page_subtitle"));
 
         echo " add new room ";
         
-        $__internal_2f49f74af5b32294368f38fe8d7f405abb446222eae5c2d538334ac32c01145e->leave($__internal_2f49f74af5b32294368f38fe8d7f405abb446222eae5c2d538334ac32c01145e_prof);
+        $__internal_d84ce9273f75c37e5ff7c8152d6fc6d32fb78f54cec4a4bc3e45fab4dd721125->leave($__internal_d84ce9273f75c37e5ff7c8152d6fc6d32fb78f54cec4a4bc3e45fab4dd721125_prof);
 
     }
 
@@ -168,7 +206,7 @@ class __TwigTemplate_20c48d12b9e8acb9fe76450a590d41ca35cbf595ca74a6d50970c1c2e8e
 
     public function getDebugInfo()
     {
-        return array (  148 => 62,  136 => 61,  121 => 52,  116 => 50,  104 => 41,  93 => 33,  89 => 32,  67 => 12,  63 => 10,  54 => 8,  50 => 7,  47 => 6,  45 => 5,  42 => 4,  36 => 3,  11 => 1,);
+        return array (  186 => 85,  174 => 84,  159 => 74,  150 => 71,  144 => 70,  140 => 68,  136 => 67,  116 => 50,  104 => 41,  93 => 33,  89 => 32,  67 => 12,  63 => 10,  54 => 8,  50 => 7,  47 => 6,  45 => 5,  42 => 4,  36 => 3,  11 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -230,10 +268,33 @@ class __TwigTemplate_20c48d12b9e8acb9fe76450a590d41ca35cbf595ca74a6d50970c1c2e8e
         </div>
         <div class=\"col-md-6\">
             <div class=\"box box-solid box-primary\">
-                {{ macro.box_header('Infos', true, false, 'primary') }}
-                <div class=\"box-body\">
-                    <img src=\"{{ asset('bundles/app/images/room.jpg') }}\" width=\"100%\" height=\"100%\">
-                </div>
+                {{ macro.box_header('Choix Appartement', true, false, 'primary') }}
+                <br>
+                
+               
+                    <div>
+                        <h4 style=\"background-color:#f7f7f7; font-size: 18px; text-align: center; padding: 7px 10px; margin-top: 0;\">
+                            
+                        </h4>
+                        
+                        <table  class=\"table table-bordered table-striped\">        
+                                <thead>
+                                <tr>
+                                    <th>Id Appartement</th>
+                                    <th>Adresse</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                        {%for appart in apparts%}
+
+                                    <tr>
+                                        <td><a href=\"{{ path('appartement_show', { 'id': appart.id }) }}\">{{ appart.id }}</a></td>
+                                        <td>{{ appart.adresse }}</td>
+                                    </tr>
+                            {%endfor%}
+                                </tbody>
+                            </table>
+                    </div>           
             </div>
         </div>
     </div>
@@ -241,7 +302,7 @@ class __TwigTemplate_20c48d12b9e8acb9fe76450a590d41ca35cbf595ca74a6d50970c1c2e8e
 
 {% endblock %}
 
-{% block page_title %} Appartment {% endblock %}
+{% block page_title %} Room {% endblock %}
 {% block page_subtitle %} add new room {% endblock %}
 ", "room/new.html.twig", "/Users/sfallou/Sites/kokou/location/app/Resources/views/room/new.html.twig");
     }

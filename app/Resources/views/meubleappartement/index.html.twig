@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Meubleappartements list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Appartid</th>
+                <th>Meubleid</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for meubleAppartement in meubleAppartements %}
+            <tr>
+                <td><a href="{{ path('meubleappartement_show', { 'id': meubleAppartement.id }) }}">{{ meubleAppartement.id }}</a></td>
+                <td>{{ meubleAppartement.appartId }}</td>
+                <td>{{ meubleAppartement.meubleId }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('meubleappartement_show', { 'id': meubleAppartement.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('meubleappartement_edit', { 'id': meubleAppartement.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('meubleappartement_new') }}">Create a new meubleAppartement</a>
+        </li>
+    </ul>
+{% endblock %}

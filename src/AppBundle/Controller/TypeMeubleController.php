@@ -52,7 +52,7 @@ class TypeMeubleController extends Controller
         }
 
         return $this->render('typemeuble/new.html.twig', array(
-            'typeMeuble' => $typeMeuble,
+            'typemeuble' => $typeMeuble,
             'form' => $form->createView(),
         ));
     }
@@ -68,7 +68,7 @@ class TypeMeubleController extends Controller
         $deleteForm = $this->createDeleteForm($typeMeuble);
 
         return $this->render('typemeuble/show.html.twig', array(
-            'typeMeuble' => $typeMeuble,
+            'typemeuble' => $typeMeuble,
             'delete_form' => $deleteForm->createView(),
         ));
     }

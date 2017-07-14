@@ -2,7 +2,13 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\User;
+use AppBundle\Entity\Room;
+use AppBundle\Entity\UserRoom;
+use AppBundle\Entity\Appartement;
+use AppBundle\Entity\Residence;
 use AppBundle\Entity\Meuble;
+use AppBundle\Entity\TypeMeuble;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
@@ -39,6 +45,10 @@ class MeubleController extends Controller
      */
     public function newAction(Request $request)
     {
+        $em = $this->getDoctrine()->getManager();
+        
+        $type_meubles = $em->getRepository('AppBundle:TypeMeuble')->findAll();
+
         $meuble = new Meuble();
         $form = $this->createForm('AppBundle\Form\MeubleType', $meuble);
         $form->handleRequest($request);
@@ -53,6 +63,7 @@ class MeubleController extends Controller
 
         return $this->render('meuble/new.html.twig', array(
             'meuble' => $meuble,
+            'type_meubles' => $type_meubles,
             'form' => $form->createView(),
         ));
     }
@@ -66,9 +77,11 @@ class MeubleController extends Controller
     public function showAction(Meuble $meuble)
     {
         $deleteForm = $this->createDeleteForm($meuble);
-
+        $em = $this->getDoctrine()->getManager();
+        $type_meuble = $em->getRepository('AppBundle:TypeMeuble')->findOneBy(array('id'=>$meuble->getIdType()));
         return $this->render('meuble/show.html.twig', array(
             'meuble' => $meuble,
+            'type_meuble' => $type_meuble,
             'delete_form' => $deleteForm->createView(),
         ));
     }

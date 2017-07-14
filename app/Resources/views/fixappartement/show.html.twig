@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Fixappartement</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ fixAppartement.id }}</td>
+            </tr>
+            <tr>
+                <th>Appartid</th>
+                <td>{{ fixAppartement.appartId }}</td>
+            </tr>
+            <tr>
+                <th>Fixid</th>
+                <td>{{ fixAppartement.fixId }}</td>
+            </tr>
+            <tr>
+                <th>Fixdate</th>
+                <td>{% if fixAppartement.fixDate %}{{ fixAppartement.fixDate|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Fixstate</th>
+                <td>{% if fixAppartement.fixState %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Fixpriority</th>
+                <td>{% if fixAppartement.fixPriority %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Fixcomment</th>
+                <td>{{ fixAppartement.fixComment }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('fixappartement_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('fixappartement_edit', { 'id': fixAppartement.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

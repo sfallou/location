@@ -3,6 +3,10 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\User;
+use AppBundle\Entity\Room;
+use AppBundle\Entity\UserRoom;
+use AppBundle\Entity\Appartement;
+use AppBundle\Entity\Residence;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
@@ -69,8 +73,21 @@ class UserController extends Controller
     {
         $deleteForm = $this->createDeleteForm($user);
 
+        $em = $this->getDoctrine()->getManager();
+        
+        $user_room = $em->getRepository('AppBundle:UserRoom')->findOneBy(array('userId'=>$user->getId()));
+        $room = $em->getRepository('AppBundle:Room')->findOneBy(array('id'=>$user_room->getRoomId()));
+        $appart = $em->getRepository('AppBundle:Appartement')->findOneBy(array('id'=>$room->getIdAppart()));
+        $residence = $em->getRepository('AppBundle:Residence')->findOneBy(array('id'=>$appart->getIdResidence()));
+        
+
+       
         return $this->render('user/show.html.twig', array(
             'user' => $user,
+            'room' => $room,
+            'user_room' => $user_room,
+            'appart' => $appart,
+            'residence' => $residence,
             'delete_form' => $deleteForm->createView(),
         ));
     }

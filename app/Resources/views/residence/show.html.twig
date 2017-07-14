@@ -5,46 +5,38 @@
     <div class="box">
             <!-- /.box-header -->
             <div class="box-body">
-              <div style="text-align: center">
-              <a class="btn  bg-navy margin" href="{{ path('residence_index') }}"><i class="fa fa-undo"></i> Back to the list </a> 
-               <a class="btn  bg-navy margin" href="{{ path('residence_edit', { 'id': residence.id }) }}"><i class="fa fa-edit"></i> Edit </a>
-               <a class="btn  bg-navy margin" ><i class="fa fa-trash"></i> Delete </a>
-               
-                <table  class="table table-bordered table-striped">
-                <thead>
-                <tr>
-                  <th>
-                     ID 
-                  </th>
-                  <th>
-                    Name
-                  </th>
-                  <th>
-                    Contact Gardien
-                  </th>
-                  <th>
-                    Horaire Gardien
-                  </th>
-                  <th>
-                    Contact Syndic
-                  </th>
-                </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td> {{residence.id}} </td>
-                    <td>{{residence.name}}</td>
-                    <td>{{residence.contactgardien}}</td>
-                    <td>{{residence.horairegardien}}</td>
-                    <td>{{residence.contactsyndic}}</td>
-                  </tr>
-                </tbody>
-              </table>
-              
-            </div>
+                <div >
+                    <div class="page-header"><h4 style="background-color:#f7f7f7; font-size: 18px; text-align: center; padding: 7px 10px; margin-top: 0;">
+                            Informations générales
+                        </h4>
+                    </div>
+                    <div class="col-md-7">
+                            <ul class="list-unstyled">
+                                <li><strong>ID :</strong> {{residence.id}}</li>
+                                <li><strong>Nom :</strong> {{residence.name}}</li>
+                                <li><strong>Contact Gardien :</strong> {{residence.contactgardien}} </li>
+                                <li><strong>Horaire Gardien :</strong> {{residence.horairegardien}}</li>
+                            </ul>
+                    </div>
+                    <div class="col-md-5">
+                        <ul class="list-unstyled">
+                            <li><strong>Contact Syndic :</strong> {{residence.contactsyndic}}</li>
+                                <li><strong>Appartements :</strong>
+                                 {% for appart in apparts%}
+                                  {% if appart.id is defined %}
+                                     <a href="{{ path('appartement_show', { 'id': appart.id }) }}">{{appart.adresse}}</a> <br>
+                                     {% endif%}
+                                  {% endfor %}
+                                </li> 
+                          </ul>
+                    </div>
+                </div>              
         </div>
+    </div>
             
 {% endblock %}
 
+{% block page_title %} Résidence {% endblock %}
+{% block page_subtitle %} show {% endblock %}
 
 

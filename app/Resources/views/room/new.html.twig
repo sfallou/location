@@ -47,10 +47,33 @@
         </div>
         <div class="col-md-6">
             <div class="box box-solid box-primary">
-                {{ macro.box_header('Infos', true, false, 'primary') }}
-                <div class="box-body">
-                    <img src="{{ asset('bundles/app/images/room.jpg') }}" width="100%" height="100%">
-                </div>
+                {{ macro.box_header('Choix Appartement', true, false, 'primary') }}
+                <br>
+                
+               
+                    <div>
+                        <h4 style="background-color:#f7f7f7; font-size: 18px; text-align: center; padding: 7px 10px; margin-top: 0;">
+                            
+                        </h4>
+                        
+                        <table  class="table table-bordered table-striped">        
+                                <thead>
+                                <tr>
+                                    <th>Id Appartement</th>
+                                    <th>Adresse</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                        {%for appart in apparts%}
+
+                                    <tr>
+                                        <td><a href="{{ path('appartement_show', { 'id': appart.id }) }}">{{ appart.id }}</a></td>
+                                        <td>{{ appart.adresse }}</td>
+                                    </tr>
+                            {%endfor%}
+                                </tbody>
+                            </table>
+                    </div>           
             </div>
         </div>
     </div>
@@ -58,5 +81,5 @@
 
 {% endblock %}
 
-{% block page_title %} Appartment {% endblock %}
+{% block page_title %} Room {% endblock %}
 {% block page_subtitle %} add new room {% endblock %}

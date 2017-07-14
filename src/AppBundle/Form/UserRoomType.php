@@ -13,7 +13,12 @@ class UserRoomType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('userId')->add('roomId')->add('userRoomDateIn')->add('userRoomDateOut')->add('userRoomRent')->add('userRoomGuarantee');
+        $builder->add('userId')
+                ->add('roomId')
+                ->add('userRoomDateIn','date',array('label' => 'Date entrée','widget' => 'single_text','required'=>false))
+                ->add('userRoomDateOut','date',array('label' => 'Date sortie','widget' => 'single_text','required'=>false))
+                ->add('userRoomRent')
+                ->add('userRoomGuarantee');
     }
     
     /**
