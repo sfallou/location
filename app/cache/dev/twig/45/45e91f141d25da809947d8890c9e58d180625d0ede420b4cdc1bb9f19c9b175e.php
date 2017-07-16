@@ -21,20 +21,20 @@ class __TwigTemplate_e37885380b30b117fd78f0cfbad423af7df67fd339122eee2b9d346b13b
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_3fa2084f28fc6e1e154f6a1d7e3d1f408c681a54fbb1067d0f3d61a4df0ef693 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_3fa2084f28fc6e1e154f6a1d7e3d1f408c681a54fbb1067d0f3d61a4df0ef693->enter($__internal_3fa2084f28fc6e1e154f6a1d7e3d1f408c681a54fbb1067d0f3d61a4df0ef693_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", ":fixroom:new.html.twig"));
+        $__internal_0386a7f0a5170dfbd50be34506ea3840ace8040fb4bde171a21b01f651daecdd = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_0386a7f0a5170dfbd50be34506ea3840ace8040fb4bde171a21b01f651daecdd->enter($__internal_0386a7f0a5170dfbd50be34506ea3840ace8040fb4bde171a21b01f651daecdd_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", ":fixroom:new.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_3fa2084f28fc6e1e154f6a1d7e3d1f408c681a54fbb1067d0f3d61a4df0ef693->leave($__internal_3fa2084f28fc6e1e154f6a1d7e3d1f408c681a54fbb1067d0f3d61a4df0ef693_prof);
+        $__internal_0386a7f0a5170dfbd50be34506ea3840ace8040fb4bde171a21b01f651daecdd->leave($__internal_0386a7f0a5170dfbd50be34506ea3840ace8040fb4bde171a21b01f651daecdd_prof);
 
     }
 
     // line 3
     public function block_body($context, array $blocks = array())
     {
-        $__internal_4262130c911ef5f99f8c15b5af64b09bb0dc449fcd3004de8578a8d51c785b1c = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_4262130c911ef5f99f8c15b5af64b09bb0dc449fcd3004de8578a8d51c785b1c->enter($__internal_4262130c911ef5f99f8c15b5af64b09bb0dc449fcd3004de8578a8d51c785b1c_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_8c3d754cea312e9a029780f9c034e725e9fe00b712dbb1253ae588173962e9b8 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_8c3d754cea312e9a029780f9c034e725e9fe00b712dbb1253ae588173962e9b8->enter($__internal_8c3d754cea312e9a029780f9c034e725e9fe00b712dbb1253ae588173962e9b8_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 4
         echo "    <h1>Fixroom creation</h1>
@@ -63,7 +63,7 @@ class __TwigTemplate_e37885380b30b117fd78f0cfbad423af7df67fd339122eee2b9d346b13b
     </ul>
 ";
         
-        $__internal_4262130c911ef5f99f8c15b5af64b09bb0dc449fcd3004de8578a8d51c785b1c->leave($__internal_4262130c911ef5f99f8c15b5af64b09bb0dc449fcd3004de8578a8d51c785b1c_prof);
+        $__internal_8c3d754cea312e9a029780f9c034e725e9fe00b712dbb1253ae588173962e9b8->leave($__internal_8c3d754cea312e9a029780f9c034e725e9fe00b712dbb1253ae588173962e9b8_prof);
 
     }
 

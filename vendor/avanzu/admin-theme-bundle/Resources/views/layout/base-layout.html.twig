@@ -31,6 +31,7 @@
 
 </head>
 <body class="{{ admin_skin|default('skin-blue')}}">
+    
     <div class="wrapper">
 
     {% block avanzu_admin_header %}
@@ -58,6 +59,18 @@
                     {{ render(controller('AvanzuAdminThemeBundle:Sidebar:menu', {'request':app.request})) }}
                 {% endblock %}
             </section>
+             <div>
+            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
+                <a href="{{ path('fos_user_security_logout') }}">
+                    {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                </a>
+                <div>
+                </div>
+            {% else %}
+                <a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
+            {% endif %}
+        </div>
             <!-- /.sidebar -->
         </aside>
 

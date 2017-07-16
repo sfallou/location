@@ -21,20 +21,20 @@ class __TwigTemplate_5ece46d2138c2a8c6027c8fc7c985c6a7cfa1097d251f367cde76d4594a
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_650e9da3706c0d7cffcfc037d4f8078302270956186bd96f3782a6f5ef4a8ed5 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_650e9da3706c0d7cffcfc037d4f8078302270956186bd96f3782a6f5ef4a8ed5->enter($__internal_650e9da3706c0d7cffcfc037d4f8078302270956186bd96f3782a6f5ef4a8ed5_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", ":meubleroom:new.html.twig"));
+        $__internal_ab7ae697d170e62a31606b597820108954995ed0ec4f831e4b73ab016a23d2b7 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_ab7ae697d170e62a31606b597820108954995ed0ec4f831e4b73ab016a23d2b7->enter($__internal_ab7ae697d170e62a31606b597820108954995ed0ec4f831e4b73ab016a23d2b7_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", ":meubleroom:new.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_650e9da3706c0d7cffcfc037d4f8078302270956186bd96f3782a6f5ef4a8ed5->leave($__internal_650e9da3706c0d7cffcfc037d4f8078302270956186bd96f3782a6f5ef4a8ed5_prof);
+        $__internal_ab7ae697d170e62a31606b597820108954995ed0ec4f831e4b73ab016a23d2b7->leave($__internal_ab7ae697d170e62a31606b597820108954995ed0ec4f831e4b73ab016a23d2b7_prof);
 
     }
 
     // line 3
     public function block_body($context, array $blocks = array())
     {
-        $__internal_e7e300e92a11df6544f002d4775333d4c2756ded1fafd9cf8aa053c291ef1231 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_e7e300e92a11df6544f002d4775333d4c2756ded1fafd9cf8aa053c291ef1231->enter($__internal_e7e300e92a11df6544f002d4775333d4c2756ded1fafd9cf8aa053c291ef1231_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_d71e293a63c8fa6618e4bbd778d1b0262b078d0b5e1ac2cdbc51c99403d3b534 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_d71e293a63c8fa6618e4bbd778d1b0262b078d0b5e1ac2cdbc51c99403d3b534->enter($__internal_d71e293a63c8fa6618e4bbd778d1b0262b078d0b5e1ac2cdbc51c99403d3b534_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 4
         echo "    <h1>Meubleroom creation</h1>
@@ -63,7 +63,7 @@ class __TwigTemplate_5ece46d2138c2a8c6027c8fc7c985c6a7cfa1097d251f367cde76d4594a
     </ul>
 ";
         
-        $__internal_e7e300e92a11df6544f002d4775333d4c2756ded1fafd9cf8aa053c291ef1231->leave($__internal_e7e300e92a11df6544f002d4775333d4c2756ded1fafd9cf8aa053c291ef1231_prof);
+        $__internal_d71e293a63c8fa6618e4bbd778d1b0262b078d0b5e1ac2cdbc51c99403d3b534->leave($__internal_d71e293a63c8fa6618e4bbd778d1b0262b078d0b5e1ac2cdbc51c99403d3b534_prof);
 
     }
 

@@ -21,20 +21,20 @@ class __TwigTemplate_96f889b587b8806f4e45d41ad3db7643ae9c7d58c3c919c84334b816a0c
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_baaf7b743680b22f430dee49134d581f3915306c78a2431e92817db029ec8b44 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_baaf7b743680b22f430dee49134d581f3915306c78a2431e92817db029ec8b44->enter($__internal_baaf7b743680b22f430dee49134d581f3915306c78a2431e92817db029ec8b44_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", ":meubleroom:edit.html.twig"));
+        $__internal_d68c3ae18b23b19d5e27e4043583ee7fc4f8a9d34c0dee869653d7476f60b5d8 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_d68c3ae18b23b19d5e27e4043583ee7fc4f8a9d34c0dee869653d7476f60b5d8->enter($__internal_d68c3ae18b23b19d5e27e4043583ee7fc4f8a9d34c0dee869653d7476f60b5d8_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", ":meubleroom:edit.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_baaf7b743680b22f430dee49134d581f3915306c78a2431e92817db029ec8b44->leave($__internal_baaf7b743680b22f430dee49134d581f3915306c78a2431e92817db029ec8b44_prof);
+        $__internal_d68c3ae18b23b19d5e27e4043583ee7fc4f8a9d34c0dee869653d7476f60b5d8->leave($__internal_d68c3ae18b23b19d5e27e4043583ee7fc4f8a9d34c0dee869653d7476f60b5d8_prof);
 
     }
 
     // line 3
     public function block_body($context, array $blocks = array())
     {
-        $__internal_36da527febdddb08561aac8fd8e8fbd6ce8ae39c76abbec8dfe5472ae51eb229 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_36da527febdddb08561aac8fd8e8fbd6ce8ae39c76abbec8dfe5472ae51eb229->enter($__internal_36da527febdddb08561aac8fd8e8fbd6ce8ae39c76abbec8dfe5472ae51eb229_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_93c16a5f4f1cc745dbe4cc0838884f837c5967c5681a05e373f889fd4ee1da93 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_93c16a5f4f1cc745dbe4cc0838884f837c5967c5681a05e373f889fd4ee1da93->enter($__internal_93c16a5f4f1cc745dbe4cc0838884f837c5967c5681a05e373f889fd4ee1da93_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 4
         echo "    <h1>Meubleroom edit</h1>
@@ -74,7 +74,7 @@ class __TwigTemplate_96f889b587b8806f4e45d41ad3db7643ae9c7d58c3c919c84334b816a0c
     </ul>
 ";
         
-        $__internal_36da527febdddb08561aac8fd8e8fbd6ce8ae39c76abbec8dfe5472ae51eb229->leave($__internal_36da527febdddb08561aac8fd8e8fbd6ce8ae39c76abbec8dfe5472ae51eb229_prof);
+        $__internal_93c16a5f4f1cc745dbe4cc0838884f837c5967c5681a05e373f889fd4ee1da93->leave($__internal_93c16a5f4f1cc745dbe4cc0838884f837c5967c5681a05e373f889fd4ee1da93_prof);
 
     }
 

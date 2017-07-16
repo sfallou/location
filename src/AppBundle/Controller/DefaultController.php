@@ -11,13 +11,10 @@ use Symfony\Component\HttpFoundation\Response;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/default", name="homepage")
+     * @Route("/", name="start")
      */
-    public function indexAction(Request $request)
+    public function startAction(Request $request)
     {
-        // replace this example code with whatever you need
-        return $this->render('default/index.html.twig', array(
-            'base_dir' => realpath($this->container->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
-        ));
+        return $this->redirectToRoute('fos_user_security_login');
     }
 }

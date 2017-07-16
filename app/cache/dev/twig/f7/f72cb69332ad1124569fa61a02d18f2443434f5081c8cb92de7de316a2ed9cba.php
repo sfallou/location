@@ -21,20 +21,20 @@ class __TwigTemplate_45c7a87464583a8447a073b6943176f281f991bd56d7f3617ca6588a477
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_e628382a6f95af6f6c0238093f5720feb891ad61c037588750fc08a1bcabb762 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_e628382a6f95af6f6c0238093f5720feb891ad61c037588750fc08a1bcabb762->enter($__internal_e628382a6f95af6f6c0238093f5720feb891ad61c037588750fc08a1bcabb762_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", ":chargeroom:edit.html.twig"));
+        $__internal_c20950af5d7124d7ed26bb2de93ee3770ca2141426e969b3c8327829cf6326e1 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_c20950af5d7124d7ed26bb2de93ee3770ca2141426e969b3c8327829cf6326e1->enter($__internal_c20950af5d7124d7ed26bb2de93ee3770ca2141426e969b3c8327829cf6326e1_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", ":chargeroom:edit.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_e628382a6f95af6f6c0238093f5720feb891ad61c037588750fc08a1bcabb762->leave($__internal_e628382a6f95af6f6c0238093f5720feb891ad61c037588750fc08a1bcabb762_prof);
+        $__internal_c20950af5d7124d7ed26bb2de93ee3770ca2141426e969b3c8327829cf6326e1->leave($__internal_c20950af5d7124d7ed26bb2de93ee3770ca2141426e969b3c8327829cf6326e1_prof);
 
     }
 
     // line 3
     public function block_body($context, array $blocks = array())
     {
-        $__internal_0a8472cde634656601158b37f24a8bda7292debbddc72d0aa34673525e49cd9f = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_0a8472cde634656601158b37f24a8bda7292debbddc72d0aa34673525e49cd9f->enter($__internal_0a8472cde634656601158b37f24a8bda7292debbddc72d0aa34673525e49cd9f_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_c25119ac72329310da4991877b4314c940f4886a0f0e03e1bd09b7c3a965828b = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_c25119ac72329310da4991877b4314c940f4886a0f0e03e1bd09b7c3a965828b->enter($__internal_c25119ac72329310da4991877b4314c940f4886a0f0e03e1bd09b7c3a965828b_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 4
         echo "    <h1>Chargeroom edit</h1>
@@ -74,7 +74,7 @@ class __TwigTemplate_45c7a87464583a8447a073b6943176f281f991bd56d7f3617ca6588a477
     </ul>
 ";
         
-        $__internal_0a8472cde634656601158b37f24a8bda7292debbddc72d0aa34673525e49cd9f->leave($__internal_0a8472cde634656601158b37f24a8bda7292debbddc72d0aa34673525e49cd9f_prof);
+        $__internal_c25119ac72329310da4991877b4314c940f4886a0f0e03e1bd09b7c3a965828b->leave($__internal_c25119ac72329310da4991877b4314c940f4886a0f0e03e1bd09b7c3a965828b_prof);
 
     }
 
