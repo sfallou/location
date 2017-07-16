@@ -59,8 +59,10 @@ class SidebarSetupMenuDemoListener
             ->addChild(new MenuItemModel('liste_type_meuble', 'Types Meubles', 'typemeuble_index', $earg,  'fa fa-navicon'))
             ->addChild(new MenuItemModel('nouveau_type_meuble', 'Nouveau Type Meuble', 'typemeuble_new', $earg,  'fa fa-plus'));
 
-        $docs->addChild(new MenuItemModel('bail', 'Contrat Bail', 'admin_document', $earg))
-            ->addChild(new MenuItemModel('facture', 'Facture', 'admin_document', $earg));
+        $docs->addChild(new MenuItemModel('liste_doc', 'Liste Documents', 'document_index', $earg, 'fa fa-navicon'))
+            ->addChild(new MenuItemModel('nouveau_doc', 'Nouveau Document', 'document_new', $earg,  'fa fa-plus'))
+            ->addChild(new MenuItemModel('liste_type_doc', 'Liste Type Document', 'typedocument_index', $earg, 'fa fa-navicon'))
+            ->addChild(new MenuItemModel('nouveau_type_doc', 'Nouveau Type Document', 'typedocument_new', $earg,  'fa fa-plus'));
 
         $divers->addChild(new MenuItemModel('liste_type_fix', 'Fix Types', 'typefix_index', $earg,  'fa fa-navicon'))
             ->addChild(new MenuItemModel('new_type_fix', 'New Fix Types', 'typefix_new', $earg,  'fa fa-plus'))

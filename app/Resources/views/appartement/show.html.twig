@@ -20,7 +20,7 @@
                             
                     </div>
                     <div class="col-md-3">
-                            <a class="btn btn-success" href="{{ path('add_furniture_appart', { 'id': appartement.id }) }}"><i class="fa fa-info fa-lg"></i> Envoyer une info</a>
+                            <a class="btn btn-success" href="{{ path('add_doc_appart', { 'id': appartement.id }) }}"><i class="fa fa-file fa-lg"></i> Ajouter Document</a>
                             
                     </div>
                     <br><br>
@@ -241,6 +241,39 @@
                                 </td>
                             </tr> 
                             {% endfor %}                    
+                          </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="page-header">-*-</div>
+                <div >
+                    <div class="page-header"><h4 style="background-color:#f7f7f7; font-size: 18px; text-align: center; padding: 7px 10px; margin-top: 0;">
+                            Les documents
+                        </h4>
+                    </div>
+                    <div >
+                          <table  class="table table-bordered table-striped">
+                            <thead>
+                              <tr>
+                                <th>Type document</th>
+                                <th>Date </th>
+                                <th>Commentaires</th>
+                                 <th>Actions</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                          {%for typeDoc,doc in documents%}                   
+                            <tr>
+                                <td>{{typeDoc}}</td>
+                                <td>{{doc.DocumentDate|date("m/d/Y")}}</td>
+                                <td>{{doc.DocumentComment}}</td>
+                                <td>
+                                  <a class="btn btn-success" href="{{ path('document_show', { 'id': doc.documentId }) }}"><i class="fa fa-eye fa-lg"></i> View</a>
+                                  <a class="btn btn-danger" href="#"><i class="fa fa-trash-o fa-lg"></i> Delete</a> 
+                             </td>
+                            </tr>
+                          {%endfor%}                   
                           </tbody>
                         </table>
                     </div>

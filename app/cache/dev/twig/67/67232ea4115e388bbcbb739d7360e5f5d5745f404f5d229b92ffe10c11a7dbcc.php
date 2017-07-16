@@ -15,8 +15,8 @@ class __TwigTemplate_f101e6bc3b273898252521e1f8525a8558d7864336e8e94440e255fe662
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_b7ba97e325b485ac1fbaf5cfb9cdbcdec77d5a4601821600454e071c0560faaf = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_b7ba97e325b485ac1fbaf5cfb9cdbcdec77d5a4601821600454e071c0560faaf->enter($__internal_b7ba97e325b485ac1fbaf5cfb9cdbcdec77d5a4601821600454e071c0560faaf_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "AvanzuAdminThemeBundle:Sidebar:menu.html.twig"));
+        $__internal_ec5fd429faef5e4d7255fda7b329f583255eccb98630a6a22cec6eddf18abe43 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_ec5fd429faef5e4d7255fda7b329f583255eccb98630a6a22cec6eddf18abe43->enter($__internal_ec5fd429faef5e4d7255fda7b329f583255eccb98630a6a22cec6eddf18abe43_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "AvanzuAdminThemeBundle:Sidebar:menu.html.twig"));
 
         // line 1
         echo "<!-- sidebar menu: : style can be found in sidebar.less -->
@@ -42,7 +42,7 @@ class __TwigTemplate_f101e6bc3b273898252521e1f8525a8558d7864336e8e94440e255fe662
         // line 7
         echo "</ul>";
         
-        $__internal_b7ba97e325b485ac1fbaf5cfb9cdbcdec77d5a4601821600454e071c0560faaf->leave($__internal_b7ba97e325b485ac1fbaf5cfb9cdbcdec77d5a4601821600454e071c0560faaf_prof);
+        $__internal_ec5fd429faef5e4d7255fda7b329f583255eccb98630a6a22cec6eddf18abe43->leave($__internal_ec5fd429faef5e4d7255fda7b329f583255eccb98630a6a22cec6eddf18abe43_prof);
 
     }
 

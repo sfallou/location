@@ -222,6 +222,17 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
         }
         not_add_charge_appart:
 
+        // add_doc_appart
+        if (preg_match('#^/(?P<id>[^/]++)/add_doc_appart$#s', $pathinfo, $matches)) {
+            if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                goto not_add_doc_appart;
+            }
+
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'add_doc_appart')), array (  '_controller' => 'AppBundle\\Controller\\AssociationController::addDocAppartAction',));
+        }
+        not_add_doc_appart:
+
         // fix_appart_done
         if (preg_match('#^/(?P<id>[^/]++)/(?P<idAppart>[^/]++)/fix_appart_done$#s', $pathinfo, $matches)) {
             if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
@@ -470,9 +481,136 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
 
         }
 
-        // homepage
-        if ($pathinfo === '/default') {
-            return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::indexAction',  '_route' => 'homepage',);
+        if (0 === strpos($pathinfo, '/d')) {
+            // homepage
+            if ($pathinfo === '/default') {
+                return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::indexAction',  '_route' => 'homepage',);
+            }
+
+            if (0 === strpos($pathinfo, '/document')) {
+                if (0 === strpos($pathinfo, '/documentappartement')) {
+                    // documentappartement_index
+                    if (rtrim($pathinfo, '/') === '/documentappartement') {
+                        if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                            $allow = array_merge($allow, array('GET', 'HEAD'));
+                            goto not_documentappartement_index;
+                        }
+
+                        if (substr($pathinfo, -1) !== '/') {
+                            return $this->redirect($pathinfo.'/', 'documentappartement_index');
+                        }
+
+                        return array (  '_controller' => 'AppBundle\\Controller\\DocumentAppartementController::indexAction',  '_route' => 'documentappartement_index',);
+                    }
+                    not_documentappartement_index:
+
+                    // documentappartement_new
+                    if ($pathinfo === '/documentappartement/new') {
+                        if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                            $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                            goto not_documentappartement_new;
+                        }
+
+                        return array (  '_controller' => 'AppBundle\\Controller\\DocumentAppartementController::newAction',  '_route' => 'documentappartement_new',);
+                    }
+                    not_documentappartement_new:
+
+                    // documentappartement_show
+                    if (preg_match('#^/documentappartement/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                        if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                            $allow = array_merge($allow, array('GET', 'HEAD'));
+                            goto not_documentappartement_show;
+                        }
+
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'documentappartement_show')), array (  '_controller' => 'AppBundle\\Controller\\DocumentAppartementController::showAction',));
+                    }
+                    not_documentappartement_show:
+
+                    // documentappartement_edit
+                    if (preg_match('#^/documentappartement/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                        if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                            $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                            goto not_documentappartement_edit;
+                        }
+
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'documentappartement_edit')), array (  '_controller' => 'AppBundle\\Controller\\DocumentAppartementController::editAction',));
+                    }
+                    not_documentappartement_edit:
+
+                    // documentappartement_delete
+                    if (preg_match('#^/documentappartement/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                        if ($this->context->getMethod() != 'DELETE') {
+                            $allow[] = 'DELETE';
+                            goto not_documentappartement_delete;
+                        }
+
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'documentappartement_delete')), array (  '_controller' => 'AppBundle\\Controller\\DocumentAppartementController::deleteAction',));
+                    }
+                    not_documentappartement_delete:
+
+                }
+
+                // document_index
+                if (rtrim($pathinfo, '/') === '/document') {
+                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'HEAD'));
+                        goto not_document_index;
+                    }
+
+                    if (substr($pathinfo, -1) !== '/') {
+                        return $this->redirect($pathinfo.'/', 'document_index');
+                    }
+
+                    return array (  '_controller' => 'AppBundle\\Controller\\DocumentController::indexAction',  '_route' => 'document_index',);
+                }
+                not_document_index:
+
+                // document_new
+                if ($pathinfo === '/document/new') {
+                    if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                        goto not_document_new;
+                    }
+
+                    return array (  '_controller' => 'AppBundle\\Controller\\DocumentController::newAction',  '_route' => 'document_new',);
+                }
+                not_document_new:
+
+                // document_show
+                if (preg_match('#^/document/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'HEAD'));
+                        goto not_document_show;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'document_show')), array (  '_controller' => 'AppBundle\\Controller\\DocumentController::showAction',));
+                }
+                not_document_show:
+
+                // document_edit
+                if (preg_match('#^/document/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                    if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                        goto not_document_edit;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'document_edit')), array (  '_controller' => 'AppBundle\\Controller\\DocumentController::editAction',));
+                }
+                not_document_edit:
+
+                // document_delete
+                if (preg_match('#^/document/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    if ($this->context->getMethod() != 'DELETE') {
+                        $allow[] = 'DELETE';
+                        goto not_document_delete;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'document_delete')), array (  '_controller' => 'AppBundle\\Controller\\DocumentController::deleteAction',));
+                }
+                not_document_delete:
+
+            }
+
         }
 
         if (0 === strpos($pathinfo, '/fix')) {
@@ -975,6 +1113,68 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                     return $this->mergeDefaults(array_replace($matches, array('_route' => 'typecharge_delete')), array (  '_controller' => 'AppBundle\\Controller\\TypeChargeController::deleteAction',));
                 }
                 not_typecharge_delete:
+
+            }
+
+            if (0 === strpos($pathinfo, '/typedocument')) {
+                // typedocument_index
+                if (rtrim($pathinfo, '/') === '/typedocument') {
+                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'HEAD'));
+                        goto not_typedocument_index;
+                    }
+
+                    if (substr($pathinfo, -1) !== '/') {
+                        return $this->redirect($pathinfo.'/', 'typedocument_index');
+                    }
+
+                    return array (  '_controller' => 'AppBundle\\Controller\\TypeDocumentController::indexAction',  '_route' => 'typedocument_index',);
+                }
+                not_typedocument_index:
+
+                // typedocument_new
+                if ($pathinfo === '/typedocument/new') {
+                    if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                        goto not_typedocument_new;
+                    }
+
+                    return array (  '_controller' => 'AppBundle\\Controller\\TypeDocumentController::newAction',  '_route' => 'typedocument_new',);
+                }
+                not_typedocument_new:
+
+                // typedocument_show
+                if (preg_match('#^/typedocument/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'HEAD'));
+                        goto not_typedocument_show;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'typedocument_show')), array (  '_controller' => 'AppBundle\\Controller\\TypeDocumentController::showAction',));
+                }
+                not_typedocument_show:
+
+                // typedocument_edit
+                if (preg_match('#^/typedocument/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                    if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                        goto not_typedocument_edit;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'typedocument_edit')), array (  '_controller' => 'AppBundle\\Controller\\TypeDocumentController::editAction',));
+                }
+                not_typedocument_edit:
+
+                // typedocument_delete
+                if (preg_match('#^/typedocument/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    if ($this->context->getMethod() != 'DELETE') {
+                        $allow[] = 'DELETE';
+                        goto not_typedocument_delete;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'typedocument_delete')), array (  '_controller' => 'AppBundle\\Controller\\TypeDocumentController::deleteAction',));
+                }
+                not_typedocument_delete:
 
             }
 

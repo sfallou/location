@@ -22,6 +22,9 @@ use AppBundle\Entity\ChargeAppartement;
 use AppBundle\Entity\TypeCharge;
 use AppBundle\Entity\ChargeRoomType;
 use AppBundle\Entity\ChargeRoom;
+use AppBundle\Entity\Document;
+use AppBundle\Entity\DocumentAppartementType;
+use AppBundle\Entity\DocumentAppartement;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -186,6 +189,37 @@ class AssociationController extends Controller
         
         return $this->render('association/chargeAppartForm.html.twig', array(
             'chargeType' =>$chargeTypes,
+            'form' => $form->createView()
+        ));
+    }
+
+    /**
+     * Displays a form to associate a doc and an appart.
+     *
+     * @Route("/{id}/add_doc_appart", name="add_doc_appart")
+     * @Method({"GET", "POST"})
+     */
+    public function addDocAppartAction(Request $request, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        
+        $docs = $em->getRepository('AppBundle:Document')->findAll();
+
+        $docAppart = new DocumentAppartement();
+        $form = $this->createForm('AppBundle\Form\DocumentAppartementType', $docAppart);
+        $form->get('appartId')->setData($id);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($docAppart);
+            $em->flush();
+            return $this->redirectToRoute('appartement_index');
+        }
+
+        
+        return $this->render('association/documentAppartForm.html.twig', array(
+            'documents' =>$docs,
             'form' => $form->createView()
         ));
     }

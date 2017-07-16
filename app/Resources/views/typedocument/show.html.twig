@@ -1,0 +1,27 @@
+{% extends 'AvanzuAdminThemeBundle:layout:base-layout.html.twig' %}
+
+{% block page_content %}
+
+    <div class="box">
+            <!-- /.box-header -->
+            <div class="box-body">
+                <div >
+                    <div class="page-header"><h4 style="background-color:#f7f7f7; font-size: 18px; text-align: center; padding: 7px 10px; margin-top: 0;">
+                            Informations générales
+                        </h4>
+                    </div>
+                    <div class="col-md-7">
+                            <ul class="list-unstyled">
+                                <li><strong>ID :</strong> {{ typeDocument.id }}</li>
+                                <li><strong>Nom :</strong> {{ typeDocument.name }}</li>
+                            </ul>
+                    </div>
+                </div>              
+        </div>
+    </div>
+            
+{% endblock %}
+
+
+{% block page_title %} Type Charge {% endblock %}
+{% block page_subtitle %} show {% endblock %}

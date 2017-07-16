@@ -13,6 +13,8 @@ use AppBundle\Entity\FixAppartement;
 use AppBundle\Entity\Fix;
 use AppBundle\Entity\ChargeAppartement;
 use AppBundle\Entity\Charge;
+use AppBundle\Entity\DocumentAppartement;
+use AppBundle\Entity\Document;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
@@ -94,6 +96,8 @@ class AppartementController extends Controller
         $fix_apparts = array();
         $charges = null;
         $charge_apparts = array();
+        $docs = null;
+        $doc_apparts = array();
         $em = $this->getDoctrine()->getManager();
         
         $rooms = $em->getRepository('AppBundle:Room')->findBy(array('id'=>$appartement->getId()));
@@ -133,11 +137,15 @@ class AppartementController extends Controller
                 $charge_apparts[$type->getName()] = $charge;
             }
         }
-       /*foreach ($apparts as $appart){
-            $rooms = $em->getRepository('AppBundle:Room')->findBy(array('id_appart'=>$appart->getId()));
-            $resultats[$appart->getAdresse()] = $rooms;
+       
+       $docs = $em->getRepository('AppBundle:DocumentAppartement')->findBy(array('appartId'=>$appartement->getId()));
+        
+        if ($docs){
+            foreach ($docs as $doc ) {
+                $type =  $em->getRepository('AppBundle:TypeDocument')->findOneBy(array('id'=>$doc->getDocumentId()));
+                $doc_apparts[$type->getName()] = $doc;
+            }
         }
-        */
 
         return $this->render('appartement/show.html.twig', array(
             'appartement' => $appartement,
@@ -147,6 +155,7 @@ class AppartementController extends Controller
             'meubles' => $meubles_apparts,
             'fixs' => $fix_apparts,
             'charges' => $charge_apparts,
+            'documents' => $doc_apparts,
             'delete_form' => $deleteForm->createView(),
         ));
     }

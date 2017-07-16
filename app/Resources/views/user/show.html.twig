@@ -6,9 +6,18 @@
             <!-- /.box-header -->
             <div class="box-body">
                 <div class="col-md-3">
-                            <a class="btn btn-success" href="{{ path('add_charge_room', { 'id': room.id }) }}"><i class="fa fa-money fa-lg"></i> Ajouter Charge</a>
+                    <a class="btn btn-success" href="{{ path('add_charge_room', { 'id': room.id }) }}"><i class="fa fa-money fa-lg"></i> Ajouter Charge</a>
                             
-                </div><br><br>
+                </div>
+                <div class="col-md-3">
+                    <a class="btn btn-success" href=""><i class="fa fa-money fa-lg"></i> Editer quittance</a>
+                            
+                </div>
+                 <div class="col-md-3">
+                            <a class="btn btn-success" href=""><i class="fa fa-file fa-lg"></i> Ajouter Document</a>
+                            
+                    </div>
+                <br><br>
                 <div >
                     <div class="page-header"><h4 style="background-color:#f7f7f7; font-size: 18px; text-align: center; padding: 7px 10px; margin-top: 0;">
                             Informations générales
@@ -154,19 +163,37 @@
                     </div>
                 </div>
                  <div class="page-header">-*-</div>
-                        <div class="page-header"><h4 style="background-color:#f7f7f7; font-size: 18px; text-align: center; padding: 7px 10px; margin-top: 0;">
-                            Documents à télécharger
+                <div >
+                    <div class="page-header"><h4 style="background-color:#f7f7f7; font-size: 18px; text-align: center; padding: 7px 10px; margin-top: 0;">
+                            Les documents
                         </h4>
-                        </div>
-                        <div class="col-md-7 ">
-                            <ul class="list-unstyled">
-                                <a><li><strong>Bail :</strong> </li></a>
-                                <a><li><strong>Quittances de loyers :</strong> </li></a>   
-                                <a><li><strong>Facture Téléphone :</strong> </li></a>
-                                <a><li><strong>Facture d'éléctricité :</strong> </li></a>
-                                        
-                            </ul>
-                        </div>
+                    </div>
+                    <div >
+                          <table  class="table table-bordered table-striped">
+                            <thead>
+                              <tr>
+                                <th>Type document</th>
+                                <th>Date </th>
+                                <th>Commentaires</th>
+                                 <th>Actions</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                          {#%for typeDoc,doc in documents%#}                   
+                            <!--tr>
+                                <td>{#{typeDoc}#}</td>
+                                <td>{#{doc.DocumentDate|date("m/d/Y")}#}</td>
+                                <td>{#{doc.DocumentComment}#}</td>
+                                <td>
+                                  <a class="btn btn-success" href=""><i class="fa fa-eye fa-lg"></i> View</a>
+                                  <a class="btn btn-danger" href="#"><i class="fa fa-trash-o fa-lg"></i> Delete</a> 
+                             </td>
+                            </tr-->
+                          {#%endfor%#}                   
+                          </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
             

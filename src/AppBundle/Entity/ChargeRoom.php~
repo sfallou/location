@@ -62,4 +62,152 @@ class ChargeRoom
      * @ORM\Column(name="charge_comment", type="text", nullable=true)
      */
     private $chargeComment;
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set roomId
+     *
+     * @param integer $roomId
+     * @return ChargeRoom
+     */
+    public function setRoomId($roomId)
+    {
+        $this->roomId = $roomId;
+
+        return $this;
+    }
+
+    /**
+     * Get roomId
+     *
+     * @return integer 
+     */
+    public function getRoomId()
+    {
+        return $this->roomId;
+    }
+
+    /**
+     * Set chargeId
+     *
+     * @param integer $chargeId
+     * @return ChargeRoom
+     */
+    public function setChargeId($chargeId)
+    {
+        $this->chargeId = $chargeId;
+
+        return $this;
+    }
+
+    /**
+     * Get chargeId
+     *
+     * @return integer 
+     */
+    public function getChargeId()
+    {
+        return $this->chargeId;
+    }
+
+    /**
+     * Set chargeAmount
+     *
+     * @param string $chargeAmount
+     * @return ChargeRoom
+     */
+    public function setChargeAmount($chargeAmount)
+    {
+        $this->chargeAmount = $chargeAmount;
+
+        return $this;
+    }
+
+    /**
+     * Get chargeAmount
+     *
+     * @return string 
+     */
+    public function getChargeAmount()
+    {
+        return $this->chargeAmount;
+    }
+
+    /**
+     * Set chargeDate
+     *
+     * @param \DateTime $chargeDate
+     * @return ChargeRoom
+     */
+    public function setChargeDate($chargeDate)
+    {
+        $this->chargeDate = $chargeDate;
+
+        return $this;
+    }
+
+    /**
+     * Get chargeDate
+     *
+     * @return \DateTime 
+     */
+    public function getChargeDate()
+    {
+        return $this->chargeDate;
+    }
+
+    /**
+     * Set chargeState
+     *
+     * @param boolean $chargeState
+     * @return ChargeRoom
+     */
+    public function setChargeState($chargeState)
+    {
+        $this->chargeState = $chargeState;
+
+        return $this;
+    }
+
+    /**
+     * Get chargeState
+     *
+     * @return boolean 
+     */
+    public function getChargeState()
+    {
+        return $this->chargeState;
+    }
+
+    /**
+     * Set chargeComment
+     *
+     * @param string $chargeComment
+     * @return ChargeRoom
+     */
+    public function setChargeComment($chargeComment)
+    {
+        $this->chargeComment = $chargeComment;
+
+        return $this;
+    }
+
+    /**
+     * Get chargeComment
+     *
+     * @return string 
+     */
+    public function getChargeComment()
+    {
+        return $this->chargeComment;
+    }
 }

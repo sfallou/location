@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Documentappartements list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Appartid</th>
+                <th>Documentid</th>
+                <th>Documentdate</th>
+                <th>Documentcomment</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for documentAppartement in documentAppartements %}
+            <tr>
+                <td><a href="{{ path('documentappartement_show', { 'id': documentAppartement.id }) }}">{{ documentAppartement.id }}</a></td>
+                <td>{{ documentAppartement.appartId }}</td>
+                <td>{{ documentAppartement.documentId }}</td>
+                <td>{% if documentAppartement.documentDate %}{{ documentAppartement.documentDate|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ documentAppartement.documentComment }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('documentappartement_show', { 'id': documentAppartement.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('documentappartement_edit', { 'id': documentAppartement.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('documentappartement_new') }}">Create a new documentAppartement</a>
+        </li>
+    </ul>
+{% endblock %}

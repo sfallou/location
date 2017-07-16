@@ -15,8 +15,8 @@ class __TwigTemplate_25ae0569e44d2ab736d8d3f6a0e13aafcb6db134774116cb212587b06cd
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_120cb4b5ed5a30a695576f4a3fcd30cc50204d4662b0808e8828d7dcd2a605da = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_120cb4b5ed5a30a695576f4a3fcd30cc50204d4662b0808e8828d7dcd2a605da->enter($__internal_120cb4b5ed5a30a695576f4a3fcd30cc50204d4662b0808e8828d7dcd2a605da_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "FOSUserBundle:Registration:register_content.html.twig"));
+        $__internal_26d0e560650239b25a9a1495cc9510961d29641a92b90ff0d8970ec43a8039d6 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_26d0e560650239b25a9a1495cc9510961d29641a92b90ff0d8970ec43a8039d6->enter($__internal_26d0e560650239b25a9a1495cc9510961d29641a92b90ff0d8970ec43a8039d6_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "FOSUserBundle:Registration:register_content.html.twig"));
 
         // line 2
         echo "
@@ -38,7 +38,7 @@ class __TwigTemplate_25ae0569e44d2ab736d8d3f6a0e13aafcb6db134774116cb212587b06cd
         // line 8
         echo         $this->env->getExtension('Symfony\Bridge\Twig\Extension\FormExtension')->renderer->renderBlock((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), 'form_end');
         
-        $__internal_120cb4b5ed5a30a695576f4a3fcd30cc50204d4662b0808e8828d7dcd2a605da->leave($__internal_120cb4b5ed5a30a695576f4a3fcd30cc50204d4662b0808e8828d7dcd2a605da_prof);
+        $__internal_26d0e560650239b25a9a1495cc9510961d29641a92b90ff0d8970ec43a8039d6->leave($__internal_26d0e560650239b25a9a1495cc9510961d29641a92b90ff0d8970ec43a8039d6_prof);
 
     }
 

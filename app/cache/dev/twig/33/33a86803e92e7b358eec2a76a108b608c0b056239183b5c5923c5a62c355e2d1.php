@@ -23,20 +23,20 @@ class __TwigTemplate_3ba3188834111ff7eeebb80f4ecf330ed1ad8a7b08c75e1f869a96ec10b
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_5103204dde5ac80fe827a38d3789044055922ab29b22f2d1886c10c71973e1f7 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_5103204dde5ac80fe827a38d3789044055922ab29b22f2d1886c10c71973e1f7->enter($__internal_5103204dde5ac80fe827a38d3789044055922ab29b22f2d1886c10c71973e1f7_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "user/show.html.twig"));
+        $__internal_832331c82a9ff2774009fe0cf849097c258b855e69f043ccb6161563829abfb2 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_832331c82a9ff2774009fe0cf849097c258b855e69f043ccb6161563829abfb2->enter($__internal_832331c82a9ff2774009fe0cf849097c258b855e69f043ccb6161563829abfb2_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "user/show.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_5103204dde5ac80fe827a38d3789044055922ab29b22f2d1886c10c71973e1f7->leave($__internal_5103204dde5ac80fe827a38d3789044055922ab29b22f2d1886c10c71973e1f7_prof);
+        $__internal_832331c82a9ff2774009fe0cf849097c258b855e69f043ccb6161563829abfb2->leave($__internal_832331c82a9ff2774009fe0cf849097c258b855e69f043ccb6161563829abfb2_prof);
 
     }
 
     // line 3
     public function block_page_content($context, array $blocks = array())
     {
-        $__internal_7e94db677970f12cdc82c78eb808a04bc6435bf8fe668868ef7fd699ce217097 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_7e94db677970f12cdc82c78eb808a04bc6435bf8fe668868ef7fd699ce217097->enter($__internal_7e94db677970f12cdc82c78eb808a04bc6435bf8fe668868ef7fd699ce217097_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "page_content"));
+        $__internal_976875d5fc8fdfc106a7bd2de766eae4b2c00f7381319d25a820d37b7e979799 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_976875d5fc8fdfc106a7bd2de766eae4b2c00f7381319d25a820d37b7e979799->enter($__internal_976875d5fc8fdfc106a7bd2de766eae4b2c00f7381319d25a820d37b7e979799_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "page_content"));
 
         // line 4
         echo "
@@ -44,12 +44,21 @@ class __TwigTemplate_3ba3188834111ff7eeebb80f4ecf330ed1ad8a7b08c75e1f869a96ec10b
             <!-- /.box-header -->
             <div class=\"box-body\">
                 <div class=\"col-md-3\">
-                            <a class=\"btn btn-success\" href=\"";
+                    <a class=\"btn btn-success\" href=\"";
         // line 9
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("add_charge_room", array("id" => $this->getAttribute((isset($context["room"]) ? $context["room"] : $this->getContext($context, "room")), "id", array()))), "html", null, true);
         echo "\"><i class=\"fa fa-money fa-lg\"></i> Ajouter Charge</a>
                             
-                </div><br><br>
+                </div>
+                <div class=\"col-md-3\">
+                    <a class=\"btn btn-success\" href=\"\"><i class=\"fa fa-money fa-lg\"></i> Editer quittance</a>
+                            
+                </div>
+                 <div class=\"col-md-3\">
+                            <a class=\"btn btn-success\" href=\"\"><i class=\"fa fa-file fa-lg\"></i> Ajouter Document</a>
+                            
+                    </div>
+                <br><br>
                 <div >
                     <div class=\"page-header\"><h4 style=\"background-color:#f7f7f7; font-size: 18px; text-align: center; padding: 7px 10px; margin-top: 0;\">
                             Informations générales
@@ -57,18 +66,18 @@ class __TwigTemplate_3ba3188834111ff7eeebb80f4ecf330ed1ad8a7b08c75e1f869a96ec10b
                         <div class=\"col-md-7\">
                             <ul class=\"list-unstyled\">
                                 <li><strong>ID User:</strong> ";
-        // line 18
+        // line 27
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["user"]) ? $context["user"] : $this->getContext($context, "user")), "id", array()), "html", null, true);
         echo "</li>
                                 <li><strong>Profil :</strong> </li>
                                 <li><strong>Username :</strong> ";
-        // line 20
+        // line 29
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["user"]) ? $context["user"] : $this->getContext($context, "user")), "username", array()), "html", null, true);
         echo "</li>
                                 <li><strong>Prénom :</strong> </li>
                                 <li><strong>Nom :</strong> </li>               
                                 <li><strong>Email :</strong> ";
-        // line 23
+        // line 32
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["user"]) ? $context["user"] : $this->getContext($context, "user")), "email", array()), "html", null, true);
         echo "</li>
                                 <li><strong>Téléphone :</strong> </li>
@@ -89,29 +98,29 @@ class __TwigTemplate_3ba3188834111ff7eeebb80f4ecf330ed1ad8a7b08c75e1f869a96ec10b
                         <div class=\"col-md-7\">
                             <ul class=\"list-unstyled\">
                                 <li><strong>Adresse Appartement :</strong> <a href=\"";
-        // line 41
+        // line 50
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("appartement_show", array("id" => $this->getAttribute((isset($context["appart"]) ? $context["appart"] : $this->getContext($context, "appart")), "id", array()))), "html", null, true);
         echo "\">";
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["appart"]) ? $context["appart"] : $this->getContext($context, "appart")), "adresse", array()), "html", null, true);
         echo "</a></li>
                                 <li><strong>Surface Appartement :</strong> ";
-        // line 42
+        // line 51
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["appart"]) ? $context["appart"] : $this->getContext($context, "appart")), "surface", array()), "html", null, true);
         echo "</li>
                                 <li><strong>Responsable Coloc :</strong> ";
-        // line 43
+        // line 52
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["appart"]) ? $context["appart"] : $this->getContext($context, "appart")), "contactAppart", array()), "html", null, true);
         echo "</li>
                                 <li><strong>Contact Gardien :</strong> ";
-        // line 44
+        // line 53
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["residence"]) ? $context["residence"] : $this->getContext($context, "residence")), "contactGardien", array()), "html", null, true);
         echo "</li>
                                 <li><strong>Horaire Gardien :</strong> ";
-        // line 45
+        // line 54
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["residence"]) ? $context["residence"] : $this->getContext($context, "residence")), "horaireGardien", array()), "html", null, true);
         echo " </li>
                                 <li><strong>Contact Syndic :</strong> ";
-        // line 46
+        // line 55
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["residence"]) ? $context["residence"] : $this->getContext($context, "residence")), "contactSyndic", array()), "html", null, true);
         echo " </li>
                             </ul>
@@ -119,29 +128,29 @@ class __TwigTemplate_3ba3188834111ff7eeebb80f4ecf330ed1ad8a7b08c75e1f869a96ec10b
                         <div class=\"col-md-5 \">
                             <ul class=\"list-unstyled\">
                                 <li><strong>N° Chambre :</strong> <a href=\"";
-        // line 51
+        // line 60
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("room_show", array("id" => $this->getAttribute((isset($context["room"]) ? $context["room"] : $this->getContext($context, "room")), "id", array()))), "html", null, true);
         echo "\">";
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["room"]) ? $context["room"] : $this->getContext($context, "room")), "id", array()), "html", null, true);
         echo "</a></li>
                                 <li><strong>Surface Chambre :</strong> ";
-        // line 52
+        // line 61
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["room"]) ? $context["room"] : $this->getContext($context, "room")), "surface", array()), "html", null, true);
         echo " </li>
                                 <li><strong>Date d'entrée :</strong> ";
-        // line 53
+        // line 62
         echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute((isset($context["user_room"]) ? $context["user_room"] : $this->getContext($context, "user_room")), "userRoomDateIn", array()), "d-m-Y"), "html", null, true);
         echo "</li>
                                 <li><strong>Date de sortie :</strong> ";
-        // line 54
+        // line 63
         echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute((isset($context["user_room"]) ? $context["user_room"] : $this->getContext($context, "user_room")), "userRoomDateOut", array()), "d-m-Y"), "html", null, true);
         echo "</li>
                                 <li><strong>Prix Loyer :</strong> ";
-        // line 55
+        // line 64
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["room"]) ? $context["room"] : $this->getContext($context, "room")), "rent", array()), "html", null, true);
         echo " euros </li>
                                 <li><strong>Caution :</strong> ";
-        // line 56
+        // line 65
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["room"]) ? $context["room"] : $this->getContext($context, "room")), "guarantee", array()), "html", null, true);
         echo " euros</li>               
                             </ul>
@@ -177,7 +186,7 @@ class __TwigTemplate_3ba3188834111ff7eeebb80f4ecf330ed1ad8a7b08c75e1f869a96ec10b
                             <tr>
                                 <td> 
                                  <a href=\"";
-        // line 89
+        // line 98
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("user_show", array("id" => $this->getAttribute((isset($context["user"]) ? $context["user"] : $this->getContext($context, "user")), "id", array()))), "html", null, true);
         echo "\">";
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["user"]) ? $context["user"] : $this->getContext($context, "user")), "username", array()), "html", null, true);
@@ -220,65 +229,65 @@ class __TwigTemplate_3ba3188834111ff7eeebb80f4ecf330ed1ad8a7b08c75e1f869a96ec10b
                           </thead>
                           <tbody>
                           ";
-        // line 127
+        // line 136
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable((isset($context["charges"]) ? $context["charges"] : $this->getContext($context, "charges")));
         foreach ($context['_seq'] as $context["typeCharge"] => $context["charge"]) {
             echo "                   
                             <tr>
                                 <td>";
-            // line 129
+            // line 138
             echo twig_escape_filter($this->env, $context["typeCharge"], "html", null, true);
             echo "</td>
                                 <td>";
-            // line 130
+            // line 139
             echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($context["charge"], "ChargeDate", array()), "m/d/Y"), "html", null, true);
             echo "</td>
                                 <td>";
-            // line 131
+            // line 140
             echo twig_escape_filter($this->env, $this->getAttribute($context["charge"], "ChargeAmount", array()), "html", null, true);
             echo " euros</td>
-                                <td>
-                                  ";
-            // line 133
-            if (($this->getAttribute($context["charge"], "ChargeState", array()) == false)) {
-                // line 134
-                echo "                                  Not paid
-                                  ";
-            }
-            // line 136
-            echo "                                  ";
-            if (($this->getAttribute($context["charge"], "ChargeState", array()) == true)) {
-                // line 137
-                echo "                                  Paid
-                                  ";
-            }
-            // line 139
-            echo "                                </td>
-                                <td>";
-            // line 140
-            echo twig_escape_filter($this->env, $this->getAttribute($context["charge"], "ChargeComment", array()), "html", null, true);
-            echo "</td>
                                 <td>
                                   ";
             // line 142
             if (($this->getAttribute($context["charge"], "ChargeState", array()) == false)) {
                 // line 143
-                echo "                                  <a class=\"btn btn-success\" href=\"";
-                echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("charge_room_paid", array("id" => $this->getAttribute($context["charge"], "id", array()), "idRoom" => $this->getAttribute((isset($context["user"]) ? $context["user"] : $this->getContext($context, "user")), "id", array()))), "html", null, true);
-                echo "\"><i class=\"fa fa-check fa-lg\"></i> Paid</a>
+                echo "                                  Not paid
                                   ";
             }
             // line 145
             echo "                                  ";
             if (($this->getAttribute($context["charge"], "ChargeState", array()) == true)) {
                 // line 146
+                echo "                                  Paid
+                                  ";
+            }
+            // line 148
+            echo "                                </td>
+                                <td>";
+            // line 149
+            echo twig_escape_filter($this->env, $this->getAttribute($context["charge"], "ChargeComment", array()), "html", null, true);
+            echo "</td>
+                                <td>
+                                  ";
+            // line 151
+            if (($this->getAttribute($context["charge"], "ChargeState", array()) == false)) {
+                // line 152
+                echo "                                  <a class=\"btn btn-success\" href=\"";
+                echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("charge_room_paid", array("id" => $this->getAttribute($context["charge"], "id", array()), "idRoom" => $this->getAttribute((isset($context["user"]) ? $context["user"] : $this->getContext($context, "user")), "id", array()))), "html", null, true);
+                echo "\"><i class=\"fa fa-check fa-lg\"></i> Paid</a>
+                                  ";
+            }
+            // line 154
+            echo "                                  ";
+            if (($this->getAttribute($context["charge"], "ChargeState", array()) == true)) {
+                // line 155
                 echo "                                  <a class=\"btn btn-success\" href=\"";
                 echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("charge_room_unpaid", array("id" => $this->getAttribute($context["charge"], "id", array()), "idRoom" => $this->getAttribute((isset($context["user"]) ? $context["user"] : $this->getContext($context, "user")), "id", array()))), "html", null, true);
                 echo "\"><i class=\"fa fa-times fa-lg\"></i> Unpaid</a>
                                   ";
             }
-            // line 148
+            // line 157
             echo "                                  <a class=\"btn btn-danger\" href=\"#\"><i class=\"fa fa-trash-o fa-lg\"></i> Delete</a> 
                              </td>
                             </tr>
@@ -287,56 +296,84 @@ class __TwigTemplate_3ba3188834111ff7eeebb80f4ecf330ed1ad8a7b08c75e1f869a96ec10b
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['typeCharge'], $context['charge'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 151
+        // line 160
         echo "                   
                           </tbody>
                         </table>
                     </div>
                 </div>
                  <div class=\"page-header\">-*-</div>
-                        <div class=\"page-header\"><h4 style=\"background-color:#f7f7f7; font-size: 18px; text-align: center; padding: 7px 10px; margin-top: 0;\">
-                            Documents à télécharger
+                <div >
+                    <div class=\"page-header\"><h4 style=\"background-color:#f7f7f7; font-size: 18px; text-align: center; padding: 7px 10px; margin-top: 0;\">
+                            Les documents
                         </h4>
-                        </div>
-                        <div class=\"col-md-7 \">
-                            <ul class=\"list-unstyled\">
-                                <a><li><strong>Bail :</strong> </li></a>
-                                <a><li><strong>Quittances de loyers :</strong> </li></a>   
-                                <a><li><strong>Facture Téléphone :</strong> </li></a>
-                                <a><li><strong>Facture d'éléctricité :</strong> </li></a>
-                                        
-                            </ul>
-                        </div>
+                    </div>
+                    <div >
+                          <table  class=\"table table-bordered table-striped\">
+                            <thead>
+                              <tr>
+                                <th>Type document</th>
+                                <th>Date </th>
+                                <th>Commentaires</th>
+                                 <th>Actions</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                          ";
+        // line 182
+        echo "                   
+                            <!--tr>
+                                <td>";
+        // line 184
+        echo "</td>
+                                <td>";
+        // line 185
+        echo "</td>
+                                <td>";
+        // line 186
+        echo "</td>
+                                <td>
+                                  <a class=\"btn btn-success\" href=\"\"><i class=\"fa fa-eye fa-lg\"></i> View</a>
+                                  <a class=\"btn btn-danger\" href=\"#\"><i class=\"fa fa-trash-o fa-lg\"></i> Delete</a> 
+                             </td>
+                            </tr-->
+                          ";
+        // line 192
+        echo "                   
+                          </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
             
 ";
         
-        $__internal_7e94db677970f12cdc82c78eb808a04bc6435bf8fe668868ef7fd699ce217097->leave($__internal_7e94db677970f12cdc82c78eb808a04bc6435bf8fe668868ef7fd699ce217097_prof);
+        $__internal_976875d5fc8fdfc106a7bd2de766eae4b2c00f7381319d25a820d37b7e979799->leave($__internal_976875d5fc8fdfc106a7bd2de766eae4b2c00f7381319d25a820d37b7e979799_prof);
 
     }
 
-    // line 175
+    // line 202
     public function block_page_title($context, array $blocks = array())
     {
-        $__internal_c2cf9ee4d57ec552e2676341e124b14f5470e2b63a89bd729751fadbc024c254 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_c2cf9ee4d57ec552e2676341e124b14f5470e2b63a89bd729751fadbc024c254->enter($__internal_c2cf9ee4d57ec552e2676341e124b14f5470e2b63a89bd729751fadbc024c254_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "page_title"));
+        $__internal_a9cb9f7e0cce3e8ac43c083cdf7dcbd0eb502757adabf32252e2f3cc2d6a6991 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_a9cb9f7e0cce3e8ac43c083cdf7dcbd0eb502757adabf32252e2f3cc2d6a6991->enter($__internal_a9cb9f7e0cce3e8ac43c083cdf7dcbd0eb502757adabf32252e2f3cc2d6a6991_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "page_title"));
 
         echo " Users ";
         
-        $__internal_c2cf9ee4d57ec552e2676341e124b14f5470e2b63a89bd729751fadbc024c254->leave($__internal_c2cf9ee4d57ec552e2676341e124b14f5470e2b63a89bd729751fadbc024c254_prof);
+        $__internal_a9cb9f7e0cce3e8ac43c083cdf7dcbd0eb502757adabf32252e2f3cc2d6a6991->leave($__internal_a9cb9f7e0cce3e8ac43c083cdf7dcbd0eb502757adabf32252e2f3cc2d6a6991_prof);
 
     }
 
-    // line 176
+    // line 203
     public function block_page_subtitle($context, array $blocks = array())
     {
-        $__internal_9fa0e48c3d2dbafe3a137ed85e9c331438b474ceaa29bdfbbe800154910fd887 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_9fa0e48c3d2dbafe3a137ed85e9c331438b474ceaa29bdfbbe800154910fd887->enter($__internal_9fa0e48c3d2dbafe3a137ed85e9c331438b474ceaa29bdfbbe800154910fd887_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "page_subtitle"));
+        $__internal_961369f3a0de4ceb393624abc52e0cb6538f9f14ff7cd046670f761cee3c86ab = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_961369f3a0de4ceb393624abc52e0cb6538f9f14ff7cd046670f761cee3c86ab->enter($__internal_961369f3a0de4ceb393624abc52e0cb6538f9f14ff7cd046670f761cee3c86ab_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "page_subtitle"));
 
         echo " show ";
         
-        $__internal_9fa0e48c3d2dbafe3a137ed85e9c331438b474ceaa29bdfbbe800154910fd887->leave($__internal_9fa0e48c3d2dbafe3a137ed85e9c331438b474ceaa29bdfbbe800154910fd887_prof);
+        $__internal_961369f3a0de4ceb393624abc52e0cb6538f9f14ff7cd046670f761cee3c86ab->leave($__internal_961369f3a0de4ceb393624abc52e0cb6538f9f14ff7cd046670f761cee3c86ab_prof);
 
     }
 
@@ -352,7 +389,7 @@ class __TwigTemplate_3ba3188834111ff7eeebb80f4ecf330ed1ad8a7b08c75e1f869a96ec10b
 
     public function getDebugInfo()
     {
-        return array (  332 => 176,  320 => 175,  291 => 151,  282 => 148,  276 => 146,  273 => 145,  267 => 143,  265 => 142,  260 => 140,  257 => 139,  253 => 137,  250 => 136,  246 => 134,  244 => 133,  239 => 131,  235 => 130,  231 => 129,  224 => 127,  181 => 89,  145 => 56,  141 => 55,  137 => 54,  133 => 53,  129 => 52,  123 => 51,  115 => 46,  111 => 45,  107 => 44,  103 => 43,  99 => 42,  93 => 41,  72 => 23,  66 => 20,  61 => 18,  49 => 9,  42 => 4,  36 => 3,  11 => 1,);
+        return array (  369 => 203,  357 => 202,  342 => 192,  334 => 186,  331 => 185,  328 => 184,  324 => 182,  300 => 160,  291 => 157,  285 => 155,  282 => 154,  276 => 152,  274 => 151,  269 => 149,  266 => 148,  262 => 146,  259 => 145,  255 => 143,  253 => 142,  248 => 140,  244 => 139,  240 => 138,  233 => 136,  190 => 98,  154 => 65,  150 => 64,  146 => 63,  142 => 62,  138 => 61,  132 => 60,  124 => 55,  120 => 54,  116 => 53,  112 => 52,  108 => 51,  102 => 50,  81 => 32,  75 => 29,  70 => 27,  49 => 9,  42 => 4,  36 => 3,  11 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -373,9 +410,18 @@ class __TwigTemplate_3ba3188834111ff7eeebb80f4ecf330ed1ad8a7b08c75e1f869a96ec10b
             <!-- /.box-header -->
             <div class=\"box-body\">
                 <div class=\"col-md-3\">
-                            <a class=\"btn btn-success\" href=\"{{ path('add_charge_room', { 'id': room.id }) }}\"><i class=\"fa fa-money fa-lg\"></i> Ajouter Charge</a>
+                    <a class=\"btn btn-success\" href=\"{{ path('add_charge_room', { 'id': room.id }) }}\"><i class=\"fa fa-money fa-lg\"></i> Ajouter Charge</a>
                             
-                </div><br><br>
+                </div>
+                <div class=\"col-md-3\">
+                    <a class=\"btn btn-success\" href=\"\"><i class=\"fa fa-money fa-lg\"></i> Editer quittance</a>
+                            
+                </div>
+                 <div class=\"col-md-3\">
+                            <a class=\"btn btn-success\" href=\"\"><i class=\"fa fa-file fa-lg\"></i> Ajouter Document</a>
+                            
+                    </div>
+                <br><br>
                 <div >
                     <div class=\"page-header\"><h4 style=\"background-color:#f7f7f7; font-size: 18px; text-align: center; padding: 7px 10px; margin-top: 0;\">
                             Informations générales
@@ -521,19 +567,37 @@ class __TwigTemplate_3ba3188834111ff7eeebb80f4ecf330ed1ad8a7b08c75e1f869a96ec10b
                     </div>
                 </div>
                  <div class=\"page-header\">-*-</div>
-                        <div class=\"page-header\"><h4 style=\"background-color:#f7f7f7; font-size: 18px; text-align: center; padding: 7px 10px; margin-top: 0;\">
-                            Documents à télécharger
+                <div >
+                    <div class=\"page-header\"><h4 style=\"background-color:#f7f7f7; font-size: 18px; text-align: center; padding: 7px 10px; margin-top: 0;\">
+                            Les documents
                         </h4>
-                        </div>
-                        <div class=\"col-md-7 \">
-                            <ul class=\"list-unstyled\">
-                                <a><li><strong>Bail :</strong> </li></a>
-                                <a><li><strong>Quittances de loyers :</strong> </li></a>   
-                                <a><li><strong>Facture Téléphone :</strong> </li></a>
-                                <a><li><strong>Facture d'éléctricité :</strong> </li></a>
-                                        
-                            </ul>
-                        </div>
+                    </div>
+                    <div >
+                          <table  class=\"table table-bordered table-striped\">
+                            <thead>
+                              <tr>
+                                <th>Type document</th>
+                                <th>Date </th>
+                                <th>Commentaires</th>
+                                 <th>Actions</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                          {#%for typeDoc,doc in documents%#}                   
+                            <!--tr>
+                                <td>{#{typeDoc}#}</td>
+                                <td>{#{doc.DocumentDate|date(\"m/d/Y\")}#}</td>
+                                <td>{#{doc.DocumentComment}#}</td>
+                                <td>
+                                  <a class=\"btn btn-success\" href=\"\"><i class=\"fa fa-eye fa-lg\"></i> View</a>
+                                  <a class=\"btn btn-danger\" href=\"#\"><i class=\"fa fa-trash-o fa-lg\"></i> Delete</a> 
+                             </td>
+                            </tr-->
+                          {#%endfor%#}                   
+                          </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
             
