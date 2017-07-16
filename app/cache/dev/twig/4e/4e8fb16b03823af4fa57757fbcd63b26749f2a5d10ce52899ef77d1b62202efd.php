@@ -15,8 +15,8 @@ class __TwigTemplate_65dd6feccc34d03b39174a4aeb556d10e731082391a1c55caa23fb0aab1
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_7ff7de320ec888c80a3c6a0ed9825c2acfcb3b9dac0682d58e4adb3327f2e2c5 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_7ff7de320ec888c80a3c6a0ed9825c2acfcb3b9dac0682d58e4adb3327f2e2c5->enter($__internal_7ff7de320ec888c80a3c6a0ed9825c2acfcb3b9dac0682d58e4adb3327f2e2c5_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "FOSUserBundle:Registration:register_content.html.twig"));
+        $__internal_3fe3d8b7ed9fee90e135ad97a784ffe560762e85a2cc9408c46a7834e076abfd = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_3fe3d8b7ed9fee90e135ad97a784ffe560762e85a2cc9408c46a7834e076abfd->enter($__internal_3fe3d8b7ed9fee90e135ad97a784ffe560762e85a2cc9408c46a7834e076abfd_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "FOSUserBundle:Registration:register_content.html.twig"));
 
         // line 2
         echo "
@@ -37,8 +37,11 @@ class __TwigTemplate_65dd6feccc34d03b39174a4aeb556d10e731082391a1c55caa23fb0aab1
 ";
         // line 8
         echo         $this->env->getExtension('Symfony\Bridge\Twig\Extension\FormExtension')->renderer->renderBlock((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), 'form_end');
+        echo "
+
+";
         
-        $__internal_7ff7de320ec888c80a3c6a0ed9825c2acfcb3b9dac0682d58e4adb3327f2e2c5->leave($__internal_7ff7de320ec888c80a3c6a0ed9825c2acfcb3b9dac0682d58e4adb3327f2e2c5_prof);
+        $__internal_3fe3d8b7ed9fee90e135ad97a784ffe560762e85a2cc9408c46a7834e076abfd->leave($__internal_3fe3d8b7ed9fee90e135ad97a784ffe560762e85a2cc9408c46a7834e076abfd_prof);
 
     }
 
@@ -74,6 +77,8 @@ class __TwigTemplate_65dd6feccc34d03b39174a4aeb556d10e731082391a1c55caa23fb0aab1
     <div>
         <input type=\"submit\" value=\"{{ 'registration.submit'|trans }}\" />
     </div>
-{{ form_end(form) }}", "FOSUserBundle:Registration:register_content.html.twig", "/Users/sfallou/Sites/kokou/location/app/Resources/FOSUserBundle/views/Registration/register_content.html.twig");
+{{ form_end(form) }}
+
+", "FOSUserBundle:Registration:register_content.html.twig", "/Users/sfallou/Sites/kokou/location/app/Resources/FOSUserBundle/views/Registration/register_content.html.twig");
     }
 }

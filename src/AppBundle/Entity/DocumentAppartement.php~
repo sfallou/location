@@ -108,28 +108,7 @@ class DocumentAppartement
         return $this->documentId;
     }
 
-    /**
-     * Set documentAmount
-     *
-     * @param string $documentAmount
-     * @return DocumentAppartement
-     */
-    public function setDocumentAmount($documentAmount)
-    {
-        $this->documentAmount = $documentAmount;
-
-        return $this;
-    }
-
-    /**
-     * Get documentAmount
-     *
-     * @return string 
-     */
-    public function getDocumentAmount()
-    {
-        return $this->documentAmount;
-    }
+    
 
     /**
      * Set documentDate
