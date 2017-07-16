@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Chargeappartement</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ chargeAppartement.id }}</td>
+            </tr>
+            <tr>
+                <th>Appartid</th>
+                <td>{{ chargeAppartement.appartId }}</td>
+            </tr>
+            <tr>
+                <th>Chargeid</th>
+                <td>{{ chargeAppartement.chargeId }}</td>
+            </tr>
+            <tr>
+                <th>Chargeamount</th>
+                <td>{{ chargeAppartement.chargeAmount }}</td>
+            </tr>
+            <tr>
+                <th>Chargedate</th>
+                <td>{% if chargeAppartement.chargeDate %}{{ chargeAppartement.chargeDate|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Chargestate</th>
+                <td>{% if chargeAppartement.chargeState %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Chargecomment</th>
+                <td>{{ chargeAppartement.chargeComment }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('chargeappartement_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('chargeappartement_edit', { 'id': chargeAppartement.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

@@ -23,26 +23,33 @@ class __TwigTemplate_3ba3188834111ff7eeebb80f4ecf330ed1ad8a7b08c75e1f869a96ec10b
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_496a3a6b43662bebd18aad35dd766f146726a741f93047babbe073ffba2e5c95 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_496a3a6b43662bebd18aad35dd766f146726a741f93047babbe073ffba2e5c95->enter($__internal_496a3a6b43662bebd18aad35dd766f146726a741f93047babbe073ffba2e5c95_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "user/show.html.twig"));
+        $__internal_5103204dde5ac80fe827a38d3789044055922ab29b22f2d1886c10c71973e1f7 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_5103204dde5ac80fe827a38d3789044055922ab29b22f2d1886c10c71973e1f7->enter($__internal_5103204dde5ac80fe827a38d3789044055922ab29b22f2d1886c10c71973e1f7_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "user/show.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_496a3a6b43662bebd18aad35dd766f146726a741f93047babbe073ffba2e5c95->leave($__internal_496a3a6b43662bebd18aad35dd766f146726a741f93047babbe073ffba2e5c95_prof);
+        $__internal_5103204dde5ac80fe827a38d3789044055922ab29b22f2d1886c10c71973e1f7->leave($__internal_5103204dde5ac80fe827a38d3789044055922ab29b22f2d1886c10c71973e1f7_prof);
 
     }
 
     // line 3
     public function block_page_content($context, array $blocks = array())
     {
-        $__internal_dbb6c8cd7934b544f16b2bd97df8d98c7b2ed01a71b38e8f47434c9638fa5628 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_dbb6c8cd7934b544f16b2bd97df8d98c7b2ed01a71b38e8f47434c9638fa5628->enter($__internal_dbb6c8cd7934b544f16b2bd97df8d98c7b2ed01a71b38e8f47434c9638fa5628_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "page_content"));
+        $__internal_7e94db677970f12cdc82c78eb808a04bc6435bf8fe668868ef7fd699ce217097 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_7e94db677970f12cdc82c78eb808a04bc6435bf8fe668868ef7fd699ce217097->enter($__internal_7e94db677970f12cdc82c78eb808a04bc6435bf8fe668868ef7fd699ce217097_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "page_content"));
 
         // line 4
         echo "
     <div class=\"box\">
             <!-- /.box-header -->
             <div class=\"box-body\">
+                <div class=\"col-md-3\">
+                            <a class=\"btn btn-success\" href=\"";
+        // line 9
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("add_charge_room", array("id" => $this->getAttribute((isset($context["room"]) ? $context["room"] : $this->getContext($context, "room")), "id", array()))), "html", null, true);
+        echo "\"><i class=\"fa fa-money fa-lg\"></i> Ajouter Charge</a>
+                            
+                </div><br><br>
                 <div >
                     <div class=\"page-header\"><h4 style=\"background-color:#f7f7f7; font-size: 18px; text-align: center; padding: 7px 10px; margin-top: 0;\">
                             Informations générales
@@ -50,18 +57,18 @@ class __TwigTemplate_3ba3188834111ff7eeebb80f4ecf330ed1ad8a7b08c75e1f869a96ec10b
                         <div class=\"col-md-7\">
                             <ul class=\"list-unstyled\">
                                 <li><strong>ID User:</strong> ";
-        // line 14
+        // line 18
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["user"]) ? $context["user"] : $this->getContext($context, "user")), "id", array()), "html", null, true);
         echo "</li>
                                 <li><strong>Profil :</strong> </li>
                                 <li><strong>Username :</strong> ";
-        // line 16
+        // line 20
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["user"]) ? $context["user"] : $this->getContext($context, "user")), "username", array()), "html", null, true);
         echo "</li>
                                 <li><strong>Prénom :</strong> </li>
                                 <li><strong>Nom :</strong> </li>               
                                 <li><strong>Email :</strong> ";
-        // line 19
+        // line 23
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["user"]) ? $context["user"] : $this->getContext($context, "user")), "email", array()), "html", null, true);
         echo "</li>
                                 <li><strong>Téléphone :</strong> </li>
@@ -82,29 +89,29 @@ class __TwigTemplate_3ba3188834111ff7eeebb80f4ecf330ed1ad8a7b08c75e1f869a96ec10b
                         <div class=\"col-md-7\">
                             <ul class=\"list-unstyled\">
                                 <li><strong>Adresse Appartement :</strong> <a href=\"";
-        // line 37
+        // line 41
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("appartement_show", array("id" => $this->getAttribute((isset($context["appart"]) ? $context["appart"] : $this->getContext($context, "appart")), "id", array()))), "html", null, true);
         echo "\">";
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["appart"]) ? $context["appart"] : $this->getContext($context, "appart")), "adresse", array()), "html", null, true);
         echo "</a></li>
                                 <li><strong>Surface Appartement :</strong> ";
-        // line 38
+        // line 42
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["appart"]) ? $context["appart"] : $this->getContext($context, "appart")), "surface", array()), "html", null, true);
         echo "</li>
                                 <li><strong>Responsable Coloc :</strong> ";
-        // line 39
+        // line 43
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["appart"]) ? $context["appart"] : $this->getContext($context, "appart")), "contactAppart", array()), "html", null, true);
         echo "</li>
                                 <li><strong>Contact Gardien :</strong> ";
-        // line 40
+        // line 44
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["residence"]) ? $context["residence"] : $this->getContext($context, "residence")), "contactGardien", array()), "html", null, true);
         echo "</li>
                                 <li><strong>Horaire Gardien :</strong> ";
-        // line 41
+        // line 45
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["residence"]) ? $context["residence"] : $this->getContext($context, "residence")), "horaireGardien", array()), "html", null, true);
         echo " </li>
                                 <li><strong>Contact Syndic :</strong> ";
-        // line 42
+        // line 46
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["residence"]) ? $context["residence"] : $this->getContext($context, "residence")), "contactSyndic", array()), "html", null, true);
         echo " </li>
                             </ul>
@@ -112,46 +119,46 @@ class __TwigTemplate_3ba3188834111ff7eeebb80f4ecf330ed1ad8a7b08c75e1f869a96ec10b
                         <div class=\"col-md-5 \">
                             <ul class=\"list-unstyled\">
                                 <li><strong>N° Chambre :</strong> <a href=\"";
-        // line 47
+        // line 51
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("room_show", array("id" => $this->getAttribute((isset($context["room"]) ? $context["room"] : $this->getContext($context, "room")), "id", array()))), "html", null, true);
         echo "\">";
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["room"]) ? $context["room"] : $this->getContext($context, "room")), "id", array()), "html", null, true);
         echo "</a></li>
                                 <li><strong>Surface Chambre :</strong> ";
-        // line 48
+        // line 52
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["room"]) ? $context["room"] : $this->getContext($context, "room")), "surface", array()), "html", null, true);
         echo " </li>
                                 <li><strong>Date d'entrée :</strong> ";
-        // line 49
+        // line 53
         echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute((isset($context["user_room"]) ? $context["user_room"] : $this->getContext($context, "user_room")), "userRoomDateIn", array()), "d-m-Y"), "html", null, true);
         echo "</li>
                                 <li><strong>Date de sortie :</strong> ";
-        // line 50
+        // line 54
         echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute((isset($context["user_room"]) ? $context["user_room"] : $this->getContext($context, "user_room")), "userRoomDateOut", array()), "d-m-Y"), "html", null, true);
         echo "</li>
                                 <li><strong>Prix Loyer :</strong> ";
-        // line 51
+        // line 55
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["room"]) ? $context["room"] : $this->getContext($context, "room")), "rent", array()), "html", null, true);
         echo " euros </li>
                                 <li><strong>Caution :</strong> ";
-        // line 52
+        // line 56
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["room"]) ? $context["room"] : $this->getContext($context, "room")), "guarantee", array()), "html", null, true);
         echo " euros</li>               
                             </ul>
                              <br><br>
                         </div>
                 </div>
-                <div class=\"page-header\">-*-</div>
+                 <div class=\"page-header\">-*-</div>
                 <div >
                     <div class=\"page-header\"><h4 style=\"background-color:#f7f7f7; font-size: 18px; text-align: center; padding: 7px 10px; margin-top: 0;\">
-                            États des paiements du loyer de l'année 2017
+                            États des paiements du loyer de l'appartement de l'année 
                         </h4>
                     </div>
                     <div >
                           <table  class=\"table table-bordered table-striped\">
                             <thead>
                               <tr>
-                                <th></th>
+                                <th>Locataire</th>
                                 <th>Jan</th>
                                 <th>Fév</th>
                                 <th>Mars</th>
@@ -166,9 +173,16 @@ class __TwigTemplate_3ba3188834111ff7eeebb80f4ecf330ed1ad8a7b08c75e1f869a96ec10b
                                 <th>Dec</th>
                               </tr>
                           </thead>
-                          <tbody>  
+                          <tbody>
                             <tr>
-                                <td>Loyer</td>
+                                <td> 
+                                 <a href=\"";
+        // line 89
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("user_show", array("id" => $this->getAttribute((isset($context["user"]) ? $context["user"] : $this->getContext($context, "user")), "id", array()))), "html", null, true);
+        echo "\">";
+        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["user"]) ? $context["user"] : $this->getContext($context, "user")), "username", array()), "html", null, true);
+        echo "</a>   
+                                </td>
                                 <td>X</td>
                                 <td>X</td>
                                 <td>X</td>
@@ -181,52 +195,100 @@ class __TwigTemplate_3ba3188834111ff7eeebb80f4ecf330ed1ad8a7b08c75e1f869a96ec10b
                                 <td>X</td>
                                 <td>X</td>
                                 <td>x</td>
-                              </tr>
+                              </tr>                
+                          </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class=\"page-header\">-*-</div>
+                <div >
+                    <div class=\"page-header\"><h4 style=\"background-color:#f7f7f7; font-size: 18px; text-align: center; padding: 7px 10px; margin-top: 0;\">
+                             Liste des charges
+                        </h4>
+                    </div>
+                    <div >
+                          <table  class=\"table table-bordered table-striped\">
+                            <thead>
                               <tr>
-                                <td>Charges EDF</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>x</td>
+                                <th>Type charge</th>
+                                <th>Date charge</th>
+                                <th>Montant</th>
+                                <th>État</th>
+                                <th>Commentaires</th>
+                                 <th>Actions</th>
                               </tr>
-                              <tr>
-                                <td>Charge Eau</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>x</td>
-                              </tr>
-                              <tr>
-                                <td>Autres charge</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>x</td>
-                              </tr>
+                          </thead>
+                          <tbody>
+                          ";
+        // line 127
+        $context['_parent'] = $context;
+        $context['_seq'] = twig_ensure_traversable((isset($context["charges"]) ? $context["charges"] : $this->getContext($context, "charges")));
+        foreach ($context['_seq'] as $context["typeCharge"] => $context["charge"]) {
+            echo "                   
+                            <tr>
+                                <td>";
+            // line 129
+            echo twig_escape_filter($this->env, $context["typeCharge"], "html", null, true);
+            echo "</td>
+                                <td>";
+            // line 130
+            echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($context["charge"], "ChargeDate", array()), "m/d/Y"), "html", null, true);
+            echo "</td>
+                                <td>";
+            // line 131
+            echo twig_escape_filter($this->env, $this->getAttribute($context["charge"], "ChargeAmount", array()), "html", null, true);
+            echo " euros</td>
+                                <td>
+                                  ";
+            // line 133
+            if (($this->getAttribute($context["charge"], "ChargeState", array()) == false)) {
+                // line 134
+                echo "                                  Not paid
+                                  ";
+            }
+            // line 136
+            echo "                                  ";
+            if (($this->getAttribute($context["charge"], "ChargeState", array()) == true)) {
+                // line 137
+                echo "                                  Paid
+                                  ";
+            }
+            // line 139
+            echo "                                </td>
+                                <td>";
+            // line 140
+            echo twig_escape_filter($this->env, $this->getAttribute($context["charge"], "ChargeComment", array()), "html", null, true);
+            echo "</td>
+                                <td>
+                                  ";
+            // line 142
+            if (($this->getAttribute($context["charge"], "ChargeState", array()) == false)) {
+                // line 143
+                echo "                                  <a class=\"btn btn-success\" href=\"";
+                echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("charge_room_paid", array("id" => $this->getAttribute($context["charge"], "id", array()), "idRoom" => $this->getAttribute((isset($context["user"]) ? $context["user"] : $this->getContext($context, "user")), "id", array()))), "html", null, true);
+                echo "\"><i class=\"fa fa-check fa-lg\"></i> Paid</a>
+                                  ";
+            }
+            // line 145
+            echo "                                  ";
+            if (($this->getAttribute($context["charge"], "ChargeState", array()) == true)) {
+                // line 146
+                echo "                                  <a class=\"btn btn-success\" href=\"";
+                echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("charge_room_unpaid", array("id" => $this->getAttribute($context["charge"], "id", array()), "idRoom" => $this->getAttribute((isset($context["user"]) ? $context["user"] : $this->getContext($context, "user")), "id", array()))), "html", null, true);
+                echo "\"><i class=\"fa fa-times fa-lg\"></i> Unpaid</a>
+                                  ";
+            }
+            // line 148
+            echo "                                  <a class=\"btn btn-danger\" href=\"#\"><i class=\"fa fa-trash-o fa-lg\"></i> Delete</a> 
+                             </td>
+                            </tr>
+                          ";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['typeCharge'], $context['charge'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 151
+        echo "                   
                           </tbody>
                         </table>
                     </div>
@@ -250,31 +312,31 @@ class __TwigTemplate_3ba3188834111ff7eeebb80f4ecf330ed1ad8a7b08c75e1f869a96ec10b
             
 ";
         
-        $__internal_dbb6c8cd7934b544f16b2bd97df8d98c7b2ed01a71b38e8f47434c9638fa5628->leave($__internal_dbb6c8cd7934b544f16b2bd97df8d98c7b2ed01a71b38e8f47434c9638fa5628_prof);
+        $__internal_7e94db677970f12cdc82c78eb808a04bc6435bf8fe668868ef7fd699ce217097->leave($__internal_7e94db677970f12cdc82c78eb808a04bc6435bf8fe668868ef7fd699ce217097_prof);
 
     }
 
-    // line 166
+    // line 175
     public function block_page_title($context, array $blocks = array())
     {
-        $__internal_d707d879a682790e3803cc8fe582923fc0b54c569d8004014717255c0facad3a = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_d707d879a682790e3803cc8fe582923fc0b54c569d8004014717255c0facad3a->enter($__internal_d707d879a682790e3803cc8fe582923fc0b54c569d8004014717255c0facad3a_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "page_title"));
+        $__internal_c2cf9ee4d57ec552e2676341e124b14f5470e2b63a89bd729751fadbc024c254 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_c2cf9ee4d57ec552e2676341e124b14f5470e2b63a89bd729751fadbc024c254->enter($__internal_c2cf9ee4d57ec552e2676341e124b14f5470e2b63a89bd729751fadbc024c254_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "page_title"));
 
         echo " Users ";
         
-        $__internal_d707d879a682790e3803cc8fe582923fc0b54c569d8004014717255c0facad3a->leave($__internal_d707d879a682790e3803cc8fe582923fc0b54c569d8004014717255c0facad3a_prof);
+        $__internal_c2cf9ee4d57ec552e2676341e124b14f5470e2b63a89bd729751fadbc024c254->leave($__internal_c2cf9ee4d57ec552e2676341e124b14f5470e2b63a89bd729751fadbc024c254_prof);
 
     }
 
-    // line 167
+    // line 176
     public function block_page_subtitle($context, array $blocks = array())
     {
-        $__internal_b702140b202396e603c652584d5ce47c449d4600915244eb7fbc08ca73799563 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_b702140b202396e603c652584d5ce47c449d4600915244eb7fbc08ca73799563->enter($__internal_b702140b202396e603c652584d5ce47c449d4600915244eb7fbc08ca73799563_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "page_subtitle"));
+        $__internal_9fa0e48c3d2dbafe3a137ed85e9c331438b474ceaa29bdfbbe800154910fd887 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_9fa0e48c3d2dbafe3a137ed85e9c331438b474ceaa29bdfbbe800154910fd887->enter($__internal_9fa0e48c3d2dbafe3a137ed85e9c331438b474ceaa29bdfbbe800154910fd887_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "page_subtitle"));
 
         echo " show ";
         
-        $__internal_b702140b202396e603c652584d5ce47c449d4600915244eb7fbc08ca73799563->leave($__internal_b702140b202396e603c652584d5ce47c449d4600915244eb7fbc08ca73799563_prof);
+        $__internal_9fa0e48c3d2dbafe3a137ed85e9c331438b474ceaa29bdfbbe800154910fd887->leave($__internal_9fa0e48c3d2dbafe3a137ed85e9c331438b474ceaa29bdfbbe800154910fd887_prof);
 
     }
 
@@ -290,7 +352,7 @@ class __TwigTemplate_3ba3188834111ff7eeebb80f4ecf330ed1ad8a7b08c75e1f869a96ec10b
 
     public function getDebugInfo()
     {
-        return array (  270 => 167,  258 => 166,  138 => 52,  134 => 51,  130 => 50,  126 => 49,  122 => 48,  116 => 47,  108 => 42,  104 => 41,  100 => 40,  96 => 39,  92 => 38,  86 => 37,  65 => 19,  59 => 16,  54 => 14,  42 => 4,  36 => 3,  11 => 1,);
+        return array (  332 => 176,  320 => 175,  291 => 151,  282 => 148,  276 => 146,  273 => 145,  267 => 143,  265 => 142,  260 => 140,  257 => 139,  253 => 137,  250 => 136,  246 => 134,  244 => 133,  239 => 131,  235 => 130,  231 => 129,  224 => 127,  181 => 89,  145 => 56,  141 => 55,  137 => 54,  133 => 53,  129 => 52,  123 => 51,  115 => 46,  111 => 45,  107 => 44,  103 => 43,  99 => 42,  93 => 41,  72 => 23,  66 => 20,  61 => 18,  49 => 9,  42 => 4,  36 => 3,  11 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -310,6 +372,10 @@ class __TwigTemplate_3ba3188834111ff7eeebb80f4ecf330ed1ad8a7b08c75e1f869a96ec10b
     <div class=\"box\">
             <!-- /.box-header -->
             <div class=\"box-body\">
+                <div class=\"col-md-3\">
+                            <a class=\"btn btn-success\" href=\"{{ path('add_charge_room', { 'id': room.id }) }}\"><i class=\"fa fa-money fa-lg\"></i> Ajouter Charge</a>
+                            
+                </div><br><br>
                 <div >
                     <div class=\"page-header\"><h4 style=\"background-color:#f7f7f7; font-size: 18px; text-align: center; padding: 7px 10px; margin-top: 0;\">
                             Informations générales
@@ -359,17 +425,17 @@ class __TwigTemplate_3ba3188834111ff7eeebb80f4ecf330ed1ad8a7b08c75e1f869a96ec10b
                              <br><br>
                         </div>
                 </div>
-                <div class=\"page-header\">-*-</div>
+                 <div class=\"page-header\">-*-</div>
                 <div >
                     <div class=\"page-header\"><h4 style=\"background-color:#f7f7f7; font-size: 18px; text-align: center; padding: 7px 10px; margin-top: 0;\">
-                            États des paiements du loyer de l'année 2017
+                            États des paiements du loyer de l'appartement de l'année 
                         </h4>
                     </div>
                     <div >
                           <table  class=\"table table-bordered table-striped\">
                             <thead>
                               <tr>
-                                <th></th>
+                                <th>Locataire</th>
                                 <th>Jan</th>
                                 <th>Fév</th>
                                 <th>Mars</th>
@@ -384,9 +450,11 @@ class __TwigTemplate_3ba3188834111ff7eeebb80f4ecf330ed1ad8a7b08c75e1f869a96ec10b
                                 <th>Dec</th>
                               </tr>
                           </thead>
-                          <tbody>  
+                          <tbody>
                             <tr>
-                                <td>Loyer</td>
+                                <td> 
+                                 <a href=\"{{ path('user_show', { 'id': user.id }) }}\">{{ user.username }}</a>   
+                                </td>
                                 <td>X</td>
                                 <td>X</td>
                                 <td>X</td>
@@ -399,52 +467,55 @@ class __TwigTemplate_3ba3188834111ff7eeebb80f4ecf330ed1ad8a7b08c75e1f869a96ec10b
                                 <td>X</td>
                                 <td>X</td>
                                 <td>x</td>
-                              </tr>
+                              </tr>                
+                          </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class=\"page-header\">-*-</div>
+                <div >
+                    <div class=\"page-header\"><h4 style=\"background-color:#f7f7f7; font-size: 18px; text-align: center; padding: 7px 10px; margin-top: 0;\">
+                             Liste des charges
+                        </h4>
+                    </div>
+                    <div >
+                          <table  class=\"table table-bordered table-striped\">
+                            <thead>
                               <tr>
-                                <td>Charges EDF</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>x</td>
+                                <th>Type charge</th>
+                                <th>Date charge</th>
+                                <th>Montant</th>
+                                <th>État</th>
+                                <th>Commentaires</th>
+                                 <th>Actions</th>
                               </tr>
-                              <tr>
-                                <td>Charge Eau</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>x</td>
-                              </tr>
-                              <tr>
-                                <td>Autres charge</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>x</td>
-                              </tr>
+                          </thead>
+                          <tbody>
+                          {%for typeCharge,charge in charges%}                   
+                            <tr>
+                                <td>{{typeCharge}}</td>
+                                <td>{{charge.ChargeDate|date(\"m/d/Y\")}}</td>
+                                <td>{{charge.ChargeAmount}} euros</td>
+                                <td>
+                                  {% if charge.ChargeState == false %}
+                                  Not paid
+                                  {% endif %}
+                                  {% if charge.ChargeState == true %}
+                                  Paid
+                                  {% endif %}
+                                </td>
+                                <td>{{charge.ChargeComment}}</td>
+                                <td>
+                                  {% if charge.ChargeState == false %}
+                                  <a class=\"btn btn-success\" href=\"{{ path('charge_room_paid', { 'id': charge.id, 'idRoom':user.id }) }}\"><i class=\"fa fa-check fa-lg\"></i> Paid</a>
+                                  {% endif %}
+                                  {% if charge.ChargeState == true %}
+                                  <a class=\"btn btn-success\" href=\"{{ path('charge_room_unpaid', { 'id': charge.id, 'idRoom':user.id }) }}\"><i class=\"fa fa-times fa-lg\"></i> Unpaid</a>
+                                  {% endif %}
+                                  <a class=\"btn btn-danger\" href=\"#\"><i class=\"fa fa-trash-o fa-lg\"></i> Delete</a> 
+                             </td>
+                            </tr>
+                          {%endfor%}                   
                           </tbody>
                         </table>
                     </div>

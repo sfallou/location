@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Chargerooms list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Roomid</th>
+                <th>Chargeid</th>
+                <th>Chargeamount</th>
+                <th>Chargedate</th>
+                <th>Chargestate</th>
+                <th>Chargecomment</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for chargeRoom in chargeRooms %}
+            <tr>
+                <td><a href="{{ path('chargeroom_show', { 'id': chargeRoom.id }) }}">{{ chargeRoom.id }}</a></td>
+                <td>{{ chargeRoom.roomId }}</td>
+                <td>{{ chargeRoom.chargeId }}</td>
+                <td>{{ chargeRoom.chargeAmount }}</td>
+                <td>{% if chargeRoom.chargeDate %}{{ chargeRoom.chargeDate|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if chargeRoom.chargeState %}Yes{% else %}No{% endif %}</td>
+                <td>{{ chargeRoom.chargeComment }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('chargeroom_show', { 'id': chargeRoom.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('chargeroom_edit', { 'id': chargeRoom.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('chargeroom_new') }}">Create a new chargeRoom</a>
+        </li>
+    </ul>
+{% endblock %}

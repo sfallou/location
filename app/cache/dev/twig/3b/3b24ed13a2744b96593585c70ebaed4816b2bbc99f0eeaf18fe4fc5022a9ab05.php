@@ -23,20 +23,20 @@ class __TwigTemplate_9f690c2df1a57c0c7c335d928d38f0775771706808fccb177d709730a53
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_2b667043e3d016235b6a73c0ee82387fb6c7e689477a7a87c3640af79dc5c7dd = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_2b667043e3d016235b6a73c0ee82387fb6c7e689477a7a87c3640af79dc5c7dd->enter($__internal_2b667043e3d016235b6a73c0ee82387fb6c7e689477a7a87c3640af79dc5c7dd_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "room/show.html.twig"));
+        $__internal_a8f00f4ddf4a47938d985f9e2d61ac9aa6c438d58245fd7301ff8b73e829efb7 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_a8f00f4ddf4a47938d985f9e2d61ac9aa6c438d58245fd7301ff8b73e829efb7->enter($__internal_a8f00f4ddf4a47938d985f9e2d61ac9aa6c438d58245fd7301ff8b73e829efb7_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "room/show.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_2b667043e3d016235b6a73c0ee82387fb6c7e689477a7a87c3640af79dc5c7dd->leave($__internal_2b667043e3d016235b6a73c0ee82387fb6c7e689477a7a87c3640af79dc5c7dd_prof);
+        $__internal_a8f00f4ddf4a47938d985f9e2d61ac9aa6c438d58245fd7301ff8b73e829efb7->leave($__internal_a8f00f4ddf4a47938d985f9e2d61ac9aa6c438d58245fd7301ff8b73e829efb7_prof);
 
     }
 
     // line 3
     public function block_page_content($context, array $blocks = array())
     {
-        $__internal_a4993498a3092bf685a0f4569aebb3dcbd963a5c3a6dd4f52093c0e615c6dbb2 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_a4993498a3092bf685a0f4569aebb3dcbd963a5c3a6dd4f52093c0e615c6dbb2->enter($__internal_a4993498a3092bf685a0f4569aebb3dcbd963a5c3a6dd4f52093c0e615c6dbb2_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "page_content"));
+        $__internal_a1bc87ca9f5e0f0dc63a9e0ec5bb53d9afdc27466103625ad53c746bb1370db8 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_a1bc87ca9f5e0f0dc63a9e0ec5bb53d9afdc27466103625ad53c746bb1370db8->enter($__internal_a1bc87ca9f5e0f0dc63a9e0ec5bb53d9afdc27466103625ad53c746bb1370db8_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "page_content"));
 
         // line 4
         echo "
@@ -58,20 +58,8 @@ class __TwigTemplate_9f690c2df1a57c0c7c335d928d38f0775771706808fccb177d709730a53
         echo "\"><i class=\"fa fa-wrench fa-lg\"></i> Signaler Réparation</a>
                             <br><br>
                     </div>
-                    <div class=\"col-md-3\">
-                            <a class=\"btn btn-success\" href=\"";
-        // line 18
-        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("add_furniture_room", array("id" => $this->getAttribute((isset($context["room"]) ? $context["room"] : $this->getContext($context, "room")), "id", array()))), "html", null, true);
-        echo "\"><i class=\"fa fa-money fa-lg\"></i> Ajouter Charge</a>
-                            
-                    </div>
-                    <div class=\"col-md-3\">
-                            <a class=\"btn btn-success\" href=\"";
-        // line 22
-        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("add_furniture_room", array("id" => 1));
-        echo "\"><i class=\"fa fa-info fa-lg\"></i> Envoyer une info</a>
-                            
-                    </div>
+                    
+                   
                     <br><br>
                     <div class=\"page-header\"><h4 style=\"background-color:#f7f7f7; font-size: 18px; text-align: center; padding: 7px 10px; margin-top: 0;\">
                             Informations générales
@@ -80,18 +68,18 @@ class __TwigTemplate_9f690c2df1a57c0c7c335d928d38f0775771706808fccb177d709730a53
                     <div class=\"col-md-7\">
                             <ul class=\"list-unstyled\">
                                 <li><strong>ID Chambre :</strong> ";
-        // line 32
+        // line 26
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["room"]) ? $context["room"] : $this->getContext($context, "room")), "id", array()), "html", null, true);
         echo "</li>
                                 <li><strong>Surface :</strong> ";
-        // line 33
+        // line 27
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["room"]) ? $context["room"] : $this->getContext($context, "room")), "surface", array()), "html", null, true);
         echo " </li>
                                 <li><strong>Occupant :</strong>
                                   ";
-        // line 35
+        // line 29
         if ($this->getAttribute((isset($context["user"]) ? $context["user"] : null), "username", array(), "any", true, true)) {
-            // line 36
+            // line 30
             echo "                                     <a href=\"";
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("user_show", array("id" => $this->getAttribute((isset($context["user"]) ? $context["user"] : $this->getContext($context, "user")), "id", array()))), "html", null, true);
             echo "\">";
@@ -99,7 +87,7 @@ class __TwigTemplate_9f690c2df1a57c0c7c335d928d38f0775771706808fccb177d709730a53
             echo "</a>
                                      ";
         }
-        // line 38
+        // line 32
         echo "                                  </li>
                                 
                             </ul>
@@ -107,15 +95,15 @@ class __TwigTemplate_9f690c2df1a57c0c7c335d928d38f0775771706808fccb177d709730a53
                     <div class=\"col-md-5\">
                             <ul class=\"list-unstyled\">
                                 <li><strong>Rent :</strong> ";
-        // line 44
+        // line 38
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["room"]) ? $context["room"] : $this->getContext($context, "room")), "rent", array()), "html", null, true);
         echo " euros</li>
                                 <li><strong>Guarantee :</strong> ";
-        // line 45
+        // line 39
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["room"]) ? $context["room"] : $this->getContext($context, "room")), "guarantee", array()), "html", null, true);
         echo " euros</li>
                                 <li><strong>Appartement  :</strong> <a href=\"";
-        // line 46
+        // line 40
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("appartement_show", array("id" => $this->getAttribute((isset($context["appart"]) ? $context["appart"] : $this->getContext($context, "appart")), "id", array()))), "html", null, true);
         echo "\">";
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["appart"]) ? $context["appart"] : $this->getContext($context, "appart")), "adresse", array()), "html", null, true);
@@ -125,6 +113,7 @@ class __TwigTemplate_9f690c2df1a57c0c7c335d928d38f0775771706808fccb177d709730a53
                     </div>
                 </div>
                 </div>
+                
                   <div class=\"page-header\">-*-</div>
                 <div >
                     <div class=\"page-header\"><h4 style=\"background-color:#f7f7f7; font-size: 18px; text-align: center; padding: 7px 10px; margin-top: 0;\">
@@ -145,65 +134,78 @@ class __TwigTemplate_9f690c2df1a57c0c7c335d928d38f0775771706808fccb177d709730a53
                           </thead>
                           <tbody>
                           ";
-        // line 71
+        // line 66
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable((isset($context["fixs"]) ? $context["fixs"] : $this->getContext($context, "fixs")));
         foreach ($context['_seq'] as $context["typeFix"] => $context["fix"]) {
             echo "                   
                             <tr>
                                 <td>";
-            // line 73
+            // line 68
             echo twig_escape_filter($this->env, $context["typeFix"], "html", null, true);
             echo "</td>
                                 <td>";
-            // line 74
+            // line 69
             echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($context["fix"], "FixDate", array()), "m/d/Y"), "html", null, true);
-            echo "</td>
-                                <td>";
-            // line 75
-            echo twig_escape_filter($this->env, $this->getAttribute($context["fix"], "FixPriority", array()), "html", null, true);
             echo "</td>
                                 <td>
                                   ";
+            // line 71
+            if (($this->getAttribute($context["fix"], "FixPriority", array()) == false)) {
+                // line 72
+                echo "                                  0
+                                  ";
+            }
+            // line 74
+            echo "                                  ";
+            if (($this->getAttribute($context["fix"], "FixPriority", array()) == true)) {
+                // line 75
+                echo "                                  1
+                                  ";
+            }
             // line 77
+            echo "                                </td>
+                                <td>
+                                  ";
+            // line 79
             if (($this->getAttribute($context["fix"], "FixState", array()) == false)) {
-                // line 78
+                // line 80
                 echo "                                  Not done
                                   ";
             }
-            // line 80
+            // line 82
             echo "                                  ";
             if (($this->getAttribute($context["fix"], "FixState", array()) == true)) {
-                // line 81
+                // line 83
                 echo "                                  Done
                                   ";
             }
-            // line 83
+            // line 85
             echo "                                </td>
                                 <td>";
-            // line 84
+            // line 86
             echo twig_escape_filter($this->env, $this->getAttribute($context["fix"], "FixComment", array()), "html", null, true);
             echo "</td>
                                 <td>
                                   ";
-            // line 86
+            // line 88
             if (($this->getAttribute($context["fix"], "FixState", array()) == false)) {
-                // line 87
+                // line 89
                 echo "                                  <a class=\"btn btn-success\" href=\"";
-                echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("fix_room_done", array("id" => $this->getAttribute($context["fix"], "id", array()))), "html", null, true);
+                echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("fix_room_done", array("id" => $this->getAttribute($context["fix"], "id", array()), "idRoom" => $this->getAttribute((isset($context["room"]) ? $context["room"] : $this->getContext($context, "room")), "id", array()))), "html", null, true);
                 echo "\"><i class=\"fa fa-check fa-lg\"></i> Done</a>
                                   ";
             }
-            // line 89
+            // line 91
             echo "                                  ";
             if (($this->getAttribute($context["fix"], "FixState", array()) == true)) {
-                // line 90
+                // line 92
                 echo "                                  <a class=\"btn btn-success\" href=\"";
-                echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("fix_room_undone", array("id" => $this->getAttribute($context["fix"], "id", array()))), "html", null, true);
+                echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("fix_room_undone", array("id" => $this->getAttribute($context["fix"], "id", array()), "idRoom" => $this->getAttribute((isset($context["room"]) ? $context["room"] : $this->getContext($context, "room")), "id", array()))), "html", null, true);
                 echo "\"><i class=\"fa fa-times fa-lg\"></i> Undone</a>
                                   ";
             }
-            // line 92
+            // line 94
             echo "                                  <a class=\"btn btn-danger\" href=\"#\"><i class=\"fa fa-trash-o fa-lg\"></i> Delete</a> 
                              </td>
                             </tr>
@@ -212,7 +214,7 @@ class __TwigTemplate_9f690c2df1a57c0c7c335d928d38f0775771706808fccb177d709730a53
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['typeFix'], $context['fix'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 95
+        // line 97
         echo "                   
                           </tbody>
                         </table>
@@ -234,18 +236,18 @@ class __TwigTemplate_9f690c2df1a57c0c7c335d928d38f0775771706808fccb177d709730a53
                           </thead>
                           <tbody>
                           ";
-        // line 115
+        // line 117
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable((isset($context["meubles"]) ? $context["meubles"] : $this->getContext($context, "meubles")));
         foreach ($context['_seq'] as $context["_key"] => $context["meuble"]) {
             echo "                   
                             <tr>
                                 <td>";
-            // line 117
+            // line 119
             echo twig_escape_filter($this->env, $this->getAttribute($context["meuble"], "id", array()), "html", null, true);
             echo "</td>
                                 <td>";
-            // line 118
+            // line 120
             echo twig_escape_filter($this->env, $this->getAttribute($context["meuble"], "name", array()), "html", null, true);
             echo "</td>
                             </tr> 
@@ -254,7 +256,7 @@ class __TwigTemplate_9f690c2df1a57c0c7c335d928d38f0775771706808fccb177d709730a53
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['meuble'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 120
+        // line 122
         echo "                    
                           </tbody>
                         </table>
@@ -265,31 +267,31 @@ class __TwigTemplate_9f690c2df1a57c0c7c335d928d38f0775771706808fccb177d709730a53
             
 ";
         
-        $__internal_a4993498a3092bf685a0f4569aebb3dcbd963a5c3a6dd4f52093c0e615c6dbb2->leave($__internal_a4993498a3092bf685a0f4569aebb3dcbd963a5c3a6dd4f52093c0e615c6dbb2_prof);
+        $__internal_a1bc87ca9f5e0f0dc63a9e0ec5bb53d9afdc27466103625ad53c746bb1370db8->leave($__internal_a1bc87ca9f5e0f0dc63a9e0ec5bb53d9afdc27466103625ad53c746bb1370db8_prof);
 
     }
 
-    // line 129
+    // line 131
     public function block_page_title($context, array $blocks = array())
     {
-        $__internal_6fab68b186299dd3dd41cdc1660c3bf6013099e6b63561c73ee162e700a28490 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_6fab68b186299dd3dd41cdc1660c3bf6013099e6b63561c73ee162e700a28490->enter($__internal_6fab68b186299dd3dd41cdc1660c3bf6013099e6b63561c73ee162e700a28490_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "page_title"));
+        $__internal_55abc6d76c6a9a2a7cd0233ddabee5c73a1911e02386717236e388a7d277891b = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_55abc6d76c6a9a2a7cd0233ddabee5c73a1911e02386717236e388a7d277891b->enter($__internal_55abc6d76c6a9a2a7cd0233ddabee5c73a1911e02386717236e388a7d277891b_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "page_title"));
 
         echo " Room ";
         
-        $__internal_6fab68b186299dd3dd41cdc1660c3bf6013099e6b63561c73ee162e700a28490->leave($__internal_6fab68b186299dd3dd41cdc1660c3bf6013099e6b63561c73ee162e700a28490_prof);
+        $__internal_55abc6d76c6a9a2a7cd0233ddabee5c73a1911e02386717236e388a7d277891b->leave($__internal_55abc6d76c6a9a2a7cd0233ddabee5c73a1911e02386717236e388a7d277891b_prof);
 
     }
 
-    // line 130
+    // line 132
     public function block_page_subtitle($context, array $blocks = array())
     {
-        $__internal_73501181f8189128548827c17d7c38b6484ebe7503920b88c49ff8129e6dd543 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_73501181f8189128548827c17d7c38b6484ebe7503920b88c49ff8129e6dd543->enter($__internal_73501181f8189128548827c17d7c38b6484ebe7503920b88c49ff8129e6dd543_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "page_subtitle"));
+        $__internal_c0b635d8b3d65ae751015627fdf4e9070447586dc5d512d69ba4e01dd77b69da = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_c0b635d8b3d65ae751015627fdf4e9070447586dc5d512d69ba4e01dd77b69da->enter($__internal_c0b635d8b3d65ae751015627fdf4e9070447586dc5d512d69ba4e01dd77b69da_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "page_subtitle"));
 
         echo " show ";
         
-        $__internal_73501181f8189128548827c17d7c38b6484ebe7503920b88c49ff8129e6dd543->leave($__internal_73501181f8189128548827c17d7c38b6484ebe7503920b88c49ff8129e6dd543_prof);
+        $__internal_c0b635d8b3d65ae751015627fdf4e9070447586dc5d512d69ba4e01dd77b69da->leave($__internal_c0b635d8b3d65ae751015627fdf4e9070447586dc5d512d69ba4e01dd77b69da_prof);
 
     }
 
@@ -305,7 +307,7 @@ class __TwigTemplate_9f690c2df1a57c0c7c335d928d38f0775771706808fccb177d709730a53
 
     public function getDebugInfo()
     {
-        return array (  285 => 130,  273 => 129,  258 => 120,  249 => 118,  245 => 117,  238 => 115,  216 => 95,  207 => 92,  201 => 90,  198 => 89,  192 => 87,  190 => 86,  185 => 84,  182 => 83,  178 => 81,  175 => 80,  171 => 78,  169 => 77,  164 => 75,  160 => 74,  156 => 73,  149 => 71,  119 => 46,  115 => 45,  111 => 44,  103 => 38,  95 => 36,  93 => 35,  88 => 33,  84 => 32,  71 => 22,  64 => 18,  57 => 14,  50 => 10,  42 => 4,  36 => 3,  11 => 1,);
+        return array (  287 => 132,  275 => 131,  260 => 122,  251 => 120,  247 => 119,  240 => 117,  218 => 97,  209 => 94,  203 => 92,  200 => 91,  194 => 89,  192 => 88,  187 => 86,  184 => 85,  180 => 83,  177 => 82,  173 => 80,  171 => 79,  167 => 77,  163 => 75,  160 => 74,  156 => 72,  154 => 71,  149 => 69,  145 => 68,  138 => 66,  107 => 40,  103 => 39,  99 => 38,  91 => 32,  83 => 30,  81 => 29,  76 => 27,  72 => 26,  57 => 14,  50 => 10,  42 => 4,  36 => 3,  11 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -334,14 +336,8 @@ class __TwigTemplate_9f690c2df1a57c0c7c335d928d38f0775771706808fccb177d709730a53
                             <a class=\"btn btn-success\" href=\"{{ path('add_fix_room', { 'id': room.id }) }}\"><i class=\"fa fa-wrench fa-lg\"></i> Signaler Réparation</a>
                             <br><br>
                     </div>
-                    <div class=\"col-md-3\">
-                            <a class=\"btn btn-success\" href=\"{{ path('add_furniture_room', { 'id': room.id }) }}\"><i class=\"fa fa-money fa-lg\"></i> Ajouter Charge</a>
-                            
-                    </div>
-                    <div class=\"col-md-3\">
-                            <a class=\"btn btn-success\" href=\"{{ path('add_furniture_room', { 'id': 1 }) }}\"><i class=\"fa fa-info fa-lg\"></i> Envoyer une info</a>
-                            
-                    </div>
+                    
+                   
                     <br><br>
                     <div class=\"page-header\"><h4 style=\"background-color:#f7f7f7; font-size: 18px; text-align: center; padding: 7px 10px; margin-top: 0;\">
                             Informations générales
@@ -369,6 +365,7 @@ class __TwigTemplate_9f690c2df1a57c0c7c335d928d38f0775771706808fccb177d709730a53
                     </div>
                 </div>
                 </div>
+                
                   <div class=\"page-header\">-*-</div>
                 <div >
                     <div class=\"page-header\"><h4 style=\"background-color:#f7f7f7; font-size: 18px; text-align: center; padding: 7px 10px; margin-top: 0;\">
@@ -392,7 +389,14 @@ class __TwigTemplate_9f690c2df1a57c0c7c335d928d38f0775771706808fccb177d709730a53
                             <tr>
                                 <td>{{typeFix}}</td>
                                 <td>{{fix.FixDate|date(\"m/d/Y\")}}</td>
-                                <td>{{fix.FixPriority}}</td>
+                                <td>
+                                  {% if fix.FixPriority == false %}
+                                  0
+                                  {% endif %}
+                                  {% if fix.FixPriority == true %}
+                                  1
+                                  {% endif %}
+                                </td>
                                 <td>
                                   {% if fix.FixState == false %}
                                   Not done
@@ -404,10 +408,10 @@ class __TwigTemplate_9f690c2df1a57c0c7c335d928d38f0775771706808fccb177d709730a53
                                 <td>{{fix.FixComment}}</td>
                                 <td>
                                   {% if fix.FixState == false %}
-                                  <a class=\"btn btn-success\" href=\"{{ path('fix_room_done', { 'id': fix.id }) }}\"><i class=\"fa fa-check fa-lg\"></i> Done</a>
+                                  <a class=\"btn btn-success\" href=\"{{ path('fix_room_done', { 'id': fix.id, 'idRoom':room.id }) }}\"><i class=\"fa fa-check fa-lg\"></i> Done</a>
                                   {% endif %}
                                   {% if fix.FixState == true %}
-                                  <a class=\"btn btn-success\" href=\"{{ path('fix_room_undone', { 'id': fix.id }) }}\"><i class=\"fa fa-times fa-lg\"></i> Undone</a>
+                                  <a class=\"btn btn-success\" href=\"{{ path('fix_room_undone', { 'id': fix.id, 'idRoom':room.id }) }}\"><i class=\"fa fa-times fa-lg\"></i> Undone</a>
                                   {% endif %}
                                   <a class=\"btn btn-danger\" href=\"#\"><i class=\"fa fa-trash-o fa-lg\"></i> Delete</a> 
                              </td>

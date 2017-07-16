@@ -1,0 +1,65 @@
+<?php
+
+// src/AppBundle/Entity/ChargeRoom.php
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * UserRoom
+ *
+ * @ORM\Table(name="charge_room")
+ * @ORM\Entity
+ */
+class ChargeRoom
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="room_id", type="integer", nullable=true)
+     */
+    private $roomId;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="charge_id", type="integer", nullable=true)
+     */
+    private $chargeId;
+     /**
+     * @var integer
+     *
+     * @ORM\Column(name="charge_amount", type="decimal", nullable=true)
+     */
+    private $chargeAmount;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="charge_date", type="date", nullable=true)
+     */
+    private $chargeDate;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="charge_state", type="boolean", nullable=true)
+     */
+    private $chargeState = False;
+
+    /**
+     * @var text
+     *
+     * @ORM\Column(name="charge_comment", type="text", nullable=true)
+     */
+    private $chargeComment;
+}

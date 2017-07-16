@@ -1,0 +1,43 @@
+{% extends 'AvanzuAdminThemeBundle:layout:base-layout.html.twig' %}
+
+{% block page_content %}
+
+    <div class="box">
+            
+        <!-- /.box-header -->
+        <div class="box-body">
+        <table  class="table table-bordered table-striped">        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+         {% for typeCharge in typeCharges %}
+            <tr>
+                <td><a href="{{ path('typecharge_show', { 'id': typeCharge.id }) }}">{{ typeCharge.id }}</a></td>
+                <td>{{ typeCharge.name }}</td>
+                <td>
+                <a class="btn btn-primary" href="{{ path('typecharge_show', { 'id': typeCharge.id }) }}"><i class="fa fa-pencil fa-lg"></i> Show</a>
+                    <a class="btn btn-success" href="{{ path('typecharge_edit', { 'id': typeCharge.id }) }}"><i class="fa fa-eye fa-lg"></i> Edit</a>
+                    <a class="btn btn-danger" href="#"><i class="fa fa-trash-o fa-lg"></i> Delete</a> 
+
+                    
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+           <a href="{{ path('typecharge_new') }}">Create a new typeCharge</a>
+        </li>
+    </ul>
+{% endblock %}
+
+{% block page_title %} Type Charge {% endblock %}
+{% block page_subtitle %} liste {% endblock %}
+
+

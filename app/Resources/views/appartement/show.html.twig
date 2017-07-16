@@ -16,7 +16,7 @@
                             <br><br>
                     </div>
                     <div class="col-md-3">
-                            <a class="btn btn-success" href="{{ path('add_furniture_appart', { 'id': appartement.id }) }}"><i class="fa fa-money fa-lg"></i> Ajouter Charge</a>
+                            <a class="btn btn-success" href="{{ path('add_charge_appart', { 'id': appartement.id }) }}"><i class="fa fa-money fa-lg"></i> Ajouter Charge</a>
                             
                     </div>
                     <div class="col-md-3">
@@ -113,78 +113,51 @@
                         </table>
                     </div>
                 </div>
+                
                 <div class="page-header">-*-</div>
                 <div >
                     <div class="page-header"><h4 style="background-color:#f7f7f7; font-size: 18px; text-align: center; padding: 7px 10px; margin-top: 0;">
-                            Liste des charges de l'année
+                             Liste des charges
                         </h4>
                     </div>
                     <div >
                           <table  class="table table-bordered table-striped">
                             <thead>
                               <tr>
-                                <th></th>
-                                <th>Jan</th>
-                                <th>Fév</th>
-                                <th>Mars</th>
-                                <th>Avril</th>
-                                <th>Mai</th>
-                                <th>Juin</th>
-                                <th>Juil</th>
-                                <th>Août</th>
-                                <th>Sept</th>
-                                <th>Oct</th>
-                                <th>Nov</th>
-                                <th>Dec</th>
+                                <th>Type charge</th>
+                                <th>Date charge</th>
+                                <th>Montant</th>
+                                <th>État</th>
+                                <th>Commentaires</th>
+                                 <th>Actions</th>
                               </tr>
                           </thead>
-                          <tbody>  
-                           
-                              <tr>
-                                <td>Charges Electricités</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>x</td>
-                              </tr>
-                              <tr>
-                                <td>Charges Gaz</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>x</td>
-                              </tr>
-                              <tr>
-                                <td>Autres charges</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>x</td>
-                              </tr>
+                          <tbody>
+                          {%for typeCharge,charge in charges%}                   
+                            <tr>
+                                <td>{{typeCharge}}</td>
+                                <td>{{charge.ChargeDate|date("m/d/Y")}}</td>
+                                <td>{{charge.ChargeAmount}} euros</td>
+                                <td>
+                                  {% if charge.ChargeState == false %}
+                                  Not paid
+                                  {% endif %}
+                                  {% if charge.ChargeState == true %}
+                                  Paid
+                                  {% endif %}
+                                </td>
+                                <td>{{charge.ChargeComment}}</td>
+                                <td>
+                                  {% if charge.ChargeState == false %}
+                                  <a class="btn btn-success" href="{{ path('charge_appart_paid', { 'id': charge.id, 'idAppart':appartement.id }) }}"><i class="fa fa-check fa-lg"></i> Paid</a>
+                                  {% endif %}
+                                  {% if charge.ChargeState == true %}
+                                  <a class="btn btn-success" href="{{ path('charge_appart_unpaid', { 'id': charge.id, 'idAppart':appartement.id }) }}"><i class="fa fa-times fa-lg"></i> Unpaid</a>
+                                  {% endif %}
+                                  <a class="btn btn-danger" href="#"><i class="fa fa-trash-o fa-lg"></i> Delete</a> 
+                             </td>
+                            </tr>
+                          {%endfor%}                   
                           </tbody>
                         </table>
                     </div>
@@ -212,7 +185,14 @@
                             <tr>
                                 <td>{{typeFix}}</td>
                                 <td>{{fix.FixDate|date("m/d/Y")}}</td>
-                                <td>{{fix.FixPriority}}</td>
+                                <td>
+                                  {% if fix.FixPriority == false %}
+                                  0
+                                  {% endif %}
+                                  {% if fix.FixPriority == true %}
+                                  1
+                                  {% endif %}
+                                </td>
                                 <td>
                                   {% if fix.FixState == false %}
                                   Not done
@@ -224,10 +204,10 @@
                                 <td>{{fix.FixComment}}</td>
                                 <td>
                                   {% if fix.FixState == false %}
-                                  <a class="btn btn-success" href="{{ path('fix_appart_done', { 'id': fix.id }) }}"><i class="fa fa-check fa-lg"></i> Done</a>
+                                  <a class="btn btn-success" href="{{ path('fix_appart_done', { 'id': fix.id, 'idAppart':appartement.id }) }}"><i class="fa fa-check fa-lg"></i> Done</a>
                                   {% endif %}
                                   {% if fix.FixState == true %}
-                                  <a class="btn btn-success" href="{{ path('fix_appart_undone', { 'id': fix.id }) }}"><i class="fa fa-times fa-lg"></i> Undone</a>
+                                  <a class="btn btn-success" href="{{ path('fix_appart_undone', { 'id': fix.id, 'idAppart':appartement.id }) }}"><i class="fa fa-times fa-lg"></i> Undone</a>
                                   {% endif %}
                                   <a class="btn btn-danger" href="#"><i class="fa fa-trash-o fa-lg"></i> Delete</a> 
                              </td>

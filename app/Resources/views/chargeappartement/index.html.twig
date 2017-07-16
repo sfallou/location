@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Chargeappartements list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Appartid</th>
+                <th>Chargeid</th>
+                <th>Chargeamount</th>
+                <th>Chargedate</th>
+                <th>Chargestate</th>
+                <th>Chargecomment</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for chargeAppartement in chargeAppartements %}
+            <tr>
+                <td><a href="{{ path('chargeappartement_show', { 'id': chargeAppartement.id }) }}">{{ chargeAppartement.id }}</a></td>
+                <td>{{ chargeAppartement.appartId }}</td>
+                <td>{{ chargeAppartement.chargeId }}</td>
+                <td>{{ chargeAppartement.chargeAmount }}</td>
+                <td>{% if chargeAppartement.chargeDate %}{{ chargeAppartement.chargeDate|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if chargeAppartement.chargeState %}Yes{% else %}No{% endif %}</td>
+                <td>{{ chargeAppartement.chargeComment }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('chargeappartement_show', { 'id': chargeAppartement.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('chargeappartement_edit', { 'id': chargeAppartement.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('chargeappartement_new') }}">Create a new chargeAppartement</a>
+        </li>
+    </ul>
+{% endblock %}

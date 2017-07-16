@@ -7,6 +7,8 @@ use AppBundle\Entity\Room;
 use AppBundle\Entity\UserRoom;
 use AppBundle\Entity\Appartement;
 use AppBundle\Entity\Residence;
+use AppBundle\Entity\ChargeRoom;
+use AppBundle\Entity\Charge;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
@@ -74,13 +76,21 @@ class UserController extends Controller
         $deleteForm = $this->createDeleteForm($user);
 
         $em = $this->getDoctrine()->getManager();
-        
+        $charges = null;
+        $charge_rooms = array();
         $user_room = $em->getRepository('AppBundle:UserRoom')->findOneBy(array('userId'=>$user->getId()));
         $room = $em->getRepository('AppBundle:Room')->findOneBy(array('id'=>$user_room->getRoomId()));
         $appart = $em->getRepository('AppBundle:Appartement')->findOneBy(array('id'=>$room->getIdAppart()));
         $residence = $em->getRepository('AppBundle:Residence')->findOneBy(array('id'=>$appart->getIdResidence()));
         
-
+        $charges = $em->getRepository('AppBundle:ChargeRoom')->findBy(array('roomId'=>$room->getId()));
+        
+        if ($charges){
+            foreach ($charges as $charge ) {
+                $type =  $em->getRepository('AppBundle:TypeCharge')->findOneBy(array('id'=>$charge->getChargeId()));
+                $charge_rooms[$type->getName()] = $charge;
+            }
+        }
        
         return $this->render('user/show.html.twig', array(
             'user' => $user,
@@ -88,6 +98,7 @@ class UserController extends Controller
             'user_room' => $user_room,
             'appart' => $appart,
             'residence' => $residence,
+            'charges' =>$charge_rooms,
             'delete_form' => $deleteForm->createView(),
         ));
     }

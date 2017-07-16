@@ -211,8 +211,19 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
         }
         not_add_fix_appart:
 
+        // add_charge_appart
+        if (preg_match('#^/(?P<id>[^/]++)/add_charge_appart$#s', $pathinfo, $matches)) {
+            if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                goto not_add_charge_appart;
+            }
+
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'add_charge_appart')), array (  '_controller' => 'AppBundle\\Controller\\AssociationController::addChargeAppartAction',));
+        }
+        not_add_charge_appart:
+
         // fix_appart_done
-        if (preg_match('#^/(?P<id>[^/]++)/fix_appart_done$#s', $pathinfo, $matches)) {
+        if (preg_match('#^/(?P<id>[^/]++)/(?P<idAppart>[^/]++)/fix_appart_done$#s', $pathinfo, $matches)) {
             if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
                 $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
                 goto not_fix_appart_done;
@@ -223,7 +234,7 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
         not_fix_appart_done:
 
         // fix_appart_undone
-        if (preg_match('#^/(?P<id>[^/]++)/fix_appart_undone$#s', $pathinfo, $matches)) {
+        if (preg_match('#^/(?P<id>[^/]++)/(?P<idAppart>[^/]++)/fix_appart_undone$#s', $pathinfo, $matches)) {
             if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
                 $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
                 goto not_fix_appart_undone;
@@ -232,6 +243,28 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
             return $this->mergeDefaults(array_replace($matches, array('_route' => 'fix_appart_undone')), array (  '_controller' => 'AppBundle\\Controller\\AssociationController::fixAppartUndoneAction',));
         }
         not_fix_appart_undone:
+
+        // charge_appart_paid
+        if (preg_match('#^/(?P<id>[^/]++)/(?P<idAppart>[^/]++)/charge_appart_paid$#s', $pathinfo, $matches)) {
+            if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                goto not_charge_appart_paid;
+            }
+
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'charge_appart_paid')), array (  '_controller' => 'AppBundle\\Controller\\AssociationController::chargeAppartPaidAction',));
+        }
+        not_charge_appart_paid:
+
+        // charge_appart_unpaid
+        if (preg_match('#^/(?P<id>[^/]++)/(?P<idAppart>[^/]++)/charge_appart_unpaid$#s', $pathinfo, $matches)) {
+            if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                goto not_charge_appart_unpaid;
+            }
+
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'charge_appart_unpaid')), array (  '_controller' => 'AppBundle\\Controller\\AssociationController::chargeAppartUnpaidAction',));
+        }
+        not_charge_appart_unpaid:
 
         // add_furniture_room
         if (preg_match('#^/(?P<id>[^/]++)/add_furniture_room$#s', $pathinfo, $matches)) {
@@ -255,8 +288,19 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
         }
         not_add_fix_room:
 
+        // add_charge_room
+        if (preg_match('#^/(?P<id>[^/]++)/add_charge_room$#s', $pathinfo, $matches)) {
+            if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                goto not_add_charge_room;
+            }
+
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'add_charge_room')), array (  '_controller' => 'AppBundle\\Controller\\AssociationController::addChargeRoomAction',));
+        }
+        not_add_charge_room:
+
         // fix_room_done
-        if (preg_match('#^/(?P<id>[^/]++)/fix_room_done$#s', $pathinfo, $matches)) {
+        if (preg_match('#^/(?P<id>[^/]++)/(?P<idRoom>[^/]++)/fix_room_done$#s', $pathinfo, $matches)) {
             if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
                 $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
                 goto not_fix_room_done;
@@ -267,7 +311,7 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
         not_fix_room_done:
 
         // fix_room_undone
-        if (preg_match('#^/(?P<id>[^/]++)/fix_room_undone$#s', $pathinfo, $matches)) {
+        if (preg_match('#^/(?P<id>[^/]++)/(?P<idRoom>[^/]++)/fix_room_undone$#s', $pathinfo, $matches)) {
             if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
                 $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
                 goto not_fix_room_undone;
@@ -276,6 +320,155 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
             return $this->mergeDefaults(array_replace($matches, array('_route' => 'fix_room_undone')), array (  '_controller' => 'AppBundle\\Controller\\AssociationController::fixRoomUndoneAction',));
         }
         not_fix_room_undone:
+
+        // charge_room_paid
+        if (preg_match('#^/(?P<id>[^/]++)/(?P<idRoom>[^/]++)/charge_room_paid$#s', $pathinfo, $matches)) {
+            if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                goto not_charge_room_paid;
+            }
+
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'charge_room_paid')), array (  '_controller' => 'AppBundle\\Controller\\AssociationController::chargeRoomPaidAction',));
+        }
+        not_charge_room_paid:
+
+        // charge_room_unpaid
+        if (preg_match('#^/(?P<id>[^/]++)/(?P<idRoom>[^/]++)/charge_room_unpaid$#s', $pathinfo, $matches)) {
+            if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                goto not_charge_room_unpaid;
+            }
+
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'charge_room_unpaid')), array (  '_controller' => 'AppBundle\\Controller\\AssociationController::chargeRoomtUnpaidAction',));
+        }
+        not_charge_room_unpaid:
+
+        if (0 === strpos($pathinfo, '/charge')) {
+            if (0 === strpos($pathinfo, '/chargeappartement')) {
+                // chargeappartement_index
+                if (rtrim($pathinfo, '/') === '/chargeappartement') {
+                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'HEAD'));
+                        goto not_chargeappartement_index;
+                    }
+
+                    if (substr($pathinfo, -1) !== '/') {
+                        return $this->redirect($pathinfo.'/', 'chargeappartement_index');
+                    }
+
+                    return array (  '_controller' => 'AppBundle\\Controller\\ChargeAppartementController::indexAction',  '_route' => 'chargeappartement_index',);
+                }
+                not_chargeappartement_index:
+
+                // chargeappartement_new
+                if ($pathinfo === '/chargeappartement/new') {
+                    if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                        goto not_chargeappartement_new;
+                    }
+
+                    return array (  '_controller' => 'AppBundle\\Controller\\ChargeAppartementController::newAction',  '_route' => 'chargeappartement_new',);
+                }
+                not_chargeappartement_new:
+
+                // chargeappartement_show
+                if (preg_match('#^/chargeappartement/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'HEAD'));
+                        goto not_chargeappartement_show;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'chargeappartement_show')), array (  '_controller' => 'AppBundle\\Controller\\ChargeAppartementController::showAction',));
+                }
+                not_chargeappartement_show:
+
+                // chargeappartement_edit
+                if (preg_match('#^/chargeappartement/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                    if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                        goto not_chargeappartement_edit;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'chargeappartement_edit')), array (  '_controller' => 'AppBundle\\Controller\\ChargeAppartementController::editAction',));
+                }
+                not_chargeappartement_edit:
+
+                // chargeappartement_delete
+                if (preg_match('#^/chargeappartement/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    if ($this->context->getMethod() != 'DELETE') {
+                        $allow[] = 'DELETE';
+                        goto not_chargeappartement_delete;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'chargeappartement_delete')), array (  '_controller' => 'AppBundle\\Controller\\ChargeAppartementController::deleteAction',));
+                }
+                not_chargeappartement_delete:
+
+            }
+
+            if (0 === strpos($pathinfo, '/chargeroom')) {
+                // chargeroom_index
+                if (rtrim($pathinfo, '/') === '/chargeroom') {
+                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'HEAD'));
+                        goto not_chargeroom_index;
+                    }
+
+                    if (substr($pathinfo, -1) !== '/') {
+                        return $this->redirect($pathinfo.'/', 'chargeroom_index');
+                    }
+
+                    return array (  '_controller' => 'AppBundle\\Controller\\ChargeRoomController::indexAction',  '_route' => 'chargeroom_index',);
+                }
+                not_chargeroom_index:
+
+                // chargeroom_new
+                if ($pathinfo === '/chargeroom/new') {
+                    if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                        goto not_chargeroom_new;
+                    }
+
+                    return array (  '_controller' => 'AppBundle\\Controller\\ChargeRoomController::newAction',  '_route' => 'chargeroom_new',);
+                }
+                not_chargeroom_new:
+
+                // chargeroom_show
+                if (preg_match('#^/chargeroom/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'HEAD'));
+                        goto not_chargeroom_show;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'chargeroom_show')), array (  '_controller' => 'AppBundle\\Controller\\ChargeRoomController::showAction',));
+                }
+                not_chargeroom_show:
+
+                // chargeroom_edit
+                if (preg_match('#^/chargeroom/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                    if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                        goto not_chargeroom_edit;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'chargeroom_edit')), array (  '_controller' => 'AppBundle\\Controller\\ChargeRoomController::editAction',));
+                }
+                not_chargeroom_edit:
+
+                // chargeroom_delete
+                if (preg_match('#^/chargeroom/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    if ($this->context->getMethod() != 'DELETE') {
+                        $allow[] = 'DELETE';
+                        goto not_chargeroom_delete;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'chargeroom_delete')), array (  '_controller' => 'AppBundle\\Controller\\ChargeRoomController::deleteAction',));
+                }
+                not_chargeroom_delete:
+
+            }
+
+        }
 
         // homepage
         if ($pathinfo === '/default') {
@@ -723,6 +916,68 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
         }
 
         if (0 === strpos($pathinfo, '/type')) {
+            if (0 === strpos($pathinfo, '/typecharge')) {
+                // typecharge_index
+                if (rtrim($pathinfo, '/') === '/typecharge') {
+                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'HEAD'));
+                        goto not_typecharge_index;
+                    }
+
+                    if (substr($pathinfo, -1) !== '/') {
+                        return $this->redirect($pathinfo.'/', 'typecharge_index');
+                    }
+
+                    return array (  '_controller' => 'AppBundle\\Controller\\TypeChargeController::indexAction',  '_route' => 'typecharge_index',);
+                }
+                not_typecharge_index:
+
+                // typecharge_new
+                if ($pathinfo === '/typecharge/new') {
+                    if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                        goto not_typecharge_new;
+                    }
+
+                    return array (  '_controller' => 'AppBundle\\Controller\\TypeChargeController::newAction',  '_route' => 'typecharge_new',);
+                }
+                not_typecharge_new:
+
+                // typecharge_show
+                if (preg_match('#^/typecharge/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'HEAD'));
+                        goto not_typecharge_show;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'typecharge_show')), array (  '_controller' => 'AppBundle\\Controller\\TypeChargeController::showAction',));
+                }
+                not_typecharge_show:
+
+                // typecharge_edit
+                if (preg_match('#^/typecharge/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                    if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                        goto not_typecharge_edit;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'typecharge_edit')), array (  '_controller' => 'AppBundle\\Controller\\TypeChargeController::editAction',));
+                }
+                not_typecharge_edit:
+
+                // typecharge_delete
+                if (preg_match('#^/typecharge/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    if ($this->context->getMethod() != 'DELETE') {
+                        $allow[] = 'DELETE';
+                        goto not_typecharge_delete;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'typecharge_delete')), array (  '_controller' => 'AppBundle\\Controller\\TypeChargeController::deleteAction',));
+                }
+                not_typecharge_delete:
+
+            }
+
             if (0 === strpos($pathinfo, '/typefix')) {
                 // typefix_index
                 if (rtrim($pathinfo, '/') === '/typefix') {

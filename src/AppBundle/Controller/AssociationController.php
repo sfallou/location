@@ -17,6 +17,11 @@ use AppBundle\Entity\MeubleRoomType;
 use AppBundle\Entity\MeubleRoom;
 use AppBundle\Entity\FixRoomType;
 use AppBundle\Entity\FixRoom;
+use AppBundle\Entity\ChargeAppartementType;
+use AppBundle\Entity\ChargeAppartement;
+use AppBundle\Entity\TypeCharge;
+use AppBundle\Entity\ChargeRoomType;
+use AppBundle\Entity\ChargeRoom;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -151,16 +156,51 @@ class AssociationController extends Controller
     }
 
     /**
-     * Set fix_appart to "done"
+     * Displays a form to associate a charge and a appart
      *
-     * @Route("/{id}/fix_appart_done", name="fix_appart_done")
+     * @Route("/{id}/add_charge_appart", name="add_charge_appart")
      * @Method({"GET", "POST"})
      */
-    public function fixAppartDoneAction(Request $request, $id)
+    public function addChargeAppartAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
         
-        $fix_appart = $em->getRepository(FixAppartement::class)->find($id);
+        $chargeTypes = $em->getRepository('AppBundle:TypeCharge')->findAll();
+
+        $chargeAppart = new ChargeAppartement();
+        $form = $this->createForm('AppBundle\Form\ChargeAppartementType', $chargeAppart);
+        $form->get('appartId')->setData($id);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($chargeAppart);
+            $em->flush();
+
+             $request->getSession()
+                ->getFlashBag()
+                ->add('success', 'La demande a été ajoutée dans la liste');
+            return $this->redirectToRoute('appartement_index');
+        }
+
+        
+        return $this->render('association/chargeAppartForm.html.twig', array(
+            'chargeType' =>$chargeTypes,
+            'form' => $form->createView()
+        ));
+    }
+
+    /**
+     * Set fix_appart to "done"
+     *
+     * @Route("/{id}/{idAppart}/fix_appart_done", name="fix_appart_done")
+     * @Method({"GET", "POST"})
+     */
+    public function fixAppartDoneAction(Request $request, $id, $idAppart)
+    {
+        $em = $this->getDoctrine()->getManager();
+        
+        $fix_appart = $em->getRepository(FixAppartement::class)->findOneBy(array('id'=>$id,'appartId'=>$idAppart));
         $fix_appart->setFixState(true);
         $em->persist($fix_appart);
         $em->flush();
@@ -168,29 +208,73 @@ class AssociationController extends Controller
          $request->getSession()
                 ->getFlashBag()
                 ->add('success', "l'état de la réparation a été modifiée!");
-        return $this->redirectToRoute('appartement_show',array('id' => $id) );
+        return $this->redirectToRoute('appartement_show',array('id' => $idAppart) );
     }
 
 
     /**
      * Set fix_appart to "undone"
      *
-     * @Route("/{id}/fix_appart_undone", name="fix_appart_undone")
+     * @Route("/{id}/{idAppart}/fix_appart_undone", name="fix_appart_undone")
      * @Method({"GET", "POST"})
      */
-    public function fixAppartUndoneAction(Request $request, $id)
+    public function fixAppartUndoneAction(Request $request, $id, $idAppart)
     {
         $em = $this->getDoctrine()->getManager();
         
-        $fix_appart = $em->getRepository(FixAppartement::class)->find($id);
+        $fix_appart = $em->getRepository(FixAppartement::class)->findOneBy(array('id'=>$id,'appartId'=>$idAppart));
         $fix_appart->setFixState(false);
         $em->persist($fix_appart);
         $em->flush();
         $request->getSession()
                 ->getFlashBag()
                 ->add('success', "l'état de la réparation a été modifiée!");
-        return $this->redirectToRoute('appartement_show',array('id' => $id) );
+        return $this->redirectToRoute('appartement_show',array('id' => $idAppart) );
     }
+
+    /**
+     * Set charge_appart to "paid"
+     *
+     * @Route("/{id}/{idAppart}/charge_appart_paid", name="charge_appart_paid")
+     * @Method({"GET", "POST"})
+     */
+    public function chargeAppartPaidAction(Request $request, $id, $idAppart)
+    {
+        $em = $this->getDoctrine()->getManager();
+        
+        $charge_appart = $em->getRepository(ChargeAppartement::class)->findOneBy(array('id'=>$id,'appartId'=>$idAppart));
+        $charge_appart->setChargeState(true);
+        $em->persist($charge_appart);
+        $em->flush();
+
+         $request->getSession()
+                ->getFlashBag()
+                ->add('success', "l'état de la réparation a été modifiée!");
+        return $this->redirectToRoute('appartement_show',array('id' => $idAppart) );
+    }
+
+
+    /**
+     * Set charge_appart to "unpaid"
+     *
+     * @Route("/{id}/{idAppart}/charge_appart_unpaid", name="charge_appart_unpaid")
+     * @Method({"GET", "POST"})
+     */
+    public function chargeAppartUnpaidAction(Request $request, $id, $idAppart)
+    {
+        $em = $this->getDoctrine()->getManager();
+        
+        $charge_appart = $em->getRepository(ChargeAppartement::class)->findOneBy(array('id'=>$id,'appartId'=>$idAppart));
+        $charge_appart->setChargeState(false);
+        $em->persist($charge_appart);
+        $em->flush();
+        $request->getSession()
+                ->getFlashBag()
+                ->add('success', "l'état de la réparation a été modifiée!");
+        return $this->redirectToRoute('appartement_show',array('id' => $idAppart) );
+    }
+    ///////////////////////////////////////////////////////////////////////
+
     ///////////////////////////////////////////////////////////////////////
     /**
      * Displays a form to associate a furniture and a room.
@@ -245,9 +329,10 @@ class AssociationController extends Controller
             $em->persist($fixRoom);
             $em->flush();
 
-             $request->getSession()
+             /*$request->getSession()
                 ->getFlashBag()
                 ->add('success', 'La demande a été ajoutée dans la liste');
+                */
             return $this->redirectToRoute('room_index');
         }
 
@@ -259,45 +344,126 @@ class AssociationController extends Controller
     }
 
     /**
-     * Set fix_room to "done"
+     * Displays a form to associate a charge and a user_room
      *
-     * @Route("/{id}/fix_room_done", name="fix_room_done")
+     * @Route("/{id}/add_charge_room", name="add_charge_room")
      * @Method({"GET", "POST"})
      */
-    public function fixRoomDoneAction(Request $request, $id)
+    public function addChargeRoomAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
         
-        $fix_room = $em->getRepository(FixRoom::class)->find($id);
+        $chargeTypes = $em->getRepository('AppBundle:TypeCharge')->findAll();
+
+        $chargeRoom = new ChargeRoom();
+        $form = $this->createForm('AppBundle\Form\ChargeRoomType', $chargeRoom);
+        $form->get('roomId')->setData($id);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($chargeRoom);
+            $em->flush();
+
+             /*$request->getSession()
+                ->getFlashBag()
+                ->add('success', 'La demande a été ajoutée dans la liste');
+                */
+            return $this->redirectToRoute('user_index');
+        }
+
+        
+        return $this->render('association/chargeRoomForm.html.twig', array(
+            'chargeType' =>$chargeTypes,
+            'form' => $form->createView()
+        ));
+    }
+
+
+    /**
+     * Set fix_room to "done"
+     *
+     * @Route("/{id}/{idRoom}/fix_room_done", name="fix_room_done")
+     * @Method({"GET", "POST"})
+     */
+    public function fixRoomDoneAction(Request $request, $id, $idRoom)
+    {
+        $em = $this->getDoctrine()->getManager();
+        
+        $fix_room = $em->getRepository(FixRoom::class)->findOneBy(array('id'=>$id,'roomId'=>$idRoom));
         $fix_room->setFixState(true);
         $em->persist($fix_room);
         $em->flush();
 
-         $request->getSession()
+         /*$request->getSession()
                 ->getFlashBag()
                 ->add('success', "l'état de la réparation a été modifiée!");
-        return $this->redirectToRoute('room_show',array('id' => $id) );
+                */
+        return $this->redirectToRoute('room_show',array('id' => $idRoom) );
     }
 
 
     /**
      * Set fix_room to "undone"
      *
-     * @Route("/{id}/fix_room_undone", name="fix_room_undone")
+     * @Route("/{id}/{idRoom}/fix_room_undone", name="fix_room_undone")
      * @Method({"GET", "POST"})
      */
-    public function fixRoomUndoneAction(Request $request, $id)
+    public function fixRoomUndoneAction(Request $request, $id,$idRoom)
     {
         $em = $this->getDoctrine()->getManager();
         
-        $fix_room = $em->getRepository(FixRoom::class)->find($id);
+        $fix_room = $em->getRepository(FixRoom::class)->findOneBy(array('id'=>$id,'roomId'=>$idRoom));
         $fix_room->setFixState(false);
         $em->persist($fix_room);
+        $em->flush();
+        /*$request->getSession()
+                ->getFlashBag()
+                ->add('success', "l'état de la réparation a été modifiée!");
+                */
+        return $this->redirectToRoute('room_show',array('id' => $idRoom) );
+    }
+
+    /**
+     * Set charge_room to "paid"
+     *
+     * @Route("/{id}/{idRoom}/charge_room_paid", name="charge_room_paid")
+     * @Method({"GET", "POST"})
+     */
+    public function chargeRoomPaidAction(Request $request, $id, $idRoom)
+    {
+        $em = $this->getDoctrine()->getManager();
+        
+        $charge_room = $em->getRepository(ChargeRoom::class)->findOneBy(array('id'=>$id,'roomId'=>$idRoom));
+        $charge_room->setChargeState(true);
+        $em->persist($charge_room);
+        $em->flush();
+
+         $request->getSession()
+                ->getFlashBag()
+                ->add('success', "l'état de la réparation a été modifiée!");
+        return $this->redirectToRoute('user_show',array('id' => $idRoom) );
+    }
+
+
+    /**
+     * Set charge_room to "unpaid"
+     *
+     * @Route("/{id}/{idRoom}/charge_room_unpaid", name="charge_room_unpaid")
+     * @Method({"GET", "POST"})
+     */
+    public function chargeRoomtUnpaidAction(Request $request, $id, $idRoom)
+    {
+        $em = $this->getDoctrine()->getManager();
+        
+        $charge_room = $em->getRepository(ChargeRoom::class)->findOneBy(array('id'=>$id,'roomId'=>$idRoom));
+        $charge_room->setChargeState(false);
+        $em->persist($charge_room);
         $em->flush();
         $request->getSession()
                 ->getFlashBag()
                 ->add('success', "l'état de la réparation a été modifiée!");
-        return $this->redirectToRoute('room_show',array('id' => $id) );
+        return $this->redirectToRoute('user_show',array('id' => $idRoom) );
     }
 }
 

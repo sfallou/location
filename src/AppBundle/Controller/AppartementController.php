@@ -11,6 +11,8 @@ use AppBundle\Entity\MeubleAppartement;
 use AppBundle\Entity\Meuble;
 use AppBundle\Entity\FixAppartement;
 use AppBundle\Entity\Fix;
+use AppBundle\Entity\ChargeAppartement;
+use AppBundle\Entity\Charge;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
@@ -90,6 +92,8 @@ class AppartementController extends Controller
         $meubles_apparts = array();
         $fixs = null;
         $fix_apparts = array();
+        $charges = null;
+        $charge_apparts = array();
         $em = $this->getDoctrine()->getManager();
         
         $rooms = $em->getRepository('AppBundle:Room')->findBy(array('id'=>$appartement->getId()));
@@ -120,6 +124,15 @@ class AppartementController extends Controller
                 $fix_apparts[$type->getName()] = $fix;
             }
         }
+
+        $charges = $em->getRepository('AppBundle:ChargeAppartement')->findBy(array('appartId'=>$appartement->getId()));
+        
+        if ($charges){
+            foreach ($charges as $charge ) {
+                $type =  $em->getRepository('AppBundle:TypeCharge')->findOneBy(array('id'=>$charge->getChargeId()));
+                $charge_apparts[$type->getName()] = $charge;
+            }
+        }
        /*foreach ($apparts as $appart){
             $rooms = $em->getRepository('AppBundle:Room')->findBy(array('id_appart'=>$appart->getId()));
             $resultats[$appart->getAdresse()] = $rooms;
@@ -133,6 +146,7 @@ class AppartementController extends Controller
             'users' => $users,
             'meubles' => $meubles_apparts,
             'fixs' => $fix_apparts,
+            'charges' => $charge_apparts,
             'delete_form' => $deleteForm->createView(),
         ));
     }

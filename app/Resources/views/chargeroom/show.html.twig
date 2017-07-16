@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Chargeroom</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ chargeRoom.id }}</td>
+            </tr>
+            <tr>
+                <th>Roomid</th>
+                <td>{{ chargeRoom.roomId }}</td>
+            </tr>
+            <tr>
+                <th>Chargeid</th>
+                <td>{{ chargeRoom.chargeId }}</td>
+            </tr>
+            <tr>
+                <th>Chargeamount</th>
+                <td>{{ chargeRoom.chargeAmount }}</td>
+            </tr>
+            <tr>
+                <th>Chargedate</th>
+                <td>{% if chargeRoom.chargeDate %}{{ chargeRoom.chargeDate|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Chargestate</th>
+                <td>{% if chargeRoom.chargeState %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Chargecomment</th>
+                <td>{{ chargeRoom.chargeComment }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('chargeroom_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('chargeroom_edit', { 'id': chargeRoom.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

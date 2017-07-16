@@ -11,6 +11,8 @@ use AppBundle\Entity\MeubleRoom;
 use AppBundle\Entity\Meuble;
 use AppBundle\Entity\FixRoom;
 use AppBundle\Entity\Fix;
+use AppBundle\Entity\ChargeRoom;
+use AppBundle\Entity\Charge;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
@@ -83,7 +85,8 @@ class RoomController extends Controller
         $meubles = null;
         $meubles_rooms = array();
         $fixs = null;
-        $fix_apparts = array();
+        $fix_rooms = array();
+       
         $em = $this->getDoctrine()->getManager();
         
         $user_room = $em->getRepository('AppBundle:UserRoom')->findOneBy(array('roomId'=>$room->getId()));
@@ -104,7 +107,16 @@ class RoomController extends Controller
         if ($fixs){
             foreach ($fixs as $fix ) {
                 $type =  $em->getRepository('AppBundle:TypeFix')->findOneBy(array('id'=>$fix->getFixId()));
-                $fix_apparts[$type->getName()] = $fix;
+                $fix_rooms[$type->getName()] = $fix;
+            }
+        }
+
+        $charges = $em->getRepository('AppBundle:ChargeRoom')->findBy(array('roomId'=>$room->getId()));
+        
+        if ($charges){
+            foreach ($charges as $charge ) {
+                $type =  $em->getRepository('AppBundle:TypeCharge')->findOneBy(array('id'=>$charge->getChargeId()));
+                $charge_rooms[$type->getName()] = $charge;
             }
         }
     
@@ -114,7 +126,8 @@ class RoomController extends Controller
             'user_room' => $user_room,
             'appart' => $appart,
             'meubles' =>$meubles_rooms,
-            'fixs' => $fix_apparts,
+            'fixs' => $fix_rooms,
+            'charges' => $charge_rooms,
             'delete_form' => $deleteForm->createView(),
         ));
     }

@@ -5,6 +5,10 @@
     <div class="box">
             <!-- /.box-header -->
             <div class="box-body">
+                <div class="col-md-3">
+                            <a class="btn btn-success" href="{{ path('add_charge_room', { 'id': room.id }) }}"><i class="fa fa-money fa-lg"></i> Ajouter Charge</a>
+                            
+                </div><br><br>
                 <div >
                     <div class="page-header"><h4 style="background-color:#f7f7f7; font-size: 18px; text-align: center; padding: 7px 10px; margin-top: 0;">
                             Informations générales
@@ -54,17 +58,17 @@
                              <br><br>
                         </div>
                 </div>
-                <div class="page-header">-*-</div>
+                 <div class="page-header">-*-</div>
                 <div >
                     <div class="page-header"><h4 style="background-color:#f7f7f7; font-size: 18px; text-align: center; padding: 7px 10px; margin-top: 0;">
-                            États des paiements du loyer de l'année 2017
+                            États des paiements du loyer de l'appartement de l'année 
                         </h4>
                     </div>
                     <div >
                           <table  class="table table-bordered table-striped">
                             <thead>
                               <tr>
-                                <th></th>
+                                <th>Locataire</th>
                                 <th>Jan</th>
                                 <th>Fév</th>
                                 <th>Mars</th>
@@ -79,9 +83,11 @@
                                 <th>Dec</th>
                               </tr>
                           </thead>
-                          <tbody>  
+                          <tbody>
                             <tr>
-                                <td>Loyer</td>
+                                <td> 
+                                 <a href="{{ path('user_show', { 'id': user.id }) }}">{{ user.username }}</a>   
+                                </td>
                                 <td>X</td>
                                 <td>X</td>
                                 <td>X</td>
@@ -94,52 +100,55 @@
                                 <td>X</td>
                                 <td>X</td>
                                 <td>x</td>
-                              </tr>
+                              </tr>                
+                          </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="page-header">-*-</div>
+                <div >
+                    <div class="page-header"><h4 style="background-color:#f7f7f7; font-size: 18px; text-align: center; padding: 7px 10px; margin-top: 0;">
+                             Liste des charges
+                        </h4>
+                    </div>
+                    <div >
+                          <table  class="table table-bordered table-striped">
+                            <thead>
                               <tr>
-                                <td>Charges EDF</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>x</td>
+                                <th>Type charge</th>
+                                <th>Date charge</th>
+                                <th>Montant</th>
+                                <th>État</th>
+                                <th>Commentaires</th>
+                                 <th>Actions</th>
                               </tr>
-                              <tr>
-                                <td>Charge Eau</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>x</td>
-                              </tr>
-                              <tr>
-                                <td>Autres charge</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>x</td>
-                              </tr>
+                          </thead>
+                          <tbody>
+                          {%for typeCharge,charge in charges%}                   
+                            <tr>
+                                <td>{{typeCharge}}</td>
+                                <td>{{charge.ChargeDate|date("m/d/Y")}}</td>
+                                <td>{{charge.ChargeAmount}} euros</td>
+                                <td>
+                                  {% if charge.ChargeState == false %}
+                                  Not paid
+                                  {% endif %}
+                                  {% if charge.ChargeState == true %}
+                                  Paid
+                                  {% endif %}
+                                </td>
+                                <td>{{charge.ChargeComment}}</td>
+                                <td>
+                                  {% if charge.ChargeState == false %}
+                                  <a class="btn btn-success" href="{{ path('charge_room_paid', { 'id': charge.id, 'idRoom':user.id }) }}"><i class="fa fa-check fa-lg"></i> Paid</a>
+                                  {% endif %}
+                                  {% if charge.ChargeState == true %}
+                                  <a class="btn btn-success" href="{{ path('charge_room_unpaid', { 'id': charge.id, 'idRoom':user.id }) }}"><i class="fa fa-times fa-lg"></i> Unpaid</a>
+                                  {% endif %}
+                                  <a class="btn btn-danger" href="#"><i class="fa fa-trash-o fa-lg"></i> Delete</a> 
+                             </td>
+                            </tr>
+                          {%endfor%}                   
                           </tbody>
                         </table>
                     </div>

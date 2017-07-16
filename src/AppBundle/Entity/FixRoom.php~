@@ -64,4 +64,152 @@ class FixRoom
      */
     private $fixComment;
 
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set roomId
+     *
+     * @param integer $roomId
+     * @return FixRoom
+     */
+    public function setRoomId($roomId)
+    {
+        $this->roomId = $roomId;
+
+        return $this;
+    }
+
+    /**
+     * Get roomId
+     *
+     * @return integer 
+     */
+    public function getRoomId()
+    {
+        return $this->roomId;
+    }
+
+    /**
+     * Set fixId
+     *
+     * @param integer $fixId
+     * @return FixRoom
+     */
+    public function setFixId($fixId)
+    {
+        $this->fixId = $fixId;
+
+        return $this;
+    }
+
+    /**
+     * Get fixId
+     *
+     * @return integer 
+     */
+    public function getFixId()
+    {
+        return $this->fixId;
+    }
+
+    /**
+     * Set fixDate
+     *
+     * @param \DateTime $fixDate
+     * @return FixRoom
+     */
+    public function setFixDate($fixDate)
+    {
+        $this->fixDate = $fixDate;
+
+        return $this;
+    }
+
+    /**
+     * Get fixDate
+     *
+     * @return \DateTime 
+     */
+    public function getFixDate()
+    {
+        return $this->fixDate;
+    }
+
+    /**
+     * Set fixState
+     *
+     * @param boolean $fixState
+     * @return FixRoom
+     */
+    public function setFixState($fixState)
+    {
+        $this->fixState = $fixState;
+
+        return $this;
+    }
+
+    /**
+     * Get fixState
+     *
+     * @return boolean 
+     */
+    public function getFixState()
+    {
+        return $this->fixState;
+    }
+
+    /**
+     * Set fixPriority
+     *
+     * @param boolean $fixPriority
+     * @return FixRoom
+     */
+    public function setFixPriority($fixPriority)
+    {
+        $this->fixPriority = $fixPriority;
+
+        return $this;
+    }
+
+    /**
+     * Get fixPriority
+     *
+     * @return boolean 
+     */
+    public function getFixPriority()
+    {
+        return $this->fixPriority;
+    }
+
+    /**
+     * Set fixComment
+     *
+     * @param string $fixComment
+     * @return FixRoom
+     */
+    public function setFixComment($fixComment)
+    {
+        $this->fixComment = $fixComment;
+
+        return $this;
+    }
+
+    /**
+     * Get fixComment
+     *
+     * @return string 
+     */
+    public function getFixComment()
+    {
+        return $this->fixComment;
+    }
 }

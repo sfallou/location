@@ -14,14 +14,8 @@
                             <a class="btn btn-success" href="{{ path('add_fix_room', { 'id': room.id }) }}"><i class="fa fa-wrench fa-lg"></i> Signaler Réparation</a>
                             <br><br>
                     </div>
-                    <div class="col-md-3">
-                            <a class="btn btn-success" href="{{ path('add_furniture_room', { 'id': room.id }) }}"><i class="fa fa-money fa-lg"></i> Ajouter Charge</a>
-                            
-                    </div>
-                    <div class="col-md-3">
-                            <a class="btn btn-success" href="{{ path('add_furniture_room', { 'id': 1 }) }}"><i class="fa fa-info fa-lg"></i> Envoyer une info</a>
-                            
-                    </div>
+                    
+                   
                     <br><br>
                     <div class="page-header"><h4 style="background-color:#f7f7f7; font-size: 18px; text-align: center; padding: 7px 10px; margin-top: 0;">
                             Informations générales
@@ -49,6 +43,7 @@
                     </div>
                 </div>
                 </div>
+                
                   <div class="page-header">-*-</div>
                 <div >
                     <div class="page-header"><h4 style="background-color:#f7f7f7; font-size: 18px; text-align: center; padding: 7px 10px; margin-top: 0;">
@@ -72,7 +67,14 @@
                             <tr>
                                 <td>{{typeFix}}</td>
                                 <td>{{fix.FixDate|date("m/d/Y")}}</td>
-                                <td>{{fix.FixPriority}}</td>
+                                <td>
+                                  {% if fix.FixPriority == false %}
+                                  0
+                                  {% endif %}
+                                  {% if fix.FixPriority == true %}
+                                  1
+                                  {% endif %}
+                                </td>
                                 <td>
                                   {% if fix.FixState == false %}
                                   Not done
@@ -84,10 +86,10 @@
                                 <td>{{fix.FixComment}}</td>
                                 <td>
                                   {% if fix.FixState == false %}
-                                  <a class="btn btn-success" href="{{ path('fix_room_done', { 'id': fix.id }) }}"><i class="fa fa-check fa-lg"></i> Done</a>
+                                  <a class="btn btn-success" href="{{ path('fix_room_done', { 'id': fix.id, 'idRoom':room.id }) }}"><i class="fa fa-check fa-lg"></i> Done</a>
                                   {% endif %}
                                   {% if fix.FixState == true %}
-                                  <a class="btn btn-success" href="{{ path('fix_room_undone', { 'id': fix.id }) }}"><i class="fa fa-times fa-lg"></i> Undone</a>
+                                  <a class="btn btn-success" href="{{ path('fix_room_undone', { 'id': fix.id, 'idRoom':room.id }) }}"><i class="fa fa-times fa-lg"></i> Undone</a>
                                   {% endif %}
                                   <a class="btn btn-danger" href="#"><i class="fa fa-trash-o fa-lg"></i> Delete</a> 
                              </td>

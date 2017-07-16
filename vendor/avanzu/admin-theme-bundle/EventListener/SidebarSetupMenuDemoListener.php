@@ -63,7 +63,9 @@ class SidebarSetupMenuDemoListener
             ->addChild(new MenuItemModel('facture', 'Facture', 'admin_document', $earg));
 
         $divers->addChild(new MenuItemModel('liste_type_fix', 'Fix Types', 'typefix_index', $earg,  'fa fa-navicon'))
-            ->addChild(new MenuItemModel('new_type_fix', 'New Fix Types', 'typefix_new', $earg,  'fa fa-plus'));
+            ->addChild(new MenuItemModel('new_type_fix', 'New Fix Types', 'typefix_new', $earg,  'fa fa-plus'))
+            ->addChild(new MenuItemModel('liste_type_charge', 'Charge Types', 'typecharge_index', $earg,  'fa fa-navicon'))
+            ->addChild(new MenuItemModel('new_type_charge', 'New Charge Types', 'typecharge_new', $earg,  'fa fa-navicon'));
 
         return $this->activateByRoute($request->get('_route'), $rootItems);
 
