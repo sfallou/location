@@ -1,0 +1,37 @@
+{% extends 'AvanzuAdminThemeBundle:layout:base-layout.html.twig' %}
+
+{% block page_content %}
+
+    <div class="box">
+            
+        <!-- /.box-header -->
+        <div class="box-body">
+        <table  class="table table-bordered table-striped">        <thead>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Wording</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for typeContact in typeContacts %}
+            <tr>
+                <td><a href="{{ path('typecontact_show', { 'id': typeContact.id }) }}">{{ typeContact.id }}</a></td>
+                <td>{{ typeContact.name }}</td>
+                <td>
+                     <a class="btn btn-primary" href="{{ path('typecontact_show', { 'id': typeContact.id }) }}""><i class="fa fa-pencil fa-lg"></i> Show</a>
+                    <a class="btn btn-success" href="{{ path('typecontact_edit', { 'id': typeContact.id }) }}><i class="fa fa-eye fa-lg"></i> Edit</a>
+                    <a class="btn btn-danger" href="#"><i class="fa fa-trash-o fa-lg"></i> Delete</a> 
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('typecontact_new') }}">Create a new typeContact</a>
+        </li>
+    </ul>
+{% endblock %}

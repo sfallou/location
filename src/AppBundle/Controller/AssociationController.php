@@ -25,6 +25,10 @@ use AppBundle\Entity\ChargeRoom;
 use AppBundle\Entity\Document;
 use AppBundle\Entity\DocumentAppartementType;
 use AppBundle\Entity\DocumentAppartement;
+use AppBundle\Entity\DocumentUserRoomType;
+use AppBundle\Entity\DocumentUserRoom;
+use AppBundle\Entity\RentUserRoom;
+use AppBundle\Entity\RentUserRoomType;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -415,6 +419,90 @@ class AssociationController extends Controller
 
 
     /**
+     * Displays a form to associate a doc and a user_room.
+     *
+     * @Route("/{id}/add_doc_user_room", name="add_doc_user_room")
+     * @Method({"GET", "POST"})
+     */
+    public function addDocUser_RoomAction(Request $request, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        
+        $docs = $em->getRepository('AppBundle:Document')->findAll();
+
+        $docUserRoom = new DocumentUserRoom();
+        $form = $this->createForm('AppBundle\Form\DocumentUserRoomType', $docUserRoom);
+        $form->get('userRoomId')->setData($id);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($docUserRoom);
+            $em->flush();
+            return $this->redirectToRoute('user_index');
+        }
+
+        
+        return $this->render('association/documentUserRoomForm.html.twig', array(
+            'documents' =>$docs,
+            'form' => $form->createView()
+        ));
+    }
+    /**
+     * Delete rent_user_room
+     *
+     * @Route("/{id}/{idUser}/delete_user_rent", name="delete_rent_user_room")
+     * @Method({"GET", "POST"})
+     */
+    public function deleteRentAction(Request $request, RentUserRoom $rent, $idUser)
+    {
+        if (!$rent) {
+        throw $this->createNotFoundException('No entity found');
+        }
+
+        $em = $this->getDoctrine()->getEntityManager();
+        $em->remove($rent);
+        $em->flush();
+        return $this->redirectToRoute('user_show',array('id' => $idUser) );
+    }
+
+    /**
+     * Displays a form to associate a rent and a user_room.
+     *
+     * @Route("/{id}/{idUser}/{idRoom}/add_rent_user_room", name="add_rent_user_room")
+     * @Method({"GET", "POST"})
+     */
+    public function addRentUser_RoomAction(Request $request, $id,$idUser,$idRoom)
+    {
+        $em = $this->getDoctrine()->getManager();
+        
+        $user = $em->getRepository('AppBundle:User')->findOneBy(array('id'=>$idUser));
+        $room = $em->getRepository('AppBundle:Room')->findOneBy(array('id'=>$idRoom));
+        $appart = $em->getRepository('AppBundle:Appartement')->findOneBy(array('id'=>$room->getIdAppart()));
+        $user_room = $em->getRepository('AppBundle:UserRoom')->findOneBy(array('id'=>$id));
+        $rentUserRoom = new RentUserRoom();
+        $form = $this->createForm('AppBundle\Form\RentUserRoomType', $rentUserRoom);
+        $form->get('userRoomId')->setData($id);
+        $form->get('rentAmount')->setData($user_room->getUserRoomRent());
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($rentUserRoom);
+            $em->flush();
+            return $this->redirectToRoute('quittance',array('id'=>$rentUserRoom->getId()));
+        }
+
+        
+        return $this->render('association/rentUserRoomForm.html.twig', array(
+            'id' =>$id,
+            'user' =>$user,
+            'room' => $room,
+            'appart' => $appart,
+            'form' => $form->createView()
+        ));
+    }
+    /**
      * Set fix_room to "done"
      *
      * @Route("/{id}/{idRoom}/fix_room_done", name="fix_room_done")
@@ -499,5 +587,55 @@ class AssociationController extends Controller
                 ->add('success', "l'état de la réparation a été modifiée!");
         return $this->redirectToRoute('user_show',array('id' => $idRoom) );
     }
+
+    ////////////////////////////////////////////////////////////////////////////
+
+    /**
+     * PDF de la quittance
+     *
+     * @Route("/{id}/quittance", name="quittance")
+     * @Method({"GET", "POST"})
+     */
+    public function quittancePDFAction(Request $request, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $rent = $em->getRepository(RentUserRoom::class)->findOneBy(array('id'=>$id));
+        $user_room = $em->getRepository('AppBundle:UserRoom')->findOneBy(array('id'=>$rent->getUserRoomId()));
+        $user = $em->getRepository('AppBundle:User')->findOneBy(array('id'=>$user_room->getUserId()));
+        $room = $em->getRepository('AppBundle:Room')->findOneBy(array('id'=>$user_room->getRoomId()));
+        $appart = $em->getRepository('AppBundle:Appartement')->findOneBy(array('id'=>$room->getIdAppart()));
+        // You can send the html as you want
+        //$html = '<h1>Plain HTML</h1>';
+        // but in this case we will render a symfony view !
+        // We are in a controller and we can use renderView function which retrieves the html from a view
+        // then we send that html to the user.
+        $html = $this->renderView('association/rentUserRoomPDF.html.twig', array(
+            'rent' =>$rent,
+            'user' =>$user,
+            'room' => $room,
+            'appart' => $appart
+        ));
+        $this->returnPDFResponseFromHTML($html);
+    }
+
+    public function returnPDFResponseFromHTML($html){
+        $pdf = $this->get("white_october.tcpdf")->create('vertical', PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+        $pdf->SetAuthor('KPOTIVI');
+        $pdf->SetTitle(('Quittance'));
+        $pdf->SetSubject('Quittance');
+        $pdf->setFontSubsetting(true);
+        $pdf->SetFont('helvetica', '', 11, '', true);
+        $pdf->SetPrintHeader(false);
+        $pdf->SetPrintFooter(false);
+        //$pdf->SetMargins(20,20,40, true);
+        $pdf->AddPage();
+        
+        $filename = 'quittance';
+        
+        $pdf->writeHTMLCell($w = 0, $h = 0, $x = '', $y = '', $html, $border = 0, $ln = 1, $fill = 0, $reseth = true, $align = '', $autopadding = true);
+        $pdf->Output($filename.".pdf",'I'); // This will output the PDF as a response directly
+    }
+
+
 }
 

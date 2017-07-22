@@ -10,11 +10,11 @@
                             
                 </div>
                 <div class="col-md-3">
-                    <a class="btn btn-success" href=""><i class="fa fa-money fa-lg"></i> Editer quittance</a>
+                    <a class="btn btn-success" href="{{ path('add_rent_user_room', { 'id': user_room.id,'idUser': user_room.userId,'idRoom': user_room.roomId }) }}"><i class="fa fa-money fa-lg"></i> Editer quittance</a>
                             
                 </div>
                  <div class="col-md-3">
-                            <a class="btn btn-success" href=""><i class="fa fa-file fa-lg"></i> Ajouter Document</a>
+                            <a class="btn btn-success" href="{{ path('add_doc_user_room', { 'id': user_room.id }) }}"><i class="fa fa-file fa-lg"></i> Ajouter Document</a>
                             
                     </div>
                 <br><br>
@@ -70,7 +70,7 @@
                  <div class="page-header">-*-</div>
                 <div >
                     <div class="page-header"><h4 style="background-color:#f7f7f7; font-size: 18px; text-align: center; padding: 7px 10px; margin-top: 0;">
-                            États des paiements du loyer de l'appartement de l'année 
+                            États des paiements du loyer de l'appartement de l'année {{year}}
                         </h4>
                     </div>
                     <div >
@@ -97,18 +97,11 @@
                                 <td> 
                                  <a href="{{ path('user_show', { 'id': user.id }) }}">{{ user.username }}</a>   
                                 </td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>x</td>
+                                {% for key,val in rents  %}
+                                  <td>Ok <br>
+                                     <a class="btn btn-danger" href="{{ path('delete_rent_user_room', { 'id': val.id, 'idUser':user.id }) }}"><i class="fa fa-trash fa-lg"></i></a>
+                                  </td>
+                                {% endfor %}
                               </tr>                
                           </tbody>
                         </table>
@@ -179,17 +172,41 @@
                               </tr>
                           </thead>
                           <tbody>
-                          {#%for typeDoc,doc in documents%#}                   
-                            <!--tr>
-                                <td>{#{typeDoc}#}</td>
-                                <td>{#{doc.DocumentDate|date("m/d/Y")}#}</td>
-                                <td>{#{doc.DocumentComment}#}</td>
+                          {%for typeDoc,doc in documents%}                   
+                            <tr>
+                                <td>{{typeDoc}}</td>
+                                <td>{{doc.DocumentDate|date("m/d/Y")}}</td>
+                                <td>{{doc.DocumentComment}}</td>
                                 <td>
-                                  <a class="btn btn-success" href=""><i class="fa fa-eye fa-lg"></i> View</a>
+                                  <a class="btn btn-success" href="{{ path('document_show', { 'id': doc.documentId }) }}"><i class="fa fa-eye fa-lg"></i> View</a>
                                   <a class="btn btn-danger" href="#"><i class="fa fa-trash-o fa-lg"></i> Delete</a> 
                              </td>
-                            </tr-->
-                          {#%endfor%#}                   
+                            </tr>
+                          {%endfor%}                   
+                          </tbody>
+                        </table>
+                    </div>
+                    <div class="page-header"><h4 style="background-color:#f7f7f7; font-size: 18px; text-align: center; padding: 7px 10px; margin-top: 0;">
+                            Les quittances de loyer
+                        </h4>
+                    </div>
+                    <div >
+                          <table  class="table table-bordered table-striped">
+                            <thead>
+                              <tr>
+                                <th>Date Quittance</th>
+                                 <th>Actions</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                          {%for quittance in quittances%}                   
+                            <tr>
+                                <td>{{quittance.rentDate|date('d-m-Y')}}</td>
+                                <td>
+                                  <a class="btn btn-success" href="{{ path('quittance', { 'id': quittance.id }) }}"><i class="fa fa-eye fa-lg"></i> View</a> 
+                             </td>
+                            </tr>
+                          {%endfor%}                   
                           </tbody>
                         </table>
                     </div>

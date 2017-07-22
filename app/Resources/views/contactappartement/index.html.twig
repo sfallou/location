@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Contactappartements list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Appartid</th>
+                <th>Contactid</th>
+                <th>Contactcomment</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for contactAppartement in contactAppartements %}
+            <tr>
+                <td><a href="{{ path('contactappartement_show', { 'id': contactAppartement.id }) }}">{{ contactAppartement.id }}</a></td>
+                <td>{{ contactAppartement.appartId }}</td>
+                <td>{{ contactAppartement.contactId }}</td>
+                <td>{{ contactAppartement.contactComment }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('contactappartement_show', { 'id': contactAppartement.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('contactappartement_edit', { 'id': contactAppartement.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('contactappartement_new') }}">Create a new contactAppartement</a>
+        </li>
+    </ul>
+{% endblock %}

@@ -23,20 +23,20 @@ class __TwigTemplate_3ba3188834111ff7eeebb80f4ecf330ed1ad8a7b08c75e1f869a96ec10b
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_0284c153901704deec746e7e6aeb6440f11bd0e4add124933e0ebabdbd3909e6 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_0284c153901704deec746e7e6aeb6440f11bd0e4add124933e0ebabdbd3909e6->enter($__internal_0284c153901704deec746e7e6aeb6440f11bd0e4add124933e0ebabdbd3909e6_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "user/show.html.twig"));
+        $__internal_6c40449ee356fc6968d7678be09d3c5e3f5be9d774c160e2947696e14afe4c7d = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_6c40449ee356fc6968d7678be09d3c5e3f5be9d774c160e2947696e14afe4c7d->enter($__internal_6c40449ee356fc6968d7678be09d3c5e3f5be9d774c160e2947696e14afe4c7d_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "user/show.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_0284c153901704deec746e7e6aeb6440f11bd0e4add124933e0ebabdbd3909e6->leave($__internal_0284c153901704deec746e7e6aeb6440f11bd0e4add124933e0ebabdbd3909e6_prof);
+        $__internal_6c40449ee356fc6968d7678be09d3c5e3f5be9d774c160e2947696e14afe4c7d->leave($__internal_6c40449ee356fc6968d7678be09d3c5e3f5be9d774c160e2947696e14afe4c7d_prof);
 
     }
 
     // line 3
     public function block_page_content($context, array $blocks = array())
     {
-        $__internal_e95312fad4734acab6e85c3cef3ab5e179611fd688bd9fcffa3d6d1dea312d0b = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_e95312fad4734acab6e85c3cef3ab5e179611fd688bd9fcffa3d6d1dea312d0b->enter($__internal_e95312fad4734acab6e85c3cef3ab5e179611fd688bd9fcffa3d6d1dea312d0b_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "page_content"));
+        $__internal_c4e6a6c92c93020ea2a00248113f862563fc6e734b207f4a4b2709afe5e674b6 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_c4e6a6c92c93020ea2a00248113f862563fc6e734b207f4a4b2709afe5e674b6->enter($__internal_c4e6a6c92c93020ea2a00248113f862563fc6e734b207f4a4b2709afe5e674b6_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "page_content"));
 
         // line 4
         echo "
@@ -51,11 +51,17 @@ class __TwigTemplate_3ba3188834111ff7eeebb80f4ecf330ed1ad8a7b08c75e1f869a96ec10b
                             
                 </div>
                 <div class=\"col-md-3\">
-                    <a class=\"btn btn-success\" href=\"\"><i class=\"fa fa-money fa-lg\"></i> Editer quittance</a>
+                    <a class=\"btn btn-success\" href=\"";
+        // line 13
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("add_rent_user_room", array("id" => $this->getAttribute((isset($context["user_room"]) ? $context["user_room"] : $this->getContext($context, "user_room")), "id", array()), "idUser" => $this->getAttribute((isset($context["user_room"]) ? $context["user_room"] : $this->getContext($context, "user_room")), "userId", array()), "idRoom" => $this->getAttribute((isset($context["user_room"]) ? $context["user_room"] : $this->getContext($context, "user_room")), "roomId", array()))), "html", null, true);
+        echo "\"><i class=\"fa fa-money fa-lg\"></i> Editer quittance</a>
                             
                 </div>
                  <div class=\"col-md-3\">
-                            <a class=\"btn btn-success\" href=\"\"><i class=\"fa fa-file fa-lg\"></i> Ajouter Document</a>
+                            <a class=\"btn btn-success\" href=\"";
+        // line 17
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("add_doc_user_room", array("id" => $this->getAttribute((isset($context["user_room"]) ? $context["user_room"] : $this->getContext($context, "user_room")), "id", array()))), "html", null, true);
+        echo "\"><i class=\"fa fa-file fa-lg\"></i> Ajouter Document</a>
                             
                     </div>
                 <br><br>
@@ -160,7 +166,10 @@ class __TwigTemplate_3ba3188834111ff7eeebb80f4ecf330ed1ad8a7b08c75e1f869a96ec10b
                  <div class=\"page-header\">-*-</div>
                 <div >
                     <div class=\"page-header\"><h4 style=\"background-color:#f7f7f7; font-size: 18px; text-align: center; padding: 7px 10px; margin-top: 0;\">
-                            États des paiements du loyer de l'appartement de l'année 
+                            États des paiements du loyer de l'appartement de l'année ";
+        // line 73
+        echo twig_escape_filter($this->env, (isset($context["year"]) ? $context["year"] : $this->getContext($context, "year")), "html", null, true);
+        echo "
                         </h4>
                     </div>
                     <div >
@@ -192,19 +201,25 @@ class __TwigTemplate_3ba3188834111ff7eeebb80f4ecf330ed1ad8a7b08c75e1f869a96ec10b
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["user"]) ? $context["user"] : $this->getContext($context, "user")), "username", array()), "html", null, true);
         echo "</a>   
                                 </td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>x</td>
-                              </tr>                
+                                ";
+        // line 100
+        $context['_parent'] = $context;
+        $context['_seq'] = twig_ensure_traversable((isset($context["rents"]) ? $context["rents"] : $this->getContext($context, "rents")));
+        foreach ($context['_seq'] as $context["key"] => $context["val"]) {
+            // line 101
+            echo "                                  <td>Ok <br>
+                                     <a class=\"btn btn-danger\" href=\"";
+            // line 102
+            echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("delete_rent_user_room", array("id" => $this->getAttribute($context["val"], "id", array()), "idUser" => $this->getAttribute((isset($context["user"]) ? $context["user"] : $this->getContext($context, "user")), "id", array()))), "html", null, true);
+            echo "\"><i class=\"fa fa-trash fa-lg\"></i></a>
+                                  </td>
+                                ";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['key'], $context['val'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 105
+        echo "                              </tr>                
                           </tbody>
                         </table>
                     </div>
@@ -229,65 +244,65 @@ class __TwigTemplate_3ba3188834111ff7eeebb80f4ecf330ed1ad8a7b08c75e1f869a96ec10b
                           </thead>
                           <tbody>
                           ";
-        // line 136
+        // line 129
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable((isset($context["charges"]) ? $context["charges"] : $this->getContext($context, "charges")));
         foreach ($context['_seq'] as $context["typeCharge"] => $context["charge"]) {
             echo "                   
                             <tr>
                                 <td>";
-            // line 138
+            // line 131
             echo twig_escape_filter($this->env, $context["typeCharge"], "html", null, true);
             echo "</td>
                                 <td>";
-            // line 139
+            // line 132
             echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($context["charge"], "ChargeDate", array()), "m/d/Y"), "html", null, true);
             echo "</td>
                                 <td>";
-            // line 140
+            // line 133
             echo twig_escape_filter($this->env, $this->getAttribute($context["charge"], "ChargeAmount", array()), "html", null, true);
             echo " euros</td>
                                 <td>
                                   ";
-            // line 142
+            // line 135
             if (($this->getAttribute($context["charge"], "ChargeState", array()) == false)) {
-                // line 143
+                // line 136
                 echo "                                  Not paid
                                   ";
             }
-            // line 145
+            // line 138
             echo "                                  ";
             if (($this->getAttribute($context["charge"], "ChargeState", array()) == true)) {
-                // line 146
+                // line 139
                 echo "                                  Paid
                                   ";
             }
-            // line 148
+            // line 141
             echo "                                </td>
                                 <td>";
-            // line 149
+            // line 142
             echo twig_escape_filter($this->env, $this->getAttribute($context["charge"], "ChargeComment", array()), "html", null, true);
             echo "</td>
                                 <td>
                                   ";
-            // line 151
+            // line 144
             if (($this->getAttribute($context["charge"], "ChargeState", array()) == false)) {
-                // line 152
+                // line 145
                 echo "                                  <a class=\"btn btn-success\" href=\"";
                 echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("charge_room_paid", array("id" => $this->getAttribute($context["charge"], "id", array()), "idRoom" => $this->getAttribute((isset($context["user"]) ? $context["user"] : $this->getContext($context, "user")), "id", array()))), "html", null, true);
                 echo "\"><i class=\"fa fa-check fa-lg\"></i> Paid</a>
                                   ";
             }
-            // line 154
+            // line 147
             echo "                                  ";
             if (($this->getAttribute($context["charge"], "ChargeState", array()) == true)) {
-                // line 155
+                // line 148
                 echo "                                  <a class=\"btn btn-success\" href=\"";
                 echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("charge_room_unpaid", array("id" => $this->getAttribute($context["charge"], "id", array()), "idRoom" => $this->getAttribute((isset($context["user"]) ? $context["user"] : $this->getContext($context, "user")), "id", array()))), "html", null, true);
                 echo "\"><i class=\"fa fa-times fa-lg\"></i> Unpaid</a>
                                   ";
             }
-            // line 157
+            // line 150
             echo "                                  <a class=\"btn btn-danger\" href=\"#\"><i class=\"fa fa-trash-o fa-lg\"></i> Delete</a> 
                              </td>
                             </tr>
@@ -296,7 +311,7 @@ class __TwigTemplate_3ba3188834111ff7eeebb80f4ecf330ed1ad8a7b08c75e1f869a96ec10b
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['typeCharge'], $context['charge'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 160
+        // line 153
         echo "                   
                           </tbody>
                         </table>
@@ -320,25 +335,79 @@ class __TwigTemplate_3ba3188834111ff7eeebb80f4ecf330ed1ad8a7b08c75e1f869a96ec10b
                           </thead>
                           <tbody>
                           ";
-        // line 182
-        echo "                   
-                            <!--tr>
+        // line 175
+        $context['_parent'] = $context;
+        $context['_seq'] = twig_ensure_traversable((isset($context["documents"]) ? $context["documents"] : $this->getContext($context, "documents")));
+        foreach ($context['_seq'] as $context["typeDoc"] => $context["doc"]) {
+            echo "                   
+                            <tr>
                                 <td>";
-        // line 184
-        echo "</td>
+            // line 177
+            echo twig_escape_filter($this->env, $context["typeDoc"], "html", null, true);
+            echo "</td>
                                 <td>";
-        // line 185
-        echo "</td>
+            // line 178
+            echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($context["doc"], "DocumentDate", array()), "m/d/Y"), "html", null, true);
+            echo "</td>
                                 <td>";
-        // line 186
-        echo "</td>
+            // line 179
+            echo twig_escape_filter($this->env, $this->getAttribute($context["doc"], "DocumentComment", array()), "html", null, true);
+            echo "</td>
                                 <td>
-                                  <a class=\"btn btn-success\" href=\"\"><i class=\"fa fa-eye fa-lg\"></i> View</a>
+                                  <a class=\"btn btn-success\" href=\"";
+            // line 181
+            echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("document_show", array("id" => $this->getAttribute($context["doc"], "documentId", array()))), "html", null, true);
+            echo "\"><i class=\"fa fa-eye fa-lg\"></i> View</a>
                                   <a class=\"btn btn-danger\" href=\"#\"><i class=\"fa fa-trash-o fa-lg\"></i> Delete</a> 
                              </td>
-                            </tr-->
+                            </tr>
                           ";
-        // line 192
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['typeDoc'], $context['doc'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 185
+        echo "                   
+                          </tbody>
+                        </table>
+                    </div>
+                    <div class=\"page-header\"><h4 style=\"background-color:#f7f7f7; font-size: 18px; text-align: center; padding: 7px 10px; margin-top: 0;\">
+                            Les quittances de loyer
+                        </h4>
+                    </div>
+                    <div >
+                          <table  class=\"table table-bordered table-striped\">
+                            <thead>
+                              <tr>
+                                <th>Date Quittance</th>
+                                 <th>Actions</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                          ";
+        // line 202
+        $context['_parent'] = $context;
+        $context['_seq'] = twig_ensure_traversable((isset($context["quittances"]) ? $context["quittances"] : $this->getContext($context, "quittances")));
+        foreach ($context['_seq'] as $context["_key"] => $context["quittance"]) {
+            echo "                   
+                            <tr>
+                                <td>";
+            // line 204
+            echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($context["quittance"], "rentDate", array()), "d-m-Y"), "html", null, true);
+            echo "</td>
+                                <td>
+                                  <a class=\"btn btn-success\" href=\"";
+            // line 206
+            echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("quittance", array("id" => $this->getAttribute($context["quittance"], "id", array()))), "html", null, true);
+            echo "\"><i class=\"fa fa-eye fa-lg\"></i> View</a> 
+                             </td>
+                            </tr>
+                          ";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['quittance'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 209
         echo "                   
                           </tbody>
                         </table>
@@ -349,31 +418,31 @@ class __TwigTemplate_3ba3188834111ff7eeebb80f4ecf330ed1ad8a7b08c75e1f869a96ec10b
             
 ";
         
-        $__internal_e95312fad4734acab6e85c3cef3ab5e179611fd688bd9fcffa3d6d1dea312d0b->leave($__internal_e95312fad4734acab6e85c3cef3ab5e179611fd688bd9fcffa3d6d1dea312d0b_prof);
+        $__internal_c4e6a6c92c93020ea2a00248113f862563fc6e734b207f4a4b2709afe5e674b6->leave($__internal_c4e6a6c92c93020ea2a00248113f862563fc6e734b207f4a4b2709afe5e674b6_prof);
 
     }
 
-    // line 202
+    // line 219
     public function block_page_title($context, array $blocks = array())
     {
-        $__internal_519e75394209446863038b5903164a57633640d431112a68bc429b64ce7b9d9d = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_519e75394209446863038b5903164a57633640d431112a68bc429b64ce7b9d9d->enter($__internal_519e75394209446863038b5903164a57633640d431112a68bc429b64ce7b9d9d_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "page_title"));
+        $__internal_9f8bbc9f24f6a6242e2a90205c3880c3a42f3f7bef2a1b7760848bd334dcd011 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_9f8bbc9f24f6a6242e2a90205c3880c3a42f3f7bef2a1b7760848bd334dcd011->enter($__internal_9f8bbc9f24f6a6242e2a90205c3880c3a42f3f7bef2a1b7760848bd334dcd011_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "page_title"));
 
         echo " Users ";
         
-        $__internal_519e75394209446863038b5903164a57633640d431112a68bc429b64ce7b9d9d->leave($__internal_519e75394209446863038b5903164a57633640d431112a68bc429b64ce7b9d9d_prof);
+        $__internal_9f8bbc9f24f6a6242e2a90205c3880c3a42f3f7bef2a1b7760848bd334dcd011->leave($__internal_9f8bbc9f24f6a6242e2a90205c3880c3a42f3f7bef2a1b7760848bd334dcd011_prof);
 
     }
 
-    // line 203
+    // line 220
     public function block_page_subtitle($context, array $blocks = array())
     {
-        $__internal_b54fa64958e8145938cacf50100c452b8e759c9284662d794da3ad26f3d3c0ca = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_b54fa64958e8145938cacf50100c452b8e759c9284662d794da3ad26f3d3c0ca->enter($__internal_b54fa64958e8145938cacf50100c452b8e759c9284662d794da3ad26f3d3c0ca_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "page_subtitle"));
+        $__internal_e25ff42bf83da21572378b0644fb2f494ccf0de9eafa176eaabd1f9e3e34176e = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_e25ff42bf83da21572378b0644fb2f494ccf0de9eafa176eaabd1f9e3e34176e->enter($__internal_e25ff42bf83da21572378b0644fb2f494ccf0de9eafa176eaabd1f9e3e34176e_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "page_subtitle"));
 
         echo " show ";
         
-        $__internal_b54fa64958e8145938cacf50100c452b8e759c9284662d794da3ad26f3d3c0ca->leave($__internal_b54fa64958e8145938cacf50100c452b8e759c9284662d794da3ad26f3d3c0ca_prof);
+        $__internal_e25ff42bf83da21572378b0644fb2f494ccf0de9eafa176eaabd1f9e3e34176e->leave($__internal_e25ff42bf83da21572378b0644fb2f494ccf0de9eafa176eaabd1f9e3e34176e_prof);
 
     }
 
@@ -389,7 +458,7 @@ class __TwigTemplate_3ba3188834111ff7eeebb80f4ecf330ed1ad8a7b08c75e1f869a96ec10b
 
     public function getDebugInfo()
     {
-        return array (  369 => 203,  357 => 202,  342 => 192,  334 => 186,  331 => 185,  328 => 184,  324 => 182,  300 => 160,  291 => 157,  285 => 155,  282 => 154,  276 => 152,  274 => 151,  269 => 149,  266 => 148,  262 => 146,  259 => 145,  255 => 143,  253 => 142,  248 => 140,  244 => 139,  240 => 138,  233 => 136,  190 => 98,  154 => 65,  150 => 64,  146 => 63,  142 => 62,  138 => 61,  132 => 60,  124 => 55,  120 => 54,  116 => 53,  112 => 52,  108 => 51,  102 => 50,  81 => 32,  75 => 29,  70 => 27,  49 => 9,  42 => 4,  36 => 3,  11 => 1,);
+        return array (  438 => 220,  426 => 219,  411 => 209,  401 => 206,  396 => 204,  389 => 202,  370 => 185,  359 => 181,  354 => 179,  350 => 178,  346 => 177,  339 => 175,  315 => 153,  306 => 150,  300 => 148,  297 => 147,  291 => 145,  289 => 144,  284 => 142,  281 => 141,  277 => 139,  274 => 138,  270 => 136,  268 => 135,  263 => 133,  259 => 132,  255 => 131,  248 => 129,  222 => 105,  213 => 102,  210 => 101,  206 => 100,  199 => 98,  171 => 73,  160 => 65,  156 => 64,  152 => 63,  148 => 62,  144 => 61,  138 => 60,  130 => 55,  126 => 54,  122 => 53,  118 => 52,  114 => 51,  108 => 50,  87 => 32,  81 => 29,  76 => 27,  63 => 17,  56 => 13,  49 => 9,  42 => 4,  36 => 3,  11 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -414,11 +483,11 @@ class __TwigTemplate_3ba3188834111ff7eeebb80f4ecf330ed1ad8a7b08c75e1f869a96ec10b
                             
                 </div>
                 <div class=\"col-md-3\">
-                    <a class=\"btn btn-success\" href=\"\"><i class=\"fa fa-money fa-lg\"></i> Editer quittance</a>
+                    <a class=\"btn btn-success\" href=\"{{ path('add_rent_user_room', { 'id': user_room.id,'idUser': user_room.userId,'idRoom': user_room.roomId }) }}\"><i class=\"fa fa-money fa-lg\"></i> Editer quittance</a>
                             
                 </div>
                  <div class=\"col-md-3\">
-                            <a class=\"btn btn-success\" href=\"\"><i class=\"fa fa-file fa-lg\"></i> Ajouter Document</a>
+                            <a class=\"btn btn-success\" href=\"{{ path('add_doc_user_room', { 'id': user_room.id }) }}\"><i class=\"fa fa-file fa-lg\"></i> Ajouter Document</a>
                             
                     </div>
                 <br><br>
@@ -474,7 +543,7 @@ class __TwigTemplate_3ba3188834111ff7eeebb80f4ecf330ed1ad8a7b08c75e1f869a96ec10b
                  <div class=\"page-header\">-*-</div>
                 <div >
                     <div class=\"page-header\"><h4 style=\"background-color:#f7f7f7; font-size: 18px; text-align: center; padding: 7px 10px; margin-top: 0;\">
-                            États des paiements du loyer de l'appartement de l'année 
+                            États des paiements du loyer de l'appartement de l'année {{year}}
                         </h4>
                     </div>
                     <div >
@@ -501,18 +570,11 @@ class __TwigTemplate_3ba3188834111ff7eeebb80f4ecf330ed1ad8a7b08c75e1f869a96ec10b
                                 <td> 
                                  <a href=\"{{ path('user_show', { 'id': user.id }) }}\">{{ user.username }}</a>   
                                 </td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>x</td>
+                                {% for key,val in rents  %}
+                                  <td>Ok <br>
+                                     <a class=\"btn btn-danger\" href=\"{{ path('delete_rent_user_room', { 'id': val.id, 'idUser':user.id }) }}\"><i class=\"fa fa-trash fa-lg\"></i></a>
+                                  </td>
+                                {% endfor %}
                               </tr>                
                           </tbody>
                         </table>
@@ -583,17 +645,41 @@ class __TwigTemplate_3ba3188834111ff7eeebb80f4ecf330ed1ad8a7b08c75e1f869a96ec10b
                               </tr>
                           </thead>
                           <tbody>
-                          {#%for typeDoc,doc in documents%#}                   
-                            <!--tr>
-                                <td>{#{typeDoc}#}</td>
-                                <td>{#{doc.DocumentDate|date(\"m/d/Y\")}#}</td>
-                                <td>{#{doc.DocumentComment}#}</td>
+                          {%for typeDoc,doc in documents%}                   
+                            <tr>
+                                <td>{{typeDoc}}</td>
+                                <td>{{doc.DocumentDate|date(\"m/d/Y\")}}</td>
+                                <td>{{doc.DocumentComment}}</td>
                                 <td>
-                                  <a class=\"btn btn-success\" href=\"\"><i class=\"fa fa-eye fa-lg\"></i> View</a>
+                                  <a class=\"btn btn-success\" href=\"{{ path('document_show', { 'id': doc.documentId }) }}\"><i class=\"fa fa-eye fa-lg\"></i> View</a>
                                   <a class=\"btn btn-danger\" href=\"#\"><i class=\"fa fa-trash-o fa-lg\"></i> Delete</a> 
                              </td>
-                            </tr-->
-                          {#%endfor%#}                   
+                            </tr>
+                          {%endfor%}                   
+                          </tbody>
+                        </table>
+                    </div>
+                    <div class=\"page-header\"><h4 style=\"background-color:#f7f7f7; font-size: 18px; text-align: center; padding: 7px 10px; margin-top: 0;\">
+                            Les quittances de loyer
+                        </h4>
+                    </div>
+                    <div >
+                          <table  class=\"table table-bordered table-striped\">
+                            <thead>
+                              <tr>
+                                <th>Date Quittance</th>
+                                 <th>Actions</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                          {%for quittance in quittances%}                   
+                            <tr>
+                                <td>{{quittance.rentDate|date('d-m-Y')}}</td>
+                                <td>
+                                  <a class=\"btn btn-success\" href=\"{{ path('quittance', { 'id': quittance.id }) }}\"><i class=\"fa fa-eye fa-lg\"></i> View</a> 
+                             </td>
+                            </tr>
+                          {%endfor%}                   
                           </tbody>
                         </table>
                     </div>

@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Documentuserrooms list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Userroomid</th>
+                <th>Documentid</th>
+                <th>Documentdate</th>
+                <th>Documentcomment</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for documentUserRoom in documentUserRooms %}
+            <tr>
+                <td><a href="{{ path('documentuserroom_show', { 'id': documentUserRoom.id }) }}">{{ documentUserRoom.id }}</a></td>
+                <td>{{ documentUserRoom.userRoomId }}</td>
+                <td>{{ documentUserRoom.documentId }}</td>
+                <td>{% if documentUserRoom.documentDate %}{{ documentUserRoom.documentDate|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ documentUserRoom.documentComment }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('documentuserroom_show', { 'id': documentUserRoom.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('documentuserroom_edit', { 'id': documentUserRoom.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('documentuserroom_new') }}">Create a new documentUserRoom</a>
+        </li>
+    </ul>
+{% endblock %}

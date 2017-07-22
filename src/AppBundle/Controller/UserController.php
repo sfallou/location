@@ -9,6 +9,10 @@ use AppBundle\Entity\Appartement;
 use AppBundle\Entity\Residence;
 use AppBundle\Entity\ChargeRoom;
 use AppBundle\Entity\Charge;
+use AppBundle\Entity\DocumentUserRoom;
+use AppBundle\Entity\Document;
+use AppBundle\Entity\RentUserRoom;
+
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
@@ -78,6 +82,11 @@ class UserController extends Controller
         $em = $this->getDoctrine()->getManager();
         $charges = null;
         $charge_rooms = array();
+        $docs = null;
+        $doc_user_rooms = array();
+        $rents = array();
+        $quittances = array();
+
         $user_room = $em->getRepository('AppBundle:UserRoom')->findOneBy(array('userId'=>$user->getId()));
         $room = $em->getRepository('AppBundle:Room')->findOneBy(array('id'=>$user_room->getRoomId()));
         $appart = $em->getRepository('AppBundle:Appartement')->findOneBy(array('id'=>$room->getIdAppart()));
@@ -91,7 +100,24 @@ class UserController extends Controller
                 $charge_rooms[$type->getName()] = $charge;
             }
         }
-       
+        $docs = $em->getRepository('AppBundle:DocumentUserRoom')->findBy(array('userRoomId'=>$user_room->getId()));
+        
+        if ($docs){
+            foreach ($docs as $doc ) {
+                $type =  $em->getRepository('AppBundle:TypeDocument')->findOneBy(array('id'=>$doc->getDocumentId()));
+                $doc_user_rooms[$type->getName()] = $doc;
+            }
+        }
+        $quittances = $em->getRepository('AppBundle:RentUserRoom')->findBy(array('userRoomId'=>$user_room->getId()));
+       //$rents = $em->getRepository('AppBundle:RentUserRoom')->findBy(array('userRoomId'=>$user_room->getId()));
+        $query = $em->createQuery(
+            'SELECT r
+            FROM AppBundle:RentUserRoom r
+            WHERE r.userRoomId = :id
+            ORDER BY r.userRoomId DESC'
+            )->setParameter('id',$user_room->getId() );
+
+        $rents = $query->setMaxResults(12)->getResult();;
         return $this->render('user/show.html.twig', array(
             'user' => $user,
             'room' => $room,
@@ -99,6 +125,10 @@ class UserController extends Controller
             'appart' => $appart,
             'residence' => $residence,
             'charges' =>$charge_rooms,
+            'documents' => $doc_user_rooms,
+            'rents' => $rents,
+            'year' => date('Y'),
+            'quittances' =>$quittances,
             'delete_form' => $deleteForm->createView(),
         ));
     }

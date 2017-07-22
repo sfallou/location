@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Rentuserroom</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ rentUserRoom.id }}</td>
+            </tr>
+            <tr>
+                <th>Userroomid</th>
+                <td>{{ rentUserRoom.userRoomId }}</td>
+            </tr>
+            <tr>
+                <th>Rentamount</th>
+                <td>{{ rentUserRoom.rentAmount }}</td>
+            </tr>
+            <tr>
+                <th>Rentdate</th>
+                <td>{% if rentUserRoom.rentDate %}{{ rentUserRoom.rentDate|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Rentdate1</th>
+                <td>{% if rentUserRoom.rentDate1 %}{{ rentUserRoom.rentDate1|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Rentdate2</th>
+                <td>{% if rentUserRoom.rentDate2 %}{{ rentUserRoom.rentDate2|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('rentuserroom_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('rentuserroom_edit', { 'id': rentUserRoom.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

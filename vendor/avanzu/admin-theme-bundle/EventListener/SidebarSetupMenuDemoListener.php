@@ -36,8 +36,8 @@ class SidebarSetupMenuDemoListener
             $residence = new MenuItemModel('residence', 'Résidences', '', $earg, 'fa fa-map'),
             $meuble = new MenuItemModel('meubles', 'Meubles', '', $earg, 'fa fa-tv'),
             $docs = new MenuItemModel('documents', 'Documents', '', $earg, 'fa fa-file'),
-            $divers = new MenuItemModel('divers', 'Divers', '', $earg, 'fa fa-th'),
-            
+            $mail = new MenuItemModel('mail', 'Mail', '', $earg, 'fa fa-envelope'),
+            $divers = new MenuItemModel('divers', 'Divers', '', $earg, 'fa fa-th'),   
 
         );
         
@@ -64,10 +64,20 @@ class SidebarSetupMenuDemoListener
             ->addChild(new MenuItemModel('liste_type_doc', 'Liste Type Document', 'typedocument_index', $earg, 'fa fa-navicon'))
             ->addChild(new MenuItemModel('nouveau_type_doc', 'Nouveau Type Document', 'typedocument_new', $earg,  'fa fa-plus'));
 
+         $mail->addChild(new MenuItemModel('new_mail', 'New Mail', 'typecontact_index', $earg,  'fa fa-plus'))
+            ->addChild(new MenuItemModel('liste_mail', 'Mails', 'typecontact_index', $earg,  'fa fa-navicon'));
+
         $divers->addChild(new MenuItemModel('liste_type_fix', 'Fix Types', 'typefix_index', $earg,  'fa fa-navicon'))
             ->addChild(new MenuItemModel('new_type_fix', 'New Fix Types', 'typefix_new', $earg,  'fa fa-plus'))
             ->addChild(new MenuItemModel('liste_type_charge', 'Charge Types', 'typecharge_index', $earg,  'fa fa-navicon'))
-            ->addChild(new MenuItemModel('new_type_charge', 'New Charge Types', 'typecharge_new', $earg,  'fa fa-navicon'));
+            ->addChild(new MenuItemModel('new_type_charge', 'New Charge Types', 'typecharge_new', $earg,  'fa fa-plus'))
+             ->addChild(new MenuItemModel('liste_contact', 'Contacts', 'contact_index', $earg,  'fa fa-navicon'))
+            ->addChild(new MenuItemModel('new_contact', 'New Contact ', 'contact_new', $earg,  'fa fa-plus'))
+             ->addChild(new MenuItemModel('liste_type_contact', 'Contact Types', 'typecontact_index', $earg,  'fa fa-navicon'))
+            ->addChild(new MenuItemModel('new_type_contact', 'New Contact Types', 'typecontact_new', $earg,  'fa fa-plus'));
+
+           
+
 
         return $this->activateByRoute($request->get('_route'), $rootItems);
 

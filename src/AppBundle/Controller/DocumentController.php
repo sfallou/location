@@ -9,6 +9,7 @@ use AppBundle\Entity\Appartement;
 use AppBundle\Entity\Residence;
 use AppBundle\Entity\TypeDocument;
 use AppBundle\Entity\Document;
+
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;

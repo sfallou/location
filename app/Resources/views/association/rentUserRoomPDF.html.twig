@@ -1,0 +1,30 @@
+{% extends '::base.html.twig'%}
+
+{% block body%}
+        <div>
+            <h4>ATTESTATION DE PAIEMENT DE LOYER</h4>
+            Je soussign&eacute;, <b>M. KPOTIVI Kokou</b>.<br><br>Demeurant au : <br>
+            6 Rue du Bel Air <br>
+            91000 - Evry.<br><br>
+            Propri&eacute;taire d’un appartement situ&eacute; au :<br> {{appart.adresse}} <br><br>
+            Loue &agrave; <b>{{user.username}}</b>. <br><br>
+            Atteste que le loyer du : <b>{{rent.rentDate1|date('d M Y')}}</b> au <b>{{rent.rentDate2|date('d M Y')}}</b> a &eacute;t&eacute; r&eacute;gl&eacute; le <b>{{rent.rentDate|date('d M Y')}} </b>par le locataire.<br><br>
+            Soit la somme de : {{rent.rentAmount}} euros.
+            <br><br>
+            <img src="{{ asset('bundles/app/images/signatureKokou.png') }}" width="100px" height="100px">
+        </div>
+        --------------------------------------------------------------------------
+        -----------------------------------------------------------------
+         <div>
+            <h4>ATTESTATION DE PAIEMENT DE LOYER</h4>
+            Je soussign&eacute;, <b>M. KPOTIVI Kokou</b>.<br><br>Demeurant au : <br>
+            6 Rue du Bel Air <br>
+            91000 - Evry.<br><br>
+            Propri&eacute;taire d’un appartement situ&eacute; au :<br> {{appart.adresse}} <br><br>
+            Loue &agrave; <b>{{user.username}}</b>. <br><br>
+            Atteste que le loyer du : <b>{{rent.rentDate1|date('d M Y')}}</b> au <b>{{rent.rentDate2|date('d M Y')}}</b> a &eacute;t&eacute; r&eacute;gl&eacute; le <b>{{rent.rentDate|date('d M Y')}} </b>par le locataire.<br><br>
+            Soit la somme de : {{rent.rentAmount}} euros.
+            <br><br>
+            <img src="{{ asset('bundles/app/images/signatureKokou.png') }}" width="100px" height="100px">
+        </div>
+{% endblock %}

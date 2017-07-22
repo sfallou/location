@@ -19,6 +19,7 @@
       <parameter key="AvanzuAdminThemeBundle">Avanzu\AdminThemeBundle\AvanzuAdminThemeBundle</parameter>
       <parameter key="FOSUserBundle">FOS\UserBundle\FOSUserBundle</parameter>
       <parameter key="AsseticBundle">Symfony\Bundle\AsseticBundle\AsseticBundle</parameter>
+      <parameter key="WhiteOctoberTCPDFBundle">WhiteOctober\TCPDFBundle\WhiteOctoberTCPDFBundle</parameter>
       <parameter key="DebugBundle">Symfony\Bundle\DebugBundle\DebugBundle</parameter>
       <parameter key="WebProfilerBundle">Symfony\Bundle\WebProfilerBundle\WebProfilerBundle</parameter>
       <parameter key="SensioDistributionBundle">Sensio\Bundle\DistributionBundle\SensioDistributionBundle</parameter>
@@ -79,6 +80,11 @@
         <parameter key="parent">null</parameter>
         <parameter key="path">/Users/sfallou/Sites/kokou/location/vendor/symfony/assetic-bundle</parameter>
         <parameter key="namespace">Symfony\Bundle\AsseticBundle</parameter>
+      </parameter>
+      <parameter key="WhiteOctoberTCPDFBundle" type="collection">
+        <parameter key="parent">null</parameter>
+        <parameter key="path">/Users/sfallou/Sites/kokou/location/vendor/whiteoctober/tcpdf-bundle/WhiteOctober/TCPDFBundle</parameter>
+        <parameter key="namespace">WhiteOctober\TCPDFBundle</parameter>
       </parameter>
       <parameter key="DebugBundle" type="collection">
         <parameter key="parent">null</parameter>
@@ -647,6 +653,45 @@
     <parameter key="assetic.sass.bin">/usr/bin/sass</parameter>
     <parameter key="assetic.reactjsx.bin">/usr/bin/jsx</parameter>
     <parameter key="assetic.twig_extension.functions" type="collection"/>
+    <parameter key="white_october_tcpdf.file">/Users/sfallou/Sites/kokou/location/app/../vendor/tecnickcom/tcpdf/tcpdf.php</parameter>
+    <parameter key="white_october_tcpdf.class">TCPDF</parameter>
+    <parameter key="white_october_tcpdf.tcpdf" type="collection">
+      <parameter key="k_path_url">/Users/sfallou/Sites/kokou/location/app/../vendor/tecnickcom/tcpdf/</parameter>
+      <parameter key="k_path_main">/Users/sfallou/Sites/kokou/location/app/../vendor/tecnickcom/tcpdf/</parameter>
+      <parameter key="k_path_fonts">/Users/sfallou/Sites/kokou/location/app/../vendor/tecnickcom/tcpdf/fonts/</parameter>
+      <parameter key="k_path_cache">/Users/sfallou/Sites/kokou/location/app/cache/dev/tcpdf</parameter>
+      <parameter key="k_path_url_cache">/Users/sfallou/Sites/kokou/location/app/cache/dev/tcpdf</parameter>
+      <parameter key="k_path_images">/Users/sfallou/Sites/kokou/location/app/../vendor/tecnickcom/tcpdf/examples/images/</parameter>
+      <parameter key="k_blank_image">/Users/sfallou/Sites/kokou/location/app/../vendor/tecnickcom/tcpdf/examples/images/_blank.png</parameter>
+      <parameter key="k_cell_height_ratio">1.25</parameter>
+      <parameter key="k_title_magnification">1.3</parameter>
+      <parameter key="k_small_ratio">0.66666666666667</parameter>
+      <parameter key="k_thai_topchars">true</parameter>
+      <parameter key="k_tcpdf_calls_in_html">false</parameter>
+      <parameter key="k_tcpdf_external_config">true</parameter>
+      <parameter key="head_magnification">1.1</parameter>
+      <parameter key="pdf_page_format">A4</parameter>
+      <parameter key="pdf_page_orientation">P</parameter>
+      <parameter key="pdf_creator">TCPDF</parameter>
+      <parameter key="pdf_author">TCPDF</parameter>
+      <parameter key="pdf_header_title"></parameter>
+      <parameter key="pdf_header_string"></parameter>
+      <parameter key="pdf_header_logo"></parameter>
+      <parameter key="pdf_header_logo_width"></parameter>
+      <parameter key="pdf_unit">mm</parameter>
+      <parameter key="pdf_margin_header">5</parameter>
+      <parameter key="pdf_margin_footer">10</parameter>
+      <parameter key="pdf_margin_top">27</parameter>
+      <parameter key="pdf_margin_bottom">25</parameter>
+      <parameter key="pdf_margin_left">15</parameter>
+      <parameter key="pdf_margin_right">15</parameter>
+      <parameter key="pdf_font_name_main">helvetica</parameter>
+      <parameter key="pdf_font_size_main">10</parameter>
+      <parameter key="pdf_font_name_data">helvetica</parameter>
+      <parameter key="pdf_font_size_data">8</parameter>
+      <parameter key="pdf_font_monospaced">courier</parameter>
+      <parameter key="pdf_image_scale_ratio">1.25</parameter>
+    </parameter>
     <parameter key="web_profiler.controller.profiler.class">Symfony\Bundle\WebProfilerBundle\Controller\ProfilerController</parameter>
     <parameter key="web_profiler.controller.router.class">Symfony\Bundle\WebProfilerBundle\Controller\RouterController</parameter>
     <parameter key="web_profiler.controller.exception.class">Symfony\Bundle\WebProfilerBundle\Controller\ExceptionController</parameter>
@@ -2350,7 +2395,7 @@
         </argument>
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>596b9495bf8746.95145418</argument>
+            <argument>5970e113c9e9c9.56663386</argument>
           </service>
         </argument>
       </argument>
@@ -2639,7 +2684,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.token_storage"/>
-            <argument>596b9495bf8746.95145418</argument>
+            <argument>5970e113c9e9c9.56663386</argument>
             <argument type="service" id="monolog.logger.security" on-invalid="null"/>
             <argument type="service" id="security.authentication.manager"/>
           </service>
@@ -3657,6 +3702,10 @@
       </argument>
       <argument>/Users/sfallou/Sites/kokou/location/app/../web</argument>
       <argument>true</argument>
+    </service>
+    <service id="white_october.tcpdf" class="WhiteOctober\TCPDFBundle\Controller\TCPDFController">
+      <file>/Users/sfallou/Sites/kokou/location/app/../vendor/tecnickcom/tcpdf/tcpdf.php</file>
+      <argument>TCPDF</argument>
     </service>
     <service id="data_collector.dump" class="Symfony\Component\HttpKernel\DataCollector\DumpDataCollector">
       <tag name="data_collector" id="dump" template="@Debug/Profiler/dump.html.twig" priority="240"/>

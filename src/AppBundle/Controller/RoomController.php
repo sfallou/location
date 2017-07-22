@@ -13,6 +13,9 @@ use AppBundle\Entity\FixRoom;
 use AppBundle\Entity\Fix;
 use AppBundle\Entity\ChargeRoom;
 use AppBundle\Entity\Charge;
+use AppBundle\Entity\DocumentUserRoom;
+use AppBundle\Entity\Document;
+
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
@@ -86,6 +89,8 @@ class RoomController extends Controller
         $meubles_rooms = array();
         $fixs = null;
         $fix_rooms = array();
+        $docs = null;
+        $doc_user_rooms = array();
        
         $em = $this->getDoctrine()->getManager();
         
@@ -119,6 +124,15 @@ class RoomController extends Controller
                 $charge_rooms[$type->getName()] = $charge;
             }
         }
+
+        $docs = $em->getRepository('AppBundle:DocumentUserRoom')->findBy(array('userRoomId'=>$user_room->getId()));
+        
+        if ($docs){
+            foreach ($docs as $doc ) {
+                $type =  $em->getRepository('AppBundle:TypeDocument')->findOneBy(array('id'=>$doc->getDocumentId()));
+                $doc_user_rooms[$type->getName()] = $doc;
+            }
+        }
     
         return $this->render('room/show.html.twig', array(
             'room' => $room,
@@ -128,6 +142,7 @@ class RoomController extends Controller
             'meubles' =>$meubles_rooms,
             'fixs' => $fix_rooms,
             'charges' => $charge_rooms,
+            'documents' => $doc_user_rooms,
             'delete_form' => $deleteForm->createView(),
         ));
     }

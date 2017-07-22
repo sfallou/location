@@ -310,6 +310,39 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
         }
         not_add_charge_room:
 
+        // add_doc_user_room
+        if (preg_match('#^/(?P<id>[^/]++)/add_doc_user_room$#s', $pathinfo, $matches)) {
+            if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                goto not_add_doc_user_room;
+            }
+
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'add_doc_user_room')), array (  '_controller' => 'AppBundle\\Controller\\AssociationController::addDocUser_RoomAction',));
+        }
+        not_add_doc_user_room:
+
+        // delete_rent_user_room
+        if (preg_match('#^/(?P<id>[^/]++)/(?P<idUser>[^/]++)/delete_user_rent$#s', $pathinfo, $matches)) {
+            if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                goto not_delete_rent_user_room;
+            }
+
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'delete_rent_user_room')), array (  '_controller' => 'AppBundle\\Controller\\AssociationController::deleteRentAction',));
+        }
+        not_delete_rent_user_room:
+
+        // add_rent_user_room
+        if (preg_match('#^/(?P<id>[^/]++)/(?P<idUser>[^/]++)/(?P<idRoom>[^/]++)/add_rent_user_room$#s', $pathinfo, $matches)) {
+            if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                goto not_add_rent_user_room;
+            }
+
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'add_rent_user_room')), array (  '_controller' => 'AppBundle\\Controller\\AssociationController::addRentUser_RoomAction',));
+        }
+        not_add_rent_user_room:
+
         // fix_room_done
         if (preg_match('#^/(?P<id>[^/]++)/(?P<idRoom>[^/]++)/fix_room_done$#s', $pathinfo, $matches)) {
             if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
@@ -354,128 +387,328 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
         }
         not_charge_room_unpaid:
 
-        if (0 === strpos($pathinfo, '/charge')) {
-            if (0 === strpos($pathinfo, '/chargeappartement')) {
-                // chargeappartement_index
-                if (rtrim($pathinfo, '/') === '/chargeappartement') {
-                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
-                        $allow = array_merge($allow, array('GET', 'HEAD'));
-                        goto not_chargeappartement_index;
-                    }
+        // quittance
+        if (preg_match('#^/(?P<id>[^/]++)/quittance$#s', $pathinfo, $matches)) {
+            if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                goto not_quittance;
+            }
 
-                    if (substr($pathinfo, -1) !== '/') {
-                        return $this->redirect($pathinfo.'/', 'chargeappartement_index');
-                    }
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'quittance')), array (  '_controller' => 'AppBundle\\Controller\\AssociationController::quittancePDFAction',));
+        }
+        not_quittance:
 
-                    return array (  '_controller' => 'AppBundle\\Controller\\ChargeAppartementController::indexAction',  '_route' => 'chargeappartement_index',);
+        if (0 === strpos($pathinfo, '/c')) {
+            if (0 === strpos($pathinfo, '/charge')) {
+                if (0 === strpos($pathinfo, '/chargeappartement')) {
+                    // chargeappartement_index
+                    if (rtrim($pathinfo, '/') === '/chargeappartement') {
+                        if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                            $allow = array_merge($allow, array('GET', 'HEAD'));
+                            goto not_chargeappartement_index;
+                        }
+
+                        if (substr($pathinfo, -1) !== '/') {
+                            return $this->redirect($pathinfo.'/', 'chargeappartement_index');
+                        }
+
+                        return array (  '_controller' => 'AppBundle\\Controller\\ChargeAppartementController::indexAction',  '_route' => 'chargeappartement_index',);
+                    }
+                    not_chargeappartement_index:
+
+                    // chargeappartement_new
+                    if ($pathinfo === '/chargeappartement/new') {
+                        if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                            $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                            goto not_chargeappartement_new;
+                        }
+
+                        return array (  '_controller' => 'AppBundle\\Controller\\ChargeAppartementController::newAction',  '_route' => 'chargeappartement_new',);
+                    }
+                    not_chargeappartement_new:
+
+                    // chargeappartement_show
+                    if (preg_match('#^/chargeappartement/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                        if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                            $allow = array_merge($allow, array('GET', 'HEAD'));
+                            goto not_chargeappartement_show;
+                        }
+
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'chargeappartement_show')), array (  '_controller' => 'AppBundle\\Controller\\ChargeAppartementController::showAction',));
+                    }
+                    not_chargeappartement_show:
+
+                    // chargeappartement_edit
+                    if (preg_match('#^/chargeappartement/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                        if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                            $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                            goto not_chargeappartement_edit;
+                        }
+
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'chargeappartement_edit')), array (  '_controller' => 'AppBundle\\Controller\\ChargeAppartementController::editAction',));
+                    }
+                    not_chargeappartement_edit:
+
+                    // chargeappartement_delete
+                    if (preg_match('#^/chargeappartement/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                        if ($this->context->getMethod() != 'DELETE') {
+                            $allow[] = 'DELETE';
+                            goto not_chargeappartement_delete;
+                        }
+
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'chargeappartement_delete')), array (  '_controller' => 'AppBundle\\Controller\\ChargeAppartementController::deleteAction',));
+                    }
+                    not_chargeappartement_delete:
+
                 }
-                not_chargeappartement_index:
 
-                // chargeappartement_new
-                if ($pathinfo === '/chargeappartement/new') {
-                    if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
-                        $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
-                        goto not_chargeappartement_new;
+                if (0 === strpos($pathinfo, '/chargeroom')) {
+                    // chargeroom_index
+                    if (rtrim($pathinfo, '/') === '/chargeroom') {
+                        if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                            $allow = array_merge($allow, array('GET', 'HEAD'));
+                            goto not_chargeroom_index;
+                        }
+
+                        if (substr($pathinfo, -1) !== '/') {
+                            return $this->redirect($pathinfo.'/', 'chargeroom_index');
+                        }
+
+                        return array (  '_controller' => 'AppBundle\\Controller\\ChargeRoomController::indexAction',  '_route' => 'chargeroom_index',);
                     }
+                    not_chargeroom_index:
 
-                    return array (  '_controller' => 'AppBundle\\Controller\\ChargeAppartementController::newAction',  '_route' => 'chargeappartement_new',);
-                }
-                not_chargeappartement_new:
+                    // chargeroom_new
+                    if ($pathinfo === '/chargeroom/new') {
+                        if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                            $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                            goto not_chargeroom_new;
+                        }
 
-                // chargeappartement_show
-                if (preg_match('#^/chargeappartement/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
-                        $allow = array_merge($allow, array('GET', 'HEAD'));
-                        goto not_chargeappartement_show;
+                        return array (  '_controller' => 'AppBundle\\Controller\\ChargeRoomController::newAction',  '_route' => 'chargeroom_new',);
                     }
+                    not_chargeroom_new:
 
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'chargeappartement_show')), array (  '_controller' => 'AppBundle\\Controller\\ChargeAppartementController::showAction',));
-                }
-                not_chargeappartement_show:
+                    // chargeroom_show
+                    if (preg_match('#^/chargeroom/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                        if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                            $allow = array_merge($allow, array('GET', 'HEAD'));
+                            goto not_chargeroom_show;
+                        }
 
-                // chargeappartement_edit
-                if (preg_match('#^/chargeappartement/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
-                    if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
-                        $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
-                        goto not_chargeappartement_edit;
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'chargeroom_show')), array (  '_controller' => 'AppBundle\\Controller\\ChargeRoomController::showAction',));
                     }
+                    not_chargeroom_show:
 
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'chargeappartement_edit')), array (  '_controller' => 'AppBundle\\Controller\\ChargeAppartementController::editAction',));
-                }
-                not_chargeappartement_edit:
+                    // chargeroom_edit
+                    if (preg_match('#^/chargeroom/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                        if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                            $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                            goto not_chargeroom_edit;
+                        }
 
-                // chargeappartement_delete
-                if (preg_match('#^/chargeappartement/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                    if ($this->context->getMethod() != 'DELETE') {
-                        $allow[] = 'DELETE';
-                        goto not_chargeappartement_delete;
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'chargeroom_edit')), array (  '_controller' => 'AppBundle\\Controller\\ChargeRoomController::editAction',));
                     }
+                    not_chargeroom_edit:
 
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'chargeappartement_delete')), array (  '_controller' => 'AppBundle\\Controller\\ChargeAppartementController::deleteAction',));
+                    // chargeroom_delete
+                    if (preg_match('#^/chargeroom/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                        if ($this->context->getMethod() != 'DELETE') {
+                            $allow[] = 'DELETE';
+                            goto not_chargeroom_delete;
+                        }
+
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'chargeroom_delete')), array (  '_controller' => 'AppBundle\\Controller\\ChargeRoomController::deleteAction',));
+                    }
+                    not_chargeroom_delete:
+
                 }
-                not_chargeappartement_delete:
 
             }
 
-            if (0 === strpos($pathinfo, '/chargeroom')) {
-                // chargeroom_index
-                if (rtrim($pathinfo, '/') === '/chargeroom') {
+            if (0 === strpos($pathinfo, '/contact')) {
+                if (0 === strpos($pathinfo, '/contactappartement')) {
+                    // contactappartement_index
+                    if (rtrim($pathinfo, '/') === '/contactappartement') {
+                        if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                            $allow = array_merge($allow, array('GET', 'HEAD'));
+                            goto not_contactappartement_index;
+                        }
+
+                        if (substr($pathinfo, -1) !== '/') {
+                            return $this->redirect($pathinfo.'/', 'contactappartement_index');
+                        }
+
+                        return array (  '_controller' => 'AppBundle\\Controller\\ContactAppartementController::indexAction',  '_route' => 'contactappartement_index',);
+                    }
+                    not_contactappartement_index:
+
+                    // contactappartement_new
+                    if ($pathinfo === '/contactappartement/new') {
+                        if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                            $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                            goto not_contactappartement_new;
+                        }
+
+                        return array (  '_controller' => 'AppBundle\\Controller\\ContactAppartementController::newAction',  '_route' => 'contactappartement_new',);
+                    }
+                    not_contactappartement_new:
+
+                    // contactappartement_show
+                    if (preg_match('#^/contactappartement/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                        if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                            $allow = array_merge($allow, array('GET', 'HEAD'));
+                            goto not_contactappartement_show;
+                        }
+
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'contactappartement_show')), array (  '_controller' => 'AppBundle\\Controller\\ContactAppartementController::showAction',));
+                    }
+                    not_contactappartement_show:
+
+                    // contactappartement_edit
+                    if (preg_match('#^/contactappartement/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                        if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                            $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                            goto not_contactappartement_edit;
+                        }
+
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'contactappartement_edit')), array (  '_controller' => 'AppBundle\\Controller\\ContactAppartementController::editAction',));
+                    }
+                    not_contactappartement_edit:
+
+                    // contactappartement_delete
+                    if (preg_match('#^/contactappartement/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                        if ($this->context->getMethod() != 'DELETE') {
+                            $allow[] = 'DELETE';
+                            goto not_contactappartement_delete;
+                        }
+
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'contactappartement_delete')), array (  '_controller' => 'AppBundle\\Controller\\ContactAppartementController::deleteAction',));
+                    }
+                    not_contactappartement_delete:
+
+                }
+
+                // contact_index
+                if (rtrim($pathinfo, '/') === '/contact') {
                     if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
                         $allow = array_merge($allow, array('GET', 'HEAD'));
-                        goto not_chargeroom_index;
+                        goto not_contact_index;
                     }
 
                     if (substr($pathinfo, -1) !== '/') {
-                        return $this->redirect($pathinfo.'/', 'chargeroom_index');
+                        return $this->redirect($pathinfo.'/', 'contact_index');
                     }
 
-                    return array (  '_controller' => 'AppBundle\\Controller\\ChargeRoomController::indexAction',  '_route' => 'chargeroom_index',);
+                    return array (  '_controller' => 'AppBundle\\Controller\\ContactController::indexAction',  '_route' => 'contact_index',);
                 }
-                not_chargeroom_index:
+                not_contact_index:
 
-                // chargeroom_new
-                if ($pathinfo === '/chargeroom/new') {
+                // contact_new
+                if ($pathinfo === '/contact/new') {
                     if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
                         $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
-                        goto not_chargeroom_new;
+                        goto not_contact_new;
                     }
 
-                    return array (  '_controller' => 'AppBundle\\Controller\\ChargeRoomController::newAction',  '_route' => 'chargeroom_new',);
+                    return array (  '_controller' => 'AppBundle\\Controller\\ContactController::newAction',  '_route' => 'contact_new',);
                 }
-                not_chargeroom_new:
+                not_contact_new:
 
-                // chargeroom_show
-                if (preg_match('#^/chargeroom/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                // contact_show
+                if (preg_match('#^/contact/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
                     if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
                         $allow = array_merge($allow, array('GET', 'HEAD'));
-                        goto not_chargeroom_show;
+                        goto not_contact_show;
                     }
 
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'chargeroom_show')), array (  '_controller' => 'AppBundle\\Controller\\ChargeRoomController::showAction',));
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'contact_show')), array (  '_controller' => 'AppBundle\\Controller\\ContactController::showAction',));
                 }
-                not_chargeroom_show:
+                not_contact_show:
 
-                // chargeroom_edit
-                if (preg_match('#^/chargeroom/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                // contact_edit
+                if (preg_match('#^/contact/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
                     if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
                         $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
-                        goto not_chargeroom_edit;
+                        goto not_contact_edit;
                     }
 
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'chargeroom_edit')), array (  '_controller' => 'AppBundle\\Controller\\ChargeRoomController::editAction',));
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'contact_edit')), array (  '_controller' => 'AppBundle\\Controller\\ContactController::editAction',));
                 }
-                not_chargeroom_edit:
+                not_contact_edit:
 
-                // chargeroom_delete
-                if (preg_match('#^/chargeroom/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                // contact_delete
+                if (preg_match('#^/contact/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
                     if ($this->context->getMethod() != 'DELETE') {
                         $allow[] = 'DELETE';
-                        goto not_chargeroom_delete;
+                        goto not_contact_delete;
                     }
 
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'chargeroom_delete')), array (  '_controller' => 'AppBundle\\Controller\\ChargeRoomController::deleteAction',));
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'contact_delete')), array (  '_controller' => 'AppBundle\\Controller\\ContactController::deleteAction',));
                 }
-                not_chargeroom_delete:
+                not_contact_delete:
+
+                if (0 === strpos($pathinfo, '/contactresidence')) {
+                    // contactresidence_index
+                    if (rtrim($pathinfo, '/') === '/contactresidence') {
+                        if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                            $allow = array_merge($allow, array('GET', 'HEAD'));
+                            goto not_contactresidence_index;
+                        }
+
+                        if (substr($pathinfo, -1) !== '/') {
+                            return $this->redirect($pathinfo.'/', 'contactresidence_index');
+                        }
+
+                        return array (  '_controller' => 'AppBundle\\Controller\\ContactResidenceController::indexAction',  '_route' => 'contactresidence_index',);
+                    }
+                    not_contactresidence_index:
+
+                    // contactresidence_new
+                    if ($pathinfo === '/contactresidence/new') {
+                        if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                            $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                            goto not_contactresidence_new;
+                        }
+
+                        return array (  '_controller' => 'AppBundle\\Controller\\ContactResidenceController::newAction',  '_route' => 'contactresidence_new',);
+                    }
+                    not_contactresidence_new:
+
+                    // contactresidence_show
+                    if (preg_match('#^/contactresidence/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                        if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                            $allow = array_merge($allow, array('GET', 'HEAD'));
+                            goto not_contactresidence_show;
+                        }
+
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'contactresidence_show')), array (  '_controller' => 'AppBundle\\Controller\\ContactResidenceController::showAction',));
+                    }
+                    not_contactresidence_show:
+
+                    // contactresidence_edit
+                    if (preg_match('#^/contactresidence/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                        if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                            $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                            goto not_contactresidence_edit;
+                        }
+
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'contactresidence_edit')), array (  '_controller' => 'AppBundle\\Controller\\ContactResidenceController::editAction',));
+                    }
+                    not_contactresidence_edit:
+
+                    // contactresidence_delete
+                    if (preg_match('#^/contactresidence/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                        if ($this->context->getMethod() != 'DELETE') {
+                            $allow[] = 'DELETE';
+                            goto not_contactresidence_delete;
+                        }
+
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'contactresidence_delete')), array (  '_controller' => 'AppBundle\\Controller\\ContactResidenceController::deleteAction',));
+                    }
+                    not_contactresidence_delete:
+
+                }
 
             }
 
@@ -611,6 +844,68 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'document_delete')), array (  '_controller' => 'AppBundle\\Controller\\DocumentController::deleteAction',));
             }
             not_document_delete:
+
+            if (0 === strpos($pathinfo, '/documentuserroom')) {
+                // documentuserroom_index
+                if (rtrim($pathinfo, '/') === '/documentuserroom') {
+                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'HEAD'));
+                        goto not_documentuserroom_index;
+                    }
+
+                    if (substr($pathinfo, -1) !== '/') {
+                        return $this->redirect($pathinfo.'/', 'documentuserroom_index');
+                    }
+
+                    return array (  '_controller' => 'AppBundle\\Controller\\DocumentUserRoomController::indexAction',  '_route' => 'documentuserroom_index',);
+                }
+                not_documentuserroom_index:
+
+                // documentuserroom_new
+                if ($pathinfo === '/documentuserroom/new') {
+                    if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                        goto not_documentuserroom_new;
+                    }
+
+                    return array (  '_controller' => 'AppBundle\\Controller\\DocumentUserRoomController::newAction',  '_route' => 'documentuserroom_new',);
+                }
+                not_documentuserroom_new:
+
+                // documentuserroom_show
+                if (preg_match('#^/documentuserroom/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'HEAD'));
+                        goto not_documentuserroom_show;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'documentuserroom_show')), array (  '_controller' => 'AppBundle\\Controller\\DocumentUserRoomController::showAction',));
+                }
+                not_documentuserroom_show:
+
+                // documentuserroom_edit
+                if (preg_match('#^/documentuserroom/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                    if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                        goto not_documentuserroom_edit;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'documentuserroom_edit')), array (  '_controller' => 'AppBundle\\Controller\\DocumentUserRoomController::editAction',));
+                }
+                not_documentuserroom_edit:
+
+                // documentuserroom_delete
+                if (preg_match('#^/documentuserroom/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    if ($this->context->getMethod() != 'DELETE') {
+                        $allow[] = 'DELETE';
+                        goto not_documentuserroom_delete;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'documentuserroom_delete')), array (  '_controller' => 'AppBundle\\Controller\\DocumentUserRoomController::deleteAction',));
+                }
+                not_documentuserroom_delete:
+
+            }
 
         }
 
@@ -928,65 +1223,130 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
         }
 
         if (0 === strpos($pathinfo, '/r')) {
-            if (0 === strpos($pathinfo, '/residence')) {
-                // residence_index
-                if (rtrim($pathinfo, '/') === '/residence') {
-                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
-                        $allow = array_merge($allow, array('GET', 'HEAD'));
-                        goto not_residence_index;
-                    }
+            if (0 === strpos($pathinfo, '/re')) {
+                if (0 === strpos($pathinfo, '/rentuserroom')) {
+                    // rentuserroom_index
+                    if (rtrim($pathinfo, '/') === '/rentuserroom') {
+                        if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                            $allow = array_merge($allow, array('GET', 'HEAD'));
+                            goto not_rentuserroom_index;
+                        }
 
-                    if (substr($pathinfo, -1) !== '/') {
-                        return $this->redirect($pathinfo.'/', 'residence_index');
-                    }
+                        if (substr($pathinfo, -1) !== '/') {
+                            return $this->redirect($pathinfo.'/', 'rentuserroom_index');
+                        }
 
-                    return array (  '_controller' => 'AppBundle\\Controller\\ResidenceController::indexAction',  '_route' => 'residence_index',);
+                        return array (  '_controller' => 'AppBundle\\Controller\\RentUserRoomController::indexAction',  '_route' => 'rentuserroom_index',);
+                    }
+                    not_rentuserroom_index:
+
+                    // rentuserroom_new
+                    if ($pathinfo === '/rentuserroom/new') {
+                        if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                            $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                            goto not_rentuserroom_new;
+                        }
+
+                        return array (  '_controller' => 'AppBundle\\Controller\\RentUserRoomController::newAction',  '_route' => 'rentuserroom_new',);
+                    }
+                    not_rentuserroom_new:
+
+                    // rentuserroom_show
+                    if (preg_match('#^/rentuserroom/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                        if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                            $allow = array_merge($allow, array('GET', 'HEAD'));
+                            goto not_rentuserroom_show;
+                        }
+
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'rentuserroom_show')), array (  '_controller' => 'AppBundle\\Controller\\RentUserRoomController::showAction',));
+                    }
+                    not_rentuserroom_show:
+
+                    // rentuserroom_edit
+                    if (preg_match('#^/rentuserroom/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                        if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                            $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                            goto not_rentuserroom_edit;
+                        }
+
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'rentuserroom_edit')), array (  '_controller' => 'AppBundle\\Controller\\RentUserRoomController::editAction',));
+                    }
+                    not_rentuserroom_edit:
+
+                    // rentuserroom_delete
+                    if (preg_match('#^/rentuserroom/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                        if ($this->context->getMethod() != 'DELETE') {
+                            $allow[] = 'DELETE';
+                            goto not_rentuserroom_delete;
+                        }
+
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'rentuserroom_delete')), array (  '_controller' => 'AppBundle\\Controller\\RentUserRoomController::deleteAction',));
+                    }
+                    not_rentuserroom_delete:
+
                 }
-                not_residence_index:
 
-                // residence_new
-                if ($pathinfo === '/residence/new') {
-                    if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
-                        $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
-                        goto not_residence_new;
+                if (0 === strpos($pathinfo, '/residence')) {
+                    // residence_index
+                    if (rtrim($pathinfo, '/') === '/residence') {
+                        if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                            $allow = array_merge($allow, array('GET', 'HEAD'));
+                            goto not_residence_index;
+                        }
+
+                        if (substr($pathinfo, -1) !== '/') {
+                            return $this->redirect($pathinfo.'/', 'residence_index');
+                        }
+
+                        return array (  '_controller' => 'AppBundle\\Controller\\ResidenceController::indexAction',  '_route' => 'residence_index',);
                     }
+                    not_residence_index:
 
-                    return array (  '_controller' => 'AppBundle\\Controller\\ResidenceController::newAction',  '_route' => 'residence_new',);
-                }
-                not_residence_new:
+                    // residence_new
+                    if ($pathinfo === '/residence/new') {
+                        if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                            $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                            goto not_residence_new;
+                        }
 
-                // residence_show
-                if (preg_match('#^/residence/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
-                        $allow = array_merge($allow, array('GET', 'HEAD'));
-                        goto not_residence_show;
+                        return array (  '_controller' => 'AppBundle\\Controller\\ResidenceController::newAction',  '_route' => 'residence_new',);
                     }
+                    not_residence_new:
 
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'residence_show')), array (  '_controller' => 'AppBundle\\Controller\\ResidenceController::showAction',));
-                }
-                not_residence_show:
+                    // residence_show
+                    if (preg_match('#^/residence/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                        if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                            $allow = array_merge($allow, array('GET', 'HEAD'));
+                            goto not_residence_show;
+                        }
 
-                // residence_edit
-                if (preg_match('#^/residence/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
-                    if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
-                        $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
-                        goto not_residence_edit;
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'residence_show')), array (  '_controller' => 'AppBundle\\Controller\\ResidenceController::showAction',));
                     }
+                    not_residence_show:
 
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'residence_edit')), array (  '_controller' => 'AppBundle\\Controller\\ResidenceController::editAction',));
-                }
-                not_residence_edit:
+                    // residence_edit
+                    if (preg_match('#^/residence/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                        if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                            $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                            goto not_residence_edit;
+                        }
 
-                // residence_delete
-                if (preg_match('#^/residence/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                    if ($this->context->getMethod() != 'DELETE') {
-                        $allow[] = 'DELETE';
-                        goto not_residence_delete;
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'residence_edit')), array (  '_controller' => 'AppBundle\\Controller\\ResidenceController::editAction',));
                     }
+                    not_residence_edit:
 
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'residence_delete')), array (  '_controller' => 'AppBundle\\Controller\\ResidenceController::deleteAction',));
+                    // residence_delete
+                    if (preg_match('#^/residence/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                        if ($this->context->getMethod() != 'DELETE') {
+                            $allow[] = 'DELETE';
+                            goto not_residence_delete;
+                        }
+
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'residence_delete')), array (  '_controller' => 'AppBundle\\Controller\\ResidenceController::deleteAction',));
+                    }
+                    not_residence_delete:
+
                 }
-                not_residence_delete:
 
             }
 
@@ -1055,65 +1415,130 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
         }
 
         if (0 === strpos($pathinfo, '/type')) {
-            if (0 === strpos($pathinfo, '/typecharge')) {
-                // typecharge_index
-                if (rtrim($pathinfo, '/') === '/typecharge') {
-                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
-                        $allow = array_merge($allow, array('GET', 'HEAD'));
-                        goto not_typecharge_index;
-                    }
+            if (0 === strpos($pathinfo, '/typec')) {
+                if (0 === strpos($pathinfo, '/typecharge')) {
+                    // typecharge_index
+                    if (rtrim($pathinfo, '/') === '/typecharge') {
+                        if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                            $allow = array_merge($allow, array('GET', 'HEAD'));
+                            goto not_typecharge_index;
+                        }
 
-                    if (substr($pathinfo, -1) !== '/') {
-                        return $this->redirect($pathinfo.'/', 'typecharge_index');
-                    }
+                        if (substr($pathinfo, -1) !== '/') {
+                            return $this->redirect($pathinfo.'/', 'typecharge_index');
+                        }
 
-                    return array (  '_controller' => 'AppBundle\\Controller\\TypeChargeController::indexAction',  '_route' => 'typecharge_index',);
+                        return array (  '_controller' => 'AppBundle\\Controller\\TypeChargeController::indexAction',  '_route' => 'typecharge_index',);
+                    }
+                    not_typecharge_index:
+
+                    // typecharge_new
+                    if ($pathinfo === '/typecharge/new') {
+                        if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                            $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                            goto not_typecharge_new;
+                        }
+
+                        return array (  '_controller' => 'AppBundle\\Controller\\TypeChargeController::newAction',  '_route' => 'typecharge_new',);
+                    }
+                    not_typecharge_new:
+
+                    // typecharge_show
+                    if (preg_match('#^/typecharge/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                        if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                            $allow = array_merge($allow, array('GET', 'HEAD'));
+                            goto not_typecharge_show;
+                        }
+
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'typecharge_show')), array (  '_controller' => 'AppBundle\\Controller\\TypeChargeController::showAction',));
+                    }
+                    not_typecharge_show:
+
+                    // typecharge_edit
+                    if (preg_match('#^/typecharge/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                        if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                            $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                            goto not_typecharge_edit;
+                        }
+
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'typecharge_edit')), array (  '_controller' => 'AppBundle\\Controller\\TypeChargeController::editAction',));
+                    }
+                    not_typecharge_edit:
+
+                    // typecharge_delete
+                    if (preg_match('#^/typecharge/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                        if ($this->context->getMethod() != 'DELETE') {
+                            $allow[] = 'DELETE';
+                            goto not_typecharge_delete;
+                        }
+
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'typecharge_delete')), array (  '_controller' => 'AppBundle\\Controller\\TypeChargeController::deleteAction',));
+                    }
+                    not_typecharge_delete:
+
                 }
-                not_typecharge_index:
 
-                // typecharge_new
-                if ($pathinfo === '/typecharge/new') {
-                    if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
-                        $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
-                        goto not_typecharge_new;
+                if (0 === strpos($pathinfo, '/typecontact')) {
+                    // typecontact_index
+                    if (rtrim($pathinfo, '/') === '/typecontact') {
+                        if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                            $allow = array_merge($allow, array('GET', 'HEAD'));
+                            goto not_typecontact_index;
+                        }
+
+                        if (substr($pathinfo, -1) !== '/') {
+                            return $this->redirect($pathinfo.'/', 'typecontact_index');
+                        }
+
+                        return array (  '_controller' => 'AppBundle\\Controller\\TypeContactController::indexAction',  '_route' => 'typecontact_index',);
                     }
+                    not_typecontact_index:
 
-                    return array (  '_controller' => 'AppBundle\\Controller\\TypeChargeController::newAction',  '_route' => 'typecharge_new',);
-                }
-                not_typecharge_new:
+                    // typecontact_new
+                    if ($pathinfo === '/typecontact/new') {
+                        if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                            $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                            goto not_typecontact_new;
+                        }
 
-                // typecharge_show
-                if (preg_match('#^/typecharge/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
-                        $allow = array_merge($allow, array('GET', 'HEAD'));
-                        goto not_typecharge_show;
+                        return array (  '_controller' => 'AppBundle\\Controller\\TypeContactController::newAction',  '_route' => 'typecontact_new',);
                     }
+                    not_typecontact_new:
 
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'typecharge_show')), array (  '_controller' => 'AppBundle\\Controller\\TypeChargeController::showAction',));
-                }
-                not_typecharge_show:
+                    // typecontact_show
+                    if (preg_match('#^/typecontact/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                        if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                            $allow = array_merge($allow, array('GET', 'HEAD'));
+                            goto not_typecontact_show;
+                        }
 
-                // typecharge_edit
-                if (preg_match('#^/typecharge/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
-                    if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
-                        $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
-                        goto not_typecharge_edit;
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'typecontact_show')), array (  '_controller' => 'AppBundle\\Controller\\TypeContactController::showAction',));
                     }
+                    not_typecontact_show:
 
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'typecharge_edit')), array (  '_controller' => 'AppBundle\\Controller\\TypeChargeController::editAction',));
-                }
-                not_typecharge_edit:
+                    // typecontact_edit
+                    if (preg_match('#^/typecontact/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                        if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                            $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                            goto not_typecontact_edit;
+                        }
 
-                // typecharge_delete
-                if (preg_match('#^/typecharge/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                    if ($this->context->getMethod() != 'DELETE') {
-                        $allow[] = 'DELETE';
-                        goto not_typecharge_delete;
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'typecontact_edit')), array (  '_controller' => 'AppBundle\\Controller\\TypeContactController::editAction',));
                     }
+                    not_typecontact_edit:
 
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'typecharge_delete')), array (  '_controller' => 'AppBundle\\Controller\\TypeChargeController::deleteAction',));
+                    // typecontact_delete
+                    if (preg_match('#^/typecontact/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                        if ($this->context->getMethod() != 'DELETE') {
+                            $allow[] = 'DELETE';
+                            goto not_typecontact_delete;
+                        }
+
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'typecontact_delete')), array (  '_controller' => 'AppBundle\\Controller\\TypeContactController::deleteAction',));
+                    }
+                    not_typecontact_delete:
+
                 }
-                not_typecharge_delete:
 
             }
 

@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Rentuserrooms list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Userroomid</th>
+                <th>Rentamount</th>
+                <th>Rentdate</th>
+                <th>Rentdate1</th>
+                <th>Rentdate2</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for rentUserRoom in rentUserRooms %}
+            <tr>
+                <td><a href="{{ path('rentuserroom_show', { 'id': rentUserRoom.id }) }}">{{ rentUserRoom.id }}</a></td>
+                <td>{{ rentUserRoom.userRoomId }}</td>
+                <td>{{ rentUserRoom.rentAmount }}</td>
+                <td>{% if rentUserRoom.rentDate %}{{ rentUserRoom.rentDate|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if rentUserRoom.rentDate1 %}{{ rentUserRoom.rentDate1|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if rentUserRoom.rentDate2 %}{{ rentUserRoom.rentDate2|date('Y-m-d') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('rentuserroom_show', { 'id': rentUserRoom.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('rentuserroom_edit', { 'id': rentUserRoom.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('rentuserroom_new') }}">Create a new rentUserRoom</a>
+        </li>
+    </ul>
+{% endblock %}

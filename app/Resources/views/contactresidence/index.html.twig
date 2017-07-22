@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Contactresidences list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Residenceid</th>
+                <th>Contactid</th>
+                <th>Contactcomment</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for contactResidence in contactResidences %}
+            <tr>
+                <td><a href="{{ path('contactresidence_show', { 'id': contactResidence.id }) }}">{{ contactResidence.id }}</a></td>
+                <td>{{ contactResidence.residenceId }}</td>
+                <td>{{ contactResidence.contactId }}</td>
+                <td>{{ contactResidence.contactComment }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('contactresidence_show', { 'id': contactResidence.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('contactresidence_edit', { 'id': contactResidence.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('contactresidence_new') }}">Create a new contactResidence</a>
+        </li>
+    </ul>
+{% endblock %}
