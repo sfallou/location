@@ -5,11 +5,13 @@
     <div class="box">
             <!-- /.box-header -->
             <div class="box-body">
-
-                <div >
+              <div >
+              {% if not is_granted('ROLE_LOCATAIRE') %}
+                   
                      <div class="col-md-3">
                             <a class="btn btn-success" href="{{ path('add_furniture_appart', { 'id': appartement.id }) }}"><i class="fa fa-tv fa-lg"></i> Ajouter Meuble</a>
                             <br><br>
+                      
                     </div>
                     <div class="col-md-3">
                             <a class="btn btn-success" href="{{ path('add_fix_appart', { 'id': appartement.id }) }}"><i class="fa fa-wrench fa-lg"></i> Signaler Réparation</a>
@@ -23,6 +25,7 @@
                             <a class="btn btn-success" href="{{ path('add_doc_appart', { 'id': appartement.id }) }}"><i class="fa fa-file fa-lg"></i> Ajouter Document</a>
                             
                     </div>
+              {% endif %}
                     <br><br>
                     <div class="page-header"><h4 style="background-color:#f7f7f7; font-size: 18px; text-align: center; padding: 7px 10px; margin-top: 0;">
                             Informations générales
@@ -58,9 +61,7 @@
                             </ul>
                             <br><br>
                     </div>
-                    
-                </div>
-                </div>
+       
                 
                  <div class="page-header">-*-</div>
                 <div >
@@ -129,7 +130,9 @@
                                 <th>Montant</th>
                                 <th>État</th>
                                 <th>Commentaires</th>
+                                {% if not is_granted('ROLE_LOCATAIRE') %}
                                  <th>Actions</th>
+                                 {% endif %}
                               </tr>
                           </thead>
                           <tbody>
@@ -147,6 +150,7 @@
                                   {% endif %}
                                 </td>
                                 <td>{{charge.ChargeComment}}</td>
+                                {% if not is_granted('ROLE_LOCATAIRE') %}
                                 <td>
                                   {% if charge.ChargeState == false %}
                                   <a class="btn btn-success" href="{{ path('charge_appart_paid', { 'id': charge.id, 'idAppart':appartement.id }) }}"><i class="fa fa-check fa-lg"></i> Paid</a>
@@ -156,6 +160,7 @@
                                   {% endif %}
                                   <a class="btn btn-danger" href="#"><i class="fa fa-trash-o fa-lg"></i> Delete</a> 
                              </td>
+                             {% endif %}
                             </tr>
                           {%endfor%}                   
                           </tbody>
@@ -177,7 +182,9 @@
                                 <th>Priorité</th>
                                 <th>État</th>
                                 <th>Commentaires</th>
+                                {% if not is_granted('ROLE_LOCATAIRE') %}
                                  <th>Actions</th>
+                                {% endif %}
                               </tr>
                           </thead>
                           <tbody>
@@ -202,6 +209,7 @@
                                   {% endif %}
                                 </td>
                                 <td>{{fix.FixComment}}</td>
+                                {% if not is_granted('ROLE_LOCATAIRE') %}
                                 <td>
                                   {% if fix.FixState == false %}
                                   <a class="btn btn-success" href="{{ path('fix_appart_done', { 'id': fix.id, 'idAppart':appartement.id }) }}"><i class="fa fa-check fa-lg"></i> Done</a>
@@ -211,6 +219,7 @@
                                   {% endif %}
                                   <a class="btn btn-danger" href="#"><i class="fa fa-trash-o fa-lg"></i> Delete</a> 
                              </td>
+                             {% endif %}
                             </tr>
                           {%endfor%}                   
                           </tbody>
@@ -229,7 +238,9 @@
                               <tr>
                                 <th>Id Meuble</th>
                                 <th>Nom</th>
+                                {% if not is_granted('ROLE_LOCATAIRE') %}
                                 <th>Actions</th>
+                                {% endif %}
                               </tr>
                           </thead>
                           <tbody>
@@ -237,8 +248,10 @@
                             <tr>
                                 <td>{{meuble.id}}</td>
                                 <td>{{meuble.name}}</td>
+                                {% if not is_granted('ROLE_LOCATAIRE') %}
                                 <td>  <a class="btn btn-danger" href="#"><i class="fa fa-trash-o fa-lg"></i> Delete</a> 
                                 </td>
+                                {% endif %}
                             </tr> 
                             {% endfor %}                    
                           </tbody>
@@ -270,7 +283,9 @@
                                 <td>{{doc.DocumentComment}}</td>
                                 <td>
                                   <a class="btn btn-success" href="{{ path('document_show', { 'id': doc.documentId }) }}"><i class="fa fa-eye fa-lg"></i> View</a>
+                                  {% if not is_granted('ROLE_LOCATAIRE') %}
                                   <a class="btn btn-danger" href="#"><i class="fa fa-trash-o fa-lg"></i> Delete</a> 
+                                  {% endif %}
                              </td>
                             </tr>
                           {%endfor%}                   

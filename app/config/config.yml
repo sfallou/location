@@ -64,12 +64,27 @@ doctrine:
 # Swiftmailer Configuration
 swiftmailer:
     transport: '%mailer_transport%'
-    host: '%mailer_host%'
+    #host: '%mailer_host%'
     username: '%mailer_user%'
     password: '%mailer_password%'
     spool: { type: memory }
 
+# FOSUSerBundle Config
+#fos_user:
+#    db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
+#    firewall_name: main
+#    user_class: AppBundle\Entity\User
+
+
 fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
     firewall_name: main
+    #user_class: Lms\UserBundle\Entity\User
     user_class: AppBundle\Entity\User
+    #profile:
+    #    form:
+    #        type: location_user_profile
+    registration:
+        form:
+            type: location_user_registration
+            handler: app.form.handler.registration

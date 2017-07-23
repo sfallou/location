@@ -3,13 +3,16 @@
 
 namespace AppBundle\Entity;
 
+
 use FOS\UserBundle\Entity\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity
  * @ORM\Table(name="user")
  */
+
 class User extends BaseUser
 {
     /**
@@ -19,11 +22,46 @@ class User extends BaseUser
      */
     protected $id;
 
-    public function __construct()
-    {
-        parent::__construct();
-        // your own logic
-    }
+    /**
+     * @ORM\Column(type="string", length=255)
+     *
+     * @Assert\NotBlank(message="Please enter your First name.", groups={"Registration", "Profile"})
+     * @Assert\Length(
+     *     min=1,
+     *     max=255,
+     *     minMessage="Too short.",
+     *     maxMessage="Too long.",
+     *     groups={"Registration", "Profile"}
+     * )
+     */
+    protected $firstname;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     *
+     * @Assert\NotBlank(message="Please enter your Last name.", groups={"Registration", "Profile"})
+     * @Assert\Length(
+     *     min=1,
+     *     max=255,
+     *     minMessage="Too short.",
+     *     maxMessage="Too long.",
+     *     groups={"Registration", "Profile"}
+     * )
+     */
+    protected $lastname;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     *
+     * @Assert\NotBlank(message="Please enter your Phone number.", groups={"Registration", "Profile"})
+     * @Assert\Length(
+     *     min=7,
+     *     max=255,
+     *     minMessage="Too short.",
+     *     maxMessage="Too long.",
+     *     groups={"Registration", "Profile"}
+     * )
+     */
+    protected $phone;
+    
 }

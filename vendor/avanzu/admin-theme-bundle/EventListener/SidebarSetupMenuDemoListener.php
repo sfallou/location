@@ -29,7 +29,7 @@ class SidebarSetupMenuDemoListener
     {
         $earg      = array();
         $rootItems = array(
-            $dash = new MenuItemModel('dashboard', 'Mon Compte', 'admin_dash', $earg, 'fa fa-dashboard'),
+            $dash = new MenuItemModel('dashboard', 'Mon Compte', 'after_login', $earg, 'fa fa-dashboard'),
             $user = new MenuItemModel('user', 'Users', '', $earg, 'fa fa-user '),
             $room = new MenuItemModel('room', 'Chambres', '', $earg, 'fa fa-bed'),
             $appart = new MenuItemModel('apparts', 'Appartements', '', $earg, 'fa fa-home'),
@@ -41,32 +41,30 @@ class SidebarSetupMenuDemoListener
 
         );
         
-        $user->addChild(new MenuItemModel('list_users', 'Liste Utilisateurs', 'user_index', $earg,  'fa fa-navicon'))
-            ->addChild(new MenuItemModel('new_user', 'New Utilisateur', 'user_new', $earg,  'fa fa-plus'))
-             ->addChild(new MenuItemModel('valider_user', 'Valider Demande', 'validation_user', $earg,  'fa fa-check'));
+        
+        $room->addChild(new MenuItemModel('liste_chambre', 'Liste des Chambres', 'room_index', $earg,  'fa fa-navicon'));
+        $user->addChild(new MenuItemModel('list_users', 'Liste Utilisateurs', 'user_index', $earg,  'fa fa-navicon'));
+        $appart->addChild(new MenuItemModel('liste_appartement', 'Liste des Appartements', 'appartement_index', $earg,  'fa fa-navicon'));
 
-        $room->addChild(new MenuItemModel('liste_chambre', 'Liste des Chambres', 'room_index', $earg,  'fa fa-navicon'))
-            ->addChild(new MenuItemModel('nouvelle_chambre', 'Nouvelle Chambre', 'room_new', $earg,  'fa fa-plus'));
+        $residence->addChild(new MenuItemModel('liste_residence', 'Liste des Résidences', 'residence_index', $earg,  'fa fa-navicon'));
+        $meuble->addChild(new MenuItemModel('liste_meuble', 'Liste des Meubles', 'meuble_index', $earg,  'fa fa-navicon'));
+        $meuble->addChild(new MenuItemModel('liste_type_meuble', 'Types Meubles', 'typemeuble_index', $earg,  'fa fa-navicon'));
+        $docs->addChild(new MenuItemModel('liste_doc', 'Liste Documents', 'document_index', $earg, 'fa fa-navicon'));
+        $docs->addChild(new MenuItemModel('liste_type_doc', 'Liste Type Document', 'typedocument_index', $earg, 'fa fa-navicon'));
 
-        $appart->addChild(new MenuItemModel('liste_appartement', 'Liste des Appartements', 'appartement_index', $earg,  'fa fa-navicon'))
-            ->addChild(new MenuItemModel('nouvel_appartement', 'Nouvel Appartement', 'appartement_new', $earg,  'fa fa-plus'));
+      
+        $room->addChild(new MenuItemModel('nouvelle_chambre', 'Nouvelle Chambre', 'room_new', $earg,  'fa fa-plus'));
+        $user->addChild(new MenuItemModel('new_user', 'New Utilisateur', 'user_new', $earg,  'fa fa-plus'));
+        $user->addChild(new MenuItemModel('valider_user', 'Valider Demande', 'validation_user', $earg,  'fa fa-check'));
+        $appart->addChild(new MenuItemModel('nouvel_appartement', 'Nouvel Appartement', 'appartement_new', $earg,  'fa fa-plus'));
+        $residence->addChild(new MenuItemModel('nouvelle_residence', 'Nouvelle Résidence', 'residence_new', $earg,  'fa fa-plus'));
+        $meuble->addChild(new MenuItemModel('nouveau_meuble', 'Nouveau Meuble', 'meuble_new', $earg,  'fa fa-plus'));
+        $meuble->addChild(new MenuItemModel('nouveau_type_meuble', 'Nouveau Type Meuble', 'typemeuble_new', $earg,  'fa fa-plus'));
+        $docs->addChild(new MenuItemModel('nouveau_doc', 'Nouveau Document', 'document_new', $earg,  'fa fa-plus'));
+        $docs->addChild(new MenuItemModel('nouveau_type_doc', 'Nouveau Type Document', 'typedocument_new', $earg,  'fa fa-plus'));
 
-        $residence->addChild(new MenuItemModel('liste_residence', 'Liste des Résidences', 'residence_index', $earg,  'fa fa-navicon'))
-            ->addChild(new MenuItemModel('nouvelle_residence', 'Nouvelle Résidence', 'residence_new', $earg,  'fa fa-plus'));
-
-        $meuble->addChild(new MenuItemModel('liste_meuble', 'Liste des Meubles', 'meuble_index', $earg,  'fa fa-navicon'))
-            ->addChild(new MenuItemModel('nouveau_meuble', 'Nouveau Meuble', 'meuble_new', $earg,  'fa fa-plus'))
-            ->addChild(new MenuItemModel('liste_type_meuble', 'Types Meubles', 'typemeuble_index', $earg,  'fa fa-navicon'))
-            ->addChild(new MenuItemModel('nouveau_type_meuble', 'Nouveau Type Meuble', 'typemeuble_new', $earg,  'fa fa-plus'));
-
-        $docs->addChild(new MenuItemModel('liste_doc', 'Liste Documents', 'document_index', $earg, 'fa fa-navicon'))
-            ->addChild(new MenuItemModel('nouveau_doc', 'Nouveau Document', 'document_new', $earg,  'fa fa-plus'))
-            ->addChild(new MenuItemModel('liste_type_doc', 'Liste Type Document', 'typedocument_index', $earg, 'fa fa-navicon'))
-            ->addChild(new MenuItemModel('nouveau_type_doc', 'Nouveau Type Document', 'typedocument_new', $earg,  'fa fa-plus'));
-
-         $mail->addChild(new MenuItemModel('new_mail', 'New Mail', 'typecontact_index', $earg,  'fa fa-plus'))
+         $mail->addChild(new MenuItemModel('new_mail', 'New Mail', 'send_mail', $earg,  'fa fa-plus'))
             ->addChild(new MenuItemModel('liste_mail', 'Mails', 'typecontact_index', $earg,  'fa fa-navicon'));
-
         $divers->addChild(new MenuItemModel('liste_type_fix', 'Fix Types', 'typefix_index', $earg,  'fa fa-navicon'))
             ->addChild(new MenuItemModel('new_type_fix', 'New Fix Types', 'typefix_new', $earg,  'fa fa-plus'))
             ->addChild(new MenuItemModel('liste_type_charge', 'Charge Types', 'typecharge_index', $earg,  'fa fa-navicon'))
@@ -76,7 +74,7 @@ class SidebarSetupMenuDemoListener
              ->addChild(new MenuItemModel('liste_type_contact', 'Contact Types', 'typecontact_index', $earg,  'fa fa-navicon'))
             ->addChild(new MenuItemModel('new_type_contact', 'New Contact Types', 'typecontact_new', $earg,  'fa fa-plus'));
 
-           
+        
 
 
         return $this->activateByRoute($request->get('_route'), $rootItems);
@@ -84,7 +82,7 @@ class SidebarSetupMenuDemoListener
     }
 
     protected function activateByRoute($route, $items) {
-
+        
         foreach($items as $item) { /** @var $item MenuItemModel */
             if($item->hasChildren()) {
                 $this->activateByRoute($route, $item->getChildren());

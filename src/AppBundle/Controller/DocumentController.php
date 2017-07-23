@@ -46,6 +46,7 @@ class DocumentController extends Controller
      */
     public function newAction(Request $request)
     {
+        
         $em = $this->getDoctrine()->getManager();
         
         $type_documents = $em->getRepository('AppBundle:TypeDocument')->findAll();

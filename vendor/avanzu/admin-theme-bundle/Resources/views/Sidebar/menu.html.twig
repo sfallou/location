@@ -1,7 +1,20 @@
 <!-- sidebar menu: : style can be found in sidebar.less -->
 {% import "AvanzuAdminThemeBundle:layout:macros.html.twig" as macro %}
+{#{dump(menu)}#}
+<ul class="sidebar-menu">
+    {#% for item in menu %#}
+    	{#% if is_granted('ROLE_LOCATAIRE')  %#}
+    		{#% if item.identifier != "divers" %#}
+        		{#{ dump(macro.menu_item(item)) }#}
+        	{#% endif %#}
+        {#% endif %#}
+    {#% endfor %#}
+</ul>
+
 <ul class="sidebar-menu">
     {% for item in menu %}
-        {{ macro.menu_item(item) }}
+    	
+        		{{ macro.menu_item(item)}}
+        
     {% endfor %}
 </ul>

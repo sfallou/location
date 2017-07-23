@@ -20,8 +20,10 @@
                 <td>{{ typeMeuble.name }}</td>
                 <td>
                     <a class="btn btn-primary" href="{{ path('typemeuble_show', { 'id': typeMeuble.id }) }}"><i class="fa fa-pencil fa-lg"></i> Show</a>
+                     {% if not is_granted('ROLE_LOCATAIRE') %}
                     <a class="btn btn-success" href="{{ path('typemeuble_edit', { 'id': typeMeuble.id }) }}"><i class="fa fa-eye fa-lg"></i> Edit</a>
                     <a class="btn btn-danger" href="#"><i class="fa fa-trash-o fa-lg"></i> Delete</a> 
+                    {% endif %}
                 </td>
             </tr>
         {% endfor %}

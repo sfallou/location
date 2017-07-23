@@ -14,7 +14,7 @@ class FixRoomType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('roomId','integer',array('label' => 'ID Appart','required'=>true))
+        $builder->add('roomId','integer',array('label' => 'ID Room','required'=>true))
                 ->add('fixId','integer',array('label' => 'ID Type Fix','required'=>true))
                 ->add('fixDate','date',array('label' => 'Date Soumission','widget' => 'single_text','required'=>true))
                 ->add('fixPriority','checkbox',array('label' => 'Prioritaire ?','required'=>false))

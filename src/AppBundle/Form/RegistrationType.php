@@ -10,10 +10,23 @@ class RegistrationType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('firstname','text',array('label' => 'Firstname'))
-                ->add('lastname','text',array('label' => 'Lastname'))
-                ->add('phone','text',array('label' => 'Téléphone'))
-                ->add('contact_garant','text',array('label' => 'Contact du Garant'));
+        $builder->add('firstname','text',array('label' => 'First Name'))
+            ->add('lastname','text',array('label' => 'Last Name'))
+            ->add('phone','text',array('label' => 'Phone'))
+            ->add('roles', 'collection', array(
+                   'type' => 'choice',
+                   'options' => array(
+                       'label' => false,
+                       'choices' => array(
+                            'ROLE_LOCATAIRE' => 'Locataire',
+                            'ROLE_REFERENT' => 'Référent',
+                            'ROLE_PROPRIO' => 'Proprietaire',
+                            'ROLE_ADMIN' => 'Admin',
+                           
+                       )
+                   ),"required"=>false,
+               )
+           );
     }
 
     public function getParent()
@@ -23,7 +36,6 @@ class RegistrationType extends AbstractType
 
     public function getName()
     {
-        return 'app_user_registration';
+        return 'location_user_registration';
     }
 }
-

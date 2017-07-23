@@ -723,6 +723,16 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
             return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::startAction',  '_route' => 'start',);
         }
 
+        // after_login
+        if ($pathinfo === '/login_succes') {
+            return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::goAction',  '_route' => 'after_login',);
+        }
+
+        // send_mail
+        if ($pathinfo === '/send_mail') {
+            return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::mailAction',  '_route' => 'send_mail',);
+        }
+
         if (0 === strpos($pathinfo, '/document')) {
             if (0 === strpos($pathinfo, '/documentappartement')) {
                 // documentappartement_index
@@ -1731,6 +1741,17 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
         }
 
         if (0 === strpos($pathinfo, '/user')) {
+            // mon_compte
+            if ($pathinfo === '/user/mon_compte') {
+                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'HEAD'));
+                    goto not_mon_compte;
+                }
+
+                return array (  '_controller' => 'AppBundle\\Controller\\UserController::compteAction',  '_route' => 'mon_compte',);
+            }
+            not_mon_compte:
+
             // user_index
             if (rtrim($pathinfo, '/') === '/user') {
                 if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
@@ -1780,9 +1801,9 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
             not_user_edit:
 
             // user_delete
-            if (preg_match('#^/user/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                if ($this->context->getMethod() != 'DELETE') {
-                    $allow[] = 'DELETE';
+            if (preg_match('#^/user/(?P<id>[^/]++)/delete_user$#s', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
                     goto not_user_delete;
                 }
 

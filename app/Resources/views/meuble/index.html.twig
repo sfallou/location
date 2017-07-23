@@ -22,19 +22,22 @@
                 <td>{{ meuble.idtype }}</td>
                 <td>
                     <a class="btn btn-primary" href="{{ path('meuble_show', { 'id': meuble.id }) }}"><i class="fa fa-pencil fa-lg"></i> Show</a>
+                     {% if not is_granted('ROLE_LOCATAIRE') %}
                     <a class="btn btn-success" href="{{ path('meuble_edit', { 'id': meuble.id }) }}"><i class="fa fa-eye fa-lg"></i> Edit</a>
                     <a class="btn btn-danger" href="#"><i class="fa fa-trash-o fa-lg"></i> Delete</a> 
+                    {% endif %}
                 </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
-
+ {% if not is_granted('ROLE_LOCATAIRE') %}
     <ul>
         <li>
             <a href="{{ path('meuble_new') }}">Create a new meuble</a>
         </li>
     </ul>
+{% endif %}
 {% endblock %}
 
 {% block page_title %} Meuble {% endblock %}

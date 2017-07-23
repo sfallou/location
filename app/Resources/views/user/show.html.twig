@@ -5,6 +5,7 @@
     <div class="box">
             <!-- /.box-header -->
             <div class="box-body">
+             {% if not is_granted('ROLE_LOCATAIRE') %}
                 <div class="col-md-3">
                     <a class="btn btn-success" href="{{ path('add_charge_room', { 'id': room.id }) }}"><i class="fa fa-money fa-lg"></i> Ajouter Charge</a>
                             
@@ -13,11 +14,19 @@
                     <a class="btn btn-success" href="{{ path('add_rent_user_room', { 'id': user_room.id,'idUser': user_room.userId,'idRoom': user_room.roomId }) }}"><i class="fa fa-money fa-lg"></i> Editer quittance</a>
                             
                 </div>
+              {% endif %}
+               {% if app.user.id == user.id %}
+                 <div class="col-md-3">
+                            <a class="btn btn-success" href="{{ path('add_fix_room', { 'id': room.id }) }}"><i class="fa fa-wrench fa-lg"></i> Signaler Réparation</a>
+                            <br><br>
+                    </div>
                  <div class="col-md-3">
                             <a class="btn btn-success" href="{{ path('add_doc_user_room', { 'id': user_room.id }) }}"><i class="fa fa-file fa-lg"></i> Ajouter Document</a>
                             
                     </div>
+                    {% endif  %}
                 <br><br>
+                
                 <div >
                     <div class="page-header"><h4 style="background-color:#f7f7f7; font-size: 18px; text-align: center; padding: 7px 10px; margin-top: 0;">
                             Informations générales
@@ -25,12 +34,12 @@
                         <div class="col-md-7">
                             <ul class="list-unstyled">
                                 <li><strong>ID User:</strong> {{user.id}}</li>
-                                <li><strong>Profil :</strong> </li>
+                                <li><strong>Profil :</strong> {{user.roles[0]}}</li>
                                 <li><strong>Username :</strong> {{user.username}}</li>
-                                <li><strong>Prénom :</strong> </li>
-                                <li><strong>Nom :</strong> </li>               
+                                <li><strong>Prénom :</strong> {{user.firstName}} </li>
+                                <li><strong>Nom :</strong> {{user.lastName}} </li>               
                                 <li><strong>Email :</strong> {{user.email}}</li>
-                                <li><strong>Téléphone :</strong> </li>
+                                <li><strong>Téléphone :</strong> {{user.phone}}</li>
                                 <li><strong>Contact Garant :</strong> </li>
                             </ul>
                         </div>
@@ -38,8 +47,10 @@
                             <div class="pull-left image">
                                 <img src="/bundles/avanzuadmintheme/img/avatar.png" class="img-circle" alt="Demo User" width=150/>
                                 <br><br>
-                            </div>           
+                            </div> 
+
                         </div>
+                        <a class="btn btn-success" href="{{ path('fos_user_profile_edit') }}"><i class="fa fa-edit fa-lg"></i> Modifier informations</a>
                         <div class="page-header">-*-</div>
                         <div class="page-header"><h4 style="background-color:#f7f7f7; font-size: 18px; text-align: center; padding: 7px 10px; margin-top: 0;">
                             Informations sur la colocation
@@ -54,6 +65,10 @@
                                 <li><strong>Horaire Gardien :</strong> {{residence.horaireGardien}} </li>
                                 <li><strong>Contact Syndic :</strong> {{residence.contactSyndic}} </li>
                             </ul>
+                          <div class="col-md-3">
+                    
+                            
+                </div>
                         </div>
                         <div class="col-md-5 ">
                             <ul class="list-unstyled">
@@ -99,7 +114,9 @@
                                 </td>
                                 {% for key,val in rents  %}
                                   <td>Ok <br>
+                                    {% if not is_granted('ROLE_LOCATAIRE') %}
                                      <a class="btn btn-danger" href="{{ path('delete_rent_user_room', { 'id': val.id, 'idUser':user.id }) }}"><i class="fa fa-trash fa-lg"></i></a>
+                                     {% endif %}
                                   </td>
                                 {% endfor %}
                               </tr>                
@@ -122,7 +139,9 @@
                                 <th>Montant</th>
                                 <th>État</th>
                                 <th>Commentaires</th>
+                                 {% if not is_granted('ROLE_LOCATAIRE') %}
                                  <th>Actions</th>
+                                 {% endif %}
                               </tr>
                           </thead>
                           <tbody>
@@ -140,6 +159,7 @@
                                   {% endif %}
                                 </td>
                                 <td>{{charge.ChargeComment}}</td>
+                                 {% if not is_granted('ROLE_LOCATAIRE') %}
                                 <td>
                                   {% if charge.ChargeState == false %}
                                   <a class="btn btn-success" href="{{ path('charge_room_paid', { 'id': charge.id, 'idRoom':user.id }) }}"><i class="fa fa-check fa-lg"></i> Paid</a>
@@ -149,6 +169,7 @@
                                   {% endif %}
                                   <a class="btn btn-danger" href="#"><i class="fa fa-trash-o fa-lg"></i> Delete</a> 
                              </td>
+                             {% endif %}
                             </tr>
                           {%endfor%}                   
                           </tbody>
@@ -179,7 +200,9 @@
                                 <td>{{doc.DocumentComment}}</td>
                                 <td>
                                   <a class="btn btn-success" href="{{ path('document_show', { 'id': doc.documentId }) }}"><i class="fa fa-eye fa-lg"></i> View</a>
+                                   {% if not is_granted('ROLE_LOCATAIRE') %}
                                   <a class="btn btn-danger" href="#"><i class="fa fa-trash-o fa-lg"></i> Delete</a> 
+                                  {% endif %}
                              </td>
                             </tr>
                           {%endfor%}                   
@@ -205,6 +228,65 @@
                                 <td>
                                   <a class="btn btn-success" href="{{ path('quittance', { 'id': quittance.id }) }}"><i class="fa fa-eye fa-lg"></i> View</a> 
                              </td>
+                            </tr>
+                          {%endfor%}                   
+                          </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="page-header">-*-</div>
+                <div >
+                    <div class="page-header"><h4 style="background-color:#f7f7f7; font-size: 18px; text-align: center; padding: 7px 10px; margin-top: 0;">
+                            États des réparations
+                        </h4>
+                    </div>
+                    <div >
+                          <table  class="table table-bordered table-striped">
+                            <thead>
+                              <tr>
+                                <th>Type réparations</th>
+                                <th>Date signalée</th>
+                                <th>Priorité</th>
+                                <th>État</th>
+                                <th>Commentaires</th>
+                                 {% if app.user.id == user.id %}
+                                 <th>Actions</th>
+                                 {% endif %}
+                              </tr>
+                          </thead>
+                          <tbody>
+                          {%for typeFix,fix in fixs%}                   
+                            <tr>
+                                <td>{{typeFix}}</td>
+                                <td>{{fix.FixDate|date("m/d/Y")}}</td>
+                                <td>
+                                  {% if fix.FixPriority == false %}
+                                  0
+                                  {% endif %}
+                                  {% if fix.FixPriority == true %}
+                                  1
+                                  {% endif %}
+                                </td>
+                                <td>
+                                  {% if fix.FixState == false %}
+                                  Not done
+                                  {% endif %}
+                                  {% if fix.FixState == true %}
+                                  Done
+                                  {% endif %}
+                                </td>
+                                <td>{{fix.FixComment}}</td>
+                                {% if app.user.id == user.id %}
+                                <td>
+                                  {% if fix.FixState == false %}
+                                  <a class="btn btn-success" href="{{ path('fix_room_done', { 'id': fix.id, 'idRoom':room.id }) }}"><i class="fa fa-check fa-lg"></i> Done</a>
+                                  {% endif %}
+                                  {% if fix.FixState == true %}
+                                  <a class="btn btn-success" href="{{ path('fix_room_undone', { 'id': fix.id, 'idRoom':room.id }) }}"><i class="fa fa-times fa-lg"></i> Undone</a>
+                                  {% endif %}
+                                  <a class="btn btn-danger" href="#"><i class="fa fa-trash-o fa-lg"></i> Delete</a> 
+                             </td>
+                             {% endif %}
                             </tr>
                           {%endfor%}                   
                           </tbody>

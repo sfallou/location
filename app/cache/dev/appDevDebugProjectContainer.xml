@@ -114,10 +114,9 @@
     <parameter key="database_name">location</parameter>
     <parameter key="database_user">root</parameter>
     <parameter key="database_password">root</parameter>
-    <parameter key="mailer_transport">smtp</parameter>
-    <parameter key="mailer_host">127.0.0.1</parameter>
-    <parameter key="mailer_user">null</parameter>
-    <parameter key="mailer_password">null</parameter>
+    <parameter key="mailer_transport">gmail</parameter>
+    <parameter key="mailer_user">coloc.evry91@gmail.com</parameter>
+    <parameter key="mailer_password">colocevr</parameter>
     <parameter key="secret">32b359be23c1bfe9b439b5da04beae2df4ee600f</parameter>
     <parameter key="locale">en</parameter>
     <parameter key="documents_directory">/Users/sfallou/Sites/kokou/location/app/../web/documents</parameter>
@@ -314,11 +313,24 @@
     <parameter key="security.validator.user_password.class">Symfony\Component\Security\Core\Validator\Constraints\UserPasswordValidator</parameter>
     <parameter key="security.expression_language.class">Symfony\Component\Security\Core\Authorization\ExpressionLanguage</parameter>
     <parameter key="security.role_hierarchy.roles" type="collection">
-      <parameter key="ROLE_ADMIN" type="collection">
+      <parameter key="ROLE_PROPRIO" type="collection">
         <parameter>ROLE_USER</parameter>
       </parameter>
-      <parameter key="ROLE_SUPER_ADMIN" type="collection">
+      <parameter key="ROLE_LOCATAIRE" type="collection">
+        <parameter>ROLE_USER</parameter>
+      </parameter>
+      <parameter key="ROLE_REFERENT" type="collection">
+        <parameter>ROLE_USER</parameter>
+      </parameter>
+      <parameter key="ROLE_ADMIN" type="collection">
+        <parameter>ROLE_USER</parameter>
         <parameter>ROLE_ADMIN</parameter>
+        <parameter>ROLE_ALLOWED_TO_SWITCH</parameter>
+      </parameter>
+      <parameter key="ROLE_SUPER_ADMIN" type="collection">
+        <parameter>ROLE_USER</parameter>
+        <parameter>ROLE_ADMIN</parameter>
+        <parameter>ROLE_ALLOWED_TO_SWITCH</parameter>
       </parameter>
     </parameter>
     <parameter key="security.authentication.retry_entry_point.class">Symfony\Component\Security\Http\EntryPoint\RetryAuthenticationEntryPoint</parameter>
@@ -422,12 +434,12 @@
     <parameter key="swiftmailer.email_sender.listener.class">Symfony\Bundle\SwiftmailerBundle\EventListener\EmailSenderListener</parameter>
     <parameter key="swiftmailer.data_collector.class">Symfony\Bundle\SwiftmailerBundle\DataCollector\MessageDataCollector</parameter>
     <parameter key="swiftmailer.mailer.default.transport.name">smtp</parameter>
-    <parameter key="swiftmailer.mailer.default.transport.smtp.encryption">null</parameter>
-    <parameter key="swiftmailer.mailer.default.transport.smtp.port">25</parameter>
-    <parameter key="swiftmailer.mailer.default.transport.smtp.host">127.0.0.1</parameter>
-    <parameter key="swiftmailer.mailer.default.transport.smtp.username">null</parameter>
-    <parameter key="swiftmailer.mailer.default.transport.smtp.password">null</parameter>
-    <parameter key="swiftmailer.mailer.default.transport.smtp.auth_mode">null</parameter>
+    <parameter key="swiftmailer.mailer.default.transport.smtp.encryption">ssl</parameter>
+    <parameter key="swiftmailer.mailer.default.transport.smtp.port">465</parameter>
+    <parameter key="swiftmailer.mailer.default.transport.smtp.host">smtp.gmail.com</parameter>
+    <parameter key="swiftmailer.mailer.default.transport.smtp.username">coloc.evry91@gmail.com</parameter>
+    <parameter key="swiftmailer.mailer.default.transport.smtp.password">colocevr</parameter>
+    <parameter key="swiftmailer.mailer.default.transport.smtp.auth_mode">login</parameter>
     <parameter key="swiftmailer.mailer.default.transport.smtp.timeout">30</parameter>
     <parameter key="swiftmailer.mailer.default.transport.smtp.source_ip">null</parameter>
     <parameter key="swiftmailer.mailer.default.transport.smtp.local_domain">null</parameter>
@@ -596,7 +608,7 @@
       <parameter key="webmaster@example.com">webmaster</parameter>
     </parameter>
     <parameter key="fos_user.registration.confirmation.enabled">false</parameter>
-    <parameter key="fos_user.registration.form.type">fos_user_registration</parameter>
+    <parameter key="fos_user.registration.form.type">location_user_registration</parameter>
     <parameter key="fos_user.registration.form.name">fos_user_registration_form</parameter>
     <parameter key="fos_user.registration.form.validation_groups" type="collection">
       <parameter>Registration</parameter>
@@ -776,6 +788,9 @@
     </parameter>
   </parameters>
   <services>
+    <service id="app.form.registration" class="AppBundle\Form\RegistrationType">
+      <tag name="form.type" alias="location_user_registration"/>
+    </service>
     <service id="controller_name_converter" class="Symfony\Bundle\FrameworkBundle\Controller\ControllerNameParser" public="false">
       <tag name="monolog.logger" channel="request"/>
       <argument type="service" id="kernel"/>
@@ -1543,6 +1558,8 @@
           <service class="Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension" public="false">
             <argument type="service" id="service_container"/>
             <argument type="collection">
+              <argument key="location_user_registration">app.form.registration</argument>
+              <argument key="AppBundle\Form\RegistrationType">app.form.registration</argument>
               <argument key="form">form.type.form</argument>
               <argument key="Symfony\Component\Form\Extension\Core\Type\FormType">form.type.form</argument>
               <argument key="birthday">form.type.birthday</argument>
@@ -2386,7 +2403,7 @@
       <argument type="collection">
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\DaoAuthenticationProvider" public="false">
-            <argument type="service" id="fos_user.user_provider.username"/>
+            <argument type="service" id="fos_user.user_provider.username_email"/>
             <argument type="service" id="security.user_checker.main"/>
             <argument>main</argument>
             <argument type="service" id="security.encoder_factory"/>
@@ -2395,7 +2412,7 @@
         </argument>
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>5970e113c9e9c9.56663386</argument>
+            <argument>59743188496e82.93126355</argument>
           </service>
         </argument>
       </argument>
@@ -2448,11 +2465,24 @@
     </service>
     <service id="security.role_hierarchy" class="Symfony\Component\Security\Core\Role\RoleHierarchy" public="false">
       <argument type="collection">
-        <argument key="ROLE_ADMIN" type="collection">
+        <argument key="ROLE_PROPRIO" type="collection">
           <argument>ROLE_USER</argument>
         </argument>
-        <argument key="ROLE_SUPER_ADMIN" type="collection">
+        <argument key="ROLE_LOCATAIRE" type="collection">
+          <argument>ROLE_USER</argument>
+        </argument>
+        <argument key="ROLE_REFERENT" type="collection">
+          <argument>ROLE_USER</argument>
+        </argument>
+        <argument key="ROLE_ADMIN" type="collection">
+          <argument>ROLE_USER</argument>
           <argument>ROLE_ADMIN</argument>
+          <argument>ROLE_ALLOWED_TO_SWITCH</argument>
+        </argument>
+        <argument key="ROLE_SUPER_ADMIN" type="collection">
+          <argument>ROLE_USER</argument>
+          <argument>ROLE_ADMIN</argument>
+          <argument>ROLE_ALLOWED_TO_SWITCH</argument>
         </argument>
       </argument>
     </service>
@@ -2547,11 +2577,46 @@
                 <call method="add">
                   <argument type="service">
                     <service class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
-                      <argument>^/admin/</argument>
+                      <argument>/new$</argument>
                     </service>
                   </argument>
                   <argument type="collection">
                     <argument>ROLE_ADMIN</argument>
+                    <argument>ROLE_REFERENT</argument>
+                    <argument>ROLE_PROPRIO</argument>
+                  </argument>
+                  <argument>null</argument>
+                </call>
+                <call method="add">
+                  <argument type="service">
+                    <service class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
+                      <argument>^/validation$</argument>
+                    </service>
+                  </argument>
+                  <argument type="collection">
+                    <argument>ROLE_ADMIN</argument>
+                  </argument>
+                  <argument>null</argument>
+                </call>
+                <call method="add">
+                  <argument type="service">
+                    <service class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
+                      <argument>^/</argument>
+                    </service>
+                  </argument>
+                  <argument type="collection">
+                    <argument>ROLE_USER</argument>
+                  </argument>
+                  <argument>null</argument>
+                </call>
+                <call method="add">
+                  <argument type="service">
+                    <service class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
+                      <argument>^/_wdt</argument>
+                    </service>
+                  </argument>
+                  <argument type="collection">
+                    <argument>IS_AUTHENTICATED_ANONYMOUSLY</argument>
                   </argument>
                   <argument>null</argument>
                 </call>
@@ -2570,7 +2635,7 @@
           <service class="Symfony\Component\Security\Http\Firewall\ContextListener" public="false">
             <argument type="service" id="security.token_storage"/>
             <argument type="collection">
-              <argument type="service" id="fos_user.user_provider.username"/>
+              <argument type="service" id="fos_user.user_provider.username_email"/>
             </argument>
             <argument>main</argument>
             <argument type="service" id="monolog.logger.security" on-invalid="null"/>
@@ -2594,7 +2659,7 @@
                     <argument type="service" id="router" on-invalid="null"/>
                   </service>
                 </argument>
-                <argument>/</argument>
+                <argument>/login</argument>
               </service>
             </argument>
             <argument type="collection">
@@ -2633,9 +2698,9 @@
                 <argument type="collection"/>
                 <call method="setOptions">
                   <argument type="collection">
-                    <argument key="always_use_default_target_path">false</argument>
-                    <argument key="default_target_path">/</argument>
                     <argument key="login_path">/login</argument>
+                    <argument key="default_target_path">after_login</argument>
+                    <argument key="always_use_default_target_path">false</argument>
                     <argument key="target_path_parameter">_target_path</argument>
                     <argument key="use_referer">false</argument>
                   </argument>
@@ -2678,13 +2743,13 @@
             </argument>
             <argument type="service" id="monolog.logger.security" on-invalid="null"/>
             <argument type="service" id="debug.event_dispatcher" on-invalid="null"/>
-            <argument type="service" id="security.csrf.token_manager"/>
+            <argument>null</argument>
           </service>
         </argument>
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.token_storage"/>
-            <argument>5970e113c9e9c9.56663386</argument>
+            <argument>59743188496e82.93126355</argument>
             <argument type="service" id="monolog.logger.security" on-invalid="null"/>
             <argument type="service" id="security.authentication.manager"/>
           </service>
@@ -2732,11 +2797,46 @@
                 <call method="add">
                   <argument type="service">
                     <service class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
-                      <argument>^/admin/</argument>
+                      <argument>/new$</argument>
                     </service>
                   </argument>
                   <argument type="collection">
                     <argument>ROLE_ADMIN</argument>
+                    <argument>ROLE_REFERENT</argument>
+                    <argument>ROLE_PROPRIO</argument>
+                  </argument>
+                  <argument>null</argument>
+                </call>
+                <call method="add">
+                  <argument type="service">
+                    <service class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
+                      <argument>^/validation$</argument>
+                    </service>
+                  </argument>
+                  <argument type="collection">
+                    <argument>ROLE_ADMIN</argument>
+                  </argument>
+                  <argument>null</argument>
+                </call>
+                <call method="add">
+                  <argument type="service">
+                    <service class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
+                      <argument>^/</argument>
+                    </service>
+                  </argument>
+                  <argument type="collection">
+                    <argument>ROLE_USER</argument>
+                  </argument>
+                  <argument>null</argument>
+                </call>
+                <call method="add">
+                  <argument type="service">
+                    <service class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
+                      <argument>^/_wdt</argument>
+                    </service>
+                  </argument>
+                  <argument type="collection">
+                    <argument>IS_AUTHENTICATED_ANONYMOUSLY</argument>
                   </argument>
                   <argument>null</argument>
                 </call>
@@ -3374,7 +3474,7 @@
       <argument type="service" id="security.authentication.session_strategy"/>
       <argument type="service" id="service_container"/>
     </service>
-    <service id="fos_user.user_provider.username" class="FOS\UserBundle\Security\UserProvider" public="false">
+    <service id="fos_user.user_provider.username_email" class="FOS\UserBundle\Security\EmailUserProvider" public="false">
       <argument type="service" id="fos_user.user_manager"/>
     </service>
     <service id="fos_user.util.user_manipulator" class="FOS\UserBundle\Util\UserManipulator">
@@ -3405,7 +3505,7 @@
     </service>
     <service id="fos_user.registration.form" class="Symfony\Component\Form\Form" factory-method="createNamed" factory-service="form.factory">
       <argument>fos_user_registration_form</argument>
-      <argument>fos_user_registration</argument>
+      <argument>location_user_registration</argument>
       <argument>null</argument>
       <argument type="collection">
         <argument key="validation_groups" type="collection">
@@ -4080,26 +4180,26 @@
               </argument>
             </argument>
             <call method="setUsername">
-              <argument>null</argument>
+              <argument>coloc.evry91@gmail.com</argument>
             </call>
             <call method="setPassword">
-              <argument>null</argument>
+              <argument>colocevr</argument>
             </call>
             <call method="setAuthMode">
-              <argument>null</argument>
+              <argument>login</argument>
             </call>
           </service>
         </argument>
       </argument>
       <argument type="service" id="swiftmailer.mailer.default.transport.eventdispatcher"/>
       <call method="setHost">
-        <argument>127.0.0.1</argument>
+        <argument>smtp.gmail.com</argument>
       </call>
       <call method="setPort">
-        <argument>25</argument>
+        <argument>465</argument>
       </call>
       <call method="setEncryption">
-        <argument>null</argument>
+        <argument>ssl</argument>
       </call>
       <call method="setTimeout">
         <argument>30</argument>
@@ -4151,7 +4251,7 @@
       <argument type="service" id="request"/>
       <argument type="service" id="fos_user.user_manager"/>
     </service>
-    <service id="fos_user.registration.form.handler" class="FOS\UserBundle\Form\Handler\RegistrationFormHandler" scope="request">
+    <service id="fos_user.registration.form.handler" class="AppBundle\Form\Handler\RegistrationFormHandler" scope="request">
       <argument type="service" id="fos_user.registration.form"/>
       <argument type="service" id="request"/>
       <argument type="service" id="fos_user.user_manager"/>

@@ -2,9 +2,12 @@
 
 {% block fos_user_content %}
    <div>
+   		<p>
+   			An email will be sent to you when the account is validated by the admin
+   		</p>
             {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
             
-                <a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
+                <a href="{{ path('fos_user_security_logout') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
             {% endif %}
    </div>
 {% endblock fos_user_content %}

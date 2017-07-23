@@ -6,6 +6,7 @@
             <!-- /.box-header -->
             <div class="box-body">
                 <div >
+                {% if not is_granted('ROLE_LOCATAIRE') %}
                   <div class="col-md-3">
                             <a class="btn btn-success" href="{{ path('add_furniture_room', { 'id': room.id }) }}"><i class="fa fa-tv fa-lg"></i> Ajouter Meuble</a>
                             <br><br>
@@ -20,6 +21,7 @@
                     </div>
                    
                     <br><br>
+                    {% endif %}
                     <div class="page-header"><h4 style="background-color:#f7f7f7; font-size: 18px; text-align: center; padding: 7px 10px; margin-top: 0;">
                             Informations générales
                         </h4>
@@ -62,7 +64,9 @@
                                 <th>Priorité</th>
                                 <th>État</th>
                                 <th>Commentaires</th>
+                                {% if not is_granted('ROLE_LOCATAIRE') %}
                                  <th>Actions</th>
+                                {% endif %}
                               </tr>
                           </thead>
                           <tbody>
@@ -87,6 +91,7 @@
                                   {% endif %}
                                 </td>
                                 <td>{{fix.FixComment}}</td>
+                              {% if not is_granted('ROLE_LOCATAIRE') %}
                                 <td>
                                   {% if fix.FixState == false %}
                                   <a class="btn btn-success" href="{{ path('fix_room_done', { 'id': fix.id, 'idRoom':room.id }) }}"><i class="fa fa-check fa-lg"></i> Done</a>
@@ -96,8 +101,9 @@
                                   {% endif %}
                                   <a class="btn btn-danger" href="#"><i class="fa fa-trash-o fa-lg"></i> Delete</a> 
                              </td>
+                             {% endif %}
                             </tr>
-                          {%endfor%}                   
+                          {% endfor %}                   
                           </tbody>
                         </table>
                     </div>
@@ -151,7 +157,9 @@
                                 <td>{{doc.DocumentComment}}</td>
                                 <td>
                                   <a class="btn btn-success" href="{{ path('document_show', { 'id': doc.documentId }) }}"><i class="fa fa-eye fa-lg"></i> View</a>
-                                  <a class="btn btn-danger" href="#"><i class="fa fa-trash-o fa-lg"></i> Delete</a> 
+                                  {% if not is_granted('ROLE_LOCATAIRE') %}
+                                  <a class="btn btn-danger" href="#"><i class="fa fa-trash-o fa-lg"></i> Delete</a>
+                                  {% endif %} 
                              </td>
                             </tr-->
                           {%endfor%}                   

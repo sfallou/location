@@ -12,7 +12,8 @@ use AppBundle\Entity\Charge;
 use AppBundle\Entity\DocumentUserRoom;
 use AppBundle\Entity\Document;
 use AppBundle\Entity\RentUserRoom;
-
+use AppBundle\Entity\FixRoom;
+use AppBundle\Entity\Fix;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
@@ -23,7 +24,21 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component
  * @Route("user")
  */
 class UserController extends Controller
-{
+{   
+
+
+    /**
+     * Compte user
+     *
+     * @Route("/mon_compte", name="mon_compte")
+     * @Method("GET")
+     */
+     public function compteAction()
+    {
+        $user = $this->getUser();
+        $userId = $user->getId();
+        return $this->redirectToRoute('user_show',array('id'=>$userId));  
+    }
     /**
      * Lists all user entities.
      *
@@ -86,12 +101,22 @@ class UserController extends Controller
         $doc_user_rooms = array();
         $rents = array();
         $quittances = array();
+        $fixs = null;
+        $fix_rooms = array();
 
         $user_room = $em->getRepository('AppBundle:UserRoom')->findOneBy(array('userId'=>$user->getId()));
         $room = $em->getRepository('AppBundle:Room')->findOneBy(array('id'=>$user_room->getRoomId()));
         $appart = $em->getRepository('AppBundle:Appartement')->findOneBy(array('id'=>$room->getIdAppart()));
         $residence = $em->getRepository('AppBundle:Residence')->findOneBy(array('id'=>$appart->getIdResidence()));
+        $fixs = $em->getRepository('AppBundle:FixRoom')->findBy(array('roomId'=>$room->getId()));
         
+        if ($fixs){
+            foreach ($fixs as $fix ) {
+                $type =  $em->getRepository('AppBundle:TypeFix')->findOneBy(array('id'=>$fix->getFixId()));
+                $fix_rooms[$type->getName()] = $fix;
+            }
+        }
+
         $charges = $em->getRepository('AppBundle:ChargeRoom')->findBy(array('roomId'=>$room->getId()));
         
         if ($charges){
@@ -117,7 +142,7 @@ class UserController extends Controller
             ORDER BY r.userRoomId DESC'
             )->setParameter('id',$user_room->getId() );
 
-        $rents = $query->setMaxResults(12)->getResult();;
+        $rents = $query->setMaxResults(12)->getResult();
         return $this->render('user/show.html.twig', array(
             'user' => $user,
             'room' => $room,
@@ -125,6 +150,7 @@ class UserController extends Controller
             'appart' => $appart,
             'residence' => $residence,
             'charges' =>$charge_rooms,
+            'fixs' => $fix_rooms,
             'documents' => $doc_user_rooms,
             'rents' => $rents,
             'year' => date('Y'),
@@ -158,22 +184,17 @@ class UserController extends Controller
     }
 
     /**
-     * Deletes a user entity.
+     * Desactivate a user entity.
      *
-     * @Route("/{id}", name="user_delete")
-     * @Method("DELETE")
+     * @Route("/{id}/delete_user", name="user_delete")
+     * @Method({"GET", "POST"})
      */
     public function deleteAction(Request $request, User $user)
-    {
-        $form = $this->createDeleteForm($user);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($user);
-            $em->flush();
-        }
-
+    {   
+        $user_room = $em->getRepository('AppBundle:UserRoom')->findOneBy(array('userId'=>$user->getId()));
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($user);
+        $em->flush();
         return $this->redirectToRoute('user_index');
     }
 
